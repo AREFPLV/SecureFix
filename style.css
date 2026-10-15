@@ -313,14 +313,15 @@ h1, h2, h3, h4 {
   min-width: 0;
 }
 .brand__logo {
-  width: 58px;
-  height: auto;
-  aspect-ratio: 69 / 48;
-  border-radius: 10px;
+  width: 56px;
+  height: 56px;
+  aspect-ratio: 1;
+  border-radius: 50%;
   background: transparent;
+  object-fit: cover;
 }
 .brand__name {
-  display: none;
+  display: inline;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: -0.06em;
@@ -942,7 +943,7 @@ h1, h2, h3, h4 {
   :root { --gutter: 24px; --section-y: 80px; --fs-body: 17px; }
 
   .header-inner { min-height: 72px; }
-  .brand__logo { width: 69px; }
+  .brand__logo { width: 64px; height: 64px; }
   .btn--sm { min-height: 46px; padding: 0 20px; }
   .btn__num {
     display: inline;
