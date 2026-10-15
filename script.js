@@ -97,7 +97,7 @@
     en: {
       page_title: 'Phone Fix in City Road, London | Cell Hub Houston',
       meta_desc: 'Visit Cell Hub Houston for phone screen fixes, battery replacements, and other device services. Call today or get directions to our Richmond Ave location.',
-      og_title: 'Phone Fix in Houston, TX | Cell Hub Houston',
+      og_title: 'Phone Fix in City Road, London | Cell Hub Houston',
       og_desc: 'Screen fixes, battery replacements, and charging port fixes at our Richmond Ave store in Houston.',
       skip_link: 'Skip to content',
 
