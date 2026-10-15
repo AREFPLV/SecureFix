@@ -95,7 +95,7 @@
   /* ---------- Bilingual Support (English / Español) ---------- */
   var TRANSLATIONS = {
     en: {
-      page_title: 'Phone Fix in Houston, TX | Cell Hub Houston',
+      page_title: 'Phone Fix in City Road, London | Cell Hub Houston',
       meta_desc: 'Visit Cell Hub Houston for phone screen fixes, battery replacements, and other device services. Call today or get directions to our Richmond Ave location.',
       og_title: 'Phone Fix in Houston, TX | Cell Hub Houston',
       og_desc: 'Screen fixes, battery replacements, and charging port fixes at our Richmond Ave store in Houston.',
@@ -107,7 +107,7 @@
       lang_btn_es: 'Cambiar a Español',
 
       // Hero
-      hero_title: 'Phone Fix in Houston, TX',
+      hero_title: 'Phone Fix in City Road, London',
       hero_kicker: 'Cracked Screen? Battery Issue? Charging Problem?',
       hero_desc: 'Visit Cell Hub Houston for convenient phone services, clear upfront estimates, and quality replacement parts.',
       trust_aria: 'Why customers visit Cell Hub',
