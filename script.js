@@ -209,7 +209,7 @@
       hours_fri: 'Friday',
       hours_fri_desc: 'Please call to confirm',
       hours_sat_sun: 'Saturday–Sunday',
-      map_title: 'Map showing Cell Hub Houston at City Road, London',
+      map_title: 'Map showing SecureFix at City Road, London',
 
       // Final CTA
       final_title: 'Need Your Phone Fixed?',
@@ -337,7 +337,7 @@
       hours_fri: 'Viernes',
       hours_fri_desc: 'Favor de llamar para confirmar',
       hours_sat_sun: 'Sábado y Domingo',
-      map_title: 'Mapa que muestra Cell Hub Houston en City Road, London',
+      map_title: 'Mapa que muestra SecureFix en City Road, London',
 
       // Final CTA
       final_title: '¿Necesita Arreglar su Teléfono?',
