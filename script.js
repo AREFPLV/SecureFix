@@ -124,7 +124,7 @@
       // Services
       services_eyebrow: 'Services',
       services_title: 'What Can We Fix for You?',
-      services_sub: 'Local phone and device services in Houston.',
+      services_sub: 'Local phone and device services in London.',
       svc_1_title: 'Screen Fix',
       svc_1_desc: 'Cracked or damaged screen? Ask us about screen replacement options.',
       svc_2_title: 'Battery Replacement',
@@ -251,7 +251,7 @@
       // Services
       services_eyebrow: 'Услуги',
       services_title: 'Что мы можем починить?',
-      services_sub: 'Местный ремонт телефонов и устройств в Хьюстоне.',
+      services_sub: 'Местный ремонт телефонов и устройств в Лондоне.',
       svc_1_title: 'Замена экрана',
       svc_1_desc: 'Треснул или повреждён экран? Узнайте о вариантах замены.',
       svc_2_title: 'Замена аккумулятора',
