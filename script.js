@@ -95,9 +95,9 @@
   /* ---------- Bilingual Support (English / Russian) ---------- */
   var TRANSLATIONS = {
     en: {
-      page_title: 'Phone Fix in City Road, London | Cell Hub Houston',
+      page_title: 'Phone and Computer in City Road, London | Cell Hub Houston',
       meta_desc: 'Visit Cell Hub Houston for phone screen fixes, battery replacements, and other device services. Call today or get directions to our Richmond Ave location.',
-      og_title: 'Phone Fix in City Road, London | Cell Hub Houston',
+      og_title: 'Phone and Computer in City Road, London | Cell Hub Houston',
       og_desc: 'Screen fixes, battery replacements, and charging port fixes at our Richmond Ave store in Houston.',
       skip_link: 'Skip to content',
 
@@ -107,7 +107,7 @@
       lang_btn_ru: 'Switch to Russian',
 
       // Hero
-      hero_title: 'Phone Fix in City Road, London',
+      hero_title: 'Phone and Computer in City Road, London',
       hero_kicker: 'Cracked Screen? Battery Issue? Charging Problem?',
       hero_desc: 'Visit Cell Hub Houston for convenient phone services, clear upfront estimates, and quality replacement parts.',
       trust_aria: 'Why customers visit Cell Hub',
@@ -223,9 +223,9 @@
       footer_copy: 'Copyright &copy; 2026 Cell Hub Houston'
     },
     ru: {
-      page_title: 'Ремонт телефонов на City Road, London | Cell Hub Houston',
+      page_title: 'Телефон и компьютер на City Road, London | Cell Hub Houston',
       meta_desc: 'Cell Hub Houston: замена экрана, замена аккумулятора и другие услуги для телефонов. Позвоните сегодня или постройте маршрут до нашего магазина на Richmond Ave.',
-      og_title: 'Ремонт телефонов на City Road, London | Cell Hub Houston',
+      og_title: 'Телефон и компьютер на City Road, London | Cell Hub Houston',
       og_desc: 'Замена экрана, аккумуляторов и разъёмов зарядки в нашем магазине на Richmond Ave в Хьюстоне.',
       skip_link: 'Перейти к содержанию',
 
@@ -235,7 +235,7 @@
       lang_btn_ru: 'Переключить на русский',
 
       // Hero
-      hero_title: 'Ремонт телефонов на City Road, London',
+      hero_title: 'Телефон и компьютер на City Road, London',
       hero_kicker: 'Разбит экран? Проблема с аккумулятором? Не заряжается?',
       hero_desc: 'Cell Hub Houston — удобный ремонт телефонов, понятная смета заранее и качественные запчасти.',
       trust_aria: 'Почему клиенты выбирают Cell Hub',
