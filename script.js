@@ -200,7 +200,7 @@
 
       // Location
       loc_eyebrow: 'Location',
-      loc_title: 'Visit Cell Hub in Houston',
+      loc_title: 'Visit SecureFix in London',
       loc_sub: 'Stop by our Houston location for phone and device services.',
       loc_addr_heading: 'Address',
       loc_phone_heading: 'Phone',
@@ -328,7 +328,7 @@
 
       // Location
       loc_eyebrow: 'Адрес',
-      loc_title: 'Cell Hub в Хьюстоне',
+      loc_title: 'Посетите SecureFix в Лондоне',
       loc_sub: 'Загляните в наш магазин в Хьюстоне за ремонтом телефонов и устройств.',
       loc_addr_heading: 'Адрес',
       loc_phone_heading: 'Телефон',
