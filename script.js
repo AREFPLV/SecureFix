@@ -140,7 +140,7 @@
 
       // Why Cell Hub
       why_eyebrow: 'Why SecureFix, London',
-      why_title: 'Why Choose SecureFix, London?',
+      why_title: 'Why Choose SecureFix?',
       benefit_1_title: 'Quick Service',
       benefit_1_desc: 'Many common fixes can be completed in about 15 minutes, depending on the device and required work.',
       benefit_2_title: 'Upfront Pricing',
@@ -268,7 +268,7 @@
 
       // Why Cell Hub
       why_eyebrow: 'Почему SecureFix, London',
-      why_title: 'Почему выбирают SecureFix, London?',
+      why_title: 'Почему выбирают SecureFix?',
       benefit_1_title: 'Быстрый ремонт',
       benefit_1_desc: 'Многие типовые работы можно выполнить примерно за 15 минут — в зависимости от устройства и объёма работ.',
       benefit_2_title: 'Цена заранее',
