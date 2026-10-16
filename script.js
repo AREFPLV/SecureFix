@@ -1,5 +1,5 @@
 /*
-  Cell Hub Houston — landing page behavior
+  SecureFix, London — landing page behavior
   1. CTA click tracking via dataLayer (phone_click / directions_click)
   2. Optional direct Google Ads conversions (only if configured in index.html)
   3. Lazy-loading the Google Maps embed
@@ -95,9 +95,9 @@
   /* ---------- Bilingual Support (English / Russian) ---------- */
   var TRANSLATIONS = {
     en: {
-      page_title: 'Phone and Computer in City Road, London | Cell Hub Houston',
-      meta_desc: 'Visit Cell Hub Houston for phone screen fixes, battery replacements, and other device services. Call today or get directions to our Richmond Ave location.',
-      og_title: 'Phone and Computer in City Road, London | Cell Hub Houston',
+      page_title: 'Phone and Computer in City Road, London | SecureFix, London',
+      meta_desc: 'Visit SecureFix, London for phone screen fixes, battery replacements, and other device services. Call today or get directions to our Richmond Ave location.',
+      og_title: 'Phone and Computer in City Road, London | SecureFix, London',
       og_desc: 'Screen fixes, battery replacements, and charging port fixes at our Richmond Ave store in Houston.',
       skip_link: 'Skip to content',
 
@@ -109,7 +109,7 @@
       // Hero
       hero_title: 'Phone and Computer in City Road, London',
       hero_kicker: 'Cracked Screen? Battery Issue? Charging Problem?',
-      hero_desc: 'Visit Cell Hub Houston for convenient phone services, clear upfront estimates, and quality replacement parts.',
+      hero_desc: 'Visit SecureFix, London for convenient phone services, clear upfront estimates, and quality replacement parts.',
       trust_aria: 'Why customers visit Cell Hub',
       trust_1: 'Many Common Fixes in About 15&nbsp;Minutes<sup>*</sup>',
       trust_2: 'Upfront Estimates',
@@ -117,7 +117,7 @@
       btn_call: 'Call Now',
       btn_dir: 'Get Directions',
       call_aria: 'Call Now: 020 3336 7147',
-      dir_aria: 'Get Directions to Cell Hub Houston on Google Maps (opens in a new tab)',
+      dir_aria: 'Get Directions to SecureFix, London on Google Maps (opens in a new tab)',
       hero_footnote: '<sup>*</sup>Actual turnaround depends on the device, the service needed, and parts availability. Some jobs take longer.',
       hero_img_alt: 'Technician replacing a cracked smartphone screen on a fix mat',
 
@@ -139,8 +139,8 @@
       svc_6_desc: 'Service options for tablets and other supported devices.',
 
       // Why Cell Hub
-      why_eyebrow: 'Why Cell Hub',
-      why_title: 'Why Choose Cell Hub Houston?',
+      why_eyebrow: 'Why SecureFix, London',
+      why_title: 'Why Choose SecureFix, London?',
       benefit_1_title: 'Quick Service',
       benefit_1_desc: 'Many common fixes can be completed in about 15 minutes, depending on the device and required work.',
       benefit_2_title: 'Upfront Pricing',
@@ -213,19 +213,19 @@
 
       // Final CTA
       final_title: 'Need Your Phone Fixed?',
-      final_sub: 'Call Cell Hub Houston or visit our store on Richmond Avenue.',
+      final_sub: 'Call SecureFix, London or visit our store on Richmond Avenue.',
 
       // Footer
       footer_privacy: 'Privacy Policy',
       footer_terms: 'Fix Terms',
       footer_warranty: 'Limited Warranty',
-      footer_legal: 'Cell Hub Houston is an independent phone and device service shop and is not affiliated with Apple, Samsung, or Google. Device brand names are used only to describe the devices we service.',
-      footer_copy: 'Copyright &copy; 2026 Cell Hub Houston'
+      footer_legal: 'SecureFix, London is an independent phone and device service shop and is not affiliated with Apple, Samsung, or Google. Device brand names are used only to describe the devices we service.',
+      footer_copy: 'Copyright &copy; 2026 SecureFix, London'
     },
     ru: {
-      page_title: 'Телефон и компьютер на City Road, London | Cell Hub Houston',
-      meta_desc: 'Cell Hub Houston: замена экрана, замена аккумулятора и другие услуги для телефонов. Позвоните сегодня или постройте маршрут до нашего магазина на Richmond Ave.',
-      og_title: 'Телефон и компьютер на City Road, London | Cell Hub Houston',
+      page_title: 'Телефон и компьютер на City Road, London | SecureFix, London',
+      meta_desc: 'SecureFix, London: замена экрана, замена аккумулятора и другие услуги для телефонов. Позвоните сегодня или постройте маршрут до нашего магазина на Richmond Ave.',
+      og_title: 'Телефон и компьютер на City Road, London | SecureFix, London',
       og_desc: 'Замена экрана, аккумуляторов и разъёмов зарядки в нашем магазине на Richmond Ave в Хьюстоне.',
       skip_link: 'Перейти к содержанию',
 
@@ -237,7 +237,7 @@
       // Hero
       hero_title: 'Телефон и компьютер на City Road, London',
       hero_kicker: 'Разбит экран? Проблема с аккумулятором? Не заряжается?',
-      hero_desc: 'Cell Hub Houston — удобный ремонт телефонов, понятная смета заранее и качественные запчасти.',
+      hero_desc: 'SecureFix, London — удобный ремонт телефонов, понятная смета заранее и качественные запчасти.',
       trust_aria: 'Почему клиенты выбирают Cell Hub',
       trust_1: 'Многие типовые ремонты примерно за 15&nbsp;минут<sup>*</sup>',
       trust_2: 'Смета заранее',
@@ -245,7 +245,7 @@
       btn_call: 'Позвонить',
       btn_dir: 'Маршрут',
       call_aria: 'Позвонить: 020 3336 7147',
-      dir_aria: 'Маршрут до Cell Hub Houston в Google Картах (откроется в новой вкладке)',
+      dir_aria: 'Маршрут до SecureFix, London в Google Картах (откроется в новой вкладке)',
       hero_footnote: '<sup>*</sup>Срок зависит от устройства, нужной услуги и наличия запчастей. Некоторые работы занимают больше времени.',
       hero_img_alt: 'Мастер меняет разбитый экран смартфона на рабочем коврике',
 
@@ -267,8 +267,8 @@
       svc_6_desc: 'Варианты обслуживания планшетов и других поддерживаемых устройств.',
 
       // Why Cell Hub
-      why_eyebrow: 'Почему Cell Hub',
-      why_title: 'Почему выбирают Cell Hub Houston?',
+      why_eyebrow: 'Почему SecureFix, London',
+      why_title: 'Почему выбирают SecureFix, London?',
       benefit_1_title: 'Быстрый ремонт',
       benefit_1_desc: 'Многие типовые работы можно выполнить примерно за 15 минут — в зависимости от устройства и объёма работ.',
       benefit_2_title: 'Цена заранее',
@@ -341,14 +341,14 @@
 
       // Final CTA
       final_title: 'Нужно починить телефон?',
-      final_sub: 'Позвоните в Cell Hub Houston или приходите в магазин на Richmond Avenue.',
+      final_sub: 'Позвоните в SecureFix, London или приходите в магазин на Richmond Avenue.',
 
       // Footer
       footer_privacy: 'Политика конфиденциальности',
       footer_terms: 'Условия ремонта',
       footer_warranty: 'Ограниченная гарантия',
-      footer_legal: 'Cell Hub Houston — независимая мастерская по ремонту телефонов и устройств и не связана с Apple, Samsung или Google. Названия брендов используются только для описания устройств, которые мы обслуживаем.',
-      footer_copy: 'Copyright &copy; 2026 Cell Hub Houston'
+      footer_legal: 'SecureFix, London — независимая мастерская по ремонту телефонов и устройств и не связана с Apple, Samsung или Google. Названия брендов используются только для описания устройств, которые мы обслуживаем.',
+      footer_copy: 'Copyright &copy; 2026 SecureFix, London'
     }
   };
 
