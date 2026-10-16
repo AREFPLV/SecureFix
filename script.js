@@ -201,7 +201,7 @@
       // Location
       loc_eyebrow: 'Location',
       loc_title: 'Visit SecureFix in London',
-      loc_sub: 'Stop by our Houston location for phone and device services.',
+      loc_sub: 'Stop by our 218 City Road, London location for phone and device services.',
       loc_addr_heading: 'Address',
       loc_phone_heading: 'Phone',
       loc_hours_heading: 'Business Hours',
@@ -328,7 +328,7 @@
       // Location
       loc_eyebrow: 'Адрес',
       loc_title: 'Посетите SecureFix в Лондоне',
-      loc_sub: 'Загляните в наш магазин в Хьюстоне за ремонтом телефонов и устройств.',
+      loc_sub: 'Загляните в наш магазин по адресу 218 City Road, London за ремонтом телефонов и устройств.',
       loc_addr_heading: 'Адрес',
       loc_phone_heading: 'Телефон',
       loc_hours_heading: 'Часы работы',
