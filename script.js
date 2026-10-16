@@ -92,7 +92,7 @@
     }
   }
 
-  /* ---------- Bilingual Support (English / Español) ---------- */
+  /* ---------- Bilingual Support (English / Russian) ---------- */
   var TRANSLATIONS = {
     en: {
       page_title: 'Phone Fix in City Road, London | Cell Hub Houston',
@@ -104,7 +104,7 @@
       // Header
       lang_aria: 'Language selection',
       lang_btn_en: 'Switch to English',
-      lang_btn_es: 'Cambiar a Español',
+      lang_btn_ru: 'Switch to Russian',
 
       // Hero
       hero_title: 'Phone Fix in City Road, London',
@@ -222,138 +222,138 @@
       footer_legal: 'Cell Hub Houston is an independent phone and device service shop and is not affiliated with Apple, Samsung, or Google. Device brand names are used only to describe the devices we service.',
       footer_copy: 'Copyright &copy; 2026 Cell Hub Houston'
     },
-    es: {
-      page_title: 'Servicio y Arreglo de Teléfonos en Houston, TX | Cell Hub Houston',
-      meta_desc: 'Visite Cell Hub Houston para cambios de pantalla, reemplazo de batería y servicios para teléfonos. Llame hoy o vea cómo llegar a Richmond Ave.',
-      og_title: 'Servicio y Arreglo de Teléfonos en Houston, TX | Cell Hub Houston',
-      og_desc: 'Cambio de pantalla, baterías y centros de carga en nuestra tienda de Richmond Ave en Houston.',
-      skip_link: 'Saltar al contenido',
+    ru: {
+      page_title: 'Ремонт телефонов на City Road, London | Cell Hub Houston',
+      meta_desc: 'Cell Hub Houston: замена экрана, замена аккумулятора и другие услуги для телефонов. Позвоните сегодня или постройте маршрут до нашего магазина на Richmond Ave.',
+      og_title: 'Ремонт телефонов на City Road, London | Cell Hub Houston',
+      og_desc: 'Замена экрана, аккумуляторов и разъёмов зарядки в нашем магазине на Richmond Ave в Хьюстоне.',
+      skip_link: 'Перейти к содержанию',
 
       // Header
-      lang_aria: 'Selección de idioma',
-      lang_btn_en: 'Cambiar a Inglés',
-      lang_btn_es: 'Cambiar a Español',
+      lang_aria: 'Выбор языка',
+      lang_btn_en: 'Переключить на английский',
+      lang_btn_ru: 'Переключить на русский',
 
       // Hero
-      hero_title: 'Servicio y Arreglo de Teléfonos en Houston, TX',
-      hero_kicker: '¿Pantalla Rota? ¿Problema con la Batería o de Carga?',
-      hero_desc: 'Visite Cell Hub Houston para servicios convenientes de teléfonos, presupuestos claros por adelantado y piezas de repuesto de calidad.',
-      trust_aria: 'Por qué los clientes eligen Cell Hub',
-      trust_1: 'Muchos Arreglos Comunes en Unos 15&nbsp;Minutos<sup>*</sup>',
-      trust_2: 'Presupuestos por Adelantado',
-      trust_3: 'Garantía Limitada Disponible',
-      btn_call: 'Llamar Ahora',
-      btn_dir: 'Cómo Llegar',
-      call_aria: 'Llamar ahora: (346) 545-6291',
-      dir_aria: 'Obtener indicaciones para llegar a Cell Hub Houston en Google Maps (abre en pestaña nueva)',
-      hero_footnote: '<sup>*</sup>El tiempo real depende del dispositivo, el servicio requerido y la disponibilidad de piezas. Algunos trabajos toman más tiempo.',
-      hero_img_alt: 'Técnico reemplazando una pantalla rota de smartphone en mesa de trabajo',
+      hero_title: 'Ремонт телефонов на City Road, London',
+      hero_kicker: 'Разбит экран? Проблема с аккумулятором? Не заряжается?',
+      hero_desc: 'Cell Hub Houston — удобный ремонт телефонов, понятная смета заранее и качественные запчасти.',
+      trust_aria: 'Почему клиенты выбирают Cell Hub',
+      trust_1: 'Многие типовые ремонты примерно за 15&nbsp;минут<sup>*</sup>',
+      trust_2: 'Смета заранее',
+      trust_3: 'Доступна ограниченная гарантия',
+      btn_call: 'Позвонить',
+      btn_dir: 'Маршрут',
+      call_aria: 'Позвонить: (346) 545-6291',
+      dir_aria: 'Маршрут до Cell Hub Houston в Google Картах (откроется в новой вкладке)',
+      hero_footnote: '<sup>*</sup>Срок зависит от устройства, нужной услуги и наличия запчастей. Некоторые работы занимают больше времени.',
+      hero_img_alt: 'Мастер меняет разбитый экран смартфона на рабочем коврике',
 
       // Services
-      services_eyebrow: 'Servicios',
-      services_title: '¿En Qué Podemos Ayudarle?',
-      services_sub: 'Servicios locales para teléfonos y dispositivos en Houston.',
-      svc_1_title: 'Cambio de Pantalla',
-      svc_1_desc: '¿Pantalla estrellada o rota? Pregúntenos por nuestras opciones de cambio de pantalla.',
-      svc_2_title: 'Reemplazo de Batería',
-      svc_2_desc: '¿Problemas con la duración de su batería? Contáctenos para opciones de reemplazo.',
-      svc_3_title: 'Centro de Carga',
-      svc_3_desc: '¿Su teléfono no carga bien? Visítenos para una revisión inmediata.',
-      svc_4_title: 'Servicio para iPhone',
-      svc_4_desc: 'Servicios de pantalla, batería, cámara y hardware de carga para iPhone.',
-      svc_5_title: 'Samsung y Android',
-      svc_5_desc: 'Servicios de hardware para Samsung, Google Pixel y otros modelos Android populares.',
-      svc_6_title: 'Tablets y Más Dispositivos',
-      svc_6_desc: 'Opciones de servicio para tablets y otros dispositivos compatibles.',
+      services_eyebrow: 'Услуги',
+      services_title: 'Что мы можем починить?',
+      services_sub: 'Местный ремонт телефонов и устройств в Хьюстоне.',
+      svc_1_title: 'Замена экрана',
+      svc_1_desc: 'Треснул или повреждён экран? Узнайте о вариантах замены.',
+      svc_2_title: 'Замена аккумулятора',
+      svc_2_desc: 'Аккумулятор быстро садится? Свяжитесь с нами, чтобы узнать о замене.',
+      svc_3_title: 'Ремонт разъёма зарядки',
+      svc_3_desc: 'Телефон плохо заряжается? Приходите на диагностику.',
+      svc_4_title: 'Ремонт iPhone',
+      svc_4_desc: 'Экран, аккумулятор, камера и аппаратные работы, связанные с зарядкой.',
+      svc_5_title: 'Ремонт Samsung и Android',
+      svc_5_desc: 'Аппаратный ремонт Samsung, Google Pixel и других популярных устройств Android.',
+      svc_6_title: 'Ремонт планшетов и других устройств',
+      svc_6_desc: 'Варианты обслуживания планшетов и других поддерживаемых устройств.',
 
       // Why Cell Hub
-      why_eyebrow: 'Por Qué Cell Hub',
-      why_title: '¿Por Qué Elegir Cell Hub Houston?',
-      benefit_1_title: 'Servicio Rápido',
-      benefit_1_desc: 'Muchos arreglos comunes se completan en unos 15 minutos, según el dispositivo y el trabajo requerido.',
-      benefit_2_title: 'Precios Claros',
-      benefit_2_desc: 'Reciba un presupuesto claro antes de comenzar el servicio.',
-      benefit_3_title: 'Piezas de Calidad',
-      benefit_3_desc: 'Las piezas se eligen por su calidad y compatibilidad, brindándole información sobre las piezas utilizadas.',
-      benefit_4_title: 'Garantía Limitada',
-      benefit_4_desc: 'Los servicios elegibles están respaldados por los <a class="text-link" href="https://cellhubhouston.com/policies/warranty" target="_blank" rel="noopener">términos de garantía limitada</a> publicados de Cell Hub.',
+      why_eyebrow: 'Почему Cell Hub',
+      why_title: 'Почему выбирают Cell Hub Houston?',
+      benefit_1_title: 'Быстрый ремонт',
+      benefit_1_desc: 'Многие типовые работы можно выполнить примерно за 15 минут — в зависимости от устройства и объёма работ.',
+      benefit_2_title: 'Цена заранее',
+      benefit_2_desc: 'Вы получаете смету до начала работ.',
+      benefit_3_title: 'Качественные запчасти',
+      benefit_3_desc: 'Запчасти подбираются по качеству и совместимости, и мы рассказываем, какие детали используются.',
+      benefit_4_title: 'Ограниченная гарантия',
+      benefit_4_desc: 'Подходящие услуги покрываются опубликованными <a class="text-link" href="https://cellhubhouston.com/policies/warranty" target="_blank" rel="noopener">условиями ограниченной гарантии</a> Cell Hub.',
 
       // Free Quote Form
-      quote_eyebrow: '<svg class="icon" aria-hidden="true"><use href="#i-tag"/></svg> Presupuesto Rápido y Gratis',
-      quote_title: 'Cuéntenos Sobre su Dispositivo',
-      floating_estimate: 'Solicitar Presupuesto',
-      quote_desc: 'Cuéntenos qué le ocurre a su teléfono o tablet. Nuestro equipo en Houston revisará sus datos y le enviará un presupuesto rápido sin compromiso.',
-      perk_1_title: 'Respuesta Rápida',
-      perk_1_desc: 'Normalmente en 15–30 minutos en horario laboral.',
-      perk_2_title: 'Presupuestos Claros',
-      perk_2_desc: 'Sin cargos ocultos ni sorpresas en el diagnóstico.',
-      perk_3_title: '¿Necesita Ayuda Urgente?',
-      perk_3_desc: 'Llame directamente al <a class="text-link text-link--strong" href="tel:+13465456291">(346) 545-6291</a> para atención inmediata.',
-      label_name: 'Su Nombre <span class="required">*</span>',
-      ph_name: 'Ej. Juan Pérez',
-      label_phone: 'Número de Teléfono <span class="required">*</span>',
+      quote_eyebrow: '<svg class="icon" aria-hidden="true"><use href="#i-tag"/></svg> Быстрая и бесплатная смета',
+      quote_title: 'Расскажите о вашем устройстве',
+      floating_estimate: 'Получить смету',
+      quote_desc: 'Расскажите, что случилось с телефоном или планшетом. Наша команда в Хьюстоне проверит данные и быстро пришлёт смету без обязательств.',
+      perk_1_title: 'Быстрый ответ',
+      perk_1_desc: 'Обычно в течение 15–30 минут в часы работы.',
+      perk_2_title: 'Прозрачная смета',
+      perk_2_desc: 'Без скрытых платежей и неожиданной платы за диагностику.',
+      perk_3_title: 'Нужна срочная помощь?',
+      perk_3_desc: 'Позвоните напрямую по номеру <a class="text-link text-link--strong" href="tel:+13465456291">(346) 545-6291</a>, чтобы получить ответ сразу.',
+      label_name: 'Полное имя <span class="required">*</span>',
+      ph_name: 'Введите полное имя',
+      label_phone: 'Номер телефона <span class="required">*</span>',
       ph_phone: '(346) 545-6291',
-      label_device: 'Modelo de Dispositivo <span class="required">*</span>',
-      ph_device: 'Ej. iPhone 15 Pro, Galaxy S24',
-      label_service: 'Servicio Necesario',
-      opt_screen: 'Cambio de Pantalla',
-      opt_battery: 'Reemplazo de Batería',
-      opt_port: 'Centro / Puerto de Carga',
-      opt_water: 'Diagnóstico por Daño de Agua',
-      opt_back: 'Cambio de Cristal Trasero',
-      opt_other: 'Cámara, Bocina u Otro',
-      label_details: 'Detalles del Problema (Opcional)',
-      ph_details: 'Cuéntenos más sobre las fallas o lo ocurrido...',
-      btn_submit_quote: 'Solicitar Presupuesto Gratis',
-      status_sending: 'Enviando Solicitud...',
-      status_success: '¡Gracias! Hemos recibido su solicitud. Nuestro equipo de Richmond Ave le contactará en breve a su número de teléfono.',
-      status_error_validation: 'Por favor ingrese su nombre, un número telefónico válido y el modelo de su dispositivo.',
-      status_error_server: 'No se pudo enviar la solicitud en este momento. Por favor llámenos directamente al <a class="text-link text-link--strong" href="tel:+13465456291">(346) 545-6291</a>.',
+      label_device: 'Модель устройства <span class="required">*</span>',
+      ph_device: 'например, iPhone 15 Pro, S24',
+      label_service: 'Нужная услуга',
+      opt_screen: 'Замена / ремонт экрана',
+      opt_battery: 'Замена аккумулятора',
+      opt_port: 'Ремонт разъёма зарядки',
+      opt_water: 'Диагностика после попадания воды',
+      opt_back: 'Замена заднего стекла',
+      opt_other: 'Камера, динамик или другое',
+      label_details: 'Описание проблемы (необязательно)',
+      ph_details: 'Расскажите подробнее о симптомах или о том, что произошло...',
+      btn_submit_quote: 'Запросить смету',
+      status_sending: 'Отправляем запрос...',
+      status_success: 'Спасибо! Запрос на смету получен. Команда Richmond Ave скоро свяжется с вами по указанному номеру.',
+      status_error_validation: 'Укажите имя, действительный номер телефона и модель устройства.',
+      status_error_server: 'Сейчас не удалось отправить запрос. Позвоните нам напрямую по номеру <a class="text-link text-link--strong" href="tel:+13465456291">(346) 545-6291</a>.',
 
-      form_kicker: 'PRESUPUESTO DE REPARACIÓN',
-      form_title: 'Solicite un presupuesto',
-      form_required: 'Los campos marcados con * son obligatorios.',
-      form_device_group: '01 / Información del dispositivo',
-      form_contact_group: '02 / Información de contacto',
-      form_privacy: 'Usamos sus datos de contacto para responder a esta solicitud. <a href="https://cellhubhouston.com/policies/privacy" target="_blank" rel="noopener">Política de privacidad</a>.',
+      form_kicker: 'СМЕТА НА РЕМОНТ',
+      form_title: 'Запросить смету',
+      form_required: 'Поля, отмеченные *, обязательны.',
+      form_device_group: '01 / Данные об устройстве',
+      form_contact_group: '02 / Контактные данные',
+      form_privacy: 'Мы используем ваши контактные данные, чтобы ответить на этот запрос. <a href="https://cellhubhouston.com/policies/privacy" target="_blank" rel="noopener">Политика конфиденциальности</a>.',
 
       // Reviews
-      reviews_eyebrow: 'Opiniones',
-      reviews_title: 'Lo Que Dicen Nuestros Clientes',
-      stars_aria: 'Calificado con 5 de 5 estrellas',
-      review_1_text: '“Hace poco me cambiaron la pantalla de mi iPhone 16 Pro Max y no podría estar más satisfecho con el servicio. El personal fue profesional y cortés, y completaron el arreglo en menos de 30 minutos. La pantalla se ve como nueva y la respuesta táctil es perfecta. Sus precios fueron transparentes y razonables, e incluso me dieron garantía.”',
-      review_2_text: '“Recientemente llevé a arreglar mi teléfono a esta tienda y tuve una excelente experiencia. El empleado que me atendió fue muy honesto y directo sobre el problema y los costos. El trabajo se hizo rápido y con gran profesionalismo. Es difícil encontrar un servicio tan confiable hoy en día, pero aquí cumplieron al 100%. ¡Muy recomendados!”',
-      review_3_text: '“Fui a que me cambiaran la pantalla de mi iPhone 15, el servicio al cliente fue increíble y el precio muy accesible. Definitivamente los recomiendo para arreglar teléfonos.”',
-      google_review: 'Reseña en Google',
+      reviews_eyebrow: 'Отзывы',
+      reviews_title: 'Что говорят наши клиенты',
+      stars_aria: 'Оценка 5 из 5 звёзд',
+      review_1_text: '«Недавно мне заменили экран iPhone 16 Pro Max, и я полностью доволен сервисом. Сотрудники были профессиональны и вежливы, а ремонт занял меньше 30 минут. Экран выглядит как новый, а сенсор работает идеально. Цены были прозрачными и разумными, и на ремонт даже дали гарантию.»',
+      review_2_text: '«Недавно чинил телефон в этом магазине и остался очень доволен. Сотрудник честно и прямо объяснил проблему и стоимость. Ремонт сделали быстро и профессионально. Сейчас трудно найти надёжный сервис, но здесь всё получилось. Очень рекомендую!»',
+      review_3_text: '«Приходил менять экран iPhone 15. Обслуживание отличное, цена доступная. Точно рекомендую для ремонта телефонов.»',
+      google_review: 'Отзыв в Google',
 
       // Location
-      loc_eyebrow: 'Ubicación',
-      loc_title: 'Visite Cell Hub en Houston',
-      loc_sub: 'Pase por nuestra tienda en Houston para servicios de teléfonos y dispositivos.',
-      loc_addr_heading: 'Dirección',
-      loc_phone_heading: 'Teléfono',
-      loc_hours_heading: 'Horario de Atención',
-      hours_mon_thu: 'Lunes a Jueves',
-      hours_fri: 'Viernes',
-      hours_fri_desc: 'Favor de llamar para confirmar',
-      hours_sat_sun: 'Sábado y Domingo',
-      map_title: 'Mapa que muestra SecureFix en City Road, London',
+      loc_eyebrow: 'Адрес',
+      loc_title: 'Cell Hub в Хьюстоне',
+      loc_sub: 'Загляните в наш магазин в Хьюстоне за ремонтом телефонов и устройств.',
+      loc_addr_heading: 'Адрес',
+      loc_phone_heading: 'Телефон',
+      loc_hours_heading: 'Часы работы',
+      hours_mon_thu: 'Понедельник–четверг',
+      hours_fri: 'Пятница',
+      hours_fri_desc: 'Позвоните, чтобы уточнить',
+      hours_sat_sun: 'Суббота–воскресенье',
+      map_title: 'Карта: SecureFix, City Road, London',
 
       // Final CTA
-      final_title: '¿Necesita Arreglar su Teléfono?',
-      final_sub: 'Llame a Cell Hub Houston o visite nuestra tienda en Richmond Avenue.',
+      final_title: 'Нужно починить телефон?',
+      final_sub: 'Позвоните в Cell Hub Houston или приходите в магазин на Richmond Avenue.',
 
       // Footer
-      footer_privacy: 'Política de Privacidad',
-      footer_terms: 'Términos del Servicio',
-      footer_warranty: 'Garantía Limitada',
-      footer_legal: 'Cell Hub Houston es un establecimiento independiente de servicios para teléfonos y dispositivos y no está afiliado a Apple, Samsung ni Google. Las marcas mencionadas se usan únicamente para describir los dispositivos atendidos.',
+      footer_privacy: 'Политика конфиденциальности',
+      footer_terms: 'Условия ремонта',
+      footer_warranty: 'Ограниченная гарантия',
+      footer_legal: 'Cell Hub Houston — независимая мастерская по ремонту телефонов и устройств и не связана с Apple, Samsung или Google. Названия брендов используются только для описания устройств, которые мы обслуживаем.',
       footer_copy: 'Copyright &copy; 2026 Cell Hub Houston'
     }
   };
 
   function setLanguage(lang, updateUrl) {
-    var selectedLang = lang === 'es' ? 'es' : 'en';
+    var selectedLang = lang === 'ru' ? 'ru' : 'en';
     var t = TRANSLATIONS[selectedLang];
 
     document.documentElement.lang = selectedLang;
@@ -432,11 +432,11 @@
     try {
       var params = new URLSearchParams(window.location.search);
       var urlLang = params.get('lang');
-      if (urlLang === 'es' || urlLang === 'en') return urlLang;
-      if (window.location.hash === '#es') return 'es';
+      if (urlLang === 'ru' || urlLang === 'en') return urlLang;
+      if (window.location.hash === '#ru') return 'ru';
       if (window.location.hash === '#en') return 'en';
       var stored = localStorage.getItem('cellhub_lang');
-      if (stored === 'es' || stored === 'en') return stored;
+      if (stored === 'ru' || stored === 'en') return stored;
     } catch (e) {}
     return 'en';
   }
@@ -449,10 +449,10 @@
     });
   }
 
-  // Apply initial language if Spanish or stored preference
+  // Apply initial language if Russian or a stored preference
   var initialLang = getInitialLanguage();
-  if (initialLang === 'es') {
-    setLanguage('es', false);
+  if (initialLang === 'ru') {
+    setLanguage('ru', false);
   } else {
     setLanguage('en', false);
   }
@@ -473,7 +473,7 @@
     quoteForm.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      var currentLang = document.documentElement.lang === 'es' ? 'es' : 'en';
+      var currentLang = document.documentElement.lang === 'ru' ? 'ru' : 'en';
       var t = TRANSLATIONS[currentLang];
 
       var submitBtn = document.getElementById('quote-submit-btn');
