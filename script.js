@@ -217,7 +217,6 @@
       // Footer
       footer_privacy: 'Privacy Policy',
       footer_terms: 'Fix Terms',
-      footer_warranty: 'Limited Warranty',
       footer_legal: 'SecureFix, London is an independent phone and device service shop and is not affiliated with Apple, Samsung, or Google. Device brand names are used only to describe the devices we service.',
       footer_copy: 'Copyright &copy; 2026 SecureFix, London'
     },
@@ -344,7 +343,6 @@
       // Footer
       footer_privacy: 'Политика конфиденциальности',
       footer_terms: 'Условия ремонта',
-      footer_warranty: 'Ограниченная гарантия',
       footer_legal: 'SecureFix, London — независимая мастерская по ремонту телефонов и устройств и не связана с Apple, Samsung или Google. Названия брендов используются только для описания устройств, которые мы обслуживаем.',
       footer_copy: 'Copyright &copy; 2026 SecureFix, London'
     }
