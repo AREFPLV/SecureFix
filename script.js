@@ -205,10 +205,9 @@
       loc_addr_heading: 'Address',
       loc_phone_heading: 'Phone',
       loc_hours_heading: 'Business Hours',
-      hours_mon_thu: 'Monday–Thursday',
-      hours_fri: 'Friday',
-      hours_fri_desc: 'Please call to confirm',
-      hours_sat_sun: 'Saturday–Sunday',
+      hours_mon_fri: 'Monday to Friday',
+      hours_sat: 'Saturday',
+      hours_sun: 'Sunday',
       map_title: 'Map showing SecureFix at City Road, London',
 
       // Final CTA
@@ -333,10 +332,9 @@
       loc_addr_heading: 'Адрес',
       loc_phone_heading: 'Телефон',
       loc_hours_heading: 'Часы работы',
-      hours_mon_thu: 'Понедельник–четверг',
-      hours_fri: 'Пятница',
-      hours_fri_desc: 'Позвоните, чтобы уточнить',
-      hours_sat_sun: 'Суббота–воскресенье',
+      hours_mon_fri: 'Понедельник–пятница',
+      hours_sat: 'Суббота',
+      hours_sun: 'Воскресенье',
       map_title: 'Карта: SecureFix, City Road, London',
 
       // Final CTA
