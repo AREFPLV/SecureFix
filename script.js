@@ -187,7 +187,7 @@
       form_required: 'Fields marked * are required.',
       form_device_group: '01 / Device information',
       form_contact_group: '02 / Contact information',
-      form_privacy: 'We use your contact details to respond to this request. <a href="https://cellhubhouston.com/policies/privacy" target="_blank" rel="noopener">Privacy policy</a>.',
+      form_privacy: 'We use your contact details to respond to this request. <a href="https://securefix.uk/terms" target="_blank" rel="noopener">Privacy policy</a>.',
 
       // Reviews
       reviews_eyebrow: 'Reviews',
@@ -313,7 +313,7 @@
       form_required: 'Поля, отмеченные *, обязательны.',
       form_device_group: '01 / Данные об устройстве',
       form_contact_group: '02 / Контактные данные',
-      form_privacy: 'Мы используем ваши контактные данные, чтобы ответить на этот запрос. <a href="https://cellhubhouston.com/policies/privacy" target="_blank" rel="noopener">Политика конфиденциальности</a>.',
+      form_privacy: 'Мы используем ваши контактные данные, чтобы ответить на этот запрос. <a href="https://securefix.uk/terms" target="_blank" rel="noopener">Политика конфиденциальности</a>.',
 
       // Reviews
       reviews_eyebrow: 'Отзывы',
