@@ -49,7 +49,7 @@
       cta_location: el.getAttribute('data-cta-location') || 'unknown',
       link_url: el.getAttribute('href')
     };
-    if (type === 'phone') payload.phone_number = '+13465456291';
+    if (type === 'phone') payload.phone_number = '+442033367147';
 
     dataLayer.push(payload);
     sendAdsConversion(eventName);
@@ -116,7 +116,7 @@
       trust_3: 'Limited Warranty Available',
       btn_call: 'Call Now',
       btn_dir: 'Get Directions',
-      call_aria: 'Call Now: (346) 545-6291',
+      call_aria: 'Call Now: 020 3336 7147',
       dir_aria: 'Get Directions to Cell Hub Houston on Google Maps (opens in a new tab)',
       hero_footnote: '<sup>*</sup>Actual turnaround depends on the device, the service needed, and parts availability. Some jobs take longer.',
       hero_img_alt: 'Technician replacing a cracked smartphone screen on a fix mat',
@@ -160,11 +160,11 @@
       perk_2_title: 'Transparent Estimates',
       perk_2_desc: 'No hidden charges or surprise diagnostic fees.',
       perk_3_title: 'Need Urgent Help?',
-      perk_3_desc: 'Call directly at <a class="text-link text-link--strong" href="tel:+13465456291">(346) 545-6291</a> for instant answers.',
+      perk_3_desc: 'Call directly at <a class="text-link text-link--strong" href="tel:+442033367147">020 3336 7147</a> for instant answers.',
       label_name: 'Full Name <span class="required">*</span>',
       ph_name: 'Enter your full name',
       label_phone: 'Phone Number <span class="required">*</span>',
-      ph_phone: '(346) 545-6291',
+      ph_phone: '020 3336 7147',
       label_device: 'Device Model <span class="required">*</span>',
       ph_device: 'e.g. iPhone 15 Pro, S24',
       label_service: 'Service Needed',
@@ -180,7 +180,7 @@
       status_sending: 'Sending Request...',
       status_success: 'Thank you! Your quote request has been received. Our Richmond Ave team will contact you shortly at your phone number.',
       status_error_validation: 'Please enter your name, a valid phone number, and your device model.',
-      status_error_server: 'Could not send request right now. Please call us directly at <a class="text-link text-link--strong" href="tel:+13465456291">(346) 545-6291</a>.',
+      status_error_server: 'Could not send request right now. Please call us directly at <a class="text-link text-link--strong" href="tel:+442033367147">020 3336 7147</a>.',
 
       form_kicker: 'REPAIR ESTIMATE',
       form_title: 'Request a quote',
@@ -244,7 +244,7 @@
       trust_3: 'Доступна ограниченная гарантия',
       btn_call: 'Позвонить',
       btn_dir: 'Маршрут',
-      call_aria: 'Позвонить: (346) 545-6291',
+      call_aria: 'Позвонить: 020 3336 7147',
       dir_aria: 'Маршрут до Cell Hub Houston в Google Картах (откроется в новой вкладке)',
       hero_footnote: '<sup>*</sup>Срок зависит от устройства, нужной услуги и наличия запчастей. Некоторые работы занимают больше времени.',
       hero_img_alt: 'Мастер меняет разбитый экран смартфона на рабочем коврике',
@@ -288,11 +288,11 @@
       perk_2_title: 'Прозрачная смета',
       perk_2_desc: 'Без скрытых платежей и неожиданной платы за диагностику.',
       perk_3_title: 'Нужна срочная помощь?',
-      perk_3_desc: 'Позвоните напрямую по номеру <a class="text-link text-link--strong" href="tel:+13465456291">(346) 545-6291</a>, чтобы получить ответ сразу.',
+      perk_3_desc: 'Позвоните напрямую по номеру <a class="text-link text-link--strong" href="tel:+442033367147">020 3336 7147</a>, чтобы получить ответ сразу.',
       label_name: 'Полное имя <span class="required">*</span>',
       ph_name: 'Введите полное имя',
       label_phone: 'Номер телефона <span class="required">*</span>',
-      ph_phone: '(346) 545-6291',
+      ph_phone: '020 3336 7147',
       label_device: 'Модель устройства <span class="required">*</span>',
       ph_device: 'например, iPhone 15 Pro, S24',
       label_service: 'Нужная услуга',
@@ -308,7 +308,7 @@
       status_sending: 'Отправляем запрос...',
       status_success: 'Спасибо! Запрос на смету получен. Команда Richmond Ave скоро свяжется с вами по указанному номеру.',
       status_error_validation: 'Укажите имя, действительный номер телефона и модель устройства.',
-      status_error_server: 'Сейчас не удалось отправить запрос. Позвоните нам напрямую по номеру <a class="text-link text-link--strong" href="tel:+13465456291">(346) 545-6291</a>.',
+      status_error_server: 'Сейчас не удалось отправить запрос. Позвоните нам напрямую по номеру <a class="text-link text-link--strong" href="tel:+442033367147">020 3336 7147</a>.',
 
       form_kicker: 'СМЕТА НА РЕМОНТ',
       form_title: 'Запросить смету',
