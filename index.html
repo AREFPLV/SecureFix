@@ -287,7 +287,9 @@
           </div>
 
           <div class="quote-card" id="quote-form-card" tabindex="-1">
-            <form id="quote-form" class="quote-form" novalidate>
+            <form id="quote-form" class="quote-form" method="POST" action="https://formsubmit.co/repair@securefix.uk" novalidate>
+              <input type="hidden" name="_subject" value="SecureFix booking">
+              <input type="hidden" name="_captcha" value="false">
               <!-- Anti-bot honeypot field (hidden from real users, caught if bots fill it) -->
               <div class="form-hp" aria-hidden="true" style="display:none !important; position:absolute !important; left:-9999px !important;">
                 <label for="q-site">Leave this field blank</label>
@@ -485,6 +487,6 @@
     <span data-i18n="floating_estimate">Get an Estimate</span>
     <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
   </a>
-  <script src="script.js?v=15" defer></script>
+  <script src="script.js?v=16" defer></script>
 </body>
 </html>

@@ -517,70 +517,73 @@
 
       var hpInput = document.getElementById('q-site');
       var hpVal = hpInput ? hpInput.value.trim() : '';
-
-      var payload = {
-        name: nameVal,
-        phone: phoneVal,
-        device: deviceVal,
-        service: serviceVal,
-        details: detailsVal,
-        _hp_site: hpVal,
-        lang: currentLang
-      };
-
-      var isLocal = window.location.protocol === 'file:' || 
-                    window.location.hostname === 'localhost' || 
-                    window.location.hostname === '127.0.0.1';
-
-      function requestEndpoint(url) {
-        return fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        }).then(function (res) {
-          if (!res.ok && isLocal && url === 'send-quote.php') {
-            throw new Error('Local static server does not execute PHP');
-          }
-          return res.json().catch(function () {
-            return { success: res.ok };
-          });
-        });
+      if (hpVal) {
+        if (statusEl) {
+          statusEl.className = 'form-status is-success';
+          statusEl.innerHTML = t.status_success;
+          statusEl.style.display = 'block';
+        }
+        quoteForm.reset();
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('is-loading');
+        }
+        if (btnTextEl) btnTextEl.textContent = t.btn_submit_quote;
+        return;
       }
 
-      var primaryUrl = (window.location.protocol === 'file:') ? 'http://localhost:3000/send-quote.php' : 'send-quote.php';
+      var payload = {
+        _subject: 'SecureFix booking',
+        _captcha: 'false'
+      };
+      var formData = new FormData(quoteForm);
+      formData.forEach(function (value, key) {
+        if (key === '_hp_site' || key.charAt(0) === '_') return;
+        payload[key] = typeof value === 'string' ? value : String(value);
+      });
+      payload._subject = 'SecureFix booking';
+      payload._captcha = 'false';
 
-      requestEndpoint(primaryUrl)
-      .catch(function (primaryErr) {
-        if (isLocal && primaryUrl !== 'http://localhost:3000/send-quote.php') {
-          return requestEndpoint('http://localhost:3000/send-quote.php');
-        }
-        throw primaryErr;
+      fetch('https://formsubmit.co/ajax/repair@securefix.uk', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
       })
-      .then(function (data) {
-        if (data && data.success) {
-          if (statusEl) {
-            statusEl.className = 'form-status is-success';
-            statusEl.innerHTML = t.status_success;
-            statusEl.style.display = 'block';
-          }
-          quoteForm.reset();
-
-          if (window.dataLayer) {
-            window.dataLayer.push({
-              event: 'quote_form_submit',
-              device_model: deviceVal,
-              service_type: serviceVal
-            });
-          }
-        } else {
+      .then(function (res) {
+        return res.json().catch(function () {
+          return {};
+        }).then(function (data) {
+          return { ok: res.ok, data: data };
+        });
+      })
+      .then(function (result) {
+        var data = result.data || {};
+        var accepted = result.ok && String(data.success) === 'true';
+        if (!accepted) {
           if (statusEl) {
             statusEl.className = 'form-status is-error';
-            statusEl.innerHTML = (data && data.error) ? data.error : t.status_error_server;
+            statusEl.innerHTML = t.status_error_server;
             statusEl.style.display = 'block';
           }
-          if (window.console) console.warn('[Resend Quote Error]', data);
+          if (window.console) console.warn('[Quote Request Failed]', data);
+          return;
+        }
+        if (statusEl) {
+          statusEl.className = 'form-status is-success';
+          statusEl.innerHTML = t.status_success;
+          statusEl.style.display = 'block';
+        }
+        quoteForm.reset();
+
+        if (window.dataLayer) {
+          window.dataLayer.push({
+            event: 'quote_form_submit',
+            device_model: deviceVal,
+            service_type: serviceVal
+          });
         }
       })
       .catch(function (err) {
