@@ -888,7 +888,7 @@ h1, h2, h3, h4 {
   color: var(--ink-64);
 }
 .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-.footer__logo { width: 88px; height: auto; aspect-ratio: 322 / 224; border-radius: 12px; background: transparent; }
+.footer__logo { width: 72px; height: 72px; aspect-ratio: 1; border-radius: 50%; object-fit: cover; background: transparent; }
 .footer__name { font-size: 17px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
 .footer__nap { line-height: 1.7; }
 .footer__nap .text-link { color: var(--gold); }
