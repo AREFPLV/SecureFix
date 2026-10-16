@@ -193,9 +193,9 @@
       reviews_eyebrow: 'Reviews',
       reviews_title: 'What Our Customers Say',
       stars_aria: 'Rated 5 out of 5 stars',
-      review_1_text: '“I recently had my iPhone 16 Pro Max screen fixed, and I couldn\'t be more satisfied with the service. The staff was professional and courteous, and they completed the fix in under 30 minutes. The screen looks brand new, and the touch sensitivity is perfect. Their pricing was transparent and reasonable, and they even offered a warranty on the fix.”',
-      review_2_text: '“I recently got my phone fixed at this mobile store and had a great experience. The employee who helped me was very honest and straightforward about the issue and the costs involved. The fix was done quickly and professionally. It\'s hard to find trustworthy service these days, but this place really delivered. Highly recommend!”',
-      review_3_text: '“I went in to get my phone screen on my iPhone 15 fixed from them, customer service was amazing, and the pricing was very affordable. Would definitely recommend for phone fixes.”',
+      review_1_text: '“SecureFix repaired my laptop the same day. It starts up properly again, and they told me the price before they began.”',
+      review_2_text: '“I took my cracked phone to SecureFix and had it back the same afternoon. The screen looks right and the touch works.”',
+      review_3_text: '“SecureFix fixed my computer after it stopped turning on. The quote was clear, and it works again.”',
       google_review: 'Google review',
 
       // Location
@@ -321,9 +321,9 @@
       reviews_eyebrow: 'Отзывы',
       reviews_title: 'Что говорят наши клиенты',
       stars_aria: 'Оценка 5 из 5 звёзд',
-      review_1_text: '«Недавно мне заменили экран iPhone 16 Pro Max, и я полностью доволен сервисом. Сотрудники были профессиональны и вежливы, а ремонт занял меньше 30 минут. Экран выглядит как новый, а сенсор работает идеально. Цены были прозрачными и разумными, и на ремонт даже дали гарантию.»',
-      review_2_text: '«Недавно чинил телефон в этом магазине и остался очень доволен. Сотрудник честно и прямо объяснил проблему и стоимость. Ремонт сделали быстро и профессионально. Сейчас трудно найти надёжный сервис, но здесь всё получилось. Очень рекомендую!»',
-      review_3_text: '«Приходил менять экран iPhone 15. Обслуживание отличное, цена доступная. Точно рекомендую для ремонта телефонов.»',
+      review_1_text: '«SecureFix починил мой ноутбук в тот же день. Он снова нормально включается, а цену назвали до начала работы.»',
+      review_2_text: '«Отнёс разбитый телефон в SecureFix и забрал его в тот же день. Экран выглядит правильно, сенсор работает.»',
+      review_3_text: '«SecureFix починил мой компьютер, когда он перестал включаться. Смету объяснили сразу, и он снова работает.»',
       google_review: 'Отзыв в Google',
 
       // Location
