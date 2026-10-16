@@ -193,9 +193,9 @@
       reviews_eyebrow: 'Reviews',
       reviews_title: 'What Our Customers Say',
       stars_aria: 'Rated 5 out of 5 stars',
-      review_1_text: '“SecureFix repaired my laptop the same day. It starts up properly again, and they told me the price before they began.”',
-      review_2_text: '“I took my cracked phone to SecureFix and had it back the same afternoon. The screen looks right and the touch works.”',
-      review_3_text: '“SecureFix fixed my computer after it stopped turning on. The quote was clear, and it works again.”',
+      review_1_text: '“My laptop had been shutting itself off whenever I plugged it in, which was doing my head in because I use it for work. I took it to SecureFix not really expecting them to look at it the same day. They did, and the bloke at the counter told me the charger port was loose and quoted me before he opened it up. Took a bit longer than he first said, maybe an extra hour, but I waited. It\'s been a week and it hasn\'t cut out once.”',
+      review_2_text: '“I dropped my phone on the pavement and the whole top corner of the screen went black. I\'d already been to one place that wanted me to leave it for three days, so I was a bit wary walking into SecureFix. They had the part in and said they could do it while I waited, which I didn\'t totally believe until they handed it back. Touch is fine. The new glass sits a fraction higher than the old one if you look closely, but I don\'t notice it in my pocket.”',
+      review_3_text: '“The computer in the spare room just stopped turning on. No lights, nothing, and I assumed the power supply was gone. SecureFix opened it up and it was a stuck fan plus a loose cable, which felt almost too simple, but they showed me. Cost less than I thought it would. Still a bit loud when it first boots, though it settles after a minute.”',
       google_review: 'Google review',
 
       // Location
@@ -321,9 +321,9 @@
       reviews_eyebrow: 'Отзывы',
       reviews_title: 'Что говорят наши клиенты',
       stars_aria: 'Оценка 5 из 5 звёзд',
-      review_1_text: '«SecureFix починил мой ноутбук в тот же день. Он снова нормально включается, а цену назвали до начала работы.»',
-      review_2_text: '«Отнёс разбитый телефон в SecureFix и забрал его в тот же день. Экран выглядит правильно, сенсор работает.»',
-      review_3_text: '«SecureFix починил мой компьютер, когда он перестал включаться. Смету объяснили сразу, и он снова работает.»',
+      review_1_text: '«Ноутбук сам выключался, стоило воткнуть зарядку, и из-за работы это уже достало. Отнёс в SecureFix и особо не рассчитывал, что посмотрят в тот же день. Посмотрели: парень за стойкой сказал, что разъём зарядки болтается, и назвал цену ещё до того, как вскрыл. Вышло где-то на час дольше, чем он сначала сказал, но я подождал. Уже неделя прошла — ни разу не отрубился.»',
+      review_2_text: '«Уронил телефон на тротуар, и весь верхний угол экрана стал чёрным. В одном месте уже просили оставить на три дня, так что в SecureFix я заходил с опаской. Запчасть была, сказали, что сделают, пока жду, — я не очень в это поверил, пока телефон не отдали. Сенсор нормальный. Новое стекло чуть выступает, если присмотреться, но в кармане я этого не замечаю.»',
+      review_3_text: '«Компьютер в запасной комнате просто перестал включаться — ни лампочек, ничего, и я уже думал, что блок питания умер. В SecureFix его вскрыли, и это оказался заклинивший вентилятор плюс отошедший кабель. Почти слишком просто, но мне показали, и вышло дешевле, чем я ожидал. При включении всё ещё немного шумит, хотя через минуту стихает.»',
       google_review: 'Отзыв в Google',
 
       // Location
