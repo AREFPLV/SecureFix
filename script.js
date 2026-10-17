@@ -148,7 +148,7 @@
       benefit_3_title: 'Quality Replacement Parts',
       benefit_3_desc: 'Replacement parts are selected for quality and suitability, with information provided about the parts used.',
       benefit_4_title: 'Limited Warranty',
-      benefit_4_desc: 'Eligible services are covered by Cell Hub\'s published <a class="text-link" href="https://cellhubhouston.com/policies/warranty" target="_blank" rel="noopener">limited warranty terms</a>.',
+      benefit_4_desc: 'Eligible services are covered by SecureFix\'s published <a class="text-link" href="https://securefix.uk/terms" target="_blank" rel="noopener">limited warranty terms</a>.',
 
       // Free Quote Form
       quote_eyebrow: '<svg class="icon" aria-hidden="true"><use href="#i-tag"/></svg> Fast &amp; Free Estimate',
@@ -274,7 +274,7 @@
       benefit_3_title: 'Качественные запчасти',
       benefit_3_desc: 'Запчасти подбираются по качеству и совместимости, и мы рассказываем, какие детали используются.',
       benefit_4_title: 'Ограниченная гарантия',
-      benefit_4_desc: 'Подходящие услуги покрываются опубликованными <a class="text-link" href="https://cellhubhouston.com/policies/warranty" target="_blank" rel="noopener">условиями ограниченной гарантии</a> Cell Hub.',
+      benefit_4_desc: 'Подходящие услуги покрываются опубликованными SecureFix\'s <a class="text-link" href="https://securefix.uk/terms" target="_blank" rel="noopener">условиями ограниченной гарантии</a>.',
 
       // Free Quote Form
       quote_eyebrow: '<svg class="icon" aria-hidden="true"><use href="#i-tag"/></svg> Быстрая и бесплатная смета',
