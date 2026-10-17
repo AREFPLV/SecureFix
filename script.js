@@ -118,7 +118,7 @@
       btn_dir: 'Get Directions',
       call_aria: 'Call Now: 020 3336 7147',
       dir_aria: 'Get Directions to SecureFix, London on Google Maps (opens in a new tab)',
-      hero_footnote: '<sup>*</sup>Actual turnaround depends on the device, the service needed, and parts availability. Some jobs take longer.',
+      hero_footnote: 'Actual turnaround depends on the device, the service needed, and parts availability. Some jobs take longer.',
       hero_img_alt: 'Technician replacing a cracked smartphone screen on a fix mat',
 
       // Services
@@ -244,7 +244,7 @@
       btn_dir: 'Маршрут',
       call_aria: 'Позвонить: 020 3336 7147',
       dir_aria: 'Маршрут до SecureFix, London в Google Картах (откроется в новой вкладке)',
-      hero_footnote: '<sup>*</sup>Срок зависит от устройства, нужной услуги и наличия запчастей. Некоторые работы занимают больше времени.',
+      hero_footnote: 'Срок зависит от устройства, нужной услуги и наличия запчастей. Некоторые работы занимают больше времени.',
       hero_img_alt: 'Мастер меняет разбитый экран смартфона на рабочем коврике',
 
       // Services
