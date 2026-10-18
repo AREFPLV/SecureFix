@@ -122,3 +122,166 @@
     gap: 0.25rem;
   }
 }
+
+.book-home,
+#all-devices,
+.book-main {
+  scroll-margin-top: calc(var(--header-height) + 0.5rem);
+}
+
+#all-devices {
+  margin-top: 3rem;
+}
+
+.book-price-note {
+  max-width: 760px;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.book-price-note a {
+  color: var(--color-accent);
+}
+
+.book-device-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 1rem;
+}
+
+.book-device-card {
+  width: 100%;
+  min-height: 148px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 0.75rem;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+}
+
+.book-device-card .book-card-icon {
+  margin-bottom: 0.65rem;
+  font-size: 2.25rem;
+}
+
+.book-device-card h3 {
+  margin: 0;
+}
+
+.book-issue-list {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 760px;
+  margin: 0 auto 0.5rem;
+}
+
+.book-issue-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  text-align: left;
+  background: var(--color-white);
+  color: var(--color-primary);
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  padding: 0.95rem 1.15rem;
+  cursor: pointer;
+  font: inherit;
+}
+
+.book-issue-row.is-selected,
+.service-card.is-selected {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-accent);
+}
+
+.book-issue-row strong {
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-size: 1rem;
+}
+
+.book-issue-copy .issue-time {
+  display: block;
+  margin-top: 0.15rem;
+}
+
+.book-issue-row .issue-price {
+  margin: 0;
+  white-space: nowrap;
+  font-size: 1.15rem;
+}
+
+.book-step-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.book-step-actions .btn:disabled,
+.book-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.book-final {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.book-service-heading {
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1.25rem;
+  font-family: Montserrat, sans-serif;
+  font-style: italic;
+  font-weight: 800;
+}
+
+.book-service-pick {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  max-width: 960px;
+  margin-bottom: 1rem;
+}
+
+.book-selected-label {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.book-final .book-form {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .book-page .book-main,
+  .book-home {
+    padding-bottom: 7rem;
+  }
+
+  .book-issue-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .book-device-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .book-form .form-row {
+    grid-template-columns: 1fr;
+  }
+}

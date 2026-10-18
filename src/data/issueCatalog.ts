@@ -421,12 +421,33 @@ export function repairTree(): RepairTree {
   }))
 }
 
+const OTHER_BRAND_ISSUES: Record<string, string[]> = {
+  printer: ['Printer Repair', 'Printer Head Cleaning'],
+  speaker: ['Speaker / Audio Repair'],
+  drone: [],
+  'data-recovery': [],
+  'other-device': [],
+}
+
+/** Priced repairs for the booking list. Other-device brands only show their own priced faults. */
+export function bookingIssues(categoryId: string, brandId?: string | null) {
+  const priced = pricedIssues(categoryId)
+  if (categoryId === 'other' && brandId && OTHER_BRAND_ISSUES[brandId]) {
+    const allow = new Set(OTHER_BRAND_ISSUES[brandId])
+    return priced.filter((issue) => allow.has(issue.label))
+  }
+  if (categoryId === 'gaming-console' && brandId !== 'nintendo') {
+    return priced.filter((issue) => !/\(switch\)/i.test(issue.label))
+  }
+  return priced
+}
+
 export type BookingSeed = {
   category: DeviceCategory | null
   brand: Brand | null
   model: string | null
   issue: RepairIssue | null
-  step: 'category' | 'brand' | 'model' | 'issue' | 'details'
+  step: 'device' | 'brand' | 'model' | 'issue' | 'book'
 }
 
 export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed {
@@ -441,11 +462,13 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
   const issueParam = params.get('issue')
   const issue =
     category && model && issueParam && isIssuableModel(model)
-      ? (pricedIssues(category.id).find((item) => issueSlug(item.label) === issueParam) ?? null)
+      ? (bookingIssues(category.id, brand?.id).find((item) => issueSlug(item.label) === issueParam) ??
+        null)
       : null
 
-  let step: BookingSeed['step'] = 'category'
-  if (category && brand && model && issue) step = 'details'
+  let step: BookingSeed['step'] = 'device'
+  const showForm = params.get('view') !== 'issue'
+  if (category && brand && model && issue && showForm) step = 'book'
   else if (category && brand && model) step = 'issue'
   else if (category && brand) step = 'model'
   else if (category) step = 'brand'

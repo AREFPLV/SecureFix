@@ -1,39 +1,73 @@
 import { useEffect, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useLocation, useSearchParams } from 'react-router-dom'
 import { site } from '@/data/content'
 import { deviceCategories, type DeviceCategory, type Brand } from '@/data/booking'
+import { type BookingDeviceCard } from '@/data/bookingDevices'
 import { isLondonPostcode, type RepairIssue } from '@/data/repairIssues'
 import {
+  bookingIssues,
   bookingSelectionFromQuery,
   displayIssueLabel,
   isIssuableModel,
-  pricedIssues,
+  issueSlug,
 } from '@/data/issueCatalog'
+import { slugify } from '@/lib/slugify'
 import { createBooking } from '@/actions/createBooking'
+import DeviceBookGrid from '@/components/DeviceBookGrid'
 import FormPrivacyNote from '@/components/FormPrivacyNote'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { bookRepairSeo } from '@/data/seo'
 import './BookRepair.css'
 
-type Step = 'category' | 'brand' | 'model' | 'issue' | 'details' | 'service'
+type Step = 'device' | 'brand' | 'model' | 'issue' | 'book'
 type ServiceType = 'mail-in' | 'drop-off' | 'collection'
 
-const STEP_LABELS: { key: Step; num: number; label: string }[] = [
-  { key: 'category', num: 1, label: 'Device' },
-  { key: 'brand', num: 2, label: 'Brand' },
-  { key: 'model', num: 3, label: 'Model' },
-  { key: 'issue', num: 4, label: 'Issue' },
-  { key: 'details', num: 5, label: 'Details' },
-  { key: 'service', num: 6, label: 'Service' },
+const FLOW: { key: Step; num: number; label: string }[] = [
+  { key: 'model', num: 1, label: 'Model' },
+  { key: 'issue', num: 2, label: 'Issue' },
+  { key: 'book', num: 3, label: 'Book' },
 ]
 
-function stepIndex(step: Step) {
-  return STEP_LABELS.findIndex((s) => s.key === step)
+const SERVICE_COPY: { id: ServiceType; icon: string; title: string; text: string }[] = [
+  {
+    id: 'drop-off',
+    icon: '🏪',
+    title: 'Drop off at the shop',
+    text: 'Bring the device to 218 City Road, London EC1V 2PN. Open Monday to Saturday, 09:00–19:00.',
+  },
+  {
+    id: 'collection',
+    icon: '🚚',
+    title: 'Collection and return',
+    text: 'We collect from a London address, repair the device, and bring it back.',
+  },
+  {
+    id: 'mail-in',
+    icon: '📦',
+    title: 'Mail-in repair',
+    text: 'Post the device to the shop. We repair it and send it back.',
+  },
+]
+
+function money(price: number) {
+  return `£${price.toFixed(2)}`
+}
+
+function issueRank(label: string) {
+  const lower = label.toLowerCase()
+  if (lower.includes('hdmi')) return 0
+  if (lower.includes('joystick') || lower.includes('drift')) return 1
+  if (lower.includes('screen')) return 2
+  if (lower.includes('battery')) return 3
+  if (lower.includes('charg')) return 4
+  if (lower.includes('back')) return 5
+  return 6
 }
 
 export default function BookRepair() {
   usePageSeo(bookRepairSeo)
-  const [searchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const location = useLocation()
   const seed = bookingSelectionFromQuery(searchParams)
 
   const [step, setStep] = useState<Step>(seed.step)
@@ -50,6 +84,7 @@ export default function BookRepair() {
   const [address, setAddress] = useState('')
   const [trackingNumber, setTrackingNumber] = useState('')
   const [postcodeError, setPostcodeError] = useState('')
+  const [serviceError, setServiceError] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [reference, setReference] = useState('')
@@ -64,80 +99,116 @@ export default function BookRepair() {
     setStep(next.step)
   }, [searchParams])
 
+  useEffect(() => {
+    if (location.hash === '#all-devices' && step === 'device') {
+      document.getElementById('all-devices')?.scrollIntoView({ block: 'start' })
+      return
+    }
+    document.querySelector('.book-main')?.scrollIntoView({ block: 'start' })
+  }, [location.hash, step])
+
+  const modelKey = `${searchParams.get('category')}|${searchParams.get('brand')}|${searchParams.get('model')}`
+  useEffect(() => {
+    setServiceType(null)
+    setServiceError('')
+    setPostcodeError('')
+  }, [modelKey])
+
+  function withEntry(params: Record<string, string>) {
+    if (searchParams.get('entry') === 'list') params.entry = 'list'
+    return params
+  }
+
+  function handleDeviceCard(card: BookingDeviceCard) {
+    setSearchParams({ category: card.categoryId, brand: card.brandId })
+  }
+
   function handleCategorySelect(cat: DeviceCategory) {
-    setSelectedCategory(cat)
-    setSelectedBrand(null)
-    setSelectedModel(null)
-    setSelectedIssue(null)
-    setStep('brand')
+    if (cat.brands.length === 1) {
+      setSearchParams({ category: cat.id, brand: cat.brands[0].id })
+      return
+    }
+    setSearchParams({ category: cat.id })
   }
 
   function handleBrandSelect(brand: Brand) {
-    setSelectedBrand(brand)
-    setSelectedModel(null)
-    setSelectedIssue(null)
-    setStep('model')
+    if (!selectedCategory) return
+    setSearchParams({ category: selectedCategory.id, brand: brand.id, entry: 'list' })
   }
 
   function handleModelSelect(model: string) {
-    setSelectedModel(model)
-    setSelectedIssue(null)
-    setStep('issue')
-  }
-
-  function handleIssueSelect(issue: RepairIssue) {
-    setSelectedIssue(issue)
-    setStep('details')
-  }
-
-  function handleDetailsSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setStep('service')
-  }
-
-  function handleServiceSelect(svc: ServiceType) {
-    setServiceType(svc)
-    if (svc === 'collection') {
-      setPostcodeError('')
-    } else if (svc === 'mail-in') {
-      setTrackingNumber('')
-    } else {
-      void submitBooking('drop-off')
-    }
-  }
-
-  function handleCollectionSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    if (!isLondonPostcode(postcode)) {
-      setPostcodeError('Sorry, collection is only available within the London area. Please choose another service option.')
+    if (!selectedCategory || !selectedBrand) return
+    if (!isIssuableModel(model)) {
+      setSelectedModel(model)
+      setSelectedIssue(null)
+      setStep('issue')
       return
     }
-    setPostcodeError('')
-    void submitBooking('collection')
-  }
-
-  function handleMailInSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    void submitBooking('mail-in')
+    setSearchParams(
+      withEntry({
+        category: selectedCategory.id,
+        brand: selectedBrand.id,
+        model: slugify(model),
+      }),
+    )
   }
 
   function handleBack() {
-    const steps: Step[] = ['category', 'brand', 'model', 'issue', 'details', 'service']
-    const idx = steps.indexOf(step)
-    if (idx > 0) {
-      if (step === 'service' && (serviceType === 'collection' || serviceType === 'mail-in')) {
-        setServiceType(null)
+    const next = new URLSearchParams(searchParams)
+    if (step === 'book') {
+      next.set('view', 'issue')
+      setSearchParams(next, { replace: true })
+      return
+    }
+    if (step === 'issue') {
+      if (!searchParams.get('model')) {
+        setSelectedModel(null)
+        setSelectedIssue(null)
+        setStep('model')
         return
       }
-      setStep(steps[idx - 1])
+      next.delete('model')
+      next.delete('issue')
+      next.delete('view')
+      setSearchParams(next, { replace: true })
+      return
+    }
+    if (step === 'model') {
+      if (next.get('entry') === 'list') {
+        next.delete('brand')
+        next.delete('model')
+        next.delete('issue')
+        next.delete('view')
+        setSearchParams(next, { replace: true })
+        return
+      }
+      setSearchParams(new URLSearchParams(), { replace: true })
+      return
+    }
+    if (step === 'brand') {
+      setSearchParams(new URLSearchParams(), { replace: true })
     }
   }
 
-  async function submitBooking(forcedService?: ServiceType) {
-    if (submitting) return
-    const resolvedService = forcedService ?? serviceType
-    if (!resolvedService) return
+  function handleBookSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!serviceType) {
+      setServiceError('Choose drop-off, collection, or mail-in.')
+      return
+    }
+    if (serviceType === 'collection' && !isLondonPostcode(postcode)) {
+      setPostcodeError(
+        'Collection covers London postcodes. Choose drop-off or mail-in for an address outside London.',
+      )
+      return
+    }
+    setPostcodeError('')
+    setServiceError('')
+    void submitBooking(serviceType)
+  }
 
+  async function submitBooking(resolvedService: ServiceType) {
+    if (submitting) return
     setSubmitting(true)
     setSubmitError('')
 
@@ -160,17 +231,21 @@ export default function BookRepair() {
 
     setReference(result.reference)
     if (!result.ok) {
-      setSubmitError(result.error ?? 'We could not send your booking. Please call us to confirm.')
+      setSubmitError(result.error ?? 'We could not send your booking. Call the shop to confirm.')
     }
     setSubmitting(false)
     setSubmitted(true)
   }
 
-  const currentStepIndex = stepIndex(step)
   const issues =
     selectedCategory && selectedModel && isIssuableModel(selectedModel)
-      ? pricedIssues(selectedCategory.id)
+      ? [...bookingIssues(selectedCategory.id, selectedBrand?.id)].sort(
+          (a, b) => issueRank(a.label) - issueRank(b.label) || a.label.localeCompare(b.label),
+        )
       : []
+
+  const flowIndex = FLOW.findIndex((item) => item.key === step)
+  const showFlow = flowIndex >= 0 && !submitted
 
   return (
     <div className="book-page site-page">
@@ -179,57 +254,73 @@ export default function BookRepair() {
           <h1>
             <span className="accent">Book</span> Your Repair
           </h1>
-          <p>Choose your device below to get started with your repair booking</p>
+          <p>Select your device, the model, and the repair price, then tell us how to take the device.</p>
         </div>
       </div>
 
       <main className="book-main">
         <div className="container">
-          {!submitted && (
-            <div className="book-progress">
-              {STEP_LABELS.map((s, i) => (
-                <div key={s.key} className="book-progress-item">
-                  <div className={`progress-step ${currentStepIndex >= i ? 'active' : ''}`}>
-                    <span className="progress-num">{s.num}</span>
-                    <span className="progress-label">{s.label}</span>
+          {showFlow && (
+            <div className="book-progress" aria-label="Booking steps">
+              {FLOW.map((item, index) => (
+                <div key={item.key} className="book-progress-item">
+                  <div className={`progress-step ${flowIndex >= index ? 'active' : ''}`}>
+                    <span className="progress-num">{item.num}</span>
+                    <span className="progress-label">{item.label}</span>
                   </div>
-                  {i < STEP_LABELS.length - 1 && <div className="progress-line" />}
+                  {index < FLOW.length - 1 && <div className="progress-line" />}
                 </div>
               ))}
             </div>
           )}
 
-          {step !== 'category' && !submitted && (
+          {step !== 'device' && !submitted && (
             <button className="book-back-btn" onClick={handleBack} type="button">
               ← Back
             </button>
           )}
 
-          {/* Step 1: Device Category */}
-          {step === 'category' && (
+          {step === 'device' && !submitted && (
             <section className="book-step">
-              <h2>Select Your <span className="accent">Device Type</span></h2>
-              <div className="book-grid">
-                {deviceCategories.map((cat) => (
-                  <button
-                    key={cat.id}
-                    className="book-card"
-                    onClick={() => handleCategorySelect(cat)}
-                    type="button"
-                  >
-                    <span className="book-card-icon">{cat.icon}</span>
-                    <h3>{cat.label}</h3>
-                    <p>{cat.description}</p>
-                  </button>
-                ))}
+              <h2>
+                Select your <span className="accent">device</span>
+              </h2>
+              <p className="book-price-note">
+                Choose a device to see its models and the repair prices.
+              </p>
+              <DeviceBookGrid
+                onSelect={handleDeviceCard}
+                onOther={() =>
+                  document.getElementById('all-devices')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
+              />
+              <div id="all-devices">
+                <h2>
+                  Other <span className="accent">devices</span>
+                </h2>
+                <div className="book-grid">
+                  {deviceCategories.map((cat) => (
+                    <button
+                      key={cat.id}
+                      className="book-card"
+                      onClick={() => handleCategorySelect(cat)}
+                      type="button"
+                    >
+                      <span className="book-card-icon">{cat.icon}</span>
+                      <h3>{cat.label}</h3>
+                      <p>{cat.description}</p>
+                    </button>
+                  ))}
+                </div>
               </div>
             </section>
           )}
 
-          {/* Step 2: Brand */}
-          {step === 'brand' && selectedCategory && (
+          {step === 'brand' && selectedCategory && !submitted && (
             <section className="book-step">
-              <h2>Select <span className="accent">{selectedCategory.label}</span> Brand</h2>
+              <h2>
+                Select the <span className="accent">{selectedCategory.label}</span> brand
+              </h2>
               <div className="book-grid book-grid-brands">
                 {selectedCategory.brands.map((brand) => (
                   <button
@@ -246,10 +337,11 @@ export default function BookRepair() {
             </section>
           )}
 
-          {/* Step 3: Model */}
-          {step === 'model' && selectedBrand && (
+          {step === 'model' && selectedBrand && !submitted && (
             <section className="book-step">
-              <h2>Select <span className="accent">{selectedBrand.label}</span> Model</h2>
+              <h2>
+                Select the <span className="accent">{selectedBrand.label}</span> model
+              </h2>
               <div className="book-grid book-grid-models">
                 {selectedBrand.models.map((model) => (
                   <button
@@ -265,248 +357,232 @@ export default function BookRepair() {
             </section>
           )}
 
-          {/* Step 4: Issue Selection */}
-          {step === 'issue' && (
+          {step === 'issue' && !submitted && (
             <section className="book-step">
-              <h2>Select the <span className="accent">Issue</span></h2>
-              {selectedModel && !isIssuableModel(selectedModel) ? (
-                <p className="collection-note">
-                  Parts for the {selectedModel} are not priced yet. Call the shop before booking this model.
+              <h2>
+                Select the <span className="accent">issue</span> to fix
+              </h2>
+              {selectedModel && (
+                <div className="book-summary-bar">
+                  <span className="chip">{selectedBrand?.label}</span>
+                  <span className="chip chip-accent">{selectedModel}</span>
+                </div>
+              )}
+              {issues.length === 0 ? (
+                <p className="collection-note book-price-note">
+                  Call the shop on <a href={site.phoneHref}>{site.phone}</a> and we will confirm the
+                  price before booking the {selectedModel}.
                 </p>
               ) : (
-                <div className="book-grid book-grid-issues">
-                  {issues.map((issue) => (
+                <>
+                  <p className="book-price-note">
+                    Prices are from the workshop list for this device type. Each repair includes a
+                    2-year warranty. Liquid damage is excluded.
+                  </p>
+                  <div className="book-issue-list">
+                    {issues.map((issue) => {
+                      const selected = selectedIssue?.label === issue.label
+                      return (
+                        <button
+                          key={issue.label}
+                          type="button"
+                          className={`book-issue-row${selected ? ' is-selected' : ''}`}
+                          aria-pressed={selected}
+                          onClick={() => setSelectedIssue(issue)}
+                        >
+                          <span className="book-issue-copy">
+                            <strong>{displayIssueLabel(issue.label)}</strong>
+                            <span className="issue-time">Workshop time {issue.time}</span>
+                          </span>
+                          <span className="issue-price">from {money(issue.price)}</span>
+                        </button>
+                      )
+                    })}
+                  </div>
+                  <div className="book-step-actions">
                     <button
-                      key={issue.label}
-                      className="book-card book-card-issue"
-                      onClick={() => handleIssueSelect(issue)}
                       type="button"
+                      className="btn btn-primary"
+                      disabled={!selectedIssue}
+                      onClick={() => {
+                        if (!selectedIssue || !selectedCategory || !selectedBrand || !selectedModel) return
+                        setSearchParams(
+                          withEntry({
+                            category: selectedCategory.id,
+                            brand: selectedBrand.id,
+                            model: slugify(selectedModel),
+                            issue: issueSlug(selectedIssue.label),
+                            view: 'book',
+                          }),
+                        )
+                      }}
                     >
-                      <span className="issue-icon">🔧</span>
-                      <h3>{displayIssueLabel(issue.label)}</h3>
-                      <span className="issue-time">Avg repair time: {issue.time}</span>
-                      <span className="issue-price">from £{issue.price.toFixed(2)}</span>
+                      Next
                     </button>
-                  ))}
-                </div>
+                  </div>
+                </>
               )}
             </section>
           )}
 
-          {/* Step 5: Diagnostic Notes + Contact Info */}
-          {step === 'details' && (
+          {step === 'book' && !submitted && (
             <section className="book-step">
+              <h2>
+                Book your <span className="accent">repair</span>
+              </h2>
               <div className="book-summary-bar">
-                <span className="chip">{selectedCategory?.icon} {selectedCategory?.label}</span>
                 <span className="chip">{selectedBrand?.label}</span>
                 <span className="chip">{selectedModel}</span>
-                <span className="chip chip-accent">
-                  {selectedIssue ? displayIssueLabel(selectedIssue.label) : ''}
-                </span>
+                {selectedIssue && (
+                  <span className="chip chip-accent">
+                    {displayIssueLabel(selectedIssue.label)}
+                  </span>
+                )}
+                {selectedIssue?.price != null && (
+                  <span className="chip chip-price">from {money(selectedIssue.price)}</span>
+                )}
               </div>
 
-              <form className="book-form" onSubmit={handleDetailsSubmit}>
-                <h3>Describe the Issue</h3>
-                <label>
-                  Diagnostic Notes
-                  <textarea
-                    rows={4}
-                    required
-                    placeholder="Please describe the problem in detail. What happened, when did it start, any other info..."
-                    value={diagnosticNote}
-                    onChange={(e) => setDiagnosticNote(e.target.value)}
-                  />
-                </label>
-                <h3>Your Details</h3>
-                <div className="form-row">
-                  <label>
-                    Full Name
-                    <input
-                      type="text"
-                      required
-                      placeholder="Your full name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                  </label>
-                  <label>
-                    Phone Number
-                    <input
-                      type="tel"
-                      required
-                      placeholder="Your phone number"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                    />
-                  </label>
+              <form className="book-final" onSubmit={handleBookSubmit}>
+                <h3 className="book-service-heading">How should we take the device?</h3>
+                <div className="service-options book-service-pick">
+                  {SERVICE_COPY.map((service) => (
+                    <button
+                      key={service.id}
+                      type="button"
+                      className={`book-card service-card${serviceType === service.id ? ' is-selected' : ''}`}
+                      aria-pressed={serviceType === service.id}
+                      onClick={() => {
+                        setServiceType(service.id)
+                        setServiceError('')
+                        setPostcodeError('')
+                      }}
+                    >
+                      <span className="book-card-icon">{service.icon}</span>
+                      <h3>{service.title}</h3>
+                      <p>{service.text}</p>
+                      {serviceType === service.id && <span className="book-selected-label">Selected</span>}
+                    </button>
+                  ))}
                 </div>
-                <label>
-                  Email Address
-                  <input
-                    type="email"
-                    required
-                    placeholder="you@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </label>
-                <button type="submit" className="btn btn-primary book-submit">
-                  Continue →
-                </button>
+                <p className="collection-note book-price-note">
+                  For a technician visit, <Link to="/call-out">book a call-out</Link>.
+                </p>
+                {serviceError && <div className="postcode-error">{serviceError}</div>}
+
+                <div className="book-form">
+                  {serviceType === 'mail-in' && (
+                    <>
+                      <h3>Mail the device to</h3>
+                      <div className="mail-in-address">
+                        <strong>{site.name}</strong>
+                        <p>{site.location}</p>
+                        <p className="collection-note">
+                          Pack the device safely and include your name inside the parcel.
+                        </p>
+                      </div>
+                      <label>
+                        Tracking number <span className="optional-label">(optional)</span>
+                        <input
+                          type="text"
+                          placeholder="Royal Mail or courier tracking number"
+                          value={trackingNumber}
+                          onChange={(e) => setTrackingNumber(e.target.value)}
+                          disabled={submitting}
+                        />
+                      </label>
+                    </>
+                  )}
+
+                  {serviceType === 'collection' && (
+                    <>
+                      <h3>Collection address</h3>
+                      <p className="collection-note">Collection covers London addresses.</p>
+                      <label>
+                        Postcode
+                        <input
+                          type="text"
+                          required
+                          placeholder="EC1V 2PN"
+                          value={postcode}
+                          onChange={(e) => {
+                            setPostcode(e.target.value)
+                            setPostcodeError('')
+                          }}
+                        />
+                      </label>
+                      {postcodeError && <div className="postcode-error">{postcodeError}</div>}
+                      <label>
+                        Street address
+                        <textarea
+                          rows={3}
+                          required
+                          placeholder="House number, street, city"
+                          value={address}
+                          onChange={(e) => setAddress(e.target.value)}
+                        />
+                      </label>
+                    </>
+                  )}
+
+                  <h3>Your details</h3>
+                  <div className="form-row">
+                    <label>
+                      Full name
+                      <input
+                        type="text"
+                        required
+                        placeholder="Your full name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </label>
+                    <label>
+                      Phone number
+                      <input
+                        type="tel"
+                        required
+                        placeholder="Your phone number"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                      />
+                    </label>
+                  </div>
+                  <label>
+                    Email address
+                    <input
+                      type="email"
+                      required
+                      placeholder="you@email.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </label>
+                  <label>
+                    What happened <span className="optional-label">(optional)</span>
+                    <textarea
+                      rows={4}
+                      placeholder="When it started, and anything else we should know"
+                      value={diagnosticNote}
+                      onChange={(e) => setDiagnosticNote(e.target.value)}
+                    />
+                  </label>
+                  <button type="submit" className="btn btn-primary book-submit" disabled={submitting}>
+                    {submitting ? 'Submitting…' : 'Book Your Repair Now'}
+                  </button>
+                  <FormPrivacyNote />
+                </div>
               </form>
             </section>
           )}
 
-          {/* Step 6: Service Type */}
-          {step === 'service' && (
-            <section className="book-step">
-              <h2>Preferred <span className="accent">Service</span></h2>
-
-              {!serviceType && (
-                <>
-                <FormPrivacyNote />
-                <div className="service-options">
-                  <button
-                    className="book-card service-card"
-                    onClick={() => handleServiceSelect('drop-off')}
-                    type="button"
-                    disabled={submitting}
-                  >
-                    <span className="book-card-icon">🏪</span>
-                    <h3>Drop Off at Store</h3>
-                    <p>Bring your device to our London store for fast same-day repair</p>
-                  </button>
-                  <button
-                    className="book-card service-card"
-                    onClick={() => handleServiceSelect('collection')}
-                    type="button"
-                    disabled={submitting}
-                  >
-                    <span className="book-card-icon">🚚</span>
-                    <h3>Collection &amp; Return</h3>
-                    <p>We collect from your London address, repair and return the same day</p>
-                  </button>
-                  <button
-                    className="book-card service-card"
-                    onClick={() => handleServiceSelect('mail-in')}
-                    type="button"
-                    disabled={submitting}
-                  >
-                    <span className="book-card-icon">📦</span>
-                    <h3>Mail-In Repair</h3>
-                    <p>Post your device to us and we&apos;ll repair and send it back</p>
-                  </button>
-                </div>
-                </>
-              )}
-
-              {serviceType === 'collection' && step === 'service' && (
-                <form className="book-form collection-form" onSubmit={handleCollectionSubmit}>
-                  <h3>Collection Address</h3>
-                  <p className="collection-note">Collection is available within the London area only.</p>
-                  <label>
-                    Postcode
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. SW1A 1AA"
-                      value={postcode}
-                      onChange={(e) => {
-                        setPostcode(e.target.value)
-                        setPostcodeError('')
-                      }}
-                    />
-                  </label>
-                  {postcodeError && (
-                    <div className="postcode-error">{postcodeError}</div>
-                  )}
-                  <label>
-                    Full Address
-                    <textarea
-                      rows={3}
-                      required
-                      placeholder="House number, street, city..."
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                    />
-                  </label>
-                  <div className="collection-actions">
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      onClick={() => {
-                        setServiceType(null)
-                        setPostcodeError('')
-                      }}
-                      disabled={submitting}
-                    >
-                      ← Choose Different Service
-                    </button>
-                    <button type="submit" className="btn btn-primary" disabled={submitting}>
-                      {submitting ? 'Submitting…' : 'Submit Booking'}
-                    </button>
-                  </div>
-                  <FormPrivacyNote />
-                </form>
-              )}
-
-              {serviceType === 'mail-in' && step === 'service' && (
-                <form className="book-form collection-form" onSubmit={handleMailInSubmit}>
-                  <h3>Mail Your Device To</h3>
-                  <div className="mail-in-address">
-                    <strong>{site.name}</strong>
-                    <p>{site.location}</p>
-                    <p className="collection-note">
-                      Please pack your device safely and include your name and booking details inside the parcel.
-                    </p>
-                  </div>
-                  <label>
-                    Tracking Number <span className="optional-label">(optional)</span>
-                    <input
-                      type="text"
-                      placeholder="e.g. Royal Mail / courier tracking number"
-                      value={trackingNumber}
-                      onChange={(e) => setTrackingNumber(e.target.value)}
-                      disabled={submitting}
-                    />
-                  </label>
-                  <p className="collection-note">
-                    You can leave this blank now and share the tracking number with us later.
-                  </p>
-                  <div className="collection-actions">
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      onClick={() => {
-                        setServiceType(null)
-                        setTrackingNumber('')
-                      }}
-                      disabled={submitting}
-                    >
-                      ← Choose Different Service
-                    </button>
-                    <button type="submit" className="btn btn-primary" disabled={submitting}>
-                      {submitting ? 'Submitting…' : 'Submit Booking'}
-                    </button>
-                  </div>
-                  <FormPrivacyNote />
-                </form>
-              )}
-            </section>
-          )}
-
-          {step === 'service' && !submitted && submitting ? (
-            <p className="book-submitting">Submitting your booking…</p>
-          ) : null}
-
-          {/* Confirmation */}
           {submitted && (
             <section className="book-step book-success">
               <span className="success-icon">✅</span>
-              <h2>Repair Request <span className="accent">Submitted!</span></h2>
-              <p>
-                Thank you, {name}! Our technician will get in touch with you shortly.
-              </p>
+              <h2>
+                Repair request <span className="accent">submitted</span>
+              </h2>
+              <p>Thank you, {name}. A technician will get in touch with you shortly.</p>
 
               <div className="success-reference">
                 <span className="success-reference-label">Your reference number</span>
@@ -515,35 +591,41 @@ export default function BookRepair() {
 
               {submitError && (
                 <p className="success-error">
-                  {submitError} Please quote your reference number when you contact us.
+                  {submitError} Quote your reference number when you contact us.
                 </p>
               )}
 
               <div className="success-summary">
                 <div className="success-row">
                   <strong>Device:</strong>
-                  <span>{selectedCategory?.label} · {selectedBrand?.label} · {selectedModel}</span>
+                  <span>
+                    {selectedCategory?.label} · {selectedBrand?.label} · {selectedModel}
+                  </span>
                 </div>
                 <div className="success-row">
                   <strong>Issue:</strong>
-                  <span>{selectedIssue?.label}</span>
+                  <span>{selectedIssue ? displayIssueLabel(selectedIssue.label) : ''}</span>
                 </div>
-                <div className="success-row">
-                  <strong>Next step:</strong>
-                  <span>Our technician will get in touch with you</span>
-                </div>
+                {selectedIssue?.price != null && (
+                  <div className="success-row">
+                    <strong>Price:</strong>
+                    <span>from {money(selectedIssue.price)}</span>
+                  </div>
+                )}
                 <div className="success-row">
                   <strong>Service:</strong>
                   <span>
-                    {serviceType === 'drop-off' && 'Drop Off at Store'}
-                    {serviceType === 'collection' && 'Collection & Return'}
-                    {serviceType === 'mail-in' && 'Mail-In Repair'}
+                    {serviceType === 'drop-off' && 'Drop off at the shop'}
+                    {serviceType === 'collection' && 'Collection and return'}
+                    {serviceType === 'mail-in' && 'Mail-in repair'}
                   </span>
                 </div>
                 {serviceType === 'collection' && (
                   <div className="success-row">
                     <strong>Collection:</strong>
-                    <span>{address}, {postcode}</span>
+                    <span>
+                      {address}, {postcode}
+                    </span>
                   </div>
                 )}
                 {serviceType === 'mail-in' && (
@@ -562,13 +644,17 @@ export default function BookRepair() {
                 )}
                 <div className="success-row">
                   <strong>Contact:</strong>
-                  <span>{email} / {phone}</span>
+                  <span>
+                    {email} / {phone}
+                  </span>
                 </div>
               </div>
 
               <div className="success-actions">
-                <Link to="/" className="btn btn-primary">Back to Home</Link>
-                <a href={`${site.phoneHref}`} className="btn btn-secondary">
+                <Link to="/" className="btn btn-primary">
+                  Back to Home
+                </Link>
+                <a href={site.phoneHref} className="btn btn-secondary">
                   Call Us Now
                 </a>
               </div>

@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom'
-import { site, BOOKING_ROUTE } from '@/data/content'
+import { site } from '@/data/content'
 import HeroPromo from '@/components/HeroPromo'
 import './Hero.css'
 
@@ -19,9 +18,9 @@ export default function Hero() {
             repair in London — cracked screens, batteries, HDMI ports, stick drift and more.
           </p>
           <div className="hero-actions">
-            <Link to={BOOKING_ROUTE} className="btn btn-primary btn-shiny">
+            <a href="#bookarepair" className="btn btn-primary btn-shiny">
               Book Repair Now
-            </Link>
+            </a>
             <a
               href={`${site.phoneHref}`}
               className="btn btn-secondary btn-shiny"

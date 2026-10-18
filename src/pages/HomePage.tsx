@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero'
 import ServiceCards from '@/components/ServiceCards'
+import BookDeviceSection from '@/components/BookDeviceSection'
 import Products from '@/components/Products'
 import WhyUs from '@/components/WhyUs'
 import OnSiteBooking from '@/components/OnSiteBooking'
@@ -14,6 +15,7 @@ export default function HomePage() {
     <main>
       <Hero />
       <ServiceCards />
+      <BookDeviceSection />
       <Products />
       <WhyUs />
       <OnSiteBooking />
