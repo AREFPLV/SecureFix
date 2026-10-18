@@ -11,6 +11,7 @@ import os
 import re
 import threading
 import time
+import urllib.parse
 import urllib.request
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -27,6 +28,27 @@ BROWSER = (
 
 _cache_lock = threading.Lock()
 _cache = {"at": 0.0, "payload": None}
+EXTRA_ROUTES = {"/team-chat", "/book-call-out"}
+
+
+def canonical_route(path):
+    path = urllib.parse.unquote(path.split("?", 1)[0].split("#", 1)[0])
+    if path != "/" and path.endswith("/"):
+        path = path.rstrip("/")
+    return path or "/"
+
+
+def load_known_routes():
+    sitemap = os.path.join(ROOT, "sitemap.xml")
+    routes = set(EXTRA_ROUTES)
+    if os.path.isfile(sitemap):
+        text = open(sitemap, encoding="utf-8").read()
+        for loc in re.findall(r"<loc>([^<]+)</loc>", text):
+            routes.add(canonical_route(urllib.parse.urlparse(loc).path or "/"))
+    return routes
+
+
+KNOWN_ROUTES = load_known_routes()
 
 
 def _get(url):
@@ -228,7 +250,30 @@ def reviews_payload():
 
 
 class Handler(SimpleHTTPRequestHandler):
+    def _redirect_www(self):
+        host = (self.headers.get("Host") or "").split(":")[0].lower()
+        if host != "www.securefix.uk":
+            return False
+        self.send_response(301)
+        self.send_header("Location", "https://securefix.uk" + self.path)
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+        return True
+
+    def _send_not_found(self):
+        fs_path = os.path.join(ROOT, "404.html")
+        with open(fs_path, "rb") as handle:
+            body = handle.read()
+        self.send_response(404)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
     def do_GET(self):
+        if self._redirect_www():
+            return
         path = self.path.split("?", 1)[0].split("#", 1)[0]
         if path == "/api/reviews":
             body = json.dumps(reviews_payload()).encode("utf-8")
@@ -250,12 +295,14 @@ class Handler(SimpleHTTPRequestHandler):
                 return super().do_GET()
         if os.path.isfile(fs_path):
             return super().do_GET()
+        if canonical_route(path) in KNOWN_ROUTES:
+            self.path = "/index.html"
+            return super().do_GET()
         _, ext = os.path.splitext(path.rstrip("/"))
         if ext:
             self.send_error(404, "File not found")
             return
-        self.path = "/index.html"
-        return super().do_GET()
+        self._send_not_found()
 
 
 def main():
