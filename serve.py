@@ -266,6 +266,7 @@ class Handler(SimpleHTTPRequestHandler):
             body = handle.read()
         self.send_response(404)
         self.send_header("Content-Type", "text/html; charset=utf-8")
+        self._security_headers()
         self.send_header("Cache-Control", "no-store")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
@@ -288,21 +289,65 @@ class Handler(SimpleHTTPRequestHandler):
             self.send_error(404, "Not found")
             return
 
-        fs_path = self.translate_path(path)
-        if os.path.isdir(fs_path):
-            index = os.path.join(fs_path, "index.html")
+        route = canonical_route(path)
+        if route == "/book-call-out":
+            self.send_response(301)
+            self.send_header("Location", "https://securefix.uk/call-out")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+        if path != "/" and path.endswith("/"):
+            target = path.rstrip("/") or "/"
+            query = ""
+            if "?" in self.path:
+                query = "?" + self.path.split("?", 1)[1]
+            host = (self.headers.get("Host") or "").split(":")[0].lower()
+            location = target + query
+            if host.endswith("securefix.uk"):
+                location = "https://securefix.uk" + location
+            self.send_response(301)
+            self.send_header("Location", location)
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+
+        rel = "" if route == "/" else route.lstrip("/")
+        candidate = os.path.normpath(os.path.join(ROOT, rel))
+        if not candidate.startswith(os.path.normpath(ROOT)):
+            self._send_not_found()
+            return
+        if route == "/" or os.path.isdir(candidate):
+            index = os.path.join(candidate if route != "/" else ROOT, "index.html")
             if os.path.isfile(index):
-                return super().do_GET()
-        if os.path.isfile(fs_path):
-            return super().do_GET()
-        if canonical_route(path) in KNOWN_ROUTES:
-            self.path = "/index.html"
-            return super().do_GET()
-        _, ext = os.path.splitext(path.rstrip("/"))
+                self._send_file(index)
+                return
+        if os.path.isfile(candidate):
+            self._send_file(candidate)
+            return
+        _, ext = os.path.splitext(route)
         if ext:
             self.send_error(404, "File not found")
             return
         self._send_not_found()
+
+    def _send_file(self, fs_path, status=200):
+        with open(fs_path, "rb") as handle:
+            body = handle.read()
+        content_type = self.guess_type(fs_path)
+        self.send_response(status)
+        self.send_header("Content-Type", content_type)
+        if content_type.startswith("text/html"):
+            self._security_headers()
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _security_headers(self):
+        self.send_header("Strict-Transport-Security", "max-age=31536000; includeSubDomains")
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("Referrer-Policy", "strict-origin-when-cross-origin")
+        self.send_header("X-Frame-Options", "SAMEORIGIN")
+        self.send_header("Content-Security-Policy", "upgrade-insecure-requests")
 
 
 def main():

@@ -1,0 +1,4 @@
+https://www.securefix.uk/* https://securefix.uk/:splat 301!
+http://www.securefix.uk/* https://securefix.uk/:splat 301!
+/book-call-out /call-out 301
+/* /404.html 404
