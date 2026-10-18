@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { googleReviews, BOOKING_ROUTE } from '@/data/content'
 import { contactMethods } from '@/data/content'
-import { fetchSiteReviews, type LiveReview } from '@/services/reviewsApi'
+import { fallbackReviews, fetchSiteReviews, type LiveReview } from '@/services/reviewsApi'
 import './Contact.css'
 
 function Stars({ rating }: { rating: number }) {
@@ -24,16 +24,35 @@ export default function Contact() {
 
   useEffect(() => {
     let cancelled = false
-    fetchSiteReviews().then((data) => {
+    let seen = false
+
+    async function poll() {
+      const data = await fetchSiteReviews()
       if (cancelled) return
+      if (!data) {
+        if (seen) return
+        const fallback = fallbackReviews()
+        setReviews(fallback.reviews)
+        setRating(fallback.rating)
+        setTotalReviews(fallback.totalReviews)
+        setGoogleUrl(fallback.googleUrl)
+        setSource('fallback')
+        seen = true
+        return
+      }
+      seen = true
       setReviews(data.reviews)
       setRating(data.rating)
       setTotalReviews(data.totalReviews || data.reviews.length)
       setGoogleUrl(data.googleUrl || googleReviews.reviewsUrl)
-      setSource(data.source)
-    })
+      setSource('google')
+    }
+
+    void poll()
+    const id = window.setInterval(() => void poll(), 60_000)
     return () => {
       cancelled = true
+      window.clearInterval(id)
     }
   }, [])
 
@@ -108,32 +127,42 @@ export default function Contact() {
               {source === 'loading' ? (
                 <p className="contact-reviews-note">Loading latest Google reviews…</p>
               ) : (
-                <>
-                  {source === 'google' ? (
-                    <p className="contact-reviews-note">
-                      Live rating from Google. Written reviews appear here as customers leave them.
-                    </p>
-                  ) : null}
-                  <div className="contact-reviews-list">
-                    {reviews.map((review) => (
-                      <article
-                        key={`${review.name}-${review.date}-${review.text.slice(0, 24)}`}
-                        className="review-card"
-                      >
-                        <div className="review-card-top">
-                          <div className="review-avatar">{review.name.charAt(0)}</div>
-                          <div>
-                            <strong>{review.name}</strong>
-                            <Stars rating={review.rating} />
-                          </div>
-                          <span className="review-date">{review.date}</span>
+                <div className="contact-reviews-list">
+                  {reviews.map((review) => (
+                    <article
+                      key={`${review.name}-${review.date}-${review.text.slice(0, 24)}`}
+                      className="review-card"
+                    >
+                      <div className="review-card-top">
+                        <div className="review-avatar">
+                          {review.photoUrl ? (
+                            <img src={review.photoUrl} alt="" />
+                          ) : (
+                            review.name.charAt(0)
+                          )}
                         </div>
-                        <p className="review-text">&ldquo;{review.text}&rdquo;</p>
-                        {review.device ? <span className="review-device">{review.device}</span> : null}
-                      </article>
-                    ))}
-                  </div>
-                </>
+                        <div>
+                          {review.authorUrl ? (
+                            <a
+                              href={review.authorUrl}
+                              className="review-author"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {review.name}
+                            </a>
+                          ) : (
+                            <strong>{review.name}</strong>
+                          )}
+                          <Stars rating={review.rating} />
+                        </div>
+                        <span className="review-date">{review.date}</span>
+                      </div>
+                      <p className="review-text">&ldquo;{review.text}&rdquo;</p>
+                      {review.device ? <span className="review-device">{review.device}</span> : null}
+                    </article>
+                  ))}
+                </div>
               )}
 
               <div className="contact-reviews-actions">
