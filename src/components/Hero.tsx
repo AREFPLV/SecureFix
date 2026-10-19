@@ -18,7 +18,7 @@ export default function Hero() {
             repair in London — cracked screens, batteries, HDMI ports, stick drift and more.
           </p>
           <div className="hero-actions">
-            <a href="#bookarepair" className="btn btn-primary btn-shiny">
+            <a href="/book-repair" className="btn btn-primary btn-shiny">
               Book Repair Now
             </a>
             <a
