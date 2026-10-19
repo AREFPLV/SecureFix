@@ -1,6 +1,4 @@
 .recycle-hero-art {
-  --recycle-accent: var(--color-accent, #fbaf00);
-  --recycle-ink: #1a1a1a;
   position: relative;
   width: min(100%, 22rem);
   aspect-ratio: 1;
@@ -11,10 +9,10 @@
 
 .recycle-hero-art-glow {
   position: absolute;
-  inset: 8%;
+  inset: 10%;
   border-radius: 50%;
-  background: radial-gradient(circle, #fbaf0038 0%, #fbaf0014 42%, transparent 72%);
-  filter: blur(6px);
+  background: radial-gradient(circle, #fbaf0040 0%, #fbaf0014 45%, transparent 72%);
+  filter: blur(8px);
   animation: recycle-glow-pulse 4.5s ease-in-out infinite;
 }
 
@@ -25,73 +23,33 @@
 }
 
 .recycle-hero-art-ring-outer {
-  inset: 4%;
+  inset: 5%;
   border: 1px solid #fbaf003d;
   animation: recycle-ring-spin 28s linear infinite;
 }
 
 .recycle-hero-art-ring-inner {
-  inset: 12%;
+  inset: 14%;
   border: 1px dashed #ffffff24;
   animation: recycle-ring-spin 18s linear infinite reverse;
 }
 
-.recycle-hero-art-svg {
+.recycle-hero-art-mark {
   position: relative;
   z-index: 1;
-  width: 78%;
-  height: 78%;
-  overflow: visible;
+  width: 74%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
 }
 
-.recycle-hero-art-symbol {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: recycle-symbol-spin 14s linear infinite;
-}
-
-.recycle-hero-art-arrow {
-  fill: url(#recycleFill);
-  stroke: var(--recycle-ink);
-  stroke-width: 2.2;
-  stroke-linejoin: round;
-  paint-order: stroke fill;
-  filter: drop-shadow(0 4px 10px #00000066);
-}
-
-.recycle-hero-art-arrow-shadow {
-  fill: #00000066;
-}
-
-.recycle-hero-art-orbit-dot {
-  fill: var(--recycle-accent);
-}
-
-.recycle-hero-art-orbit-dot.d1 {
-  animation: recycle-dot-float 3.2s ease-in-out infinite;
-}
-
-.recycle-hero-art-orbit-dot.d2 {
-  animation: recycle-dot-float 3.8s ease-in-out infinite 0.4s;
-}
-
-.recycle-hero-art-orbit-dot.d3 {
-  animation: recycle-dot-float 3.5s ease-in-out infinite 0.8s;
-}
-
-.recycle-hero-art-dash {
-  stroke: #fbaf00b8;
-  stroke-width: 1.6;
-  animation: recycle-dash-flow 2.4s linear infinite;
-}
-
-.recycle-hero-art-dash.a2 {
-  animation-duration: 2.8s;
-  animation-direction: reverse;
-}
-
-.recycle-hero-art-dash.a3 {
-  animation-duration: 3.1s;
+.recycle-hero-art-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* Flatten to a silhouette, then tint to SecureFix accent gold */
+  filter: brightness(0) saturate(100%) invert(77%) sepia(71%) saturate(1800%) hue-rotate(1deg)
+    brightness(1.05) contrast(1.05) drop-shadow(0 8px 18px #00000080);
 }
 
 .recycle-hero-art-caption {
@@ -122,15 +80,6 @@
   -webkit-backdrop-filter: blur(10px);
 }
 
-@keyframes recycle-symbol-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes recycle-ring-spin {
   from {
     transform: rotate(0deg);
@@ -143,40 +92,19 @@
 @keyframes recycle-glow-pulse {
   0%,
   100% {
-    opacity: 0.7;
+    opacity: 0.65;
     transform: scale(0.96);
   }
   50% {
     opacity: 1;
-    transform: scale(1.04);
-  }
-}
-
-@keyframes recycle-dot-float {
-  0%,
-  100% {
-    transform: translateY(0);
-    opacity: 0.75;
-  }
-  50% {
-    transform: translateY(-5px);
-    opacity: 1;
-  }
-}
-
-@keyframes recycle-dash-flow {
-  to {
-    stroke-dashoffset: -40;
+    transform: scale(1.05);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .recycle-hero-art-symbol,
   .recycle-hero-art-ring-outer,
   .recycle-hero-art-ring-inner,
-  .recycle-hero-art-glow,
-  .recycle-hero-art-orbit-dot,
-  .recycle-hero-art-dash {
+  .recycle-hero-art-glow {
     animation: none;
   }
 }
