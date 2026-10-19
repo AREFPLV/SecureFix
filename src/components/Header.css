@@ -1,1 +1,43 @@
-/* Styles live in src/index.css */
+/* Keep header logo at the established size; tighten the nav for the extra link. */
+
+.logo-link .logo-img {
+  width: auto;
+  height: 96px;
+  display: block;
+  flex-shrink: 0;
+}
+
+@media (width <= 767px) {
+  .logo-link .logo-img {
+    height: 70px;
+  }
+}
+
+.nav {
+  gap: 0.7rem;
+}
+
+.nav a {
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+
+.header-inner {
+  gap: 1rem;
+}
+
+.header-actions {
+  gap: 0.65rem;
+  margin-left: 0.75rem;
+}
+
+.header-phone-btn {
+  padding: 0.55rem 1rem;
+  font-size: 0.8rem;
+}
+
+.header-cta {
+  padding: 0.55rem 1.05rem;
+  font-size: 0.78rem;
+}
