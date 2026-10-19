@@ -245,11 +245,11 @@
   line-height: 1.35;
 }
 
-.book-issue-card .issue-contact {
+.book-issue-card .issue-price {
   margin: 0.35rem 0 0;
   color: var(--color-accent);
-  font-size: 0.82rem;
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 800;
   line-height: 1.35;
 }
 
