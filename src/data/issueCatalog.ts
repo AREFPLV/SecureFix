@@ -392,7 +392,9 @@ function buildIssuePages(): IssuePage[] {
       if (skipBrand(brand)) continue
       for (const model of brand.models) {
         if (!isIssuableModel(model)) continue
-        const issues = bookingIssues(category.id, brand.id, model)
+        const issues = bookingIssues(category.id, brand.id, model).filter(
+          (issue): issue is RepairIssue & { price: number } => typeof issue.price === 'number',
+        )
         const modelSlug = slugify(model)
         const siblings = issues.map((issue) => ({
           label: displayIssueLabel(issue.label),
