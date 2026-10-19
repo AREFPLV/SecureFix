@@ -12,7 +12,7 @@ type Props = {
   brandLabel: string
   model: string
   issueLabel: string
-  price: number
+  price: number | null
   priceText?: string
 }
 
@@ -72,7 +72,7 @@ export default function RepairBookingForm({
       brand: brandLabel,
       model,
       issue: issueLabel,
-      price,
+      price: price ?? 0,
       diagnosticNote,
       name,
       email,

@@ -19,7 +19,7 @@ export function listedModelNames(categoryId: string, brandId: string): string[] 
   return device?.models.map((model) => model.name) ?? null
 }
 
-/** Repairs for a model on a listed brand. Null when that brand has no model price list. */
+/** Repairs for a model on a listed brand. Null when that brand/model has no price list. */
 export function listedRepairs(
   categoryId: string,
   brandId: string,
@@ -27,7 +27,8 @@ export function listedRepairs(
 ): ListedRepair[] | null {
   const models = modelsByBrand.get(`${categoryId}/${brandId}`)
   if (!models) return null
-  return models.get(norm(model)) ?? []
+  const repairs = models.get(norm(model))
+  return repairs && repairs.length > 0 ? repairs : null
 }
 
 export function shortJobName(label: string): string {

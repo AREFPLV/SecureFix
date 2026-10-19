@@ -1,4 +1,5 @@
 import { listedModelNames } from '@/data/listedPrices'
+import { isGenericModel } from '@/lib/slugify'
 
 export type DeviceCategory = {
   id: string
@@ -122,7 +123,14 @@ export const deviceCategories: DeviceCategory[] = [
 
 for (const category of deviceCategories) {
   for (const brand of category.brands) {
+    const fallbackOther =
+      brand.models.find((model) => isGenericModel(model)) ?? 'Other / Not Listed'
     const names = listedModelNames(category.id, brand.id)
-    if (names?.length) brand.models = names
+    if (names?.length) {
+      brand.models = [...names]
+      if (!brand.models.some((model) => isGenericModel(model))) {
+        brand.models.push(fallbackOther)
+      }
+    }
   }
 }

@@ -29,6 +29,10 @@ function repairBookPath(categoryId: string, brandId: string, model: string, issu
   return `/repair/${categoryId}/${brandId}/${slugify(model)}/${issueSlug(issueLabel)}#book`
 }
 
+function usesInlineBooking(model: string | null) {
+  return Boolean(model && !isIssuableModel(model))
+}
+
 export default function BookRepair() {
   usePageSeo(bookRepairSeo)
   const [searchParams, setSearchParams] = useSearchParams()
@@ -74,37 +78,64 @@ export default function BookRepair() {
     return params
   }
 
+  function categoryId() {
+    return selectedCategory?.id ?? searchParams.get('category')
+  }
+
   function handleCategorySelect(cat: DeviceCategory) {
     if (cat.brands.length === 1) {
-      setSearchParams({ category: cat.id, brand: cat.brands[0].id })
+      const brand = cat.brands[0]
+      if (brand.models.length === 1) {
+        setSearchParams({
+          category: cat.id,
+          brand: brand.id,
+          model: slugify(brand.models[0]),
+        })
+        return
+      }
+      setSearchParams({ category: cat.id, brand: brand.id })
       return
     }
     setSearchParams({ category: cat.id })
   }
 
   function handleBrandSelect(brand: Brand) {
-    if (!selectedCategory) return
-    setSearchParams({ category: selectedCategory.id, brand: brand.id, entry: 'list' })
+    const catId = categoryId()
+    if (!catId) return
+    if (brand.models.length === 1) {
+      setSearchParams({
+        category: catId,
+        brand: brand.id,
+        model: slugify(brand.models[0]),
+        entry: 'list',
+      })
+      return
+    }
+    setSearchParams({ category: catId, brand: brand.id, entry: 'list' })
   }
 
   function handleModelSelect(model: string) {
-    if (!selectedCategory || !selectedBrand) return
+    const catId = categoryId()
+    const brandId = selectedBrand?.id ?? searchParams.get('brand')
+    if (!catId || !brandId) return
     setSearchParams(
       withEntry({
-        category: selectedCategory.id,
-        brand: selectedBrand.id,
+        category: catId,
+        brand: brandId,
         model: slugify(model),
       }),
     )
   }
 
   function handleIssueSelect(issue: RepairIssue) {
-    if (!selectedCategory || !selectedBrand || !selectedModel) return
-    if (!isIssuableModel(selectedModel)) {
+    const catId = categoryId()
+    const brandId = selectedBrand?.id ?? searchParams.get('brand')
+    if (!catId || !brandId || !selectedModel) return
+    if (usesInlineBooking(selectedModel)) {
       setSearchParams(
         withEntry({
-          category: selectedCategory.id,
-          brand: selectedBrand.id,
+          category: catId,
+          brand: brandId,
           model: slugify(selectedModel),
           issue: issueSlug(issue.label),
         }),
@@ -112,7 +143,7 @@ export default function BookRepair() {
       return
     }
     setSelectedIssue(issue)
-    navigate(repairBookPath(selectedCategory.id, selectedBrand.id, selectedModel, issue.label))
+    navigate(repairBookPath(catId, brandId, selectedModel, issue.label))
   }
 
   function handleBack() {
@@ -123,9 +154,17 @@ export default function BookRepair() {
       return
     }
     if (step === 'issue') {
+      const brandId = next.get('brand')
+      const cat = deviceCategories.find((item) => item.id === next.get('category'))
+      const brand = cat?.brands.find((item) => item.id === brandId)
       next.delete('model')
       next.delete('issue')
       next.delete('view')
+      // Single-model brands (e.g. Other Brand) skip the model step on the way forward,
+      // so back from issues should return to the brand list.
+      if (brand && brand.models.length === 1) {
+        next.delete('brand')
+      }
       setSearchParams(next, { replace: true })
       return
     }
@@ -153,7 +192,7 @@ export default function BookRepair() {
 
   const flowIndex = FLOW.findIndex((item) => item.key === step)
   const showFlow = flowIndex >= 0
-  const genericBooking = Boolean(selectedModel && !isIssuableModel(selectedModel))
+  const genericBooking = usesInlineBooking(selectedModel)
 
   return (
     <div className="book-page site-page">
@@ -309,8 +348,7 @@ export default function BookRepair() {
             selectedCategory &&
             selectedBrand &&
             selectedModel &&
-            selectedIssue &&
-            selectedIssue.price != null && (
+            selectedIssue && (
               <section className="book-step">
                 <h2>
                   Book this <span className="accent">repair</span>
@@ -326,7 +364,10 @@ export default function BookRepair() {
                   model={selectedModel}
                   issueLabel={selectedIssue.label}
                   price={selectedIssue.price}
-                  priceText={selectedIssue.priceText}
+                  priceText={
+                    selectedIssue.priceText ??
+                    (selectedIssue.price == null ? 'Quote on inspection' : undefined)
+                  }
                 />
               </section>
             )}

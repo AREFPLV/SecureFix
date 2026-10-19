@@ -180,8 +180,10 @@ function repairTime(categoryId: string, label: string): string {
   return '1h'
 }
 
-export function issuePriceShown(issue: { price: number; priceText?: string }): string {
-  return issue.priceText ?? `from £${issue.price.toFixed(2)}`
+export function issuePriceShown(issue: { price: number | null; priceText?: string }): string {
+  if (issue.priceText) return issue.priceText
+  if (issue.price == null) return 'Quote on inspection'
+  return `from £${issue.price.toFixed(2)}`
 }
 
 function blurbFor(label: string, model: string): string {
@@ -476,16 +478,26 @@ export function repairTree(): RepairTree {
 const OTHER_BRAND_ISSUES: Record<string, string[]> = {
   printer: ['Printer Repair', 'Printer Head Cleaning'],
   speaker: ['Speaker / Audio Repair'],
-  drone: [],
-  'data-recovery': [],
-  'other-device': [],
+  drone: ['Drone Repair', 'Diagnostics'],
+  'data-recovery': [
+    'Data Recovery, HDD',
+    'Data Recovery, SSD',
+    'Data Recovery, USB / SD',
+    'Diagnostics',
+  ],
+  'other-device': ['Other Device Repair', 'Diagnostics'],
 }
 
-/** Priced repairs for one model. Listed brands use that model's own price list. */
+function withQuoteText(issue: RepairIssue): RepairIssue & { price: number | null } {
+  if (issue.price != null || issue.priceText) return issue
+  return { ...issue, priceText: 'Quote on inspection' }
+}
+
+/** Repairs for one model. Listed brands use that model's price list; generic/other fall back to category issues (including quote-only jobs). */
 export function bookingIssues(categoryId: string, brandId?: string | null, model?: string | null) {
-  if (brandId && model) {
+  if (brandId && model && !isGenericModel(model)) {
     const listed = listedRepairs(categoryId, brandId, model)
-    if (listed) {
+    if (listed?.length) {
       return listed.map((repair) => ({
         label: repair.label,
         price: repair.price,
@@ -494,18 +506,24 @@ export function bookingIssues(categoryId: string, brandId?: string | null, model
       }))
     }
   }
-  const priced = pricedIssues(categoryId)
+
+  const allowQuoteOnly = Boolean(model && isGenericModel(model)) || categoryId === 'other'
+  const source = allowQuoteOnly
+    ? (issuesByCategory[categoryId] ?? []).map(withQuoteText)
+    : pricedIssues(categoryId)
+
+  return source
     .filter((issue) => {
       if (categoryId === 'other' && brandId && OTHER_BRAND_ISSUES[brandId]) {
-        return new Set(OTHER_BRAND_ISSUES[brandId]).has(issue.label)
+        return OTHER_BRAND_ISSUES[brandId].includes(issue.label)
       }
       if (categoryId === 'gaming-console' && brandId !== 'nintendo') {
         return !/\(switch\)/i.test(issue.label)
       }
+      if (!allowQuoteOnly && typeof issue.price !== 'number') return false
       return true
     })
     .sort((a, b) => issueRank(a.label) - issueRank(b.label) || a.label.localeCompare(b.label))
-  return priced
 }
 
 export function jobLabelsFor(categoryId: string, brandId?: string, model?: string): string[] {
