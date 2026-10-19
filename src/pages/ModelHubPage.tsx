@@ -5,10 +5,11 @@ import {
   CANONICAL_ORIGIN,
   categoryHubLabel,
   categoryHubPath,
+  bookingIssues,
   displayIssueLabel,
   isIssuableModel,
+  issuePriceShown,
   issueSlug,
-  pricedIssues,
   SHOP_ADDRESS,
 } from '@/data/issueCatalog'
 import type { SeoPageEntry } from '@/data/seoCatalog'
@@ -26,7 +27,7 @@ type Props = {
 
 export default function ModelHubPage({ page, categoryId, brandId, model, brandLabel }: Props) {
   const issuable = isIssuableModel(model)
-  const issues = issuable ? pricedIssues(categoryId) : []
+  const issues = issuable ? bookingIssues(categoryId, brandId, model) : []
   const modelPath = page.path
   const brandPath = `/repair/${categoryId}/${brandId}`
   const catPath = categoryHubPath(categoryId)
@@ -75,7 +76,7 @@ export default function ModelHubPage({ page, categoryId, brandId, model, brandLa
                   <li key={issue.label}>
                     <Link to={`${modelPath}/${issueSlug(issue.label)}`}>
                       <span>{displayIssueLabel(issue.label)}</span>
-                      <span>from £{issue.price!.toFixed(2)}</span>
+                      <span>{issuePriceShown(issue)}</span>
                       <span>{issue.time}</span>
                     </Link>
                   </li>

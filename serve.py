@@ -38,6 +38,36 @@ def canonical_route(path):
     return path or "/"
 
 
+LEGACY_EXACT = {
+    "/repair/smartphone/apple-phone/iphone-14-pro/premium-screen-replacement":
+        "https://securefix.uk/repair/smartphone/apple-phone/iphone-14-pro/new-screen-replacement-oled-compatible-most-popular-premium-quality",
+    "/repair/smartphone/apple-phone/iphone-14-pro/battery-replacement":
+        "https://securefix.uk/repair/smartphone/apple-phone/iphone-14-pro/battery-replacement-apple-original-or-oem-quality",
+    "/repair/smartphone/apple-phone/iphone-14-pro/charging-unit-repair":
+        "https://securefix.uk/repair/smartphone/apple-phone/iphone-14-pro/not-charging-or-charging-port-repair-dock-replacement",
+    "/repair/smartphone/google/pixel-8/back-glass-replacement":
+        "https://securefix.uk/repair/smartphone/google/google-pixel-8/back-cover-replacement",
+}
+
+LEGACY_PREFIX = (
+    ("/repair/smartphone/google/pixel-8", "https://securefix.uk/repair/smartphone/google/google-pixel-8"),
+    ("/repair/smartphone/samsung-phone/galaxy-s24-ultra", "https://securefix.uk/repair/smartphone/samsung-phone"),
+    ("/repair/smartphone/samsung-phone/galaxy-s24", "https://securefix.uk/repair/smartphone/samsung-phone"),
+    ("/repair/pc-laptop/apple-mac/macbook-pro-14", "https://securefix.uk/repair/pc-laptop/apple-mac"),
+    ("/repair/tablet-ipad/apple-ipad/ipad-10th", "https://securefix.uk/repair/tablet-ipad/apple-ipad"),
+)
+
+
+def legacy_redirect(route):
+    exact = LEGACY_EXACT.get(route)
+    if exact:
+        return exact
+    for prefix, target in LEGACY_PREFIX:
+        if route == prefix or route.startswith(prefix + "/"):
+            return target
+    return None
+
+
 def load_known_routes():
     sitemap = os.path.join(ROOT, "sitemap.xml")
     routes = set(EXTRA_ROUTES)
@@ -290,9 +320,12 @@ class Handler(SimpleHTTPRequestHandler):
             return
 
         route = canonical_route(path)
+        legacy = legacy_redirect(route)
         if route == "/book-call-out":
+            legacy = "https://securefix.uk/call-out"
+        if legacy:
             self.send_response(301)
-            self.send_header("Location", "https://securefix.uk/call-out")
+            self.send_header("Location", legacy)
             self.send_header("Content-Length", "0")
             self.end_headers()
             return

@@ -2,6 +2,8 @@ export type RepairIssue = {
   label: string
   price: number | null
   time: string
+  /** Exact figure or range, including the £ sign. Absent prices use the category “from” price. */
+  priceText?: string
 }
 
 export const phoneIssues: RepairIssue[] = [

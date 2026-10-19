@@ -1,4 +1,5 @@
 import { deviceCategories, type Brand, type DeviceCategory } from '@/data/booking'
+import { listedModelNames, listedRepairs, shortJobName } from '@/data/listedPrices'
 import { issuesByCategory, type RepairIssue } from '@/data/repairIssues'
 import { isGenericModel, slugify } from '@/lib/slugify'
 
@@ -165,6 +166,29 @@ export function pricedIssues(categoryId: string): (RepairIssue & { price: number
   )
 }
 
+function repairTime(categoryId: string, label: string): string {
+  const lower = label.toLowerCase()
+  if (categoryId === 'pc-laptop') {
+    if (lower.includes('screen')) return '2h'
+    if (lower.includes('battery') || lower.includes('ssd') || lower.includes('hard drive')) return '1h'
+    return '1h 30m'
+  }
+  if (categoryId === 'tablet-ipad' || categoryId === 'smart-watch') return '1h'
+  if (lower.includes('screen') || lower.includes('lcd') || lower.includes('battery')) return '30m'
+  if (lower.includes('charg') || lower.includes('dock')) return '1h'
+  return '1h'
+}
+
+export function issuePriceShown(issue: { price: number; priceText?: string }): string {
+  return issue.priceText ?? `from £${issue.price.toFixed(2)}`
+}
+
+function blurbFor(label: string, model: string): string {
+  const known = BLURBS[label]
+  if (known) return known(model)
+  return `${label} for the ${model} is carried out at the shop. The device is tested before handover.`
+}
+
 export function categoryHubPath(categoryId: string): string {
   if (categoryId === 'smartphone') return '/phone-repair'
   if (categoryId === 'pc-laptop') return '/computer-repair'
@@ -192,8 +216,8 @@ function issueRank(label: string) {
   return 4
 }
 
-function metaDescription(model: string, display: string, price: string, time: string) {
-  const text = `${model} ${display.toLowerCase()} from £${price}, usually ${time}, at 218 City Road, London EC1V. 2-year warranty, liquid damage excluded.`
+function metaDescription(model: string, display: string, shown: string, time: string) {
+  const text = `${model} ${display.toLowerCase()} at ${shown}, usually ${time}, at 218 City Road, London EC1V. 2-year warranty, liquid damage excluded.`
   if (text.length < 140) return `${text} Collection across London.`
   return text
 }
@@ -208,7 +232,7 @@ function buildOne(
   const modelSlug = slugify(model)
   const slug = issueSlug(issue.label)
   const display = displayIssueLabel(issue.label)
-  const priceText = issue.price.toFixed(2)
+  const shown = issuePriceShown(issue)
   const path = `/repair/${category.id}/${brand.id}/${modelSlug}/${slug}`
   const canonical = `${CANONICAL_ORIGIN}${path}`
   const h1 = `${model} ${display}`
@@ -216,15 +240,11 @@ function buildOne(
   const brandPath = `/repair/${category.id}/${brand.id}`
   const catPath = categoryHubPath(category.id)
   const fault = display.toLowerCase()
-  const lead = `${display} for the ${model} is carried out at ${SHOP_ADDRESS}, from £${priceText}, with a workshop time of ${issue.time}, and a 2-year warranty.`
-  const blurbFn = BLURBS[issue.label]
-  if (!blurbFn) {
-    throw new Error(`Missing fault description for ${issue.label}`)
-  }
+  const lead = `${display} for the ${model} is carried out at ${SHOP_ADDRESS}, priced at ${shown}, with a workshop time of ${issue.time}, and a 2-year warranty.`
   const faqs: IssueFaq[] = [
     {
       question: `How much does ${model} ${fault} cost?`,
-      answer: `${model} ${fault} starts from £${priceText} at ${SHOP_ADDRESS}.`,
+      answer: `${model} ${fault} is ${shown} at ${SHOP_ADDRESS}.`,
     },
     {
       question: `How long does ${model} ${fault} take?`,
@@ -258,14 +278,14 @@ function buildOne(
     displayLabel: display,
     issueSlug: slug,
     price: issue.price,
-    priceText,
+    priceText: shown,
     time: issue.time,
     path,
-    title: `${h1} in London | From £${priceText} | SecureFix EC1V`,
-    description: metaDescription(model, display, priceText, issue.time),
+    title: `${h1} in London | ${shown} | SecureFix EC1V`,
+    description: metaDescription(model, display, shown, issue.time),
     h1,
     lead,
-    blurb: blurbFn(model),
+    blurb: blurbFor(issue.label, model),
     included: [
       `${display} for the ${model}`,
       'A test before handover',
@@ -316,7 +336,7 @@ function buildOne(
           },
           offers: {
             '@type': 'Offer',
-            price: priceText,
+            price: issue.price.toFixed(2),
             priceCurrency: 'GBP',
             url: canonical,
             availability: 'https://schema.org/InStock',
@@ -330,18 +350,16 @@ function buildOne(
 function buildIssuePages(): IssuePage[] {
   const pages: IssuePage[] = []
   for (const category of deviceCategories) {
-    const issues = pricedIssues(category.id)
     for (const brand of category.brands) {
       if (skipBrand(brand)) continue
       for (const model of brand.models) {
         if (!isIssuableModel(model)) continue
+        const issues = bookingIssues(category.id, brand.id, model)
         const modelSlug = slugify(model)
-        const siblings = [...issues]
-          .sort((a, b) => issueRank(a.label) - issueRank(b.label))
-          .map((issue) => ({
-            label: displayIssueLabel(issue.label),
-            path: `/repair/${category.id}/${brand.id}/${modelSlug}/${issueSlug(issue.label)}`,
-          }))
+        const siblings = issues.map((issue) => ({
+          label: displayIssueLabel(issue.label),
+          path: `/repair/${category.id}/${brand.id}/${modelSlug}/${issueSlug(issue.label)}`,
+        }))
         for (const issue of issues) {
           pages.push(buildOne(category, brand, model, issue, siblings))
         }
@@ -403,12 +421,10 @@ export function repairTree(): RepairTree {
             const modelSlug = slugify(model)
             const issuable = isIssuableModel(model)
             const issues = issuable
-              ? [...pricedIssues(category.id)]
-                  .sort((a, b) => issueRank(a.label) - issueRank(b.label))
-                  .map((issue) => ({
-                    label: `${displayIssueLabel(issue.label)} from £${issue.price!.toFixed(2)}`,
-                    path: `/repair/${category.id}/${brand.id}/${modelSlug}/${issueSlug(issue.label)}`,
-                  }))
+              ? bookingIssues(category.id, brand.id, model).map((issue) => ({
+                  label: `${displayIssueLabel(issue.label)} ${issuePriceShown(issue)}`,
+                  path: `/repair/${category.id}/${brand.id}/${modelSlug}/${issueSlug(issue.label)}`,
+                }))
               : []
             return {
               label: model,
@@ -429,17 +445,47 @@ const OTHER_BRAND_ISSUES: Record<string, string[]> = {
   'other-device': [],
 }
 
-/** Priced repairs for the booking list. Other-device brands only show their own priced faults. */
-export function bookingIssues(categoryId: string, brandId?: string | null) {
+/** Priced repairs for one model. Listed brands use that model's own price list. */
+export function bookingIssues(categoryId: string, brandId?: string | null, model?: string | null) {
+  if (brandId && model) {
+    const listed = listedRepairs(categoryId, brandId, model)
+    if (listed) {
+      return listed.map((repair) => ({
+        label: repair.label,
+        price: repair.price,
+        priceText: repair.priceText,
+        time: repairTime(categoryId, repair.label),
+      }))
+    }
+  }
   const priced = pricedIssues(categoryId)
-  if (categoryId === 'other' && brandId && OTHER_BRAND_ISSUES[brandId]) {
-    const allow = new Set(OTHER_BRAND_ISSUES[brandId])
-    return priced.filter((issue) => allow.has(issue.label))
-  }
-  if (categoryId === 'gaming-console' && brandId !== 'nintendo') {
-    return priced.filter((issue) => !/\(switch\)/i.test(issue.label))
-  }
+    .filter((issue) => {
+      if (categoryId === 'other' && brandId && OTHER_BRAND_ISSUES[brandId]) {
+        return new Set(OTHER_BRAND_ISSUES[brandId]).has(issue.label)
+      }
+      if (categoryId === 'gaming-console' && brandId !== 'nintendo') {
+        return !/\(switch\)/i.test(issue.label)
+      }
+      return true
+    })
+    .sort((a, b) => issueRank(a.label) - issueRank(b.label) || a.label.localeCompare(b.label))
   return priced
+}
+
+export function jobLabelsFor(categoryId: string, brandId?: string, model?: string): string[] {
+  const sample =
+    brandId && !model ? listedModelNames(categoryId, brandId)?.[0] : undefined
+  const issues =
+    brandId && (model || sample)
+      ? bookingIssues(categoryId, brandId, model || sample)
+      : pricedIssues(categoryId)
+  const names: string[] = []
+  for (const issue of issues) {
+    const name = shortJobName(issue.label)
+    if (!names.includes(name)) names.push(name)
+    if (names.length >= 8) break
+  }
+  return names
 }
 
 export type BookingSeed = {
@@ -462,7 +508,7 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
   const issueParam = params.get('issue')
   const issue =
     category && model && issueParam && isIssuableModel(model)
-      ? (bookingIssues(category.id, brand?.id).find((item) => issueSlug(item.label) === issueParam) ??
+      ? (bookingIssues(category.id, brand?.id, model).find((item) => issueSlug(item.label) === issueParam) ??
         null)
       : null
 

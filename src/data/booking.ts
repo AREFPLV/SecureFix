@@ -1,3 +1,5 @@
+import { listedModelNames } from '@/data/listedPrices'
+
 export type DeviceCategory = {
   id: string
   label: string
@@ -117,3 +119,10 @@ export const deviceCategories: DeviceCategory[] = [
     ],
   },
 ]
+
+for (const category of deviceCategories) {
+  for (const brand of category.brands) {
+    const names = listedModelNames(category.id, brand.id)
+    if (names?.length) brand.models = names
+  }
+}

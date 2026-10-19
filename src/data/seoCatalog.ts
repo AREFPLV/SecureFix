@@ -1,7 +1,7 @@
 import { deviceCategories } from '@/data/booking'
 import { accessories } from '@/data/accessories'
 import { businessServices, businessServiceRoute } from '@/data/businessServices'
-import { pricedIssues } from '@/data/issueCatalog'
+import { jobLabelsFor } from '@/data/issueCatalog'
 import { PRIVACY_ROUTE } from '@/data/privacy'
 import { localCoverage } from '@/data/localCoverage'
 import { isGenericModel, slugify } from '@/lib/slugify'
@@ -294,8 +294,8 @@ export function buildSeoCatalog(): SeoPageEntry[] {
   ]
 
   for (const category of deviceCategories) {
-    const issues = pricedIssues(category.id)
-    const issueLabels = issues.slice(0, 8).map((i) => i.label)
+    const sampleBrand = category.brands.find((brand) => !skipBrand(brand.id, brand.label))
+    const issueLabels = jobLabelsFor(category.id, sampleBrand?.id)
     const catPath = `/repair/${category.id}`
 
     // Dedicated hubs already exist for phone/computer/console — still add brand/model trees under /repair/
@@ -340,7 +340,7 @@ export function buildSeoCatalog(): SeoPageEntry[] {
           `We cover ${areas} and postcodes ${localCoverage.postcodes.join(', ')}.`,
         ],
         bullets: [
-          ...issueLabels.slice(0, 6),
+          ...jobLabelsFor(category.id, brand.id).slice(0, 6),
           ...models.slice(0, 6).map((m) => `${m} repair`),
         ],
         ctaPath: BOOKING_ROUTE,
@@ -364,7 +364,7 @@ export function buildSeoCatalog(): SeoPageEntry[] {
           description: `${model} repair in London at ${address}. Priced faults and workshop times from SecureFix.`,
           h1: `${model} Repair`,
           intro: [`${model} repairs at ${address}.`],
-          bullets: issueLabels.slice(0, 10),
+          bullets: jobLabelsFor(category.id, brand.id, model),
           ctaPath: `${BOOKING_ROUTE}?category=${category.id}&brand=${brand.id}&model=${modelSlug}`,
           ctaLabel: `Book ${model} Repair`,
           relatedPaths: [

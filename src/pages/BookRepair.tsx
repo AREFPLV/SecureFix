@@ -9,6 +9,7 @@ import {
   bookingSelectionFromQuery,
   displayIssueLabel,
   isIssuableModel,
+  issuePriceShown,
   issueSlug,
 } from '@/data/issueCatalog'
 import { slugify } from '@/lib/slugify'
@@ -48,21 +49,6 @@ const SERVICE_COPY: { id: ServiceType; icon: string; title: string; text: string
     text: 'Post the device to the shop. We repair it and send it back.',
   },
 ]
-
-function money(price: number) {
-  return `£${price.toFixed(2)}`
-}
-
-function issueRank(label: string) {
-  const lower = label.toLowerCase()
-  if (lower.includes('hdmi')) return 0
-  if (lower.includes('joystick') || lower.includes('drift')) return 1
-  if (lower.includes('screen')) return 2
-  if (lower.includes('battery')) return 3
-  if (lower.includes('charg')) return 4
-  if (lower.includes('back')) return 5
-  return 6
-}
 
 export default function BookRepair() {
   usePageSeo(bookRepairSeo)
@@ -239,9 +225,7 @@ export default function BookRepair() {
 
   const issues =
     selectedCategory && selectedModel && isIssuableModel(selectedModel)
-      ? [...bookingIssues(selectedCategory.id, selectedBrand?.id)].sort(
-          (a, b) => issueRank(a.label) - issueRank(b.label) || a.label.localeCompare(b.label),
-        )
+      ? bookingIssues(selectedCategory.id, selectedBrand?.id, selectedModel)
       : []
 
   const flowIndex = FLOW.findIndex((item) => item.key === step)
@@ -376,8 +360,8 @@ export default function BookRepair() {
               ) : (
                 <>
                   <p className="book-price-note">
-                    Prices are from the workshop list for this device type. Each repair includes a
-                    2-year warranty. Liquid damage is excluded.
+                    Prices are the workshop list for this model. Each repair includes a 2-year
+                    warranty. Liquid damage is excluded.
                   </p>
                   <div className="book-issue-list">
                     {issues.map((issue) => {
@@ -394,7 +378,7 @@ export default function BookRepair() {
                             <strong>{displayIssueLabel(issue.label)}</strong>
                             <span className="issue-time">Workshop time {issue.time}</span>
                           </span>
-                          <span className="issue-price">from {money(issue.price)}</span>
+                          <span className="issue-price">{issuePriceShown(issue)}</span>
                         </button>
                       )
                     })}
@@ -439,7 +423,9 @@ export default function BookRepair() {
                   </span>
                 )}
                 {selectedIssue?.price != null && (
-                  <span className="chip chip-price">from {money(selectedIssue.price)}</span>
+                  <span className="chip chip-price">
+                    {issuePriceShown({ price: selectedIssue.price, priceText: selectedIssue.priceText })}
+                  </span>
                 )}
               </div>
 
@@ -609,7 +595,9 @@ export default function BookRepair() {
                 {selectedIssue?.price != null && (
                   <div className="success-row">
                     <strong>Price:</strong>
-                    <span>from {money(selectedIssue.price)}</span>
+                    <span>
+                      {issuePriceShown({ price: selectedIssue.price, priceText: selectedIssue.priceText })}
+                    </span>
                   </div>
                 )}
                 <div className="success-row">

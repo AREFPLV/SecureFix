@@ -27,7 +27,7 @@ export default function RepairIssuePage({ page }: { page: IssuePage }) {
           <h1>{page.h1}</h1>
           <p className="service-landing-lead">{page.lead}</p>
           <p className="issue-price-line">
-            From £{page.priceText} · {page.time}
+            {page.priceText} · {page.time}
           </p>
           <div className="service-landing-actions">
             <Link to={page.bookingPath} className="btn btn-primary btn-shiny">
