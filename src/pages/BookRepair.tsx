@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { Link, useLocation, useSearchParams } from 'react-router-dom'
 import { site } from '@/data/content'
 import { deviceCategories, type DeviceCategory, type Brand } from '@/data/booking'
-import { type BookingDeviceCard } from '@/data/bookingDevices'
 import { isLondonPostcode, type RepairIssue } from '@/data/repairIssues'
 import {
   bookingIssues,
@@ -14,7 +13,6 @@ import {
 } from '@/data/issueCatalog'
 import { slugify } from '@/lib/slugify'
 import { createBooking } from '@/actions/createBooking'
-import DeviceBookGrid from '@/components/DeviceBookGrid'
 import FormPrivacyNote from '@/components/FormPrivacyNote'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { bookRepairSeo } from '@/data/seo'
@@ -86,10 +84,6 @@ export default function BookRepair() {
   }, [searchParams])
 
   useEffect(() => {
-    if (location.hash === '#all-devices' && step === 'device') {
-      document.getElementById('all-devices')?.scrollIntoView({ block: 'start' })
-      return
-    }
     document.querySelector('.book-main')?.scrollIntoView({ block: 'start' })
   }, [location.hash, step])
 
@@ -103,10 +97,6 @@ export default function BookRepair() {
   function withEntry(params: Record<string, string>) {
     if (searchParams.get('entry') === 'list') params.entry = 'list'
     return params
-  }
-
-  function handleDeviceCard(card: BookingDeviceCard) {
-    setSearchParams({ category: card.categoryId, brand: card.brandId })
   }
 
   function handleCategorySelect(cat: DeviceCategory) {
@@ -270,32 +260,21 @@ export default function BookRepair() {
                 Select your <span className="accent">device</span>
               </h2>
               <p className="book-price-note">
-                Choose a device to see its models and the repair prices.
+                Choose a device type to see brands, models, and repair prices.
               </p>
-              <DeviceBookGrid
-                onSelect={handleDeviceCard}
-                onOther={() =>
-                  document.getElementById('all-devices')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                }
-              />
-              <div id="all-devices">
-                <h2>
-                  Other <span className="accent">devices</span>
-                </h2>
-                <div className="book-grid">
-                  {deviceCategories.map((cat) => (
-                    <button
-                      key={cat.id}
-                      className="book-card"
-                      onClick={() => handleCategorySelect(cat)}
-                      type="button"
-                    >
-                      <span className="book-card-icon">{cat.icon}</span>
-                      <h3>{cat.label}</h3>
-                      <p>{cat.description}</p>
-                    </button>
-                  ))}
-                </div>
+              <div className="book-grid">
+                {deviceCategories.map((cat) => (
+                  <button
+                    key={cat.id}
+                    className="book-card"
+                    onClick={() => handleCategorySelect(cat)}
+                    type="button"
+                  >
+                    <span className="book-card-icon">{cat.icon}</span>
+                    <h3>{cat.label}</h3>
+                    <p>{cat.description}</p>
+                  </button>
+                ))}
               </div>
             </section>
           )}
