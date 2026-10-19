@@ -54,7 +54,7 @@ export const recyclingTopics = [
     slug: 'phone-recycling',
     title: 'Phone Recycling London | Secure Data Wipe | SecureFix',
     h1: 'Phone Recycling',
-    accent: 'London EC1V',
+    accent: 'London',
     description:
       'Secure phone recycling in London with certified data wipe. Drop off or collect near Old Street, Angel and City Road EC1V.',
     intro: [
