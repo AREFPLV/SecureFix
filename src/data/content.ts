@@ -2,6 +2,7 @@ export const BOOKING_ROUTE = '/book-repair'
 export const TRADE_IN_ROUTE = '/trade-in'
 export const ACCESSORIES_ROUTE = '/accessories'
 export const ABOUT_ROUTE = '/about'
+export const TRAINING_ROUTE = '/training-courses'
 export const RECYCLING_ROUTE = '/recycling'
 export const LIFECYCLE_ROUTE = '/lifecycle'
 export const PROCUREMENT_ROUTE = '/lifecycle/procurement'
@@ -52,6 +53,7 @@ export const navLinks = [
   { label: 'Business IT', href: '#contact', route: LIFECYCLE_ROUTE },
   { label: 'Device Recycling', href: '#contact', route: RECYCLING_ROUTE },
   { label: 'About Us', href: '#about', route: ABOUT_ROUTE },
+  { label: 'Training Courses', href: '#training', route: TRAINING_ROUTE },
 ]
 
 export const serviceCards = [

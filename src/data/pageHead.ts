@@ -9,6 +9,7 @@ import {
   recyclingSeo,
   repairServiceJsonLd,
   tradeInSeo,
+  trainingSeo,
 } from '@/data/seo'
 import { getIssuePage, getIssuePages, CANONICAL_ORIGIN } from '@/data/issueCatalog'
 import { getSeoCatalog, getSeoPageByPath, type SeoPageEntry } from '@/data/seoCatalog'
@@ -73,6 +74,7 @@ const STATIC: Record<string, PageHead> = {
   '/': headFrom(homeSeo),
   '/book-repair': headFrom(bookRepairSeo),
   '/about': headFrom(aboutSeo),
+  '/training-courses': headFrom(trainingSeo),
   '/accessories': headFrom(accessoriesSeo),
   '/recycling': headFrom(recyclingSeo),
   '/lifecycle': headFrom(lifecycleSeo),

@@ -6,6 +6,7 @@ import {
   TRADE_IN_ROUTE,
   ACCESSORIES_ROUTE,
   ABOUT_ROUTE,
+  TRAINING_ROUTE,
 } from '@/data/content'
 
 const SITE_ORIGIN = `https://${site.website}`
@@ -393,6 +394,17 @@ export const aboutSeo: PageSeoConfig = {
     'SecureFix London — specialists in phone repair, computer repair and PlayStation / PS5 repair with same-day service and a 1-year warranty.',
   path: ABOUT_ROUTE,
   keywords: repairSeoKeywords,
+  image: '/images/about-banner.png',
+  jsonLd: localBusinessJsonLd(),
+}
+
+export const trainingSeo: PageSeoConfig = {
+  title: 'Phone & Laptop Repair Training Courses London | SecureFix',
+  description:
+    'Hands-on phone, tablet and laptop repair training courses in London EC1V. Learn from SecureFix technicians at our City Road workshop.',
+  path: TRAINING_ROUTE,
+  keywords:
+    'phone repair course London, laptop repair training, mobile repair training EC1V, SecureFix training',
   image: '/images/about-banner.png',
   jsonLd: localBusinessJsonLd(),
 }

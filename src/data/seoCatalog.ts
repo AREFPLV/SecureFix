@@ -14,6 +14,7 @@ import {
   BOOKING_ROUTE,
   ACCESSORIES_ROUTE,
   ABOUT_ROUTE,
+  TRAINING_ROUTE,
   RECYCLING_ROUTE,
   LIFECYCLE_ROUTE,
   CALL_OUT_ROUTE,
@@ -207,6 +208,15 @@ export function buildSeoCatalog(): SeoPageEntry[] {
       title: 'About SecureFix | London Repair Shop',
       description: 'About SecureFix — phone, computer and console repair specialists in EC1V.',
       h1: 'About',
+      intro: [],
+    },
+    {
+      kind: 'static',
+      path: TRAINING_ROUTE,
+      title: 'Training Courses London | SecureFix',
+      description:
+        'Phone, tablet and laptop repair training courses at SecureFix London EC1V.',
+      h1: 'Training Courses',
       intro: [],
     },
     {
