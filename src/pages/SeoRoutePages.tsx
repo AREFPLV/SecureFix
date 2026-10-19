@@ -7,6 +7,7 @@ import ModelHubPage from '@/pages/ModelHubPage'
 import NotFound from '@/pages/NotFound'
 import RepairIssuePage from '@/pages/RepairIssuePage'
 import SeoEntityPage from '@/pages/SeoEntityPage'
+import RecyclingTopicPageView from '@/pages/RecyclingTopicPage'
 
 export function RepairCategoryPage() {
   const { categoryId } = useParams<{ categoryId: string }>()
@@ -64,8 +65,5 @@ export function ProductSeoPage() {
 }
 
 export function RecyclingTopicPage() {
-  const { topicSlug } = useParams<{ topicSlug: string }>()
-  const page = getSeoPageByPath(`/recycling/${topicSlug}`)
-  if (!page) return <NotFound />
-  return <SeoEntityPage page={page} />
+  return <RecyclingTopicPageView />
 }
