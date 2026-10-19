@@ -6,6 +6,7 @@ import { recyclingContent } from '@/data/recycling'
 import { recyclingTopics } from '@/data/seoCatalog'
 import { createRecyclingQuote } from '@/actions/createRecyclingQuote'
 import FormPrivacyNote from '@/components/FormPrivacyNote'
+import RecycleHeroArt from '@/components/RecycleHeroArt'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { recyclingSeo } from '@/data/seo'
 import './Recycling.css'
@@ -79,6 +80,9 @@ export default function Recycling() {
               ))}
             </div>
           </div>
+          <aside className="recycle-hero-widget" aria-label="Recycling symbol">
+            <RecycleHeroArt />
+          </aside>
         </div>
       </section>
 

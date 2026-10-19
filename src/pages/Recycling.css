@@ -1,1 +1,37 @@
-/* Styles live in src/index.css */
+/* Hero layout: copy left, animated recycle widget right (LCR-style). */
+.recycle-page .recycle-hero-inner-photo {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.15fr) minmax(15rem, 0.85fr);
+  align-items: center;
+  justify-content: initial !important;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  width: 100%;
+  min-height: clamp(520px, 72vh, 700px);
+}
+
+.recycle-page .recycle-hero-copy {
+  width: min(100%, 36rem);
+  margin: 0;
+}
+
+.recycle-page .recycle-hero-widget {
+  justify-self: end;
+}
+
+@media (max-width: 767px) {
+  .recycle-page .recycle-hero-inner-photo {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+    min-height: auto;
+    gap: 1.5rem;
+  }
+
+  .recycle-page .recycle-hero-copy {
+    width: 100%;
+  }
+
+  .recycle-page .recycle-hero-widget {
+    justify-self: center;
+    order: -1;
+  }
+}
