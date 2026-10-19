@@ -8,8 +8,8 @@ export default function BookDeviceSection() {
           Select your <span className="accent">device</span> and book a repair
         </h2>
         <p className="section-subtitle">
-          Choose the device, then the model, then the repair. Each repair shows the price from the
-          workshop list.
+          Choose the device, then the model, then the repair. Each repair shows that model's
+          workshop price.
         </p>
         <DeviceBookGrid />
       </div>

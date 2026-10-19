@@ -12,6 +12,7 @@ const CATEGORY_HINTS: { id: string; patterns: RegExp[] }[] = [
 ]
 
 const ISSUE_HINTS: { pattern: RegExp; matchers: string[] }[] = [
+  { pattern: /back cover|back glass/i, matchers: ['back cover', 'back glass'] },
   { pattern: /screen|display|cracked|glass/i, matchers: ['screen', 'glass'] },
   { pattern: /battery|drain/i, matchers: ['battery'] },
   { pattern: /charging port|won'?t charge|charge port|not charging/i, matchers: ['charging', 'charge', 'dock'] },

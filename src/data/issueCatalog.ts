@@ -146,7 +146,7 @@ export function issueSlug(label: string): string {
 
 export function displayIssueLabel(label: string): string {
   if (DISPLAY_LABELS[label]) return DISPLAY_LABELS[label]
-  if (/[a-z][A-Z]/.test(label)) {
+  if (!label.includes(' ') && /[a-z][A-Z]/.test(label)) {
     const normalized = label
       .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
       .replace(/\s+/g, ' ')

@@ -8,6 +8,17 @@ RewriteRule ^ https://securefix.uk%{REQUEST_URI} [R=301,L]
 
 RewriteRule ^book-call-out/?$ https://securefix.uk/call-out [R=301,L]
 
+# Previous price-list URLs whose model or fault slug changed.
+RewriteRule ^repair/smartphone/apple-phone/iphone-14-pro/premium-screen-replacement/?$ https://securefix.uk/repair/smartphone/apple-phone/iphone-14-pro/new-screen-replacement-oled-compatible-most-popular-premium-quality [R=301,L]
+RewriteRule ^repair/smartphone/apple-phone/iphone-14-pro/battery-replacement/?$ https://securefix.uk/repair/smartphone/apple-phone/iphone-14-pro/battery-replacement-apple-original-or-oem-quality [R=301,L]
+RewriteRule ^repair/smartphone/apple-phone/iphone-14-pro/charging-unit-repair/?$ https://securefix.uk/repair/smartphone/apple-phone/iphone-14-pro/not-charging-or-charging-port-repair-dock-replacement [R=301,L]
+RewriteRule ^repair/smartphone/google/pixel-8/back-glass-replacement/?$ https://securefix.uk/repair/smartphone/google/google-pixel-8/back-cover-replacement [R=301,L]
+RewriteRule ^repair/smartphone/google/pixel-8(/.*)?$ https://securefix.uk/repair/smartphone/google/google-pixel-8 [R=301,L]
+RewriteRule ^repair/smartphone/samsung-phone/galaxy-s24-ultra(/.*)?$ https://securefix.uk/repair/smartphone/samsung-phone [R=301,L]
+RewriteRule ^repair/smartphone/samsung-phone/galaxy-s24(/.*)?$ https://securefix.uk/repair/smartphone/samsung-phone [R=301,L]
+RewriteRule ^repair/pc-laptop/apple-mac/macbook-pro-14(/.*)?$ https://securefix.uk/repair/pc-laptop/apple-mac [R=301,L]
+RewriteRule ^repair/tablet-ipad/apple-ipad/ipad-10th(/.*)?$ https://securefix.uk/repair/tablet-ipad/apple-ipad [R=301,L]
+
 # Live Google reviews. PHP on Hostinger; the local Python server handles this path itself.
 RewriteRule ^api/reviews/?$ /api/reviews.php [L]
 
