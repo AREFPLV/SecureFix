@@ -70,7 +70,7 @@ export default function RecyclingTopicPage() {
           <div className="recycle-hero-copy">
             <p className="recycle-eyebrow">
               <Link to={RECYCLING_ROUTE} className="recycle-hero-back">
-                ← Device Recycling
+                ← Recycling
               </Link>
               {' · '}
               Secure · Compliant · Sustainable
