@@ -52,8 +52,8 @@ export const navLinks = [
   { label: 'Book Repair', href: '#contact', route: BOOKING_ROUTE },
   { label: 'Business IT', href: '#contact', route: LIFECYCLE_ROUTE },
   { label: 'Device Recycling', href: '#contact', route: RECYCLING_ROUTE },
-  { label: 'About Us', href: '#about', route: ABOUT_ROUTE },
   { label: 'Training Courses', href: '#training', route: TRAINING_ROUTE },
+  { label: 'About Us', href: '#about', route: ABOUT_ROUTE },
 ]
 
 export const serviceCards = [
