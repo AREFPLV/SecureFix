@@ -125,6 +125,7 @@ export type IssuePage = {
   h1: string
   lead: string
   blurb: string
+  outlook: string
   included: string[]
   faqs: IssueFaq[]
   breadcrumbs: Crumb[]
@@ -187,6 +188,36 @@ function blurbFor(label: string, model: string): string {
   const known = BLURBS[label]
   if (known) return known(model)
   return `${label} for the ${model} is carried out at the shop. The device is tested before handover.`
+}
+
+function outlookFor(label: string, model: string, display: string): string {
+  const lower = label.toLowerCase()
+  const fault = display.toLowerCase()
+  if (lower.includes('screen') || lower.includes('lcd') || lower.includes('display')) {
+    return `Most ${model} ${fault} jobs are completed in a single workshop visit when the matching display is ready. Picture, touch, and sensors are checked before you collect the device.`
+  }
+  if (lower.includes('battery')) {
+    return `Most ${model} battery replacements are completed the same day when the matching cell is in stock. Battery health is checked before handover.`
+  }
+  if (lower.includes('charg') || lower.includes('dock')) {
+    return `Most ${model} charging repairs are completed in one visit when the port or dock part is ready. The device is tested with a cable before collection.`
+  }
+  if (lower.includes('back') && (lower.includes('glass') || lower.includes('cover') || lower.includes('housing'))) {
+    return `Most ${model} ${fault} jobs are completed in one workshop visit when the matching cover is ready. The device is powered on and checked before handover.`
+  }
+  if (lower.includes('hdmi')) {
+    return `Most ${model} HDMI port repairs are completed in one workshop visit when the matching board or port is ready. Picture and sound are tested on a screen before collection.`
+  }
+  if (lower.includes('joystick') || lower.includes('drift')) {
+    return `Most ${model} stick drift repairs are completed in one visit when the matching stick module is ready. Both sticks are tested in the menu before handover.`
+  }
+  if (lower.includes('liquid') || lower.includes('water')) {
+    return `Liquid damage on the ${model} is assessed first so we can confirm what can be recovered. Many devices return to normal use after cleaning and parts replacement when corrosion is limited.`
+  }
+  if (lower.includes('diagnostic') || lower.includes("won't turn") || lower.includes('frozen')) {
+    return `Diagnostics for the ${model} usually identify the fault in one workshop visit. Once the cause is clear, we confirm the repair price before any parts work starts.`
+  }
+  return `Most ${model} ${fault} jobs are completed in one workshop visit when the matching part is ready. The device is tested before handover, and this repair includes a 2-year warranty. Liquid damage is excluded.`
 }
 
 export function categoryHubPath(categoryId: string): string {
@@ -254,6 +285,10 @@ function buildOne(
       question: `Is there a warranty on ${model} ${fault}?`,
       answer: `Yes. ${model} ${fault} includes a 2-year warranty. Liquid damage is excluded.`,
     },
+    {
+      question: `Can SecureFix fix ${model} ${fault}?`,
+      answer: outlookFor(issue.label, model, display),
+    },
   ]
   const breadcrumbs: Crumb[] = [
     { name: 'Home', path: '/' },
@@ -286,6 +321,7 @@ function buildOne(
     h1,
     lead,
     blurb: blurbFor(issue.label, model),
+    outlook: outlookFor(issue.label, model, display),
     included: [
       `${display} for the ${model}`,
       'A test before handover',
@@ -294,7 +330,7 @@ function buildOne(
     faqs,
     breadcrumbs,
     related,
-    bookingPath: `/book-repair?category=${category.id}&brand=${brand.id}&model=${modelSlug}&issue=${slug}`,
+    bookingPath: `${path}#book`,
     jsonLd: {
       '@context': 'https://schema.org',
       '@graph': [
@@ -494,6 +530,16 @@ export type BookingSeed = {
   model: string | null
   issue: RepairIssue | null
   step: 'device' | 'brand' | 'model' | 'issue' | 'book'
+}
+
+/** Path for the crawlable repair booking page. */
+export function repairBookingPath(
+  categoryId: string,
+  brandId: string,
+  model: string,
+  issueLabel: string,
+) {
+  return `/repair/${categoryId}/${brandId}/${slugify(model)}/${issueSlug(issueLabel)}#book`
 }
 
 export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed {
