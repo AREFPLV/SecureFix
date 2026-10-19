@@ -67,6 +67,11 @@ export default function Footer() {
           <p>
             Professional phone, laptop &amp; console repairs in London.
           </p>
+          <p className="footer-legal">
+            SECUREFIX LTD · Company number 17175693 · Registered in England and Wales
+            <br />
+            Registered office: 218 City Road, London EC1V 2PN
+          </p>
         </div>
 
         <div className="footer-links">
@@ -128,11 +133,6 @@ export default function Footer() {
         <div className="container">
           <p>
             &copy; {year} {site.name}. All rights reserved.
-          </p>
-          <p className="footer-legal">
-            SECUREFIX LTD · Company number 17175693 · Registered in England and Wales
-            <br />
-            Registered office: 218 City Road, London EC1V 2PN
           </p>
           <p className="footer-disclaimer">
             <Link to={PRIVACY_ROUTE}>Privacy policy</Link>

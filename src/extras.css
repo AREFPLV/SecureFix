@@ -142,10 +142,12 @@
   color: var(--color-accent);
 }
 
-.footer-legal {
+.footer-brand .footer-legal {
   margin-top: 0.75rem;
+  max-width: 22rem;
   color: var(--color-text-muted);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  line-height: 1.55;
 }
 
 .sitemap-tree,
