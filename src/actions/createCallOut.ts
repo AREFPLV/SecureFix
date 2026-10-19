@@ -1,5 +1,6 @@
 import { site } from '@/data/content'
 import { generateReference } from '@/actions/createBooking'
+import { REPAIR_INBOX, sendShopEmail } from '@/lib/sendShopEmail'
 
 export interface CallOutInput {
   name: string
@@ -17,12 +18,10 @@ export interface CallOutResult {
   error?: string
 }
 
-const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
-const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined
-
 function buildMessage(input: CallOutInput, reference: string): string {
   return [
     `New call-out booking received on ${site.website}`,
+    `Sent to:     ${REPAIR_INBOX}`,
     '',
     `Reference:   ${reference}`,
     `Submitted:   ${new Date().toLocaleString('en-GB')}`,
@@ -42,26 +41,12 @@ function buildMessage(input: CallOutInput, reference: string): string {
   ].join('\n')
 }
 
-/**
- * Sends a call-out booking email to the shop inbox via Web3Forms.
- * Subject is fixed to "Call Out" so requests are easy to spot.
- */
+/** Sends a call-out booking email to repair@securefix.uk. */
 export async function createCallOut(input: CallOutInput): Promise<CallOutResult> {
   const reference = generateReference()
 
-  if (!ACCESS_KEY) {
-    return {
-      ok: false,
-      reference,
-      error: 'Email is not configured. Set VITE_WEB3FORMS_ACCESS_KEY in your .env file.',
-    }
-  }
-
-  const payload = {
-    access_key: ACCESS_KEY,
-    subject: 'Call Out',
-    from_name: `${site.name} Website`,
-    replyto: input.email,
+  const sent = await sendShopEmail({
+    _subject: `Call Out ${reference} — ${input.name}`,
     booking_reference: reference,
     customer_name: input.name,
     customer_email: input.email,
@@ -70,34 +55,12 @@ export async function createCallOut(input: CallOutInput): Promise<CallOutResult>
     postcode: input.postcode,
     preferred_time: input.preferredTime,
     message: buildMessage(input, reference),
+    _replyto: input.email,
+  })
+
+  if (!sent.ok) {
+    return { ok: false, reference, error: sent.error }
   }
 
-  try {
-    const res = await fetch(WEB3FORMS_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(payload),
-    })
-
-    const data = (await res.json()) as { success?: boolean; message?: string }
-
-    if (!res.ok || !data.success) {
-      return {
-        ok: false,
-        reference,
-        error: data.message ?? 'Failed to send call-out request.',
-      }
-    }
-
-    return { ok: true, reference }
-  } catch (err) {
-    return {
-      ok: false,
-      reference,
-      error: err instanceof Error ? err.message : 'Network error while sending call-out request.',
-    }
-  }
+  return { ok: true, reference }
 }
