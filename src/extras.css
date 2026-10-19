@@ -172,50 +172,85 @@
   margin: 0;
 }
 
-.book-issue-list {
+.book-issue-grid {
   display: grid;
-  gap: 0.75rem;
-  max-width: 760px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
   margin: 0 auto 0.5rem;
 }
 
-.book-issue-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
+@media (max-width: 1100px) {
+  .book-issue-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .book-issue-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.book-issue-card {
   width: 100%;
-  text-align: left;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.45rem;
+  padding: 1.35rem 1rem 1.15rem;
+  text-align: center;
   background: var(--color-white);
   color: var(--color-primary);
   border: 2px solid transparent;
   border-radius: var(--radius);
-  padding: 0.95rem 1.15rem;
   cursor: pointer;
   font: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
 
-.book-issue-row.is-selected,
+.book-issue-card:hover,
+.book-issue-card.is-selected,
 .service-card.is-selected {
   border-color: var(--color-accent);
   box-shadow: var(--shadow-accent);
 }
 
-.book-issue-row strong {
-  display: block;
-  font-family: Montserrat, sans-serif;
-  font-size: 1rem;
+.book-issue-card:hover {
+  transform: translateY(-2px);
 }
 
-.book-issue-copy .issue-time {
-  display: block;
-  margin-top: 0.15rem;
+.book-issue-card .book-card-icon {
+  margin: 0 0 0.15rem;
+  font-size: 1.65rem;
+  line-height: 1;
+  filter: grayscale(0.15) saturate(0.85);
 }
 
-.book-issue-row .issue-price {
+.book-issue-card h3 {
   margin: 0;
-  white-space: nowrap;
-  font-size: 1.15rem;
+  font-family: Montserrat, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.25;
+  color: var(--color-primary);
+}
+
+.book-issue-card .issue-time {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.book-issue-card .issue-contact {
+  margin: 0.35rem 0 0;
+  color: var(--color-accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 .book-step-actions {
@@ -272,9 +307,8 @@
     padding-bottom: 7rem;
   }
 
-  .book-issue-row {
-    align-items: flex-start;
-    flex-direction: column;
+  .book-issue-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .book-device-grid {

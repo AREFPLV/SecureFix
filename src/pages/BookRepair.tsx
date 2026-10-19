@@ -8,7 +8,6 @@ import {
   bookingSelectionFromQuery,
   displayIssueLabel,
   isIssuableModel,
-  issuePriceShown,
   issueSlug,
 } from '@/data/issueCatalog'
 import { slugify } from '@/lib/slugify'
@@ -259,26 +258,27 @@ export default function BookRepair() {
               ) : (
                 <>
                   <p className="book-price-note">
-                    Prices are the workshop list for this model. Each repair includes a 1-year
-                    warranty. Liquid damage is excluded. Choosing a repair opens that repair&apos;s
-                    booking page.
+                    Choose the issue to fix. Each repair includes a 1-year warranty. Liquid damage is
+                    excluded. Choosing a repair opens that repair&apos;s booking page with the
+                    price.
                   </p>
-                  <div className="book-issue-list">
+                  <div className="book-issue-grid">
                     {issues.map((issue) => {
                       const selected = selectedIssue?.label === issue.label
                       return (
                         <button
                           key={issue.label}
                           type="button"
-                          className={`book-issue-row${selected ? ' is-selected' : ''}`}
+                          className={`book-card book-issue-card${selected ? ' is-selected' : ''}`}
                           aria-pressed={selected}
                           onClick={() => handleIssueSelect(issue)}
                         >
-                          <span className="book-issue-copy">
-                            <strong>{displayIssueLabel(issue.label)}</strong>
-                            <span className="issue-time">Workshop time {issue.time}</span>
+                          <span className="book-card-icon" aria-hidden="true">
+                            🔧
                           </span>
-                          <span className="issue-price">{issuePriceShown(issue)}</span>
+                          <h3>{displayIssueLabel(issue.label)}</h3>
+                          <p className="issue-time">Avg repair time: {issue.time}</p>
+                          <p className="issue-contact">Our technician will get in touch with you.</p>
                         </button>
                       )
                     })}
