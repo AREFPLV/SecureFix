@@ -56,6 +56,9 @@ export default function Recycling() {
           <div className="recycle-hero-shade" />
         </div>
         <div className="container recycle-hero-inner recycle-hero-inner-photo">
+          <aside className="recycle-hero-widget" aria-label="Recycling symbol">
+            <RecycleHeroArt />
+          </aside>
           <div className="recycle-hero-copy">
             <p className="recycle-eyebrow">Secure · Compliant · Sustainable</p>
             <h1>
@@ -80,9 +83,6 @@ export default function Recycling() {
               ))}
             </div>
           </div>
-          <aside className="recycle-hero-widget" aria-label="Recycling symbol">
-            <RecycleHeroArt />
-          </aside>
         </div>
       </section>
 
