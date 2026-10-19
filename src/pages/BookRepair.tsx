@@ -29,8 +29,11 @@ function repairBookPath(categoryId: string, brandId: string, model: string, issu
   return `/repair/${categoryId}/${brandId}/${slugify(model)}/${issueSlug(issueLabel)}#book`
 }
 
-function usesInlineBooking(model: string | null) {
-  return Boolean(model && !isIssuableModel(model))
+function usesInlineBooking(categoryId: string | null | undefined, model: string | null) {
+  if (!model) return false
+  // Other Devices has quote-only jobs and no crawlable repair pages for most models.
+  if (categoryId === 'other') return true
+  return !isIssuableModel(model)
 }
 
 export default function BookRepair() {
@@ -54,7 +57,7 @@ export default function BookRepair() {
       next.brand &&
       next.model &&
       next.issue &&
-      isIssuableModel(next.model)
+      !usesInlineBooking(next.category.id, next.model)
     ) {
       navigate(
         repairBookPath(next.category.id, next.brand.id, next.model, next.issue.label),
@@ -131,7 +134,7 @@ export default function BookRepair() {
     const catId = categoryId()
     const brandId = selectedBrand?.id ?? searchParams.get('brand')
     if (!catId || !brandId || !selectedModel) return
-    if (usesInlineBooking(selectedModel)) {
+    if (usesInlineBooking(catId, selectedModel)) {
       setSearchParams(
         withEntry({
           category: catId,
@@ -192,7 +195,7 @@ export default function BookRepair() {
 
   const flowIndex = FLOW.findIndex((item) => item.key === step)
   const showFlow = flowIndex >= 0
-  const genericBooking = usesInlineBooking(selectedModel)
+  const genericBooking = usesInlineBooking(selectedCategory?.id ?? categoryId(), selectedModel)
 
   return (
     <div className="book-page site-page">
