@@ -14,8 +14,10 @@ export default function Hero() {
             <span className="hero-line accent">Secured &amp; Fixed</span>
           </h1>
           <p className="hero-subtitle">
-            Same-day phone repair, laptop &amp; computer repair, and PS5 / PlayStation console
-            repair in London — cracked screens, batteries, HDMI ports, stick drift and more.
+            Same-day phone repair, laptop &amp; computer repair, and PlayStation (PS5) gaming
+            console repair in London
+            <br />
+            cracked screens, batteries, Charging Ports, HDMI ports, and more.
           </p>
           <div className="hero-actions">
             <a href="/book-repair" className="btn btn-primary btn-shiny">
