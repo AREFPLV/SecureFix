@@ -351,7 +351,19 @@ export default function BookRepair() {
                           type="button"
                           className={`book-issue-row${selected ? ' is-selected' : ''}`}
                           aria-pressed={selected}
-                          onClick={() => setSelectedIssue(issue)}
+                          onClick={() => {
+                            if (!selectedCategory || !selectedBrand || !selectedModel) return
+                            setSelectedIssue(issue)
+                            setSearchParams(
+                              withEntry({
+                                category: selectedCategory.id,
+                                brand: selectedBrand.id,
+                                model: slugify(selectedModel),
+                                issue: issueSlug(issue.label),
+                                view: 'book',
+                              }),
+                            )
+                          }}
                         >
                           <span className="book-issue-copy">
                             <strong>{displayIssueLabel(issue.label)}</strong>
@@ -361,27 +373,6 @@ export default function BookRepair() {
                         </button>
                       )
                     })}
-                  </div>
-                  <div className="book-step-actions">
-                    <button
-                      type="button"
-                      className="btn btn-primary"
-                      disabled={!selectedIssue}
-                      onClick={() => {
-                        if (!selectedIssue || !selectedCategory || !selectedBrand || !selectedModel) return
-                        setSearchParams(
-                          withEntry({
-                            category: selectedCategory.id,
-                            brand: selectedBrand.id,
-                            model: slugify(selectedModel),
-                            issue: issueSlug(selectedIssue.label),
-                            view: 'book',
-                          }),
-                        )
-                      }}
-                    >
-                      Next
-                    </button>
                   </div>
                 </>
               )}
