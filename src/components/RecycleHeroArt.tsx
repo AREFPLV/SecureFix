@@ -1,6 +1,6 @@
 import './RecycleHeroArt.css'
 
-/** Animated recycle mark — supplied GIF, styled to SecureFix yellow on dark. */
+/** Animated recycle mark — supplied GIF, recolored to SecureFix gold. */
 export default function RecycleHeroArt() {
   return (
     <div className="recycle-hero-art" aria-hidden="true">
