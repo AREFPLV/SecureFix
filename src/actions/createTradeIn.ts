@@ -1,5 +1,6 @@
 import { site } from '@/data/content'
 import { conditionLabels, type DeviceCondition } from '@/data/tradeIn'
+import { REPAIR_INBOX, sendShopEmail } from '@/lib/sendShopEmail'
 
 export type TradeInSellMethod = 'mail-in' | 'drop-off' | 'collection'
 
@@ -26,9 +27,6 @@ export interface TradeInResult {
   error?: string
 }
 
-const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
-const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined
-
 const SELL_METHOD_LABELS: Record<TradeInSellMethod, string> = {
   'drop-off': 'Drop Off at Store',
   collection: 'Collection',
@@ -51,6 +49,7 @@ function yesNo(value: boolean): string {
 function buildMessage(input: TradeInInput, reference: string): string {
   const lines = [
     `New trade-in request received on ${site.website}`,
+    `Sent to:     ${REPAIR_INBOX}`,
     '',
     `Reference:   ${reference}`,
     `Submitted:   ${new Date().toLocaleString('en-GB')}`,
@@ -106,26 +105,12 @@ function buildMessage(input: TradeInInput, reference: string): string {
   return lines.join('\n')
 }
 
-/**
- * Creates a trade-in request: generates a reference number and emails the full
- * details to the shop inbox via Web3Forms.
- */
+/** Creates a trade-in request and emails the details to repair@securefix.uk. */
 export async function createTradeIn(input: TradeInInput): Promise<TradeInResult> {
   const reference = generateTradeInReference()
 
-  if (!ACCESS_KEY) {
-    return {
-      ok: false,
-      reference,
-      error: 'Email is not configured. Set VITE_WEB3FORMS_ACCESS_KEY in your .env file.',
-    }
-  }
-
-  const payload = {
-    access_key: ACCESS_KEY,
-    subject: `New Trade-In Request ${reference} — ${input.name}`,
-    from_name: `${site.name} Website`,
-    replyto: input.email,
+  const sent = await sendShopEmail({
+    _subject: `New Trade-In Request ${reference} — ${input.name}`,
     trade_in_reference: reference,
     customer_name: input.name,
     customer_email: input.email,
@@ -133,35 +118,16 @@ export async function createTradeIn(input: TradeInInput): Promise<TradeInResult>
     device: `${input.category} · ${input.brand} · ${input.model}${input.storage ? ` · ${input.storage}` : ''}`,
     quote: 'Our technician will get in touch with you',
     sell_method: SELL_METHOD_LABELS[input.sellMethod],
+    tracking_number: input.trackingNumber?.trim() || undefined,
+    address: input.address,
+    postcode: input.postcode,
     message: buildMessage(input, reference),
+    _replyto: input.email,
+  })
+
+  if (!sent.ok) {
+    return { ok: false, reference, error: sent.error }
   }
 
-  try {
-    const res = await fetch(WEB3FORMS_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(payload),
-    })
-
-    const data = (await res.json()) as { success?: boolean; message?: string }
-
-    if (!res.ok || !data.success) {
-      return {
-        ok: false,
-        reference,
-        error: data.message ?? 'Failed to send trade-in email.',
-      }
-    }
-
-    return { ok: true, reference }
-  } catch (err) {
-    return {
-      ok: false,
-      reference,
-      error: err instanceof Error ? err.message : 'Network error while sending trade-in request.',
-    }
-  }
+  return { ok: true, reference }
 }

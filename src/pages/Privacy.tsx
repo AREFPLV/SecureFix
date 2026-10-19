@@ -45,9 +45,9 @@ export default function Privacy() {
           <section className="about-section">
             <h2>How the form is sent</h2>
             <p className="about-text">
-              The form is sent through Web3Forms, who act as the form handler and deliver the
-              message to SecureFix. Web3Forms receives the fields you submit so the message can be
-              delivered.
+              Repair booking, call-out, trade-in, recycling and business IT quote forms are sent
+              through FormSubmit to {site.bookingEmail}. FormSubmit receives the fields you submit
+              so the message can be delivered to SecureFix.
             </p>
           </section>
           <section className="about-section">

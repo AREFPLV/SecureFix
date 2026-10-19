@@ -1,5 +1,7 @@
-/** Inbox for repair bookings and call-out requests. */
-export const REPAIR_INBOX = 'repair@securefix.uk'
+import { site } from '@/data/content'
+
+/** Inbox for repair bookings, call-outs and other shop request forms. */
+export const REPAIR_INBOX = site.bookingEmail
 
 const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${REPAIR_INBOX}`
 
