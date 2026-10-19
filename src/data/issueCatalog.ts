@@ -564,10 +564,12 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
   const category = deviceCategories.find((item) => item.id === params.get('category')) ?? null
   const brand = category?.brands.find((item) => item.id === params.get('brand')) ?? null
   const modelParam = params.get('model')
-  const model =
+  let model =
     brand && modelParam
       ? (brand.models.find((item) => slugify(item) === modelParam) ?? null)
       : null
+  // Single-model brands (Other Brand, etc.) skip straight to issues.
+  if (!model && brand?.models.length === 1) model = brand.models[0]
   const issueParam = params.get('issue')
   const issue =
     category && model && issueParam

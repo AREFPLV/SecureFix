@@ -126,11 +126,9 @@ for (const category of deviceCategories) {
     const fallbackOther =
       brand.models.find((model) => isGenericModel(model)) ?? 'Other / Not Listed'
     const names = listedModelNames(category.id, brand.id)
-    if (names?.length) {
-      brand.models = [...names]
-      if (!brand.models.some((model) => isGenericModel(model))) {
-        brand.models.push(fallbackOther)
-      }
+    if (names?.length) brand.models = [...names]
+    if (!brand.models.some((model) => isGenericModel(model))) {
+      brand.models.push(fallbackOther)
     }
   }
 }
