@@ -40,6 +40,52 @@
   font-size: clamp(1.8rem, 4vw, 2.6rem);
 }
 
+.repair-hero-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  gap: 1.75rem 2rem;
+  align-items: start;
+  margin: 0 0 2rem;
+}
+
+.repair-hero-art {
+  margin: 0;
+  position: sticky;
+  top: calc(var(--header-height) + 0.75rem);
+}
+
+.repair-hero-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.repair-hero-art-caption {
+  margin-top: 0.65rem;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.repair-hero-copy .service-landing-actions {
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 760px) {
+  .repair-hero-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .repair-hero-art {
+    position: static;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
 .issue-price-line {
   margin: 0.5rem 0 1rem;
   color: var(--color-accent);

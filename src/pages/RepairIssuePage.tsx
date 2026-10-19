@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { site } from '@/data/content'
 import type { IssuePage } from '@/data/issueCatalog'
 import RepairBookingForm from '@/components/RepairBookingForm'
+import RepairHeroArt from '@/components/RepairHeroArt'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import './ServiceLanding.css'
 
@@ -40,20 +41,32 @@ export default function RepairIssuePage({ page }: { page: IssuePage }) {
             <span className="chip chip-accent">{page.displayLabel}</span>
             <span className="chip chip-price">{page.priceText}</span>
           </div>
-          <p className="service-landing-lead">{page.lead}</p>
-          <p className="issue-price-line">
-            {page.priceText} · {page.time}
-          </p>
-          <p className="service-landing-lead">{page.outlook}</p>
-          <p className="service-landing-lead">{page.blurb}</p>
-          <p className="service-landing-lead">Collection is available across London.</p>
-          <div className="service-landing-actions">
-            <a href="#book" className="btn btn-primary btn-shiny">
-              Choose drop-off, collection, or mail-in
-            </a>
-            <a href={`${site.phoneHref}`} className="btn btn-secondary">
-              Call {site.phone}
-            </a>
+
+          <div className="repair-hero-layout">
+            <RepairHeroArt
+              categoryId={page.categoryId}
+              brandLabel={page.brandLabel}
+              model={page.model}
+              issueLabel={page.issueLabel}
+              displayLabel={page.displayLabel}
+            />
+            <div className="repair-hero-copy">
+              <p className="service-landing-lead">{page.lead}</p>
+              <p className="issue-price-line">
+                {page.priceText} · {page.time}
+              </p>
+              <p className="service-landing-lead">{page.outlook}</p>
+              <p className="service-landing-lead">{page.blurb}</p>
+              <p className="service-landing-lead">Collection is available across London.</p>
+              <div className="service-landing-actions">
+                <a href="#book" className="btn btn-primary btn-shiny">
+                  Choose drop-off, collection, or mail-in
+                </a>
+                <a href={`${site.phoneHref}`} className="btn btn-secondary">
+                  Call {site.phone}
+                </a>
+              </div>
+            </div>
           </div>
 
           <RepairBookingForm
