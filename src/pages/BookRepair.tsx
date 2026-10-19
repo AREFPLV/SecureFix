@@ -14,13 +14,15 @@ import {
 import { slugify } from '@/lib/slugify'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { bookRepairSeo } from '@/data/seo'
+import RepairBookingForm from '@/components/RepairBookingForm'
 import './BookRepair.css'
 
-type Step = 'device' | 'brand' | 'model' | 'issue'
+type Step = 'device' | 'brand' | 'model' | 'issue' | 'book'
 
 const FLOW: { key: Step; num: number; label: string }[] = [
   { key: 'model', num: 1, label: 'Model' },
   { key: 'issue', num: 2, label: 'Issue' },
+  { key: 'book', num: 3, label: 'Book' },
 ]
 
 function repairBookPath(categoryId: string, brandId: string, model: string, issueLabel: string) {
@@ -34,7 +36,7 @@ export default function BookRepair() {
   const navigate = useNavigate()
   const seed = bookingSelectionFromQuery(searchParams)
 
-  const [step, setStep] = useState<Step>(seed.step === 'book' ? 'issue' : seed.step)
+  const [step, setStep] = useState<Step>(seed.step)
   const [selectedCategory, setSelectedCategory] = useState<DeviceCategory | null>(seed.category)
   const [selectedBrand, setSelectedBrand] = useState<Brand | null>(seed.brand)
   const [selectedModel, setSelectedModel] = useState<string | null>(seed.model)
@@ -42,7 +44,14 @@ export default function BookRepair() {
 
   useEffect(() => {
     const next = bookingSelectionFromQuery(searchParams)
-    if (next.step === 'book' && next.category && next.brand && next.model && next.issue) {
+    if (
+      next.step === 'book' &&
+      next.category &&
+      next.brand &&
+      next.model &&
+      next.issue &&
+      isIssuableModel(next.model)
+    ) {
       navigate(
         repairBookPath(next.category.id, next.brand.id, next.model, next.issue.label),
         { replace: true },
@@ -53,7 +62,7 @@ export default function BookRepair() {
     setSelectedBrand(next.brand)
     setSelectedModel(next.model)
     setSelectedIssue(next.issue)
-    setStep(next.step === 'book' ? 'issue' : next.step)
+    setStep(next.step)
   }, [searchParams, navigate])
 
   useEffect(() => {
@@ -80,12 +89,6 @@ export default function BookRepair() {
 
   function handleModelSelect(model: string) {
     if (!selectedCategory || !selectedBrand) return
-    if (!isIssuableModel(model)) {
-      setSelectedModel(model)
-      setSelectedIssue(null)
-      setStep('issue')
-      return
-    }
     setSearchParams(
       withEntry({
         category: selectedCategory.id,
@@ -97,19 +100,29 @@ export default function BookRepair() {
 
   function handleIssueSelect(issue: RepairIssue) {
     if (!selectedCategory || !selectedBrand || !selectedModel) return
+    if (!isIssuableModel(selectedModel)) {
+      setSearchParams(
+        withEntry({
+          category: selectedCategory.id,
+          brand: selectedBrand.id,
+          model: slugify(selectedModel),
+          issue: issueSlug(issue.label),
+        }),
+      )
+      return
+    }
     setSelectedIssue(issue)
     navigate(repairBookPath(selectedCategory.id, selectedBrand.id, selectedModel, issue.label))
   }
 
   function handleBack() {
     const next = new URLSearchParams(searchParams)
+    if (step === 'book') {
+      next.delete('issue')
+      setSearchParams(next, { replace: true })
+      return
+    }
     if (step === 'issue') {
-      if (!searchParams.get('model')) {
-        setSelectedModel(null)
-        setSelectedIssue(null)
-        setStep('model')
-        return
-      }
       next.delete('model')
       next.delete('issue')
       next.delete('view')
@@ -134,12 +147,13 @@ export default function BookRepair() {
   }
 
   const issues =
-    selectedCategory && selectedModel && isIssuableModel(selectedModel)
+    selectedCategory && selectedModel
       ? bookingIssues(selectedCategory.id, selectedBrand?.id, selectedModel)
       : []
 
   const flowIndex = FLOW.findIndex((item) => item.key === step)
   const showFlow = flowIndex >= 0
+  const genericBooking = Boolean(selectedModel && !isIssuableModel(selectedModel))
 
   return (
     <div className="book-page site-page">
@@ -156,13 +170,13 @@ export default function BookRepair() {
         <div className="container">
           {showFlow && (
             <div className="book-progress" aria-label="Booking steps">
-              {FLOW.map((item, index) => (
+              {FLOW.filter((item) => item.key !== 'book' || genericBooking).map((item, index, list) => (
                 <div key={item.key} className="book-progress-item">
-                  <div className={`progress-step ${flowIndex >= index ? 'active' : ''}`}>
+                  <div className={`progress-step ${flowIndex >= FLOW.indexOf(item) ? 'active' : ''}`}>
                     <span className="progress-num">{item.num}</span>
                     <span className="progress-label">{item.label}</span>
                   </div>
-                  {index < FLOW.length - 1 && <div className="progress-line" />}
+                  {index < list.length - 1 && <div className="progress-line" />}
                 </div>
               ))}
             </div>
@@ -260,8 +274,10 @@ export default function BookRepair() {
                 <>
                   <p className="book-price-note">
                     Prices are the workshop list for this model. Each repair includes a 1-year
-                    warranty. Liquid damage is excluded. Choosing a repair opens that repair&apos;s
-                    booking page.
+                    warranty. Liquid damage is excluded.
+                    {genericBooking
+                      ? ' Choosing a repair opens the booking form on this page.'
+                      : " Choosing a repair opens that repair's booking page."}
                   </p>
                   <div className="book-issue-grid">
                     {issues.map((issue) => {
@@ -288,6 +304,32 @@ export default function BookRepair() {
               )}
             </section>
           )}
+
+          {step === 'book' &&
+            selectedCategory &&
+            selectedBrand &&
+            selectedModel &&
+            selectedIssue &&
+            selectedIssue.price != null && (
+              <section className="book-step">
+                <h2>
+                  Book this <span className="accent">repair</span>
+                </h2>
+                <div className="book-summary-bar">
+                  <span className="chip">{selectedBrand.label}</span>
+                  <span className="chip chip-accent">{selectedModel}</span>
+                  <span className="chip">{displayIssueLabel(selectedIssue.label)}</span>
+                </div>
+                <RepairBookingForm
+                  categoryLabel={selectedCategory.label}
+                  brandLabel={selectedBrand.label}
+                  model={selectedModel}
+                  issueLabel={selectedIssue.label}
+                  price={selectedIssue.price}
+                  priceText={selectedIssue.priceText}
+                />
+              </section>
+            )}
         </div>
       </main>
     </div>

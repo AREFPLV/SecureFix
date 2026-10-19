@@ -544,16 +544,15 @@ export function repairBookingPath(
 
 export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed {
   const category = deviceCategories.find((item) => item.id === params.get('category')) ?? null
-  const brand =
-    category?.brands.find((item) => item.id === params.get('brand') && !skipBrand(item)) ?? null
+  const brand = category?.brands.find((item) => item.id === params.get('brand')) ?? null
   const modelParam = params.get('model')
   const model =
     brand && modelParam
-      ? (brand.models.find((item) => slugify(item) === modelParam && !isGenericModel(item)) ?? null)
+      ? (brand.models.find((item) => slugify(item) === modelParam) ?? null)
       : null
   const issueParam = params.get('issue')
   const issue =
-    category && model && issueParam && isIssuableModel(model)
+    category && model && issueParam
       ? (bookingIssues(category.id, brand?.id, model).find((item) => issueSlug(item.label) === issueParam) ??
         null)
       : null
