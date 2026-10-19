@@ -103,7 +103,7 @@ export default function RecyclingTopicPage() {
         <div className="container">
           <section className="recycle-section">
             <h2>
-              Why this recycle job is good for the <span className="accent">environment</span>
+              Why <span className="accent">recycle</span>?
             </h2>
             {topic.environment.map((para) => (
               <p key={para.slice(0, 48)} className="recycle-lead">
