@@ -9,7 +9,7 @@ export default function WhyUs() {
           Why Choose <span className="accent">{site.name}</span>?
         </h2>
         <p className="section-subtitle">
-          Phone, computer and console repairs at 218 City Road, London EC1V 2PN, with a 2-year
+          Phone, computer and console repairs at 218 City Road, London EC1V 2PN, with a 1-year
           repair warranty. Liquid damage is excluded.
         </p>
         <div className="card-grid why-grid">

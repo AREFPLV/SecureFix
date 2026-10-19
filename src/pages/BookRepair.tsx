@@ -259,7 +259,7 @@ export default function BookRepair() {
               ) : (
                 <>
                   <p className="book-price-note">
-                    Prices are the workshop list for this model. Each repair includes a 2-year
+                    Prices are the workshop list for this model. Each repair includes a 1-year
                     warranty. Liquid damage is excluded. Choosing a repair opens that repair&apos;s
                     booking page.
                   </p>

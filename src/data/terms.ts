@@ -49,7 +49,7 @@ export const termsContent = {
     {
       title: '6. Repair warranty',
       paragraphs: [
-        'All repairs at SecureFix come with a 2-year warranty. This covers defects related to the repair and the parts we install. Water damage and liquid damage are excluded. The warranty is also void if the device suffers physical damage, such as a drop, crack or impact, after the repair. It does not cover normal wear and tear or damage caused by misuse.',
+        'All repairs at SecureFix come with a 1-year warranty. This covers defects related to the repair and the parts we install. Water damage and liquid damage are excluded. The warranty is also void if the device suffers physical damage, such as a drop, crack or impact, after the repair. It does not cover normal wear and tear or damage caused by misuse.',
       ],
     },
     {

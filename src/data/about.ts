@@ -92,11 +92,11 @@ export const faqItems: FaqItem[] = [
   {
     question: 'What is your warranty policy?',
     answer:
-      'All repairs at SecureFix come with a 2-year warranty for your peace of mind. This covers defects related to the repair and parts we install. However, the warranty is void if the device suffers water damage, liquid damage, or physical damage (such as drops, cracks or impact) after the repair has been completed. The warranty also does not cover normal wear and tear or damage caused by misuse. If you have any issues within the warranty period, contact us and we\'ll be happy to help.',
+      'All repairs at SecureFix come with a 1-year warranty for your peace of mind. This covers defects related to the repair and parts we install. However, the warranty is void if the device suffers water damage, liquid damage, or physical damage (such as drops, cracks or impact) after the repair has been completed. The warranty also does not cover normal wear and tear or damage caused by misuse. If you have any issues within the warranty period, contact us and we\'ll be happy to help.',
   },
   {
     question: 'Can you repair water-damaged devices?',
     answer:
-      'Yes, we offer liquid damage diagnostics and repair. Success depends on the severity and how quickly the device is brought in. We recommend turning off the device immediately and bringing it to us as soon as possible. Please note that water-damaged devices are not covered under our standard 2-year warranty.',
+      'Yes, we offer liquid damage diagnostics and repair. Success depends on the severity and how quickly the device is brought in. We recommend turning off the device immediately and bringing it to us as soon as possible. Please note that water-damaged devices are not covered under our standard 1-year warranty.',
   },
 ]

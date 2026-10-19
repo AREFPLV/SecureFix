@@ -217,7 +217,7 @@ function outlookFor(label: string, model: string, display: string): string {
   if (lower.includes('diagnostic') || lower.includes("won't turn") || lower.includes('frozen')) {
     return `Diagnostics for the ${model} usually identify the fault in one workshop visit. Once the cause is clear, we confirm the repair price before any parts work starts.`
   }
-  return `Most ${model} ${fault} jobs are completed in one workshop visit when the matching part is ready. The device is tested before handover, and this repair includes a 2-year warranty. Liquid damage is excluded.`
+  return `Most ${model} ${fault} jobs are completed in one workshop visit when the matching part is ready. The device is tested before handover, and this repair includes a 1-year warranty. Liquid damage is excluded.`
 }
 
 export function categoryHubPath(categoryId: string): string {
@@ -248,7 +248,7 @@ function issueRank(label: string) {
 }
 
 function metaDescription(model: string, display: string, shown: string, time: string) {
-  const text = `${model} ${display.toLowerCase()} at ${shown}, usually ${time}, at 218 City Road, London EC1V. 2-year warranty, liquid damage excluded.`
+  const text = `${model} ${display.toLowerCase()} at ${shown}, usually ${time}, at 218 City Road, London EC1V. 1-year warranty, liquid damage excluded.`
   if (text.length < 140) return `${text} Collection across London.`
   return text
 }
@@ -271,7 +271,7 @@ function buildOne(
   const brandPath = `/repair/${category.id}/${brand.id}`
   const catPath = categoryHubPath(category.id)
   const fault = display.toLowerCase()
-  const lead = `${display} for the ${model} is carried out at ${SHOP_ADDRESS}, priced at ${shown}, with a workshop time of ${issue.time}, and a 2-year warranty.`
+  const lead = `${display} for the ${model} is carried out at ${SHOP_ADDRESS}, priced at ${shown}, with a workshop time of ${issue.time}, and a 1-year warranty.`
   const faqs: IssueFaq[] = [
     {
       question: `How much does ${model} ${fault} cost?`,
@@ -283,7 +283,7 @@ function buildOne(
     },
     {
       question: `Is there a warranty on ${model} ${fault}?`,
-      answer: `Yes. ${model} ${fault} includes a 2-year warranty. Liquid damage is excluded.`,
+      answer: `Yes. ${model} ${fault} includes a 1-year warranty. Liquid damage is excluded.`,
     },
     {
       question: `Can SecureFix fix ${model} ${fault}?`,
@@ -325,7 +325,7 @@ function buildOne(
     included: [
       `${display} for the ${model}`,
       'A test before handover',
-      '2-year warranty (liquid damage is excluded)',
+      '1-year warranty (liquid damage is excluded)',
     ],
     faqs,
     breadcrumbs,

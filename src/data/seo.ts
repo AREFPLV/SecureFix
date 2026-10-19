@@ -390,7 +390,7 @@ export const bookRepairSeo: PageSeoConfig = {
 export const aboutSeo: PageSeoConfig = {
   title: 'About SecureFix | London Phone, Laptop & PS5 Repair Shop',
   description:
-    'SecureFix London — specialists in phone repair, computer repair and PlayStation / PS5 repair with same-day service and a 2-year warranty.',
+    'SecureFix London — specialists in phone repair, computer repair and PlayStation / PS5 repair with same-day service and a 1-year warranty.',
   path: ABOUT_ROUTE,
   keywords: repairSeoKeywords,
   image: '/images/about-banner.png',

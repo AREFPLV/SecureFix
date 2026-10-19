@@ -82,7 +82,7 @@ const STATIC: Record<string, PageHead> = {
   '/terms': headFrom({
     title: 'Terms & Conditions | SecureFix',
     description:
-      'Terms for SECUREFIX LTD repairs, including the 2-year repair warranty. Liquid damage is excluded.',
+      'Terms for SECUREFIX LTD repairs, including the 1-year repair warranty. Liquid damage is excluded.',
     path: '/terms',
     jsonLd: localBusinessJsonLd(),
   }),
