@@ -3,11 +3,13 @@ import type { FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { site, RECYCLING_ROUTE } from '@/data/content'
 import { lifecycleContent } from '@/data/lifecycle'
+import { industrySolutions, industrySolutionRoute } from '@/data/industrySolutions'
 import { createLifecycleQuote } from '@/actions/createLifecycleQuote'
 import FormPrivacyNote from '@/components/FormPrivacyNote'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { lifecycleSeo } from '@/data/seo'
 import './Lifecycle.css'
+import './IndustrySolution.css'
 
 const emptyForm = {
   name: '',
@@ -81,6 +83,27 @@ export default function Lifecycle() {
 
       <main className="lifecycle-main">
         <div className="container">
+          <section className="lifecycle-section" aria-label="Solutions we provide">
+            <h2>
+              Solutions we <span className="accent">provide</span>
+            </h2>
+            <p className="lifecycle-solutions-intro">
+              SecureFix supports different workplaces with IT sourcing, setup, repair and lifecycle
+              management matched to how each sector actually works.
+            </p>
+            <div className="lifecycle-solution-tags">
+              {industrySolutions.map((item) => (
+                <Link
+                  key={item.slug}
+                  to={industrySolutionRoute(item.slug)}
+                  className="lifecycle-solution-tag"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </section>
+
           <section className="lifecycle-section">
             <h2>
               What We <span className="accent">Deliver</span>

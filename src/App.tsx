@@ -17,6 +17,7 @@ import NotFound from '@/pages/NotFound'
 import Recycling from '@/pages/Recycling'
 import Lifecycle from '@/pages/Lifecycle'
 import BusinessService from '@/pages/BusinessService'
+import IndustrySolutionPage from '@/pages/IndustrySolutionPage'
 import {
   PhoneRepairPage,
   ComputerRepairPage,
@@ -64,6 +65,7 @@ function AppShell() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/recycling" element={<Recycling />} />
         <Route path="/lifecycle" element={<Lifecycle />} />
+        <Route path="/lifecycle/solutions/:industrySlug" element={<IndustrySolutionPage />} />
         <Route path="/lifecycle/:serviceSlug" element={<BusinessService />} />
         <Route path="/team-chat" element={<TeamChat />} />
         <Route path="*" element={<NotFound />} />

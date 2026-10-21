@@ -1,6 +1,7 @@
 import { deviceCategories } from '@/data/booking'
 import { accessories } from '@/data/accessories'
 import { businessServices, businessServiceRoute } from '@/data/businessServices'
+import { industrySolutions, industrySolutionRoute } from '@/data/industrySolutions'
 import { jobLabelsFor } from '@/data/issueCatalog'
 import { PRIVACY_ROUTE } from '@/data/privacy'
 import { localCoverage } from '@/data/localCoverage'
@@ -29,6 +30,7 @@ export type SeoPageKind =
   | 'repair-model'
   | 'product'
   | 'business'
+  | 'industry'
   | 'recycling-topic'
 
 export type SeoPageEntry = {
@@ -430,6 +432,25 @@ export function buildSeoCatalog(): SeoPageEntry[] {
       relatedPaths: businessServices
         .filter((s) => s.slug !== service.slug)
         .map((s) => ({ label: s.cardTitle, path: businessServiceRoute(s.slug) })),
+    })
+  }
+
+  for (const industry of industrySolutions) {
+    pages.push({
+      kind: 'industry',
+      path: industrySolutionRoute(industry.slug),
+      title: industry.title,
+      description: industry.description,
+      h1: industry.h1,
+      accent: industry.accent,
+      intro: [industry.intro],
+      bullets: industry.services,
+      ctaPath: LIFECYCLE_ROUTE,
+      ctaLabel: 'Business IT Hub',
+      relatedPaths: industrySolutions
+        .filter((item) => item.slug !== industry.slug)
+        .slice(0, 8)
+        .map((item) => ({ label: item.label, path: industrySolutionRoute(item.slug) })),
     })
   }
 

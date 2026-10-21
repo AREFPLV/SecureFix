@@ -8,6 +8,7 @@ export const ROUTES = {
   training: '/training-courses',
   recycling: '/recycling',
   lifecycle: '/lifecycle',
+  industrySolutions: '/lifecycle/solutions',
 } as const
 
 export type AgentAction = { label: string; route: string }
