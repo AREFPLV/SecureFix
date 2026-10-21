@@ -18,6 +18,7 @@ import {
   TRAINING_ROUTE,
   RECYCLING_ROUTE,
   LIFECYCLE_ROUTE,
+  PROTECT_ROUTE,
   CALL_OUT_ROUTE,
   TRADE_IN_ROUTE,
   TERMS_ROUTE,
@@ -243,6 +244,15 @@ export function buildSeoCatalog(): SeoPageEntry[] {
       title: 'Business IT London | SecureFix for Business',
       description: 'Business laptop sourcing, deployment and lifecycle management in London.',
       h1: 'Business IT',
+      intro: [],
+    },
+    {
+      kind: 'static',
+      path: PROTECT_ROUTE,
+      title: 'Business Cybersecurity London | 24/7 Protect | SecureFix',
+      description:
+        '24/7 cybersecurity, antivirus and anti-malware for London businesses. Book a SecureFix Protect consultation.',
+      h1: 'Protect',
       intro: [],
     },
     {

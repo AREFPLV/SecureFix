@@ -16,6 +16,7 @@ import Privacy from '@/pages/Privacy'
 import NotFound from '@/pages/NotFound'
 import Recycling from '@/pages/Recycling'
 import Lifecycle from '@/pages/Lifecycle'
+import Protect from '@/pages/Protect'
 import BusinessService from '@/pages/BusinessService'
 import IndustrySolutionPage from '@/pages/IndustrySolutionPage'
 import {
@@ -65,6 +66,7 @@ function AppShell() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/recycling" element={<Recycling />} />
         <Route path="/lifecycle" element={<Lifecycle />} />
+        <Route path="/protect" element={<Protect />} />
         <Route path="/lifecycle/solutions/:industrySlug" element={<IndustrySolutionPage />} />
         <Route path="/lifecycle/:serviceSlug" element={<BusinessService />} />
         <Route path="/team-chat" element={<TeamChat />} />
