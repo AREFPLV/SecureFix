@@ -1,0 +1,89 @@
+/* Hero layout: copy left, animated recycle widget right (LCR-style). */
+.recycle-page .recycle-hero-inner-photo {
+  display: grid !important;
+  grid-template-columns: minmax(15rem, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  justify-content: initial !important;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  width: 100%;
+  min-height: clamp(520px, 72vh, 700px);
+}
+
+.recycle-page .recycle-hero-copy {
+  width: min(100%, 36rem);
+  max-width: 100%;
+  margin: 0;
+  justify-self: end;
+  min-width: 0;
+}
+
+.recycle-page .recycle-hero-copy h1 {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+  line-height: 1.15;
+}
+
+.recycle-page .recycle-hero-widget {
+  justify-self: start;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.recycle-page .recycle-hero-art-caption {
+  position: static;
+  transform: none;
+  margin-top: 0.65rem;
+  white-space: normal;
+  text-align: center;
+  letter-spacing: 0.1em;
+  line-height: 1.35;
+}
+
+.recycle-page .recycle-hero-back {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.recycle-page .recycle-hero-back:hover {
+  text-decoration: underline;
+}
+
+.recycle-page .recycle-topic-bullets {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.recycle-page .recycle-topic-bullets li {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: #ffffff08;
+}
+
+.recycle-page .recycle-topic-benefits {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 767px) {
+  .recycle-page .recycle-hero-inner-photo {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+    min-height: auto;
+    gap: 1.5rem;
+  }
+
+  .recycle-page .recycle-hero-copy {
+    width: 100%;
+    justify-self: stretch;
+    padding-inline: 0.15rem;
+  }
+
+  .recycle-page .recycle-hero-widget {
+    justify-self: center;
+  }
+}
