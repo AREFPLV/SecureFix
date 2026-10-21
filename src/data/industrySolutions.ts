@@ -4,6 +4,8 @@ export type IndustrySolution = {
   slug: string
   label: string
   shortLabel: string
+  icon: string
+  cardDescription: string
   title: string
   description: string
   h1: string
@@ -27,6 +29,9 @@ export const industrySolutions: IndustrySolution[] = [
     slug: 'businesses-corporate',
     label: 'Businesses & Corporate',
     shortLabel: 'Businesses & Corporate',
+    icon: '🏢',
+    cardDescription:
+      'Laptop sourcing, onboarding, repair and lifecycle support for growing companies and corporate teams.',
     title: 'Corporate & Business IT Support London | SecureFix',
     description:
       'IT support for businesses and corporate teams in London — laptop sourcing, onboarding, repair, security and lifecycle management.',
@@ -86,6 +91,9 @@ export const industrySolutions: IndustrySolution[] = [
     slug: 'schools-education',
     label: 'Schools & Education',
     shortLabel: 'Schools & Education',
+    icon: '🎓',
+    cardDescription:
+      'Classroom and staff devices, term-time repairs and secure recycling for schools and colleges.',
     title: 'School & Education IT Support London | SecureFix',
     description:
       'IT support for schools, colleges and education sites in London — classroom devices, staff laptops, repairs and secure recycling.',
@@ -145,6 +153,9 @@ export const industrySolutions: IndustrySolution[] = [
     slug: 'cafes-restaurants',
     label: 'Cafés & Restaurants',
     shortLabel: 'Cafés & Restaurants',
+    icon: '☕',
+    cardDescription:
+      'POS tablets, kitchen displays and staff devices kept running through busy service hours.',
     title: 'Café & Restaurant IT Support London | SecureFix',
     description:
       'IT support for cafés and restaurants in London — POS tablets, kitchen displays, staff devices, repairs and on-site help.',
@@ -204,6 +215,9 @@ export const industrySolutions: IndustrySolution[] = [
     slug: 'construction-sites',
     label: 'Construction Sites',
     shortLabel: 'Construction Sites',
+    icon: '🦺',
+    cardDescription:
+      'Field-ready laptops and tablets, site office setups and fast repairs for active projects.',
     title: 'Construction Site IT Support London | SecureFix',
     description:
       'IT support for construction sites and site offices in London — rugged-ready laptops, tablets, repairs and field device support.',
@@ -263,6 +277,9 @@ export const industrySolutions: IndustrySolution[] = [
     slug: 'law-firms-solicitors',
     label: 'Law Firms & Solicitors',
     shortLabel: 'Law Firms & Solicitors',
+    icon: '⚖️',
+    cardDescription:
+      'Secure encrypted setups, confidential repair handling and audit-ready device disposal.',
     title: 'Law Firm & Solicitor IT Support London | SecureFix',
     description:
       'IT support for law firms and solicitors in London — secure laptops, encryption, confidential repair and compliant device disposal.',
@@ -322,6 +339,9 @@ export const industrySolutions: IndustrySolution[] = [
     slug: 'care-homes',
     label: 'Care Homes',
     shortLabel: 'Care Homes',
+    icon: '🏡',
+    cardDescription:
+      'Reliable staff devices and nurse-station PCs with secure handling of resident data.',
     title: 'Care Home IT Support London | SecureFix',
     description:
       'IT support for care homes in London — staff devices, nurse-station PCs, secure setup, repairs and resident-data-safe recycling.',
@@ -381,6 +401,9 @@ export const industrySolutions: IndustrySolution[] = [
     slug: 'hotels-hostels',
     label: 'Hotels & Hostels',
     shortLabel: 'Hotels & Hostels',
+    icon: '🏨',
+    cardDescription:
+      'Front-desk systems, staff devices and multi-property setups for 24/7 hospitality ops.',
     title: 'Hotel & Hostel IT Support London | SecureFix',
     description:
       'IT support for hotels and hostels in London — front-desk PCs, staff devices, guest-facing tablets, repairs and multi-site setup.',
@@ -440,6 +463,9 @@ export const industrySolutions: IndustrySolution[] = [
     slug: 'airports',
     label: 'Airports',
     shortLabel: 'Airports',
+    icon: '✈️',
+    cardDescription:
+      'Ops-ready devices, rapid swap cover and secure repair for time-critical airport teams.',
     title: 'Airport IT Support London | SecureFix',
     description:
       'IT support for airport teams and operators in London — staff devices, ops laptops, secure repair and rapid replacement cover.',
@@ -499,6 +525,9 @@ export const industrySolutions: IndustrySolution[] = [
     slug: 'offices',
     label: 'Offices',
     shortLabel: 'Offices',
+    icon: '🖥️',
+    cardDescription:
+      'Standard office fleets, desk-ready deployment, repairs and secure recycling for workplaces.',
     title: 'Office IT Support London | SecureFix',
     description:
       'Office IT support in London — laptop fleets, desk setups, repairs, deployment and secure recycling for workplaces.',

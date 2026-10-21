@@ -91,14 +91,17 @@ export default function Lifecycle() {
               SecureFix supports different workplaces with IT sourcing, setup, repair and lifecycle
               management matched to how each sector actually works.
             </p>
-            <div className="lifecycle-solution-tags">
+            <div className="lifecycle-overview">
               {industrySolutions.map((item) => (
                 <Link
                   key={item.slug}
                   to={industrySolutionRoute(item.slug)}
-                  className="lifecycle-solution-tag"
+                  className="lifecycle-overview-card lifecycle-overview-card-link"
                 >
-                  {item.label}
+                  <span>{item.icon}</span>
+                  <h3>{item.label}</h3>
+                  <p>{item.cardDescription}</p>
+                  <small className="lifecycle-overview-cta">Learn more →</small>
                 </Link>
               ))}
             </div>
