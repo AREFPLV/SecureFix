@@ -10,17 +10,35 @@
 }
 
 .recycle-page .recycle-hero-copy {
-  width: min(100%, 42rem);
+  width: min(100%, 36rem);
+  max-width: 100%;
   margin: 0;
   justify-self: end;
+  min-width: 0;
 }
 
 .recycle-page .recycle-hero-copy h1 {
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+  line-height: 1.15;
 }
 
 .recycle-page .recycle-hero-widget {
   justify-self: start;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.recycle-page .recycle-hero-art-caption {
+  position: static;
+  transform: none;
+  margin-top: 0.65rem;
+  white-space: normal;
+  text-align: center;
+  letter-spacing: 0.1em;
+  line-height: 1.35;
 }
 
 .recycle-page .recycle-hero-back {
@@ -62,10 +80,7 @@
   .recycle-page .recycle-hero-copy {
     width: 100%;
     justify-self: stretch;
-  }
-
-  .recycle-page .recycle-hero-copy h1 {
-    white-space: normal;
+    padding-inline: 0.15rem;
   }
 
   .recycle-page .recycle-hero-widget {

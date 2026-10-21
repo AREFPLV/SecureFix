@@ -1,10 +1,19 @@
 .recycle-hero-art {
   position: relative;
   width: min(100%, 22rem);
-  aspect-ratio: 1;
   margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recycle-hero-art-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
   display: grid;
   place-items: center;
+  overflow: hidden;
 }
 
 .recycle-hero-art-glow {
@@ -53,16 +62,17 @@
 }
 
 .recycle-hero-art-caption {
-  position: absolute;
-  bottom: 0.35rem;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
-  white-space: nowrap;
+  position: static;
+  margin: 0.65rem 0 0;
+  padding: 0 0.25rem;
+  width: 100%;
+  white-space: normal;
+  text-align: center;
   color: #f2f2f2;
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
+  line-height: 1.35;
   text-transform: uppercase;
   text-shadow: 0 1px 10px #0009;
 }
