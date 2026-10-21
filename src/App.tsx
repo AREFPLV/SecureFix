@@ -2,6 +2,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import ScrollToTop from '@/components/ScrollToTop'
 import Header from '@/components/Header'
 import ChatAgent from '@/components/ChatAgent'
+import CookieConsent from '@/components/CookieConsent'
 import Footer from '@/components/Footer'
 import HomePage from '@/pages/HomePage'
 import BookRepair from '@/pages/BookRepair'
@@ -69,6 +70,7 @@ function AppShell() {
       </Routes>
       {!hideChrome ? <Footer /> : null}
       {!hideChrome ? <ChatAgent /> : null}
+      {!hideChrome ? <CookieConsent /> : null}
     </>
   )
 }

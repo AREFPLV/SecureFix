@@ -51,6 +51,15 @@ export default function Privacy() {
             </p>
           </section>
           <section className="about-section">
+            <h2>Cookies</h2>
+            <p className="about-text">
+              When you visit the site we ask you to accept cookies. Essential cookies and similar
+              storage keep the site working (for example remembering your cookie choice and chat
+              preferences). If you accept cookies, we may also use them to improve how the site
+              works for you. You can change your mind by clearing site data in your browser.
+            </p>
+          </section>
+          <section className="about-section">
             <h2>Access, correction and deletion</h2>
             <p className="about-text">
               To ask for access, correction or deletion of your details, email {site.email}. You can
