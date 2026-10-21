@@ -2,6 +2,7 @@ import {
   site,
   BOOKING_ROUTE,
   LIFECYCLE_ROUTE,
+  PROTECT_ROUTE,
   RECYCLING_ROUTE,
   TRADE_IN_ROUTE,
   ACCESSORIES_ROUTE,
@@ -439,6 +440,16 @@ export const accessoriesSeo: PageSeoConfig = {
   description: 'Cases, chargers, screen protectors and accessories for phones and laptops from SecureFix London.',
   path: ACCESSORIES_ROUTE,
   keywords: 'phone accessories London, laptop chargers, screen protectors',
+}
+
+export const protectSeo: PageSeoConfig = {
+  title: 'Business Cybersecurity London | 24/7 Protect | SecureFix',
+  description:
+    'SecureFix Protect — 24/7 cybersecurity, antivirus and anti-malware for London businesses. Book a consultation.',
+  path: PROTECT_ROUTE,
+  keywords:
+    'business cybersecurity London, 24/7 cyber security, antivirus for business, anti-malware London',
+  image: '/images/protect-cybersecurity-hero.jpg',
 }
 
 export { SITE_ORIGIN }

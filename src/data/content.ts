@@ -5,6 +5,7 @@ export const ABOUT_ROUTE = '/about'
 export const TRAINING_ROUTE = '/training-courses'
 export const RECYCLING_ROUTE = '/recycling'
 export const LIFECYCLE_ROUTE = '/lifecycle'
+export const PROTECT_ROUTE = '/protect'
 export const PROCUREMENT_ROUTE = '/lifecycle/procurement'
 export const TERMS_ROUTE = '/terms'
 export const CALL_OUT_ROUTE = '/call-out'
@@ -95,9 +96,9 @@ export const serviceCards = [
   {
     icon: '🛡️',
     title: 'Protect',
-    description: 'Cases, screen protectors and chargers to look after a phone or laptop after repair',
+    description: '24/7 cybersecurity with antivirus and anti-malware cover for your business',
     cta: 'More Info',
-    route: ACCESSORIES_ROUTE,
+    route: PROTECT_ROUTE,
   },
 ]
 
