@@ -213,6 +213,8 @@ export const businessServices: BusinessServiceDetail[] = [
     hero: {
       title: 'OS & Software',
       accent: 'Setup',
+      eyebrow: 'Lifecycle | OS Setup',
+      image: '/images/os-setup-hero.jpg',
       subtitle:
         'We configure Windows or macOS with the apps, accounts and policies your business needs before staff log in.',
     },
@@ -292,6 +294,8 @@ export const businessServices: BusinessServiceDetail[] = [
     hero: {
       title: 'Security &',
       accent: 'Compliance',
+      eyebrow: 'Lifecycle | Security',
+      image: '/images/security-hero.jpg',
       subtitle:
         'We help protect business devices with encryption, antivirus, updates and practical controls that support your security goals.',
     },
@@ -371,6 +375,8 @@ export const businessServices: BusinessServiceDetail[] = [
     hero: {
       title: 'Support &',
       accent: 'Maintenance',
+      eyebrow: 'Lifecycle | Support',
+      image: '/images/support-hero.jpg',
       subtitle:
         'Keep your business devices working with repair, health checks, replacements and practical ongoing support from SecureFix.',
     },
@@ -450,6 +456,8 @@ export const businessServices: BusinessServiceDetail[] = [
     hero: {
       title: 'Device Lifecycle',
       accent: 'Management',
+      eyebrow: 'Lifecycle | Full Management',
+      image: '/images/lifecycle-management-hero.jpg',
       subtitle:
         'From first purchase to secure retirement, SecureFix helps you manage business devices with less waste, less risk and clearer control.',
     },

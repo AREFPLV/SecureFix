@@ -21,7 +21,7 @@ export default function IndustrySolutionPage() {
           description: industry.description,
           path: industrySolutionRoute(industry.slug),
           keywords: industry.keywords,
-          image: '/images/business-it-hero.png',
+          image: industry.image,
           jsonLd: [
             localBusinessJsonLd(),
             {
@@ -76,10 +76,10 @@ export default function IndustrySolutionPage() {
     <div className="procurement-page industry-solution-page site-page">
       <section className="procurement-hero procurement-hero-photo procurement-hero-align-left" aria-label={industry.h1}>
         <div className="procurement-hero-media" aria-hidden="true">
-          <img src="/images/business-it-hero.png" alt="" className="procurement-hero-img" />
+          <img src={industry.image} alt="" className="procurement-hero-img" />
           <div
             className="procurement-hero-blur"
-            style={{ backgroundImage: 'url(/images/business-it-hero.png)' }}
+            style={{ backgroundImage: `url(${industry.image})` }}
           />
           <div className="procurement-hero-shade" />
         </div>
