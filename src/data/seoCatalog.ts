@@ -55,6 +55,7 @@ export const recyclingTopics = [
   {
     slug: 'phone-recycling',
     title: 'Phone Recycling London | Secure Data Wipe | SecureFix',
+    image: '/images/recycling-phone-hero.jpg',
     h1: 'Phone Recycling',
     accent: 'London',
     description:
@@ -73,6 +74,7 @@ export const recyclingTopics = [
   {
     slug: 'laptop-recycling',
     title: 'Laptop & Computer Recycling London | SecureFix',
+    image: '/images/recycling-laptop-hero.jpg',
     h1: 'Laptop & Computer Recycling',
     accent: 'Secure & Compliant',
     description:
@@ -91,6 +93,7 @@ export const recyclingTopics = [
   {
     slug: 'tablet-recycling',
     title: 'iPad & Tablet Recycling London | SecureFix',
+    image: '/images/recycling-tablet-hero.jpg',
     h1: 'iPad & Tablet Recycling',
     accent: 'Data-Safe',
     description:
@@ -103,6 +106,7 @@ export const recyclingTopics = [
   {
     slug: 'data-destruction',
     title: 'Certified Data Destruction London | SecureFix',
+    image: '/images/recycling-data-destruction-hero.jpg',
     h1: 'Certified Data Destruction',
     accent: 'Business Ready',
     description:
@@ -120,6 +124,7 @@ export const recyclingTopics = [
   {
     slug: 'it-asset-disposal',
     title: 'IT Asset Disposal London | SecureFix',
+    image: '/images/recycling-it-asset-disposal-hero.jpg',
     h1: 'IT Asset Disposal',
     accent: 'Offices & SMEs',
     description:
@@ -132,6 +137,7 @@ export const recyclingTopics = [
   {
     slug: 'hard-drive-destruction',
     title: 'Hard Drive & SSD Destruction London | SecureFix',
+    image: '/images/recycling-hard-drive-hero.jpg',
     h1: 'Hard Drive & SSD Destruction',
     accent: 'Secure Wipe',
     description:
@@ -144,6 +150,7 @@ export const recyclingTopics = [
   {
     slug: 'weee-recycling',
     title: 'WEEE Compliant Recycling London | SecureFix',
+    image: '/images/recycling-weee-hero.jpg',
     h1: 'WEEE Compliant Recycling',
     accent: 'Responsible E-Waste',
     description:
@@ -156,6 +163,7 @@ export const recyclingTopics = [
   {
     slug: 'business-it-recycling',
     title: 'Business IT Recycling & Clear-Out London | SecureFix',
+    image: '/images/recycling-business-it-hero.jpg',
     h1: 'Business IT Recycling',
     accent: 'Office Clear-Outs',
     description:

@@ -20,7 +20,7 @@ export default function RecyclingTopicPage() {
           description: topic.description,
           path: `/recycling/${topic.slug}`,
           keywords: `${topic.h1}, recycling London, e-waste, SecureFix, environment`,
-          image: '/images/recycling-hero.png',
+          image: topic.image ?? '/images/recycling-hero.png',
           jsonLd: [
             localBusinessJsonLd(),
             {
@@ -59,8 +59,17 @@ export default function RecyclingTopicPage() {
     <div className="recycle-page site-page">
       <section className="recycle-hero recycle-hero-photo" aria-label={topic.h1}>
         <div className="recycle-hero-media" aria-hidden="true">
-          <img src="/images/recycling-hero.png" alt="" className="recycle-hero-img" />
-          <div className="recycle-hero-blur" />
+          <img
+            src={topic.image ?? '/images/recycling-hero.png'}
+            alt=""
+            className="recycle-hero-img"
+          />
+          <div
+            className="recycle-hero-blur"
+            style={{
+              backgroundImage: `url(${topic.image ?? '/images/recycling-hero.png'})`,
+            }}
+          />
           <div className="recycle-hero-shade" />
         </div>
         <div className="container recycle-hero-inner recycle-hero-inner-photo">
