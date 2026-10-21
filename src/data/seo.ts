@@ -405,7 +405,7 @@ export const trainingSeo: PageSeoConfig = {
   path: TRAINING_ROUTE,
   keywords:
     'phone repair course London, laptop repair training, mobile repair training EC1V, SecureFix training',
-  image: '/images/about-banner.png',
+  image: '/images/training-courses-hero.jpg',
   jsonLd: localBusinessJsonLd(),
 }
 
