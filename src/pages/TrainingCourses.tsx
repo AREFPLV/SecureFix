@@ -4,6 +4,7 @@ import { trainingContent } from '@/data/training'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { trainingSeo } from '@/data/seo'
 import './About.css'
+import './Lifecycle.css'
 
 export default function TrainingCourses() {
   usePageSeo(trainingSeo)
@@ -15,15 +16,34 @@ export default function TrainingCourses() {
 
   return (
     <div className="about-page site-page">
-      <div className="about-hero site-hero-bg">
-        <div className="container">
-          <h1>
-            {trainingContent.heroTitle}{' '}
-            <span className="accent">{trainingContent.heroAccent}</span>
-          </h1>
-          <p>{trainingContent.heroSubtitle}</p>
+      <section className="lifecycle-hero" aria-label="SecureFix training courses">
+        <div className="lifecycle-hero-media" aria-hidden="true">
+          <img
+            src="/images/training-courses-hero.jpg"
+            alt=""
+            className="lifecycle-hero-img"
+          />
+          <div className="lifecycle-hero-blur" />
+          <div className="lifecycle-hero-shade" />
         </div>
-      </div>
+        <div className="container lifecycle-hero-inner">
+          <div className="lifecycle-hero-copy">
+            <h1>
+              {trainingContent.heroTitle}{' '}
+              <span className="accent">{trainingContent.heroAccent}</span>
+            </h1>
+            <p>{trainingContent.heroSubtitle}</p>
+            <div className="lifecycle-hero-actions">
+              <a href={`${site.phoneHref}`} className="btn btn-primary btn-shiny">
+                Enquire Now
+              </a>
+              <a href="#courses" className="btn btn-secondary">
+                View Courses
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <main className="about-main">
         <div className="container">
@@ -36,7 +56,7 @@ export default function TrainingCourses() {
             ))}
           </section>
 
-          <section className="about-section">
+          <section id="courses" className="about-section">
             <h2>
               Our <span className="accent">Courses</span>
             </h2>
