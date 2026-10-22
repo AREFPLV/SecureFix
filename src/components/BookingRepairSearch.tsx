@@ -31,9 +31,6 @@ export default function BookingRepairSearch({ onPick }: Props) {
       <label className="book-search-label" htmlFor={inputId}>
         Search your device and issue
       </label>
-      <p className="book-search-hint">
-        Type a model and fault — we will suggest the closest repair pages and services.
-      </p>
       <div className="book-search-wrap">
         <input
           id={inputId}
