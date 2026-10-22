@@ -20,15 +20,9 @@
   margin-bottom: 0.35rem;
 }
 
-.book-search-hint {
-  margin: 0 0 0.9rem;
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
-  line-height: 1.45;
-}
-
 .book-search-wrap {
   position: relative;
+  margin-top: 0.75rem;
 }
 
 .book-search-input {
