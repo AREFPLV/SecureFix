@@ -5,10 +5,12 @@ import {
   industrySolutionRoute,
   industrySolutions,
 } from '@/data/industrySolutions'
+import BusinessHeroArt from '@/components/BusinessHeroArt'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { localBusinessJsonLd } from '@/data/seo'
 import './Procurement.css'
 import './IndustrySolution.css'
+import './BusinessHeroLayout.css'
 
 export default function IndustrySolutionPage() {
   const { industrySlug } = useParams<{ industrySlug: string }>()
@@ -83,7 +85,10 @@ export default function IndustrySolutionPage() {
           />
           <div className="procurement-hero-shade" />
         </div>
-        <div className="container procurement-hero-inner procurement-hero-inner-photo">
+        <div className="container procurement-hero-inner procurement-hero-inner-photo procurement-hero-inner-widget">
+          <aside className="procurement-hero-widget business-hero-widget" aria-label="Business IT animation">
+            <BusinessHeroArt variant="industry" />
+          </aside>
           <div className="procurement-hero-copy">
             <p className="procurement-eyebrow">
               <Link to={LIFECYCLE_ROUTE} className="industry-back-link">

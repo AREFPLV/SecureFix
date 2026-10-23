@@ -2,8 +2,10 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import { site, LIFECYCLE_ROUTE } from '@/data/content'
 import { getBusinessService, businessServiceRoute } from '@/data/businessServices'
 import { getSeoPageByPath } from '@/data/seoCatalog'
+import BusinessHeroArt, { businessHeroVariantFromSlug } from '@/components/BusinessHeroArt'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import './Procurement.css'
+import './BusinessHeroLayout.css'
 
 const lifecycleApproach = [
   {
@@ -101,52 +103,62 @@ export default function BusinessService() {
           </div>
         ) : null}
 
-        <div className={`container procurement-hero-inner${photoHero ? ' procurement-hero-inner-photo' : ''}`}>
-          <div className="procurement-hero-copy">
-            <p className="procurement-eyebrow">
-              {service.hero.eyebrow || `${service.icon} SecureFix for Business`}
-            </p>
-            <h1>
-              {service.hero.title}{' '}
-              <span className="accent">{service.hero.accent}</span>
-            </h1>
-            <p>{service.hero.subtitle}</p>
-            <div className="procurement-hero-actions">
-              {photoHero ? (
-                <>
-                  <a href={`${site.phoneHref}`} className="btn btn-primary btn-shiny">
-                    Talk to an IT Specialist
-                  </a>
-                  <Link to={`${LIFECYCLE_ROUTE}#quote`} className="btn btn-secondary procurement-hero-btn-outline">
-                    Request a Quote
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <Link to={`${LIFECYCLE_ROUTE}#quote`} className="btn btn-primary btn-shiny">
-                    Request a Quote
-                  </Link>
-                  <a href={`${site.phoneHref}`} className="btn btn-secondary">
-                    Call {site.phone}
-                  </a>
-                </>
-              )}
-            </div>
-          </div>
+        <div
+          className={`container procurement-hero-inner procurement-hero-inner-widget${
+            photoHero ? ' procurement-hero-inner-photo' : ''
+          }`}
+        >
+          <aside className="procurement-hero-widget business-hero-widget" aria-label="Business IT animation">
+            <BusinessHeroArt variant={businessHeroVariantFromSlug(service.slug)} />
+          </aside>
 
-          {photoHero ? (
-            <div className="procurement-lifecycle-strip">
-              <span className="procurement-lifecycle-label">Our Full Lifecycle Approach</span>
-              <ol className="procurement-lifecycle-steps">
-                {lifecycleApproach.map((step) => (
-                  <li key={step.label}>
-                    <span className="procurement-lifecycle-icon">{step.icon}</span>
-                    <span className="procurement-lifecycle-name">{step.label}</span>
-                  </li>
-                ))}
-              </ol>
+          <div className="procurement-hero-content">
+            <div className="procurement-hero-copy">
+              <p className="procurement-eyebrow">
+                {service.hero.eyebrow || `${service.icon} SecureFix for Business`}
+              </p>
+              <h1>
+                {service.hero.title}{' '}
+                <span className="accent">{service.hero.accent}</span>
+              </h1>
+              <p>{service.hero.subtitle}</p>
+              <div className="procurement-hero-actions">
+                {photoHero ? (
+                  <>
+                    <a href={`${site.phoneHref}`} className="btn btn-primary btn-shiny">
+                      Talk to an IT Specialist
+                    </a>
+                    <Link to={`${LIFECYCLE_ROUTE}#quote`} className="btn btn-secondary procurement-hero-btn-outline">
+                      Request a Quote
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link to={`${LIFECYCLE_ROUTE}#quote`} className="btn btn-primary btn-shiny">
+                      Request a Quote
+                    </Link>
+                    <a href={`${site.phoneHref}`} className="btn btn-secondary">
+                      Call {site.phone}
+                    </a>
+                  </>
+                )}
+              </div>
             </div>
-          ) : null}
+
+            {photoHero ? (
+              <div className="procurement-lifecycle-strip">
+                <span className="procurement-lifecycle-label">Our Full Lifecycle Approach</span>
+                <ol className="procurement-lifecycle-steps">
+                  {lifecycleApproach.map((step) => (
+                    <li key={step.label}>
+                      <span className="procurement-lifecycle-icon">{step.icon}</span>
+                      <span className="procurement-lifecycle-name">{step.label}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ) : null}
+          </div>
         </div>
       </section>
 

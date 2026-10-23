@@ -1,0 +1,63 @@
+/* Shared hero layout: animated Business IT widget + copy (mirrors recycling hero). */
+
+.lifecycle-page .lifecycle-hero-inner-widget,
+.procurement-page .procurement-hero-inner-widget {
+  display: grid !important;
+  grid-template-columns: minmax(15rem, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  justify-content: initial !important;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  width: 100%;
+  min-height: clamp(520px, 72vh, 700px);
+}
+
+.lifecycle-page .lifecycle-hero-inner-widget .lifecycle-hero-copy,
+.procurement-page .procurement-hero-inner-widget .procurement-hero-copy {
+  width: min(100%, 36rem);
+  max-width: 100%;
+  margin: 0;
+  justify-self: end;
+  min-width: 0;
+}
+
+.lifecycle-page .lifecycle-hero-widget,
+.procurement-page .procurement-hero-widget {
+  justify-self: start;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.procurement-page .procurement-hero-inner-widget .procurement-hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  justify-self: end;
+  width: min(100%, 36rem);
+  min-width: 0;
+}
+
+.procurement-page .procurement-hero-inner-widget .procurement-lifecycle-strip {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .lifecycle-page .lifecycle-hero-inner-widget,
+  .procurement-page .procurement-hero-inner-widget {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+    min-height: auto;
+    gap: 1.5rem;
+  }
+
+  .lifecycle-page .lifecycle-hero-inner-widget .lifecycle-hero-copy,
+  .procurement-page .procurement-hero-inner-widget .procurement-hero-copy,
+  .procurement-page .procurement-hero-inner-widget .procurement-hero-content {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .lifecycle-page .lifecycle-hero-widget,
+  .procurement-page .procurement-hero-widget {
+    justify-self: center;
+  }
+}

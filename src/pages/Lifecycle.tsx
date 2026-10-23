@@ -6,10 +6,12 @@ import { lifecycleContent } from '@/data/lifecycle'
 import { industrySolutions, industrySolutionRoute } from '@/data/industrySolutions'
 import { createLifecycleQuote } from '@/actions/createLifecycleQuote'
 import FormPrivacyNote from '@/components/FormPrivacyNote'
+import BusinessHeroArt from '@/components/BusinessHeroArt'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { lifecycleSeo } from '@/data/seo'
 import './Lifecycle.css'
 import './IndustrySolution.css'
+import './BusinessHeroLayout.css'
 
 const emptyForm = {
   name: '',
@@ -54,7 +56,10 @@ export default function Lifecycle() {
           <div className="lifecycle-hero-blur" />
           <div className="lifecycle-hero-shade" />
         </div>
-        <div className="container lifecycle-hero-inner">
+        <div className="container lifecycle-hero-inner lifecycle-hero-inner-widget">
+          <aside className="lifecycle-hero-widget business-hero-widget" aria-label="Business IT animation">
+            <BusinessHeroArt variant="business" />
+          </aside>
           <div className="lifecycle-hero-copy">
             <h1>
               {lifecycleContent.hero.title}{' '}
