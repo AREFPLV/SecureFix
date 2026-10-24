@@ -7,6 +7,7 @@ import { industrySolutions, industrySolutionRoute } from '@/data/industrySolutio
 import { createLifecycleQuote } from '@/actions/createLifecycleQuote'
 import FormPrivacyNote from '@/components/FormPrivacyNote'
 import BusinessHeroArt from '@/components/BusinessHeroArt'
+import BusinessHeroBackdrop from '@/components/BusinessHeroBackdrop'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { lifecycleSeo } from '@/data/seo'
 import './Lifecycle.css'
@@ -47,14 +48,8 @@ export default function Lifecycle() {
   return (
     <div className="lifecycle-page site-page">
       <section className="lifecycle-hero" aria-label="SecureFix for Business">
-        <div className="lifecycle-hero-media" aria-hidden="true">
-          <img
-            src="/images/business-it-hero.png"
-            alt=""
-            className="lifecycle-hero-img"
-          />
-          <div className="lifecycle-hero-blur" />
-          <div className="lifecycle-hero-shade" />
+        <div className="lifecycle-hero-media lifecycle-hero-media-animated" aria-hidden="true">
+          <BusinessHeroBackdrop />
         </div>
         <div className="container lifecycle-hero-inner lifecycle-hero-inner-widget">
           <aside className="lifecycle-hero-widget business-hero-widget" aria-label="Business IT animation">
