@@ -1,0 +1,475 @@
+.biz-hero-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #070b12;
+  z-index: 0;
+}
+
+.biz-hero-backdrop-sky {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 70% 15%, #fbaf0026 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 15% 30%, #1b3a5e66 0%, transparent 60%),
+    linear-gradient(180deg, #0b1220 0%, #0a1018 45%, #05080e 100%);
+}
+
+.biz-hero-backdrop-aurora {
+  position: absolute;
+  width: 55%;
+  height: 70%;
+  filter: blur(48px);
+  opacity: 0.45;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.biz-hero-backdrop-aurora-a {
+  top: -10%;
+  right: 5%;
+  background: radial-gradient(circle, #fbaf0066 0%, transparent 70%);
+  animation: biz-backdrop-drift 14s ease-in-out infinite;
+}
+
+.biz-hero-backdrop-aurora-b {
+  top: 10%;
+  left: -5%;
+  background: radial-gradient(circle, #2a6fb866 0%, transparent 70%);
+  animation: biz-backdrop-drift 18s ease-in-out infinite reverse;
+}
+
+.biz-hero-backdrop-stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 18%, #ffffffaa 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 28% 42%, #ffffff77 0%, transparent 100%),
+    radial-gradient(1px 1px at 46% 22%, #fbaf00cc 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 62% 12%, #ffffff88 0%, transparent 100%),
+    radial-gradient(1px 1px at 78% 36%, #ffffff66 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 88% 20%, #fbaf00aa 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 8%, #ffffff99 0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 48%, #ffffff55 0%, transparent 100%);
+  animation: biz-backdrop-twinkle 5s ease-in-out infinite;
+}
+
+.biz-hero-backdrop-beams {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(115deg, transparent 42%, #fbaf0014 46%, transparent 50%),
+    linear-gradient(155deg, transparent 55%, #ffffff08 58%, transparent 62%);
+  animation: biz-backdrop-beam 10s ease-in-out infinite;
+}
+
+.biz-hero-backdrop-motif {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: min(58%, 420px);
+  z-index: 1;
+  overflow: visible;
+}
+
+.biz-hero-backdrop-windows rect,
+.biz-hero-backdrop-tags rect {
+  fill: #fbaf00;
+  opacity: 0.35;
+  animation: biz-backdrop-window 3.6s ease-in-out infinite;
+}
+
+.biz-hero-backdrop-windows rect:nth-child(odd),
+.biz-hero-backdrop-tags rect:nth-child(odd) {
+  animation-delay: -1.2s;
+}
+
+.biz-hero-backdrop-windows rect:nth-child(3n),
+.biz-hero-backdrop-tags rect:nth-child(3n) {
+  animation-delay: -2.1s;
+}
+
+.biz-hero-backdrop-city-glow {
+  mix-blend-mode: screen;
+  opacity: 0.7;
+}
+
+.biz-hero-backdrop-crate {
+  fill: #121925cc;
+  stroke: #fbaf0088;
+  stroke-width: 2;
+  animation: biz-backdrop-float 5s ease-in-out infinite;
+}
+
+.biz-hero-backdrop-crates .biz-hero-backdrop-crate:nth-child(odd) {
+  animation-delay: -1.6s;
+}
+
+.biz-hero-backdrop-crates .biz-hero-backdrop-crate:nth-child(3n) {
+  animation-delay: -2.8s;
+}
+
+.biz-hero-backdrop-flow,
+.biz-hero-backdrop-net path,
+.biz-hero-backdrop-circuit path,
+.biz-hero-backdrop-signal path,
+.biz-hero-backdrop-loops path,
+.biz-hero-backdrop-loops circle,
+.biz-hero-backdrop-waves ellipse,
+.biz-hero-backdrop-gears circle,
+.biz-hero-backdrop-shields path,
+.biz-hero-backdrop-locks path {
+  fill: none;
+  stroke: #fbaf00;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.55;
+}
+
+.biz-hero-backdrop-flow {
+  stroke-dasharray: 8 10;
+  animation: biz-backdrop-dash 4s linear infinite;
+}
+
+.biz-hero-backdrop-net path {
+  stroke-dasharray: 5 8;
+  animation: biz-backdrop-dash 5s linear infinite;
+}
+
+.biz-hero-backdrop-net circle,
+.biz-hero-backdrop-circuit circle,
+.biz-hero-backdrop-signal circle,
+.biz-hero-backdrop-dots circle {
+  fill: #fbaf00;
+  opacity: 0.85;
+  animation: biz-backdrop-window 2.8s ease-in-out infinite;
+}
+
+.biz-hero-backdrop-devices rect {
+  fill: #101820cc;
+  stroke: #fbaf00aa;
+  stroke-width: 2;
+  animation: biz-backdrop-float 4.5s ease-in-out infinite;
+}
+
+.biz-hero-backdrop-circuit path {
+  stroke-dasharray: 4 6;
+  animation: biz-backdrop-dash 6s linear infinite;
+}
+
+.biz-hero-backdrop-gears circle {
+  transform-origin: center;
+  animation: biz-backdrop-spin 12s linear infinite;
+}
+
+.biz-hero-backdrop-gears circle:nth-child(odd) {
+  animation-direction: reverse;
+  animation-duration: 8s;
+}
+
+.biz-hero-backdrop-shields path {
+  fill: #10182099;
+  stroke-width: 2.5;
+  animation: biz-backdrop-float 6s ease-in-out infinite;
+}
+
+.biz-hero-backdrop-locks rect {
+  fill: #101820cc;
+  stroke: #fbaf00;
+  stroke-width: 2;
+}
+
+.biz-hero-backdrop-waves ellipse {
+  stroke-width: 1.6;
+  opacity: 0.35;
+  animation: biz-backdrop-wave 4s ease-out infinite;
+  transform-origin: 720px 260px;
+}
+
+.biz-hero-backdrop-waves ellipse:nth-child(2) {
+  animation-delay: -1s;
+}
+.biz-hero-backdrop-waves ellipse:nth-child(3) {
+  animation-delay: -2s;
+}
+.biz-hero-backdrop-waves ellipse:nth-child(4) {
+  animation-delay: -3s;
+}
+
+.biz-hero-backdrop-loops circle {
+  stroke-dasharray: 10 12;
+  animation: biz-backdrop-spin 16s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.biz-hero-backdrop-loops path {
+  stroke-width: 3;
+  opacity: 0.8;
+}
+
+/* Per-service colour accents */
+.biz-hero-backdrop-procurement .biz-hero-backdrop-aurora-b {
+  background: radial-gradient(circle, #3d8bfd66 0%, transparent 70%);
+}
+.biz-hero-backdrop-deployment .biz-hero-backdrop-aurora-b {
+  background: radial-gradient(circle, #34d39966 0%, transparent 70%);
+}
+.biz-hero-backdrop-os-setup .biz-hero-backdrop-aurora-b {
+  background: radial-gradient(circle, #a78bfa66 0%, transparent 70%);
+}
+.biz-hero-backdrop-security .biz-hero-backdrop-aurora-b {
+  background: radial-gradient(circle, #f8717166 0%, transparent 70%);
+}
+.biz-hero-backdrop-support .biz-hero-backdrop-aurora-b {
+  background: radial-gradient(circle, #38bdf866 0%, transparent 70%);
+}
+.biz-hero-backdrop-lifecycle-management .biz-hero-backdrop-aurora-b {
+  background: radial-gradient(circle, #fbbf2466 0%, transparent 70%);
+}
+.biz-hero-backdrop-industry .biz-hero-backdrop-aurora-b {
+  background: radial-gradient(circle, #94a3b866 0%, transparent 70%);
+}
+
+.biz-hero-backdrop-grid {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -5%;
+  height: 48%;
+  z-index: 2;
+  background-image:
+    linear-gradient(#fbaf0033 1px, transparent 1px),
+    linear-gradient(90deg, #fbaf0033 1px, transparent 1px);
+  background-size: 48px 48px;
+  transform: perspective(420px) rotateX(62deg);
+  transform-origin: center top;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 28%, #000 75%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 28%, #000 75%, transparent 100%);
+  animation: biz-backdrop-grid 12s linear infinite;
+}
+
+.biz-hero-backdrop-scan {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    #fbaf0014 48%,
+    transparent 52%,
+    transparent 100%
+  );
+  background-size: 100% 220%;
+  animation: biz-backdrop-scan 7s linear infinite;
+  pointer-events: none;
+}
+
+.biz-hero-backdrop-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.biz-hero-backdrop-particles span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fbaf00;
+  box-shadow: 0 0 12px #fbaf00cc;
+  opacity: 0;
+  animation: biz-backdrop-particle 7s ease-in-out infinite;
+}
+
+.biz-hero-backdrop-particles span:nth-child(1) {
+  left: 12%;
+  bottom: 18%;
+  animation-delay: 0s;
+}
+.biz-hero-backdrop-particles span:nth-child(2) {
+  left: 28%;
+  bottom: 30%;
+  animation-delay: -1s;
+}
+.biz-hero-backdrop-particles span:nth-child(3) {
+  left: 44%;
+  bottom: 22%;
+  animation-delay: -2s;
+}
+.biz-hero-backdrop-particles span:nth-child(4) {
+  left: 58%;
+  bottom: 36%;
+  animation-delay: -2.8s;
+}
+.biz-hero-backdrop-particles span:nth-child(5) {
+  left: 72%;
+  bottom: 24%;
+  animation-delay: -3.5s;
+}
+.biz-hero-backdrop-particles span:nth-child(6) {
+  left: 84%;
+  bottom: 40%;
+  animation-delay: -4.2s;
+}
+.biz-hero-backdrop-particles span:nth-child(7) {
+  left: 18%;
+  bottom: 48%;
+  animation-delay: -5s;
+}
+.biz-hero-backdrop-particles span:nth-child(8) {
+  left: 66%;
+  bottom: 52%;
+  animation-delay: -5.8s;
+}
+
+.biz-hero-backdrop-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  background:
+    linear-gradient(90deg, #05080ecc 0%, #05080e66 38%, #05080e33 62%, #05080e99 100%),
+    linear-gradient(180deg, #05080e59 0%, transparent 28%, transparent 55%, #05080ef2 100%);
+  pointer-events: none;
+}
+
+@keyframes biz-backdrop-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-4%, 3%) scale(1.08);
+  }
+}
+
+@keyframes biz-backdrop-twinkle {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes biz-backdrop-beam {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(3%);
+  }
+}
+
+@keyframes biz-backdrop-grid {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 48px;
+  }
+}
+
+@keyframes biz-backdrop-scan {
+  from {
+    background-position: 0 -40%;
+  }
+  to {
+    background-position: 0 140%;
+  }
+}
+
+@keyframes biz-backdrop-window {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes biz-backdrop-particle {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.6);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-160px) scale(1.2);
+  }
+}
+
+@keyframes biz-backdrop-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes biz-backdrop-dash {
+  to {
+    stroke-dashoffset: -80;
+  }
+}
+
+@keyframes biz-backdrop-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes biz-backdrop-wave {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .biz-hero-backdrop-aurora-a,
+  .biz-hero-backdrop-aurora-b,
+  .biz-hero-backdrop-stars,
+  .biz-hero-backdrop-beams,
+  .biz-hero-backdrop-grid,
+  .biz-hero-backdrop-scan,
+  .biz-hero-backdrop-windows rect,
+  .biz-hero-backdrop-tags rect,
+  .biz-hero-backdrop-particles span,
+  .biz-hero-backdrop-crate,
+  .biz-hero-backdrop-flow,
+  .biz-hero-backdrop-net path,
+  .biz-hero-backdrop-net circle,
+  .biz-hero-backdrop-circuit path,
+  .biz-hero-backdrop-circuit circle,
+  .biz-hero-backdrop-gears circle,
+  .biz-hero-backdrop-shields path,
+  .biz-hero-backdrop-waves ellipse,
+  .biz-hero-backdrop-loops circle,
+  .biz-hero-backdrop-devices rect,
+  .biz-hero-backdrop-dots circle,
+  .biz-hero-backdrop-signal circle {
+    animation: none;
+  }
+}
