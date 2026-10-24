@@ -5,10 +5,13 @@ import {
   industrySolutionRoute,
   industrySolutions,
 } from '@/data/industrySolutions'
+import BusinessHeroArt from '@/components/BusinessHeroArt'
+import BusinessHeroBackdrop from '@/components/BusinessHeroBackdrop'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { localBusinessJsonLd } from '@/data/seo'
 import './Procurement.css'
 import './IndustrySolution.css'
+import './BusinessHeroLayout.css'
 
 export default function IndustrySolutionPage() {
   const { industrySlug } = useParams<{ industrySlug: string }>()
@@ -75,15 +78,13 @@ export default function IndustrySolutionPage() {
   return (
     <div className="procurement-page industry-solution-page site-page">
       <section className="procurement-hero procurement-hero-photo procurement-hero-align-left" aria-label={industry.h1}>
-        <div className="procurement-hero-media" aria-hidden="true">
-          <img src={industry.image} alt="" className="procurement-hero-img" />
-          <div
-            className="procurement-hero-blur"
-            style={{ backgroundImage: `url(${industry.image})` }}
-          />
-          <div className="procurement-hero-shade" />
+        <div className="procurement-hero-media procurement-hero-media-animated" aria-hidden="true">
+          <BusinessHeroBackdrop variant="industry" />
         </div>
-        <div className="container procurement-hero-inner procurement-hero-inner-photo">
+        <div className="container procurement-hero-inner procurement-hero-inner-photo procurement-hero-inner-widget">
+          <aside className="procurement-hero-widget business-hero-widget" aria-label="Business IT animation">
+            <BusinessHeroArt variant="industry" />
+          </aside>
           <div className="procurement-hero-copy">
             <p className="procurement-eyebrow">
               <Link to={LIFECYCLE_ROUTE} className="industry-back-link">

@@ -15,6 +15,7 @@ import { slugify } from '@/lib/slugify'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { bookRepairSeo } from '@/data/seo'
 import RepairBookingForm from '@/components/RepairBookingForm'
+import BookingRepairSearch from '@/components/BookingRepairSearch'
 import './BookRepair.css'
 
 type Step = 'device' | 'brand' | 'model' | 'issue' | 'book'
@@ -204,12 +205,17 @@ export default function BookRepair() {
           <h1>
             <span className="accent">Book</span> Your Repair
           </h1>
-          <p>Select your device, the model, and the repair. Each repair opens its own booking page.</p>
+          <p>
+            Search your device and issue, or select the type below. Matching repairs open their own
+            booking page.
+          </p>
         </div>
       </div>
 
       <main className="book-main">
         <div className="container">
+          <BookingRepairSearch />
+
           {showFlow && (
             <div className="book-progress" aria-label="Booking steps">
               {FLOW.filter((item) => item.key !== 'book' || genericBooking).map((item, index, list) => (
