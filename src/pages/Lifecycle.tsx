@@ -49,7 +49,7 @@ export default function Lifecycle() {
     <div className="lifecycle-page site-page">
       <section className="lifecycle-hero" aria-label="SecureFix for Business">
         <div className="lifecycle-hero-media lifecycle-hero-media-animated" aria-hidden="true">
-          <BusinessHeroBackdrop />
+          <BusinessHeroBackdrop variant="business" />
         </div>
         <div className="container lifecycle-hero-inner lifecycle-hero-inner-widget">
           <aside className="lifecycle-hero-widget business-hero-widget" aria-label="Business IT animation">

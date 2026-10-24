@@ -3,6 +3,7 @@ import { site, LIFECYCLE_ROUTE } from '@/data/content'
 import { getBusinessService, businessServiceRoute } from '@/data/businessServices'
 import { getSeoPageByPath } from '@/data/seoCatalog'
 import BusinessHeroArt, { businessHeroVariantFromSlug } from '@/components/BusinessHeroArt'
+import BusinessHeroBackdrop from '@/components/BusinessHeroBackdrop'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import './Procurement.css'
 import './BusinessHeroLayout.css'
@@ -81,35 +82,21 @@ export default function BusinessService() {
     return <Navigate to={LIFECYCLE_ROUTE} replace />
   }
 
-  const photoHero = Boolean(service.hero.image)
-  const heroAlign = service.hero.align === 'right' ? 'right' : 'left'
+  const heroVariant = businessHeroVariantFromSlug(service.slug)
 
   return (
     <div className="procurement-page site-page">
       <section
-        className={`procurement-hero${photoHero ? ' procurement-hero-photo' : ' site-hero-bg'}${
-          photoHero ? ` procurement-hero-align-${heroAlign}` : ''
-        }`}
+        className="procurement-hero procurement-hero-photo procurement-hero-align-left"
         aria-label={service.cardTitle}
       >
-        {service.hero.image ? (
-          <div className="procurement-hero-media" aria-hidden="true">
-            <img src={service.hero.image} alt="" className="procurement-hero-img" />
-            <div
-              className="procurement-hero-blur"
-              style={{ backgroundImage: `url(${service.hero.image})` }}
-            />
-            <div className="procurement-hero-shade" />
-          </div>
-        ) : null}
+        <div className="procurement-hero-media procurement-hero-media-animated" aria-hidden="true">
+          <BusinessHeroBackdrop variant={heroVariant} />
+        </div>
 
-        <div
-          className={`container procurement-hero-inner procurement-hero-inner-widget${
-            photoHero ? ' procurement-hero-inner-photo' : ''
-          }`}
-        >
+        <div className="container procurement-hero-inner procurement-hero-inner-photo procurement-hero-inner-widget">
           <aside className="procurement-hero-widget business-hero-widget" aria-label="Business IT animation">
-            <BusinessHeroArt variant={businessHeroVariantFromSlug(service.slug)} />
+            <BusinessHeroArt variant={heroVariant} />
           </aside>
 
           <div className="procurement-hero-content">
@@ -123,41 +110,26 @@ export default function BusinessService() {
               </h1>
               <p>{service.hero.subtitle}</p>
               <div className="procurement-hero-actions">
-                {photoHero ? (
-                  <>
-                    <a href={`${site.phoneHref}`} className="btn btn-primary btn-shiny">
-                      Talk to an IT Specialist
-                    </a>
-                    <Link to={`${LIFECYCLE_ROUTE}#quote`} className="btn btn-secondary procurement-hero-btn-outline">
-                      Request a Quote
-                    </Link>
-                  </>
-                ) : (
-                  <>
-                    <Link to={`${LIFECYCLE_ROUTE}#quote`} className="btn btn-primary btn-shiny">
-                      Request a Quote
-                    </Link>
-                    <a href={`${site.phoneHref}`} className="btn btn-secondary">
-                      Call {site.phone}
-                    </a>
-                  </>
-                )}
+                <a href={`${site.phoneHref}`} className="btn btn-primary btn-shiny">
+                  Talk to an IT Specialist
+                </a>
+                <Link to={`${LIFECYCLE_ROUTE}#quote`} className="btn btn-secondary procurement-hero-btn-outline">
+                  Request a Quote
+                </Link>
               </div>
             </div>
 
-            {photoHero ? (
-              <div className="procurement-lifecycle-strip">
-                <span className="procurement-lifecycle-label">Our Full Lifecycle Approach</span>
-                <ol className="procurement-lifecycle-steps">
-                  {lifecycleApproach.map((step) => (
-                    <li key={step.label}>
-                      <span className="procurement-lifecycle-icon">{step.icon}</span>
-                      <span className="procurement-lifecycle-name">{step.label}</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            ) : null}
+            <div className="procurement-lifecycle-strip">
+              <span className="procurement-lifecycle-label">Our Full Lifecycle Approach</span>
+              <ol className="procurement-lifecycle-steps">
+                {lifecycleApproach.map((step) => (
+                  <li key={step.label}>
+                    <span className="procurement-lifecycle-icon">{step.icon}</span>
+                    <span className="procurement-lifecycle-name">{step.label}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         </div>
       </section>

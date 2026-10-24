@@ -63,7 +63,7 @@
   animation: biz-backdrop-beam 10s ease-in-out infinite;
 }
 
-.biz-hero-backdrop-city {
+.biz-hero-backdrop-motif {
   position: absolute;
   left: 0;
   right: 0;
@@ -71,25 +71,167 @@
   width: 100%;
   height: min(58%, 420px);
   z-index: 1;
+  overflow: visible;
 }
 
-.biz-hero-backdrop-windows rect {
+.biz-hero-backdrop-windows rect,
+.biz-hero-backdrop-tags rect {
   fill: #fbaf00;
   opacity: 0.35;
   animation: biz-backdrop-window 3.6s ease-in-out infinite;
 }
 
-.biz-hero-backdrop-windows rect:nth-child(odd) {
+.biz-hero-backdrop-windows rect:nth-child(odd),
+.biz-hero-backdrop-tags rect:nth-child(odd) {
   animation-delay: -1.2s;
 }
 
-.biz-hero-backdrop-windows rect:nth-child(3n) {
+.biz-hero-backdrop-windows rect:nth-child(3n),
+.biz-hero-backdrop-tags rect:nth-child(3n) {
   animation-delay: -2.1s;
 }
 
 .biz-hero-backdrop-city-glow {
   mix-blend-mode: screen;
   opacity: 0.7;
+}
+
+.biz-hero-backdrop-crate {
+  fill: #121925cc;
+  stroke: #fbaf0088;
+  stroke-width: 2;
+  animation: biz-backdrop-float 5s ease-in-out infinite;
+}
+
+.biz-hero-backdrop-crates .biz-hero-backdrop-crate:nth-child(odd) {
+  animation-delay: -1.6s;
+}
+
+.biz-hero-backdrop-crates .biz-hero-backdrop-crate:nth-child(3n) {
+  animation-delay: -2.8s;
+}
+
+.biz-hero-backdrop-flow,
+.biz-hero-backdrop-net path,
+.biz-hero-backdrop-circuit path,
+.biz-hero-backdrop-signal path,
+.biz-hero-backdrop-loops path,
+.biz-hero-backdrop-loops circle,
+.biz-hero-backdrop-waves ellipse,
+.biz-hero-backdrop-gears circle,
+.biz-hero-backdrop-shields path,
+.biz-hero-backdrop-locks path {
+  fill: none;
+  stroke: #fbaf00;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.55;
+}
+
+.biz-hero-backdrop-flow {
+  stroke-dasharray: 8 10;
+  animation: biz-backdrop-dash 4s linear infinite;
+}
+
+.biz-hero-backdrop-net path {
+  stroke-dasharray: 5 8;
+  animation: biz-backdrop-dash 5s linear infinite;
+}
+
+.biz-hero-backdrop-net circle,
+.biz-hero-backdrop-circuit circle,
+.biz-hero-backdrop-signal circle,
+.biz-hero-backdrop-dots circle {
+  fill: #fbaf00;
+  opacity: 0.85;
+  animation: biz-backdrop-window 2.8s ease-in-out infinite;
+}
+
+.biz-hero-backdrop-devices rect {
+  fill: #101820cc;
+  stroke: #fbaf00aa;
+  stroke-width: 2;
+  animation: biz-backdrop-float 4.5s ease-in-out infinite;
+}
+
+.biz-hero-backdrop-circuit path {
+  stroke-dasharray: 4 6;
+  animation: biz-backdrop-dash 6s linear infinite;
+}
+
+.biz-hero-backdrop-gears circle {
+  transform-origin: center;
+  animation: biz-backdrop-spin 12s linear infinite;
+}
+
+.biz-hero-backdrop-gears circle:nth-child(odd) {
+  animation-direction: reverse;
+  animation-duration: 8s;
+}
+
+.biz-hero-backdrop-shields path {
+  fill: #10182099;
+  stroke-width: 2.5;
+  animation: biz-backdrop-float 6s ease-in-out infinite;
+}
+
+.biz-hero-backdrop-locks rect {
+  fill: #101820cc;
+  stroke: #fbaf00;
+  stroke-width: 2;
+}
+
+.biz-hero-backdrop-waves ellipse {
+  stroke-width: 1.6;
+  opacity: 0.35;
+  animation: biz-backdrop-wave 4s ease-out infinite;
+  transform-origin: 720px 260px;
+}
+
+.biz-hero-backdrop-waves ellipse:nth-child(2) {
+  animation-delay: -1s;
+}
+.biz-hero-backdrop-waves ellipse:nth-child(3) {
+  animation-delay: -2s;
+}
+.biz-hero-backdrop-waves ellipse:nth-child(4) {
+  animation-delay: -3s;
+}
+
+.biz-hero-backdrop-loops circle {
+  stroke-dasharray: 10 12;
+  animation: biz-backdrop-spin 16s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.biz-hero-backdrop-loops path {
+  stroke-width: 3;
+  opacity: 0.8;
+}
+
+/* Per-service colour accents */
+.biz-hero-backdrop-procurement .biz-hero-backdrop-aurora-b {
+  background: radial-gradient(circle, #3d8bfd66 0%, transparent 70%);
+}
+.biz-hero-backdrop-deployment .biz-hero-backdrop-aurora-b {
+  background: radial-gradient(circle, #34d39966 0%, transparent 70%);
+}
+.biz-hero-backdrop-os-setup .biz-hero-backdrop-aurora-b {
+  background: radial-gradient(circle, #a78bfa66 0%, transparent 70%);
+}
+.biz-hero-backdrop-security .biz-hero-backdrop-aurora-b {
+  background: radial-gradient(circle, #f8717166 0%, transparent 70%);
+}
+.biz-hero-backdrop-support .biz-hero-backdrop-aurora-b {
+  background: radial-gradient(circle, #38bdf866 0%, transparent 70%);
+}
+.biz-hero-backdrop-lifecycle-management .biz-hero-backdrop-aurora-b {
+  background: radial-gradient(circle, #fbbf2466 0%, transparent 70%);
+}
+.biz-hero-backdrop-industry .biz-hero-backdrop-aurora-b {
+  background: radial-gradient(circle, #94a3b866 0%, transparent 70%);
 }
 
 .biz-hero-backdrop-grid {
@@ -269,6 +411,42 @@
   }
 }
 
+@keyframes biz-backdrop-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes biz-backdrop-dash {
+  to {
+    stroke-dashoffset: -80;
+  }
+}
+
+@keyframes biz-backdrop-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes biz-backdrop-wave {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .biz-hero-backdrop-aurora-a,
   .biz-hero-backdrop-aurora-b,
@@ -277,7 +455,21 @@
   .biz-hero-backdrop-grid,
   .biz-hero-backdrop-scan,
   .biz-hero-backdrop-windows rect,
-  .biz-hero-backdrop-particles span {
+  .biz-hero-backdrop-tags rect,
+  .biz-hero-backdrop-particles span,
+  .biz-hero-backdrop-crate,
+  .biz-hero-backdrop-flow,
+  .biz-hero-backdrop-net path,
+  .biz-hero-backdrop-net circle,
+  .biz-hero-backdrop-circuit path,
+  .biz-hero-backdrop-circuit circle,
+  .biz-hero-backdrop-gears circle,
+  .biz-hero-backdrop-shields path,
+  .biz-hero-backdrop-waves ellipse,
+  .biz-hero-backdrop-loops circle,
+  .biz-hero-backdrop-devices rect,
+  .biz-hero-backdrop-dots circle,
+  .biz-hero-backdrop-signal circle {
     animation: none;
   }
 }
