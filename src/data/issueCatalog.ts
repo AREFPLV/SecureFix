@@ -570,6 +570,156 @@ function withQuoteText(issue: RepairIssue): RepairIssue & { price: number | null
   return { ...issue, priceText: 'Quote on inspection' }
 }
 
+/** Fixed smartphone picker tiles — only the repairs from the booking reference image. */
+export const SMARTPHONE_PICKER_SLOTS = [
+  'Front Screen',
+  'Back Glass',
+  'Charging Dock',
+  'Battery Replacement',
+  'Other Fault',
+  'Ear Speaker',
+  'Dead Condition',
+  'Front Camera',
+  'Back Camera',
+  'Housing Replacement',
+  'Rear Camera Lens',
+] as const
+
+export type SmartphonePickerSlot = (typeof SMARTPHONE_PICKER_SLOTS)[number]
+
+type PickerIssue = RepairIssue & { cardTitle: SmartphonePickerSlot }
+
+function matchSmartphoneSlot(label: string, slot: SmartphonePickerSlot): boolean {
+  const lower = label.toLowerCase()
+  switch (slot) {
+    case 'Front Screen':
+      return (
+        (lower.includes('screen') || lower.includes('lcd') || lower.includes('oled')) &&
+        !lower.includes('battery') &&
+        !lower.includes('back glass') &&
+        !lower.includes('inner') &&
+        !lower.includes('outer')
+      )
+    case 'Back Glass':
+      return (
+        (lower.includes('back glass') || lower.includes('backglass')) &&
+        !lower.includes('housing') &&
+        !lower.includes('full body') &&
+        !lower.includes('screen')
+      )
+    case 'Charging Dock':
+      return lower.includes('charg') || lower.includes('dock')
+    case 'Battery Replacement':
+      return lower.includes('battery') && !lower.includes('screen')
+    case 'Other Fault':
+      return (
+        lower.includes('frozen') ||
+        lower.includes('diagnostic') ||
+        lower.includes("i don't know") ||
+        lower.includes('other fault')
+      )
+    case 'Ear Speaker':
+      return (
+        lower.includes('loudspeaker') ||
+        lower.includes('ear speaker') ||
+        lower.includes('earpiece') ||
+        ((lower.includes('speaker') || lower.includes('audio')) && !lower.includes('mic'))
+      )
+    case 'Dead Condition':
+      return (
+        lower.includes("won't turn") ||
+        lower.includes('wont turn') ||
+        lower.includes('dead') ||
+        lower.includes('power button') ||
+        lower.includes('no power')
+      )
+    case 'Front Camera':
+      return lower.includes('front camera') || lower.includes('face id')
+    case 'Back Camera':
+      return (
+        (lower.includes('rear') || lower.includes('back')) &&
+        lower.includes('camera') &&
+        !lower.includes('lens') &&
+        !lower.includes('glass lens')
+      )
+    case 'Housing Replacement':
+      return lower.includes('housing') || lower.includes('full body') || lower.includes('bent')
+    case 'Rear Camera Lens':
+      return lower.includes('lens')
+    default:
+      return false
+  }
+}
+
+const SLOT_FALLBACKS: Record<SmartphonePickerSlot, string> = {
+  'Front Screen': 'Premium Screen Replacement',
+  'Back Glass': 'BackGlass Replacement',
+  'Charging Dock': 'Charging Unit Repair',
+  'Battery Replacement': 'Battery Replacement',
+  'Other Fault': 'Diagnostics',
+  'Ear Speaker': 'Audio Repair',
+  'Dead Condition': 'Power/Volume Button',
+  'Front Camera': 'Front Camera Replacement',
+  'Back Camera': 'Rear Camera Replacement',
+  'Housing Replacement': 'BackGlass Replacement',
+  'Rear Camera Lens': 'Camera Lens Glass Repair',
+}
+
+function pickBestMatch(
+  repairs: RepairIssue[],
+  slot: SmartphonePickerSlot,
+): RepairIssue | undefined {
+  const matches = repairs.filter((repair) => matchSmartphoneSlot(repair.label, slot))
+  if (!matches.length) return undefined
+  // Prefer a concrete price, then the shortest/most specific label.
+  return [...matches].sort((a, b) => {
+    const ap = typeof a.price === 'number' ? 0 : 1
+    const bp = typeof b.price === 'number' ? 0 : 1
+    if (ap !== bp) return ap - bp
+    return a.label.length - b.label.length
+  })[0]
+}
+
+/**
+ * Smartphone booking tiles: exactly the 11 reference repairs.
+ * Maps each tile to the closest listed/catalog job for pricing and booking.
+ */
+export function smartphonePickerIssues(
+  brandId?: string | null,
+  model?: string | null,
+): PickerIssue[] {
+  const listed =
+    brandId && model && !isGenericModel(model)
+      ? listedRepairs('smartphone', brandId, model)
+      : null
+
+  const pool: RepairIssue[] = listed?.length
+    ? listed.map((repair) => ({
+        label: repair.label,
+        price: repair.price,
+        priceText: repair.priceText,
+        time: repairTime('smartphone', repair.label),
+      }))
+    : (issuesByCategory.smartphone ?? []).map(withQuoteText)
+
+  return SMARTPHONE_PICKER_SLOTS.map((slot) => {
+    const matched = pickBestMatch(pool, slot)
+    if (matched) {
+      return { ...matched, cardTitle: slot }
+    }
+
+    const fallbackLabel = SLOT_FALLBACKS[slot]
+    const catalog = (issuesByCategory.smartphone ?? []).find((issue) => issue.label === fallbackLabel)
+    return {
+      label: catalog?.label ?? fallbackLabel,
+      price: catalog?.price ?? null,
+      priceText: catalog?.priceText ?? (catalog?.price == null ? 'Quote on inspection' : undefined),
+      time: catalog?.time ?? repairTime('smartphone', fallbackLabel),
+      cardTitle: slot,
+    }
+  })
+}
+
 /** Repairs for one model. Listed brands use that model's price list; generic/other fall back to category issues (including quote-only jobs). */
 export function bookingIssues(categoryId: string, brandId?: string | null, model?: string | null) {
   if (brandId && model && !isGenericModel(model)) {

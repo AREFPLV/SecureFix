@@ -20,10 +20,20 @@ function Icon({ children }: { children: ReactNode }) {
 export function repairIssueIcon(label: string): ReactNode {
   const key = label.toLowerCase()
 
+  if (key === 'front screen' || key.includes('premium screen') || key.includes('front screen')) {
+    return (
+      <Icon>
+        <rect x="14" y="6" width="20" height="36" rx="3" {...stroke} />
+        <path d="M18 14l12 8M20 28l10-6M17 22l14 4" {...stroke} />
+      </Icon>
+    )
+  }
+
   if (
-    key.includes('premium screen') ||
-    key.includes('front screen') ||
-    (key.includes('screen') && !key.includes('switch') && !key.includes('outer') && !key.includes('inner'))
+    (key.includes('screen') || key.includes('lcd') || key.includes('oled')) &&
+    !key.includes('switch') &&
+    !key.includes('outer') &&
+    !key.includes('inner')
   ) {
     return (
       <Icon>

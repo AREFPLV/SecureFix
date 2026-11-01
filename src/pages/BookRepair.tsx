@@ -4,7 +4,6 @@ import { site } from '@/data/content'
 import { deviceCategories, type DeviceCategory, type Brand } from '@/data/booking'
 import { type RepairIssue } from '@/data/repairIssues'
 import {
-  bookingCardLabel,
   bookingIssues,
   bookingSelectionFromQuery,
   displayIssueLabel,
@@ -12,6 +11,7 @@ import {
   issueBlurb,
   issuePriceShown,
   issueSlug,
+  smartphonePickerIssues,
 } from '@/data/issueCatalog'
 import { slugify } from '@/lib/slugify'
 import { usePageSeo } from '@/hooks/usePageSeo'
@@ -22,6 +22,7 @@ import { repairIssueIcon } from '@/components/RepairIssueIcons'
 import './BookRepair.css'
 
 type Step = 'device' | 'brand' | 'model' | 'issue' | 'book'
+type SelectableIssue = RepairIssue & { cardTitle?: string }
 
 const FLOW: { key: Step; num: number; label: string }[] = [
   { key: 'model', num: 1, label: 'Model' },
@@ -51,7 +52,7 @@ export default function BookRepair() {
   const [selectedCategory, setSelectedCategory] = useState<DeviceCategory | null>(seed.category)
   const [selectedBrand, setSelectedBrand] = useState<Brand | null>(seed.brand)
   const [selectedModel, setSelectedModel] = useState<string | null>(seed.model)
-  const [selectedIssue, setSelectedIssue] = useState<RepairIssue | null>(seed.issue)
+  const [selectedIssue, setSelectedIssue] = useState<SelectableIssue | null>(seed.issue)
 
   useEffect(() => {
     const next = bookingSelectionFromQuery(searchParams)
@@ -134,7 +135,7 @@ export default function BookRepair() {
     )
   }
 
-  function handleIssueSelect(issue: RepairIssue) {
+  function handleIssueSelect(issue: SelectableIssue) {
     // First click selects the card and reveals the description panel below.
     setSelectedIssue(issue)
     requestAnimationFrame(() => {
@@ -200,9 +201,11 @@ export default function BookRepair() {
     }
   }
 
-  const issues =
+  const issues: SelectableIssue[] =
     selectedCategory && selectedModel
-      ? bookingIssues(selectedCategory.id, selectedBrand?.id, selectedModel)
+      ? selectedCategory.id === 'smartphone'
+        ? smartphonePickerIssues(selectedBrand?.id, selectedModel)
+        : bookingIssues(selectedCategory.id, selectedBrand?.id, selectedModel)
       : []
 
   const flowIndex = FLOW.findIndex((item) => item.key === step)
@@ -347,9 +350,9 @@ export default function BookRepair() {
                           onClick={() => handleIssueSelect(issue)}
                         >
                           <span className="book-card-icon" aria-hidden="true">
-                            {repairIssueIcon(issue.label)}
+                            {repairIssueIcon(issue.cardTitle ?? issue.label)}
                           </span>
-                          <h3>{bookingCardLabel(issue.label)}</h3>
+                          <h3>{issue.cardTitle ?? displayIssueLabel(issue.label)}</h3>
                         </button>
                       )
                     })}
@@ -358,7 +361,7 @@ export default function BookRepair() {
                   {selectedIssue && selectedModel ? (
                     <div className="book-issue-detail" id="issue-detail">
                       <div className="book-issue-detail-head">
-                        <h3>{bookingCardLabel(selectedIssue.label)}</h3>
+                        <h3>{selectedIssue.cardTitle ?? displayIssueLabel(selectedIssue.label)}</h3>
                         <p className="book-issue-detail-meta">
                           <span>{issuePriceShown(selectedIssue)}</span>
                           <span>Workshop time {selectedIssue.time}</span>
