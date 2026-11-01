@@ -71,7 +71,7 @@ export function getScreenGradeOptions(base: {
       id: 'genuine',
       title: 'Genuine Apple',
       tag: 'Genuine',
-      description: 'Genuine Apple display part. Best colour accuracy and Face ID compatibility.',
+      description: 'Genuine Apple display part. Best colour accuracy and closest match to the original screen.',
       label: 'Genuine Apple Screen Replacement',
       ...genuine,
     },
