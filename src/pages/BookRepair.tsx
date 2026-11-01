@@ -4,10 +4,12 @@ import { site } from '@/data/content'
 import { deviceCategories, type DeviceCategory, type Brand } from '@/data/booking'
 import { type RepairIssue } from '@/data/repairIssues'
 import {
+  bookingCardLabel,
   bookingIssues,
   bookingSelectionFromQuery,
   displayIssueLabel,
   isIssuableModel,
+  issueBlurb,
   issuePriceShown,
   issueSlug,
 } from '@/data/issueCatalog'
@@ -16,6 +18,7 @@ import { usePageSeo } from '@/hooks/usePageSeo'
 import { bookRepairSeo } from '@/data/seo'
 import RepairBookingForm from '@/components/RepairBookingForm'
 import BookingRepairSearch from '@/components/BookingRepairSearch'
+import { repairIssueIcon } from '@/components/RepairIssueIcons'
 import './BookRepair.css'
 
 type Step = 'device' | 'brand' | 'model' | 'issue' | 'book'
@@ -132,6 +135,15 @@ export default function BookRepair() {
   }
 
   function handleIssueSelect(issue: RepairIssue) {
+    // First click selects the card and reveals the description panel below.
+    setSelectedIssue(issue)
+    requestAnimationFrame(() => {
+      document.getElementById('issue-detail')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+    })
+  }
+
+  function handleIssueContinue() {
+    if (!selectedIssue) return
     const catId = categoryId()
     const brandId = selectedBrand?.id ?? searchParams.get('brand')
     if (!catId || !brandId || !selectedModel) return
@@ -141,13 +153,12 @@ export default function BookRepair() {
           category: catId,
           brand: brandId,
           model: slugify(selectedModel),
-          issue: issueSlug(issue.label),
+          issue: issueSlug(selectedIssue.label),
         }),
       )
       return
     }
-    setSelectedIssue(issue)
-    navigate(repairBookPath(catId, brandId, selectedModel, issue.label))
+    navigate(repairBookPath(catId, brandId, selectedModel, selectedIssue.label))
   }
 
   function handleBack() {
@@ -321,11 +332,8 @@ export default function BookRepair() {
               ) : (
                 <>
                   <p className="book-price-note">
-                    Prices are the workshop list for this model. Each repair includes a 1-year
-                    warranty. Liquid damage is excluded.
-                    {genericBooking
-                      ? ' Choosing a repair opens the booking form on this page.'
-                      : " Choosing a repair opens that repair's booking page."}
+                    Choose a repair to see what is included. Each repair includes a 1-year warranty.
+                    Liquid damage is excluded.
                   </p>
                   <div className="book-issue-grid">
                     {issues.map((issue) => {
@@ -339,15 +347,37 @@ export default function BookRepair() {
                           onClick={() => handleIssueSelect(issue)}
                         >
                           <span className="book-card-icon" aria-hidden="true">
-                            🔧
+                            {repairIssueIcon(issue.label)}
                           </span>
-                          <h3>{displayIssueLabel(issue.label)}</h3>
-                          <p className="issue-time">Workshop time {issue.time}</p>
-                          <p className="issue-price">{issuePriceShown(issue)}</p>
+                          <h3>{bookingCardLabel(issue.label)}</h3>
                         </button>
                       )
                     })}
                   </div>
+
+                  {selectedIssue && selectedModel ? (
+                    <div className="book-issue-detail" id="issue-detail">
+                      <div className="book-issue-detail-head">
+                        <h3>{bookingCardLabel(selectedIssue.label)}</h3>
+                        <p className="book-issue-detail-meta">
+                          <span>{issuePriceShown(selectedIssue)}</span>
+                          <span>Workshop time {selectedIssue.time}</span>
+                        </p>
+                      </div>
+                      <p className="book-issue-detail-copy">
+                        {issueBlurb(selectedIssue.label, selectedModel)}
+                      </p>
+                      <div className="book-issue-detail-actions">
+                        <button
+                          type="button"
+                          className="btn btn-primary btn-shiny"
+                          onClick={handleIssueContinue}
+                        >
+                          Continue to book
+                        </button>
+                      </div>
+                    </div>
+                  ) : null}
                 </>
               )}
             </section>

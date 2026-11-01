@@ -15,6 +15,22 @@ const DISPLAY_LABELS: Record<string, string> = {
   'BackGlass Replacement': 'Back glass replacement',
 }
 
+/** Short card titles used on the booking issue picker (smartphone-style tiles). */
+const BOOKING_CARD_LABELS: Record<string, string> = {
+  'Premium Screen Replacement': 'Front Screen',
+  'BackGlass Replacement': 'Back Glass',
+  'Charging Unit Repair': 'Charging Dock',
+  'Camera Lens Glass Repair': 'Rear Camera Lens',
+  'Front Camera Replacement': 'Front Camera',
+  'Rear Camera Replacement': 'Back Camera',
+  'Audio Repair': 'Ear Speaker',
+  'Power/Volume Button': 'Dead Condition',
+  Diagnostics: 'Other Fault',
+  'Mic Replacement': 'Microphone',
+  'IC Replacement': 'Board / IC Repair',
+  'Liquid Diagnostics': 'Liquid Damage',
+}
+
 const BLURBS: Record<string, (model: string) => string> = {
   'Premium Screen Replacement': (model) =>
     `The display assembly on the ${model} is replaced. Face ID or the fingerprint sensor is checked afterwards, and the phone is returned powered on.`,
@@ -157,6 +173,12 @@ export function displayIssueLabel(label: string): string {
   return label
 }
 
+/** Compact label for booking issue tiles (matches the smartphone picker reference). */
+export function bookingCardLabel(label: string): string {
+  if (BOOKING_CARD_LABELS[label]) return BOOKING_CARD_LABELS[label]
+  return displayIssueLabel(label)
+}
+
 export function isIssuableModel(label: string): boolean {
   return !NOT_ISSUABLE_SLUGS.has(slugify(label)) && !isGenericModel(label)
 }
@@ -190,6 +212,11 @@ function blurbFor(label: string, model: string): string {
   const known = BLURBS[label]
   if (known) return known(model)
   return `${label} for the ${model} is carried out at the shop. The device is tested before handover.`
+}
+
+/** Short repair description shown under the selected issue card on booking. */
+export function issueBlurb(label: string, model: string): string {
+  return blurbFor(label, model)
 }
 
 function outlookFor(label: string, model: string, display: string): string {
