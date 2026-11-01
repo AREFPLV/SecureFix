@@ -20,6 +20,17 @@ const DISPLAY_LABELS: Record<string, string> = {
   'Genuine Apple Screen Replacement': 'GENUINE APPLE',
   'Premium Battery Replacement': 'Premium Battery',
   'Genuine Apple Battery Replacement': 'Genuine Apple Battery',
+  'Won’t Turn On (Diagnostics) – I Don’t Know': "Won't turn on / Dead condition",
+  "Won't Turn On (Diagnostics) – I Don't Know": "Won't turn on / Dead condition",
+  'Not Charging or Charging Port Repair / Dock Replacement': 'Charging dock repair',
+  'Frozen Phone (Nothing Works) Quick Fixing': 'Frozen phone / Other fault',
+  'Loudspeaker / Audio Issue Repair / Replacement [Genuine / OEM]': 'Ear speaker / Audio repair',
+  'Front Camera and Face ID Fixing / Replacement': 'Front camera repair',
+  'Whole Rear Back New Camera Replacement [Genuine / OEM]': 'Back camera repair',
+  'Back / Rear Camera Glass Lens Replacement': 'Rear camera lens repair',
+  'Back Glass, Bent and Full Body Replacement (Housing Solution)': 'Housing replacement',
+  'Back Glass Replacement (Compatible / OEM)': 'Back glass replacement',
+  'Battery Replacement (Apple Original or OEM Quality)': 'Battery replacement',
 }
 
 /** Short card titles used on the booking issue picker (smartphone-style tiles). */
@@ -758,17 +769,34 @@ function matchSmartphoneSlot(label: string, slot: SmartphonePickerSlot): boolean
         (lower.includes('back glass') || lower.includes('backglass')) &&
         !lower.includes('housing') &&
         !lower.includes('full body') &&
-        !lower.includes('screen')
+        !lower.includes('screen') &&
+        !lower.includes('bent')
       )
     case 'Charging Dock':
-      return lower.includes('charg') || lower.includes('dock')
+      // Prefer real charging-port jobs; never mic/dock-only lines.
+      return (
+        (lower.includes('charg') || lower.includes('charging port') || lower.includes('not charging')) &&
+        !lower.includes('microphone') &&
+        !lower.includes('mic ')
+      )
     case 'Battery Replacement':
-      return lower.includes('battery') && !lower.includes('screen')
+      return (
+        lower.includes('battery') &&
+        !lower.includes('screen') &&
+        !lower.includes('deal') &&
+        !lower.includes('and new battery')
+      )
     case 'Other Fault':
       return (
         lower.includes('frozen') ||
-        lower.includes('diagnostic') ||
-        lower.includes("i don't know") ||
+        lower.includes('overheating') ||
+        lower.includes('bluetooth') ||
+        lower.includes('wifi') ||
+        lower.includes('wi-fi') ||
+        lower.includes('gps') ||
+        lower.includes('liquid') ||
+        lower.includes('water') ||
+        lower.includes('software') ||
         lower.includes('other fault')
       )
     case 'Ear Speaker':
@@ -776,29 +804,44 @@ function matchSmartphoneSlot(label: string, slot: SmartphonePickerSlot): boolean
         lower.includes('loudspeaker') ||
         lower.includes('ear speaker') ||
         lower.includes('earpiece') ||
-        ((lower.includes('speaker') || lower.includes('audio')) && !lower.includes('mic'))
+        ((lower.includes('speaker') || lower.includes('audio')) &&
+          !lower.includes('mic') &&
+          !lower.includes('microphone'))
       )
     case 'Dead Condition':
+      // Dead / no-power diagnostics only — never volume/power button jobs.
       return (
-        lower.includes("won't turn") ||
-        lower.includes('wont turn') ||
-        lower.includes('dead') ||
-        lower.includes('power button') ||
-        lower.includes('no power')
+        (lower.includes("won't turn") ||
+          lower.includes('wont turn') ||
+          lower.includes('won’t turn') ||
+          lower.includes('no power') ||
+          (lower.includes('dead') && !lower.includes('pixel'))) &&
+        !lower.includes('volume') &&
+        !lower.includes('button') &&
+        !lower.includes('sides')
       )
     case 'Front Camera':
-      return lower.includes('front camera') || lower.includes('face id')
+      return (
+        (lower.includes('front camera') || lower.includes('face id')) &&
+        !lower.includes('rear') &&
+        !lower.includes('back camera')
+      )
     case 'Back Camera':
       return (
         (lower.includes('rear') || lower.includes('back')) &&
         lower.includes('camera') &&
         !lower.includes('lens') &&
-        !lower.includes('glass lens')
+        !lower.includes('glass lens') &&
+        !lower.includes('front')
       )
     case 'Housing Replacement':
-      return lower.includes('housing') || lower.includes('full body') || lower.includes('bent')
+      return (
+        lower.includes('housing') ||
+        lower.includes('full body') ||
+        (lower.includes('bent') && lower.includes('back'))
+      )
     case 'Rear Camera Lens':
-      return lower.includes('lens')
+      return lower.includes('lens') && (lower.includes('camera') || lower.includes('rear') || lower.includes('back'))
     default:
       return false
   }
@@ -811,7 +854,7 @@ const SLOT_FALLBACKS: Record<SmartphonePickerSlot, string> = {
   'Battery Replacement': 'Battery Replacement',
   'Other Fault': 'Diagnostics',
   'Ear Speaker': 'Audio Repair',
-  'Dead Condition': 'Power/Volume Button',
+  'Dead Condition': 'Diagnostics',
   'Front Camera': 'Front Camera Replacement',
   'Back Camera': 'Rear Camera Replacement',
   'Housing Replacement': 'BackGlass Replacement',
@@ -828,19 +871,52 @@ function screenMatchRank(label: string): number {
   return 3
 }
 
+function slotMatchRank(slot: SmartphonePickerSlot, label: string): number {
+  const lower = label.toLowerCase()
+  switch (slot) {
+    case 'Front Screen':
+      return screenMatchRank(label)
+    case 'Charging Dock':
+      if (lower.includes('not charging') || lower.includes('charging port')) return 0
+      if (lower.includes('charg')) return 1
+      return 2
+    case 'Dead Condition':
+      if (lower.includes("won't turn") || lower.includes('wont turn') || lower.includes('won’t turn')) return 0
+      if (lower.includes('no power') || lower.includes('dead')) return 1
+      return 2
+    case 'Other Fault':
+      if (lower.includes('frozen')) return 0
+      if (lower.includes('liquid') || lower.includes('water')) return 1
+      if (lower.includes('software')) return 2
+      return 3
+    case 'Back Glass':
+      if (lower.includes('back glass replacement') && !lower.includes('bent')) return 0
+      return 1
+    case 'Back Camera':
+      if (lower.includes('whole rear') || lower.includes('rear camera replacement')) return 0
+      return 1
+    case 'Rear Camera Lens':
+      if (lower.includes('lens') && lower.includes('glass')) return 0
+      return 1
+    case 'Housing Replacement':
+      if (lower.includes('housing') || lower.includes('full body')) return 0
+      return 1
+    default:
+      return 0
+  }
+}
+
 function pickBestMatch(
   repairs: RepairIssue[],
   slot: SmartphonePickerSlot,
 ): RepairIssue | undefined {
   const matches = repairs.filter((repair) => matchSmartphoneSlot(repair.label, slot))
   if (!matches.length) return undefined
-  // Prefer Soft OLED / Premium screen lines, then a concrete price, then shorter labels.
+  // Prefer the most specific job for the slot, then a concrete price, then shorter labels.
   return [...matches].sort((a, b) => {
-    if (slot === 'Front Screen') {
-      const ar = screenMatchRank(a.label)
-      const br = screenMatchRank(b.label)
-      if (ar !== br) return ar - br
-    }
+    const ar = slotMatchRank(slot, a.label)
+    const br = slotMatchRank(slot, b.label)
+    if (ar !== br) return ar - br
     const ap = typeof a.price === 'number' ? 0 : 1
     const bp = typeof b.price === 'number' ? 0 : 1
     if (ap !== bp) return ap - bp
