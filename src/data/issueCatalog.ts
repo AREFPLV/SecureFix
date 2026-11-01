@@ -25,6 +25,7 @@ const DISPLAY_LABELS: Record<string, string> = {
   'Not Charging or Charging Port Repair / Dock Replacement': 'Charging dock repair',
   'Frozen Phone (Nothing Works) Quick Fixing': 'Frozen phone / Other fault',
   'Other Fault Diagnostics': 'Other Fault',
+  'Dead Condition Diagnostics': 'Dead Condition',
   'Loudspeaker / Audio Issue Repair / Replacement [Genuine / OEM]': 'Ear speaker / Audio repair',
   'Front Camera and Face ID Fixing / Replacement': 'Front camera repair',
   'Whole Rear Back New Camera Replacement [Genuine / OEM]': 'Back camera repair',
@@ -173,11 +174,23 @@ export type IssuePage = {
 }
 
 export const OTHER_FAULT_LABEL = 'Other Fault Diagnostics'
+export const DEAD_CONDITION_LABEL = 'Dead Condition Diagnostics'
 
 export function isOtherFaultIssue(issue: { cardTitle?: string; label: string }): boolean {
   if (issue.cardTitle === 'Other Fault') return true
   const lower = issue.label.toLowerCase()
   return lower.includes('other fault')
+}
+
+export function isDeadConditionIssue(issue: { cardTitle?: string; label: string }): boolean {
+  if (issue.cardTitle === 'Dead Condition') return true
+  const lower = issue.label.toLowerCase()
+  return lower.includes('dead condition')
+}
+
+/** Quote-only diagnostic bookings: no fixed price; customer describes the fault. */
+export function isQuoteDiagnosticIssue(issue: { cardTitle?: string; label: string }): boolean {
+  return isOtherFaultIssue(issue) || isDeadConditionIssue(issue)
 }
 
 export function issueSlug(label: string): string {
@@ -476,7 +489,7 @@ function buildOne(
   const modelSlug = slugify(model)
   const slug = issueSlug(issue.label)
   const display = displayIssueLabel(issue.label)
-  const quoteOnly = issue.price == null || isOtherFaultIssue(issue)
+  const quoteOnly = issue.price == null || isQuoteDiagnosticIssue(issue)
   const shown = quoteOnly ? 'Quote after diagnostics' : issuePriceShown(issue)
   const path = `/repair/${category.id}/${brand.id}/${modelSlug}/${slug}`
   const canonical = `${CANONICAL_ORIGIN}${path}`
@@ -486,12 +499,12 @@ function buildOne(
   const catPath = categoryHubPath(category.id)
   const fault = display.toLowerCase()
   const lead = quoteOnly
-    ? `Describe the ${model} fault in as much detail as you can. After a full diagnostic, a SecureFix technician will call you back with the findings and a repair quote.`
+    ? `Describe the ${model} ${fault} in as much detail as you can. After a full diagnostic, a SecureFix technician will call you back with the findings and a repair quote.`
     : `${display} for the ${model} is carried out at ${SHOP_ADDRESS}, priced at ${shown}, with a workshop time of ${issue.time}, and a 1-year warranty.`
   const faqs: IssueFaq[] = quoteOnly
     ? [
         {
-          question: `How much does ${model} other fault repair cost?`,
+          question: `How much does ${model} ${fault} cost?`,
           answer: `Pricing is confirmed after a full diagnostic. A technician will call you back with the quote before any parts work starts.`,
         },
         {
@@ -503,7 +516,7 @@ function buildOne(
           answer: `Yes. After the full diagnostic, a SecureFix technician will call you back to explain the findings and the repair options.`,
         },
         {
-          question: `Can SecureFix investigate ${model} other faults?`,
+          question: `Can SecureFix investigate ${model} ${fault}?`,
           answer: outlookFor(issue.label, model, display),
         },
       ]
@@ -539,17 +552,17 @@ function buildOne(
   ]
   const process = quoteOnly
     ? [
-        `Tell us more about the ${model} issue in the diagnostic box when you book.`,
+        `Tell us more about the ${model} ${fault} in the diagnostic box when you book.`,
         'Bring or send the device for a full diagnostic at the workshop.',
         'A SecureFix technician completes the diagnostic and identifies the fault.',
         'The technician calls you back with the findings and a repair quote before any parts work starts.',
       ]
     : processStepsFor(issue.label, model)
   const blurb = quoteOnly
-    ? `Please describe the ${model} issue in detail. After a full diagnostic, a technician will call you back to explain what was found and the repair cost.`
+    ? `Please describe the ${model} ${fault} in detail. After a full diagnostic, a technician will call you back to explain what was found and the repair cost.`
     : blurbFor(issue.label, model)
   const description = quoteOnly
-    ? `${model} other fault diagnostics at SecureFix, 218 City Road, London EC1V. Describe the issue, then a technician calls you back after a full diagnostic with a repair quote.`
+    ? `${model} ${fault} diagnostics at SecureFix, 218 City Road, London EC1V. Describe the issue, then a technician calls you back after a full diagnostic with a repair quote.`
     : metaDescription(model, display, shown, issue.time)
   return {
     categoryId: category.id,
@@ -719,13 +732,17 @@ function buildIssuePages(): IssuePage[] {
         const extras: (RepairIssue & { price: number | null })[] = [
           ...grades.filter((issue) => !seen.has(issueSlug(issue.label))),
         ]
-        if (category.id === 'smartphone' && !seen.has(issueSlug(OTHER_FAULT_LABEL))) {
-          extras.push({
-            label: OTHER_FAULT_LABEL,
-            price: null,
-            priceText: 'Quote after diagnostics',
-            time: 'Diagnostic',
-          })
+        if (category.id === 'smartphone') {
+          for (const quoteLabel of [OTHER_FAULT_LABEL, DEAD_CONDITION_LABEL]) {
+            if (!seen.has(issueSlug(quoteLabel))) {
+              extras.push({
+                label: quoteLabel,
+                price: null,
+                priceText: 'Quote after diagnostics',
+                time: 'Diagnostic',
+              })
+            }
+          }
         }
         const issues: (RepairIssue & { price: number | null })[] = [...listed, ...extras]
         const modelSlug = slugify(model)
@@ -1045,10 +1062,10 @@ export function smartphonePickerIssues(
     : (issuesByCategory.smartphone ?? []).map(withQuoteText)
 
   return SMARTPHONE_PICKER_SLOTS.map((slot) => {
-    // Other Fault is always quote-only — customer describes the issue, then a technician calls back.
-    if (slot === 'Other Fault') {
+    // Other Fault and Dead Condition are quote-only — customer describes the issue, then a technician calls back.
+    if (slot === 'Other Fault' || slot === 'Dead Condition') {
       return {
-        label: OTHER_FAULT_LABEL,
+        label: slot === 'Other Fault' ? OTHER_FAULT_LABEL : DEAD_CONDITION_LABEL,
         price: null,
         priceText: 'Quote after diagnostics',
         time: 'Diagnostic',

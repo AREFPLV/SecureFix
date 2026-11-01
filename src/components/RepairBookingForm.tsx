@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { site } from '@/data/content'
 import { isLondonPostcode } from '@/data/repairIssues'
-import { displayIssueLabel, isOtherFaultIssue, issuePriceShown } from '@/data/issueCatalog'
+import { displayIssueLabel, isQuoteDiagnosticIssue, issuePriceShown } from '@/data/issueCatalog'
 import { createBooking, type BookingServiceType } from '@/actions/createBooking'
 import FormPrivacyNote from '@/components/FormPrivacyNote'
 import '@/pages/BookRepair.css'
@@ -63,7 +63,7 @@ export default function RepairBookingForm({
   const [reference, setReference] = useState('')
   const [submitError, setSubmitError] = useState('')
 
-  const needsDiagnostic = quoteOnly || isOtherFaultIssue({ label: issueLabel })
+  const needsDiagnostic = quoteOnly || isQuoteDiagnosticIssue({ label: issueLabel })
   const shown = needsDiagnostic
     ? 'Quote after diagnostics'
     : issuePriceShown({ price, priceText })
