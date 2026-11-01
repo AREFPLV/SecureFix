@@ -323,10 +323,26 @@ export function searchRepairs(rawQuery: string, limit = 8): RepairSearchHit[] {
     return a.title.localeCompare(b.title)
   })
 
+  // If the query names an exact model (e.g. "iphone 16"), keep that model first
+  // and avoid flooding results with Plus / Pro / neighbouring generations.
+  function queryNamesModelExactly(model: string): boolean {
+    const modelNorm = normalize(model)
+    if (!modelNorm) return false
+    const escaped = modelNorm.replace(/\s+/g, '\\s+')
+    const re = new RegExp(`(?:^|\\s)${escaped}(?=\\s|$)`, 'i')
+    const match = query.match(re)
+    if (!match || match.index == null) return false
+    const after = query.slice(match.index + match[0].length).trim()
+    const next = after.split(/\s+/)[0] ?? ''
+    return !/^(pro|plus|max|ultra|mini|air|e)$/i.test(next)
+  }
+  const exactModelHits = ranked.filter((hit) => queryNamesModelExactly(hit.model))
+  const preferred = exactModelHits.length ? exactModelHits : ranked
+
   // Prefer a mix: keep top model hit + unique repairs (dedupe same repair path).
   const seen = new Set<string>()
   const results: RepairSearchHit[] = []
-  for (const hit of ranked) {
+  for (const hit of preferred) {
     const key = `${hit.kind}:${hit.path}`
     if (seen.has(key)) continue
     // Skip model hub if we already have a stronger repair for the same model and query has issue hints.
@@ -340,6 +356,24 @@ export function searchRepairs(rawQuery: string, limit = 8): RepairSearchHit[] {
     seen.add(key)
     results.push(hit)
     if (results.length >= limit) break
+  }
+
+  // Fill remaining slots from the wider ranking only if we still have room.
+  if (results.length < limit) {
+    for (const hit of ranked) {
+      const key = `${hit.kind}:${hit.path}`
+      if (seen.has(key)) continue
+      if (
+        hit.kind === 'model' &&
+        ISSUE_HINTS.some((hint) => hint.pattern.test(query)) &&
+        results.some((r) => r.kind === 'repair' && r.model === hit.model)
+      ) {
+        continue
+      }
+      seen.add(key)
+      results.push(hit)
+      if (results.length >= limit) break
+    }
   }
 
   return results
