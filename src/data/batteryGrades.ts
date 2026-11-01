@@ -68,6 +68,30 @@ export function getBatteryGradeOptions(base: {
   ]
 }
 
+/** Non-Apple phones: one Premium battery option at the listed price. */
+export function getPremiumBatteryOption(base: {
+  price: number | null
+  priceText?: string
+}): BatteryGrade[] {
+  const price = typeof base.price === 'number' ? base.price : null
+  return [
+    {
+      id: 'premium',
+      title: 'Premium',
+      tag: 'Premium',
+      description: 'Premium battery with strong health reporting and everyday performance.',
+      label: 'Premium Battery Replacement',
+      price,
+      priceText:
+        price == null
+          ? 'Quote on inspection'
+          : base.priceText && base.priceText.startsWith('£')
+            ? base.priceText
+            : `£${price.toFixed(2)}`,
+    },
+  ]
+}
+
 export function isBatteryReplacementIssue(issue: { cardTitle?: string; label: string }): boolean {
   if (issue.cardTitle === 'Battery Replacement') return true
   const lower = issue.label.toLowerCase()

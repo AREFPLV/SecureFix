@@ -81,6 +81,31 @@ export function getScreenGradeOptions(base: {
   ]
 }
 
+/** Non-Apple phones: one Premium screen option at the listed price. */
+export function getPremiumScreenOption(base: {
+  price: number | null
+  priceText?: string
+}): ScreenGrade[] {
+  const price = typeof base.price === 'number' ? base.price : null
+  return [
+    {
+      id: 'premium',
+      title: 'Premium',
+      tag: 'Premium',
+      description:
+        'Premium display with reliable picture quality, clear colours, and responsive touch.',
+      label: 'Premium Screen Replacement',
+      price,
+      priceText:
+        price == null
+          ? 'Quote on inspection'
+          : base.priceText && base.priceText.startsWith('£')
+            ? base.priceText
+            : `£${price.toFixed(2)}`,
+    },
+  ]
+}
+
 export function isFrontScreenIssue(issue: { cardTitle?: string; label: string }): boolean {
   if (issue.cardTitle === 'Front Screen') return true
   const lower = issue.label.toLowerCase()

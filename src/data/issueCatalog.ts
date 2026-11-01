@@ -1,8 +1,8 @@
 import { deviceCategories, type Brand, type DeviceCategory } from '@/data/booking'
 import { listedModelNames, listedRepairs, shortJobName } from '@/data/listedPrices'
 import { issuesByCategory, type RepairIssue } from '@/data/repairIssues'
-import { getBatteryGradeOptions } from '@/data/batteryGrades'
-import { getScreenGradeOptions } from '@/data/screenGrades'
+import { getBatteryGradeOptions, getPremiumBatteryOption } from '@/data/batteryGrades'
+import { getPremiumScreenOption, getScreenGradeOptions } from '@/data/screenGrades'
 import { isGenericModel, slugify } from '@/lib/slugify'
 
 export const CANONICAL_ORIGIN = 'https://securefix.uk'
@@ -566,10 +566,14 @@ function gradeIssuesForModel(
   if (categoryId !== 'smartphone') return []
   const picker = smartphonePickerIssues(brandId, model)
   const extras: (RepairIssue & { price: number })[] = []
+  const isApple = brandId === 'apple-phone'
 
   const screenBase = picker.find((item) => item.cardTitle === 'Front Screen')
   if (screenBase && typeof screenBase.price === 'number') {
-    for (const grade of getScreenGradeOptions(screenBase)) {
+    const screenGrades = isApple
+      ? getScreenGradeOptions(screenBase)
+      : getPremiumScreenOption(screenBase)
+    for (const grade of screenGrades) {
       if (typeof grade.price !== 'number') continue
       extras.push({
         label: grade.label,
@@ -580,18 +584,19 @@ function gradeIssuesForModel(
     }
   }
 
-  if (brandId === 'apple-phone') {
-    const batteryBase = picker.find((item) => item.cardTitle === 'Battery Replacement')
-    if (batteryBase && typeof batteryBase.price === 'number') {
-      for (const grade of getBatteryGradeOptions(batteryBase)) {
-        if (typeof grade.price !== 'number') continue
-        extras.push({
-          label: grade.label,
-          price: grade.price,
-          priceText: grade.priceText,
-          time: batteryBase.time,
-        })
-      }
+  const batteryBase = picker.find((item) => item.cardTitle === 'Battery Replacement')
+  if (batteryBase && typeof batteryBase.price === 'number') {
+    const batteryGrades = isApple
+      ? getBatteryGradeOptions(batteryBase)
+      : getPremiumBatteryOption(batteryBase)
+    for (const grade of batteryGrades) {
+      if (typeof grade.price !== 'number') continue
+      extras.push({
+        label: grade.label,
+        price: grade.price,
+        priceText: grade.priceText,
+        time: batteryBase.time,
+      })
     }
   }
 
@@ -967,9 +972,10 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
       bookingIssues(category.id, brand?.id, model).find((item) => issueSlug(item.label) === issueParam) ??
       null
 
-    // Screen / battery grade bookings stay on /book-repair (inline) with derived labels.
+    // Grade bookings (iPhone tiers / other-brand Premium) resolve from derived labels.
     if (!issue && category.id === 'smartphone') {
       const picker = smartphonePickerIssues(brand?.id, model)
+      const isApple = brand?.id === 'apple-phone'
       const screenBase =
         picker.find((item) => item.cardTitle === 'Front Screen') ??
         bookingIssues(category.id, brand?.id, model).find((item) => {
@@ -983,9 +989,12 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
             !lower.includes('add-on')
           )
         })
-      const screenGrade = screenBase
-        ? getScreenGradeOptions(screenBase).find((item) => issueSlug(item.label) === issueParam)
-        : undefined
+      const screenOptions = screenBase
+        ? isApple
+          ? getScreenGradeOptions(screenBase)
+          : getPremiumScreenOption(screenBase)
+        : []
+      const screenGrade = screenOptions.find((item) => issueSlug(item.label) === issueParam)
       if (screenGrade) {
         issue = {
           label: screenGrade.label,
@@ -993,16 +1002,19 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
           priceText: screenGrade.priceText,
           time: screenBase?.time ?? '30m',
         }
-      } else if (brand?.id === 'apple-phone') {
+      } else {
         const batteryBase =
           picker.find((item) => item.cardTitle === 'Battery Replacement') ??
-          bookingIssues(category.id, brand.id, model).find((item) => {
+          bookingIssues(category.id, brand?.id, model).find((item) => {
             const lower = item.label.toLowerCase()
             return lower.includes('battery') && !lower.includes('screen') && !lower.includes('deal')
           })
-        const batteryGrade = batteryBase
-          ? getBatteryGradeOptions(batteryBase).find((item) => issueSlug(item.label) === issueParam)
-          : undefined
+        const batteryOptions = batteryBase
+          ? isApple
+            ? getBatteryGradeOptions(batteryBase)
+            : getPremiumBatteryOption(batteryBase)
+          : []
+        const batteryGrade = batteryOptions.find((item) => issueSlug(item.label) === issueParam)
         if (batteryGrade) {
           issue = {
             label: batteryGrade.label,

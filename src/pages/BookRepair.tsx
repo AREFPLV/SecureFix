@@ -14,12 +14,14 @@ import {
   smartphonePickerIssues,
 } from '@/data/issueCatalog'
 import {
+  getPremiumScreenOption,
   getScreenGradeOptions,
   isFrontScreenIssue,
   type ScreenGrade,
 } from '@/data/screenGrades'
 import {
   getBatteryGradeOptions,
+  getPremiumBatteryOption,
   isBatteryReplacementIssue,
   type BatteryGrade,
 } from '@/data/batteryGrades'
@@ -253,22 +255,44 @@ export default function BookRepair() {
         : bookingIssues(selectedCategory.id, selectedBrand?.id, selectedModel)
       : []
 
-  const showScreenGrades = Boolean(
-    selectedCategory?.id === 'smartphone' && selectedIssue && isFrontScreenIssue(selectedIssue),
-  )
-  const showBatteryGrades = Boolean(
+  const isApplePhone = selectedBrand?.id === 'apple-phone'
+  const showIphoneScreenGrades = Boolean(
     selectedCategory?.id === 'smartphone' &&
-      selectedBrand?.id === 'apple-phone' &&
+      isApplePhone &&
+      selectedIssue &&
+      isFrontScreenIssue(selectedIssue),
+  )
+  const showOtherScreenPremium = Boolean(
+    selectedCategory?.id === 'smartphone' &&
+      !isApplePhone &&
+      selectedIssue &&
+      isFrontScreenIssue(selectedIssue),
+  )
+  const showIphoneBatteryGrades = Boolean(
+    selectedCategory?.id === 'smartphone' &&
+      isApplePhone &&
       selectedIssue &&
       isBatteryReplacementIssue(selectedIssue),
   )
+  const showOtherBatteryPremium = Boolean(
+    selectedCategory?.id === 'smartphone' &&
+      !isApplePhone &&
+      selectedIssue &&
+      isBatteryReplacementIssue(selectedIssue),
+  )
+  const showScreenGrades = showIphoneScreenGrades || showOtherScreenPremium
+  const showBatteryGrades = showIphoneBatteryGrades || showOtherBatteryPremium
   const showPartGrades = showScreenGrades || showBatteryGrades
   const partGrades: PartGrade[] = selectedIssue
-    ? showScreenGrades
+    ? showIphoneScreenGrades
       ? getScreenGradeOptions(selectedIssue)
-      : showBatteryGrades
-        ? getBatteryGradeOptions(selectedIssue)
-        : []
+      : showOtherScreenPremium
+        ? getPremiumScreenOption(selectedIssue)
+        : showIphoneBatteryGrades
+          ? getBatteryGradeOptions(selectedIssue)
+          : showOtherBatteryPremium
+            ? getPremiumBatteryOption(selectedIssue)
+            : []
     : []
   const detailIssue = selectedPartGrade
     ? {
@@ -279,16 +303,24 @@ export default function BookRepair() {
       }
     : selectedIssue
   const partGradePrompt = showBatteryGrades
-    ? 'Choose a battery below'
+    ? showIphoneBatteryGrades
+      ? 'Choose a battery below'
+      : 'Confirm Premium battery'
     : showScreenGrades
-      ? 'Choose a screen below'
+      ? showIphoneScreenGrades
+        ? 'Choose a screen below'
+        : 'Confirm Premium screen'
       : null
   const partGradeBlurb = selectedModel
-    ? showBatteryGrades
+    ? showIphoneBatteryGrades
       ? `Choose the ${selectedModel} battery quality that suits you. All options include fitting and a 1-year warranty (liquid damage excluded).`
-      : showScreenGrades
-        ? `Choose the ${selectedModel} screen quality that suits you. All options include fitting and a 1-year warranty (liquid damage excluded).`
-        : null
+      : showOtherBatteryPremium
+        ? `Premium battery replacement for the ${selectedModel}. Includes fitting and a 1-year warranty (liquid damage excluded).`
+        : showIphoneScreenGrades
+          ? `Choose the ${selectedModel} screen quality that suits you. All options include fitting and a 1-year warranty (liquid damage excluded).`
+          : showOtherScreenPremium
+            ? `Premium screen replacement for the ${selectedModel}. Includes fitting and a 1-year warranty (liquid damage excluded).`
+            : null
     : null
 
   const flowIndex = FLOW.findIndex((item) => item.key === step)
