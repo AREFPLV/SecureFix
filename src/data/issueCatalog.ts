@@ -264,14 +264,20 @@ function blurbFor(label: string, model: string): string {
   if (lower.includes('screen') || lower.includes('lcd') || lower.includes('oled')) {
     return BLURBS['Premium Screen Replacement'](model)
   }
-  if (lower.includes('back') && (lower.includes('glass') || lower.includes('cover'))) {
-    return BLURBS['BackGlass Replacement'](model)
-  }
-  if (lower.includes('battery')) return BLURBS['Battery Replacement'](model)
-  if (lower.includes('charg') || lower.includes('dock')) return BLURBS['Charging Unit Repair'](model)
+  // Lens lines often include "back" + "glass" — check before back-glass blurbs.
   if (lower.includes('lens')) return BLURBS['Camera Lens Glass Repair'](model)
   if (lower.includes('front') && lower.includes('camera')) return BLURBS['Front Camera Replacement'](model)
   if (lower.includes('rear') && lower.includes('camera')) return BLURBS['Rear Camera Replacement'](model)
+  if (
+    (lower.includes('back glass') || lower.includes('backglass') || lower.includes('back cover')) &&
+    !lower.includes('camera')
+  ) {
+    return BLURBS['BackGlass Replacement'](model)
+  }
+  if (lower.includes('battery')) return BLURBS['Battery Replacement'](model)
+  if (lower.includes('charg') || (lower.includes('dock') && !lower.includes('microphone'))) {
+    return BLURBS['Charging Unit Repair'](model)
+  }
   if (lower.includes('speaker') || lower.includes('audio') || lower.includes('ear')) {
     return BLURBS['Audio Repair'](model)
   }
@@ -298,7 +304,18 @@ function outlookFor(label: string, model: string, display: string): string {
   if (lower.includes('charg') || lower.includes('dock')) {
     return `Most ${model} charging repairs are completed in one visit when the port or dock part is ready. The device is tested with a cable before collection.`
   }
-  if (lower.includes('back') && (lower.includes('glass') || lower.includes('cover') || lower.includes('housing'))) {
+  if (lower.includes('lens')) {
+    return `Most ${model} camera lens jobs are completed in one workshop visit when the matching glass is ready. Focus is checked before handover.`
+  }
+  if (lower.includes('camera')) {
+    return `Most ${model} camera repairs are completed in one workshop visit when the matching module is ready. Focus is checked before handover.`
+  }
+  if (
+    lower.includes('housing') ||
+    lower.includes('full body') ||
+    ((lower.includes('back glass') || lower.includes('backglass') || lower.includes('cover')) &&
+      !lower.includes('camera'))
+  ) {
     return `Most ${model} ${fault} jobs are completed in one workshop visit when the matching cover is ready. The device is powered on and checked before handover.`
   }
   if (lower.includes('hdmi')) {
@@ -337,7 +354,7 @@ export function processStepsFor(label: string, model: string): string[] {
       'You collect the repaired phone, or we return it by collection or post.',
     ]
   }
-  if (lower.includes('charg') || lower.includes('dock')) {
+  if (lower.includes('charg') || (lower.includes('dock') && !lower.includes('microphone'))) {
     return [
       `Book charging repair for your ${model} and choose how to send the device.`,
       'We diagnose the port or dock and replace the faulty part.',
@@ -345,20 +362,33 @@ export function processStepsFor(label: string, model: string): string[] {
       'The device is returned by drop-off collection, London collection, or mail.',
     ]
   }
-  if (lower.includes('back') && (lower.includes('glass') || lower.includes('housing') || lower.includes('cover'))) {
+  if (lower.includes('lens')) {
+    return [
+      `Book ${display} for your ${model} and choose how the device reaches the shop.`,
+      'We replace the camera lens glass with a matching part.',
+      'Focus and image quality are checked before handover.',
+      'The repaired device is returned by drop-off, London collection, or mail.',
+    ]
+  }
+  if (lower.includes('camera')) {
+    return [
+      `Book ${display} for your ${model} and choose how the device reaches the shop.`,
+      'We replace the camera module with a matching part.',
+      'Focus and image quality are checked before handover.',
+      'The repaired device is returned by drop-off, London collection, or mail.',
+    ]
+  }
+  if (
+    lower.includes('housing') ||
+    lower.includes('full body') ||
+    ((lower.includes('back glass') || lower.includes('backglass') || lower.includes('cover')) &&
+      !lower.includes('camera'))
+  ) {
     return [
       `Book ${display} for your ${model} and choose drop-off, collection, or mail-in.`,
       'We remove the damaged rear glass or housing and fit the replacement.',
       'Camera openings and fit are checked, then the phone is powered on.',
       'You collect the device or receive it back by collection or post.',
-    ]
-  }
-  if (lower.includes('camera') || lower.includes('lens')) {
-    return [
-      `Book ${display} for your ${model} and choose how the device reaches the shop.`,
-      'We replace the camera module or lens glass with a matching part.',
-      'Focus and image quality are checked before handover.',
-      'The repaired device is returned by drop-off, London collection, or mail.',
     ]
   }
   if (lower.includes('speaker') || lower.includes('audio') || lower.includes('ear') || lower.includes('mic')) {
