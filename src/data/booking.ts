@@ -121,6 +121,88 @@ export const deviceCategories: DeviceCategory[] = [
   },
 ]
 
+/** Rank phone models so newer generations appear first in booking lists. */
+function phoneModelSortKey(label: string): [number, number, number, string] {
+  const name = label.trim()
+  const lower = name.toLowerCase()
+
+  // Catch-alls always last.
+  if (isGenericModel(name) || lower.includes('other') || lower.includes('not listed')) {
+    return [-1, 0, 0, name]
+  }
+
+  // iPhone numbered generations (18, 17, …, 5).
+  const iphoneNum = lower.match(/\biphone\s*(\d{1,2})\b/)
+  if (iphoneNum) {
+    const gen = Number(iphoneNum[1])
+    let tier = 0
+    if (lower.includes('pro max')) tier = 50
+    else if (lower.includes('pro')) tier = 40
+    else if (lower.includes('plus') || lower.includes('max')) tier = 30
+    else if (lower.includes('air')) tier = 25
+    else if (/\be\b/.test(lower) || lower.includes(' mini') || lower.includes('mini')) tier = 10
+    else tier = 20
+    return [1000 + gen, tier, 0, name]
+  }
+
+  // iPhone X family.
+  if (/\biphone\s*xs\s*max\b/.test(lower)) return [910, 50, 0, name]
+  if (/\biphone\s*xs\b/.test(lower)) return [910, 40, 0, name]
+  if (/\biphone\s*xr\b/.test(lower)) return [905, 20, 0, name]
+  if (/\biphone\s*x\b/.test(lower)) return [900, 20, 0, name]
+
+  // iPhone SE by generation / year.
+  const seYear = lower.match(/\biphone\s*se[^0-9]*?(20\d{2}|\d(?:st|nd|rd|th)?)/)
+  if (lower.includes('iphone se')) {
+    if (lower.includes('3rd') || lower.includes('2022')) return [860, 30, 0, name]
+    if (lower.includes('2nd') || lower.includes('2020')) return [860, 20, 0, name]
+    if (lower.includes('2016') || lower.includes('1st') || lower.includes('2015')) return [860, 10, 0, name]
+    if (seYear) {
+      const token = seYear[1]
+      const year = Number(token)
+      if (year >= 2000) return [860, year - 2000, 0, name]
+    }
+    return [860, 0, 0, name]
+  }
+
+  // Galaxy S series.
+  const galaxyS = lower.match(/\bgalaxy\s*s(\d{1,2})\b/)
+  if (galaxyS) {
+    const gen = Number(galaxyS[1])
+    let tier = 20
+    if (lower.includes('ultra')) tier = 50
+    else if (lower.includes('+') || lower.includes('plus')) tier = 30
+    return [800 + gen, tier, 0, name]
+  }
+
+  // Pixel numbered.
+  const pixel = lower.match(/\bpixel\s*(\d{1,2})\b/)
+  if (pixel) {
+    const gen = Number(pixel[1])
+    let tier = 20
+    if (lower.includes('pro xl')) tier = 50
+    else if (lower.includes('pro')) tier = 40
+    else if (lower.includes('a')) tier = 10
+    return [700 + gen, tier, 0, name]
+  }
+
+  // Fallback: prefer labels with higher numbers, keep stable alphabetical otherwise.
+  const nums = [...lower.matchAll(/(\d{1,4})/g)].map((m) => Number(m[1]))
+  const best = nums.length ? Math.max(...nums) : 0
+  return [best, 0, 0, name]
+}
+
+function sortModelsNewestFirst(models: string[]): string[] {
+  return [...models].sort((a, b) => {
+    const [aGen, aTier, aExtra, aName] = phoneModelSortKey(a)
+    const [bGen, bTier, bExtra, bName] = phoneModelSortKey(b)
+    if (aGen !== bGen) return bGen - aGen
+    if (aTier !== bTier) return bTier - aTier
+    if (aExtra !== bExtra) return bExtra - aExtra
+    return aName.localeCompare(bName)
+  })
+}
+
 for (const category of deviceCategories) {
   for (const brand of category.brands) {
     const fallbackOther =
@@ -130,5 +212,16 @@ for (const category of deviceCategories) {
     if (!brand.models.some((model) => isGenericModel(model))) {
       brand.models.push(fallbackOther)
     }
+    if (category.id === 'smartphone' || brand.id === 'apple-phone') {
+      brand.models = sortModelsNewestFirst(brand.models)
+    }
   }
+}
+
+// Keep the curated booking list order for Apple when price-list names are absent.
+{
+  const apple = deviceCategories
+    .find((category) => category.id === 'smartphone')
+    ?.brands.find((brand) => brand.id === 'apple-phone')
+  if (apple) apple.models = sortModelsNewestFirst(apple.models)
 }
