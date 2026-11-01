@@ -87,7 +87,9 @@ export function isFrontScreenIssue(issue: { cardTitle?: string; label: string })
     !lower.includes('back glass') &&
     !lower.includes('inner') &&
     !lower.includes('outer') &&
-    !lower.includes('tempered')
+    !lower.includes('tempered') &&
+    !lower.includes('protection') &&
+    !lower.includes('add-on')
   )
 }
 

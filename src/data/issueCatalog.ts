@@ -599,7 +599,11 @@ function matchSmartphoneSlot(label: string, slot: SmartphonePickerSlot): boolean
         !lower.includes('battery') &&
         !lower.includes('back glass') &&
         !lower.includes('inner') &&
-        !lower.includes('outer')
+        !lower.includes('outer') &&
+        !lower.includes('tempered') &&
+        !lower.includes('protection') &&
+        !lower.includes('add-on') &&
+        !lower.includes('addon')
       )
     case 'Back Glass':
       return (
@@ -666,14 +670,29 @@ const SLOT_FALLBACKS: Record<SmartphonePickerSlot, string> = {
   'Rear Camera Lens': 'Camera Lens Glass Repair',
 }
 
+function screenMatchRank(label: string): number {
+  const lower = label.toLowerCase()
+  if (lower.includes('soft oled') || lower.includes('oled/compatible') || lower.includes('premium quality')) {
+    return 0
+  }
+  if (lower.includes('new screen') || lower.includes('screen replacement')) return 1
+  if (lower.includes('lcd')) return 2
+  return 3
+}
+
 function pickBestMatch(
   repairs: RepairIssue[],
   slot: SmartphonePickerSlot,
 ): RepairIssue | undefined {
   const matches = repairs.filter((repair) => matchSmartphoneSlot(repair.label, slot))
   if (!matches.length) return undefined
-  // Prefer a concrete price, then the shortest/most specific label.
+  // Prefer Soft OLED / Premium screen lines, then a concrete price, then shorter labels.
   return [...matches].sort((a, b) => {
+    if (slot === 'Front Screen') {
+      const ar = screenMatchRank(a.label)
+      const br = screenMatchRank(b.label)
+      if (ar !== br) return ar - br
+    }
     const ap = typeof a.price === 'number' ? 0 : 1
     const bp = typeof b.price === 'number' ? 0 : 1
     if (ap !== bp) return ap - bp
@@ -814,7 +833,10 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
           return (
             (lower.includes('screen') || lower.includes('lcd') || lower.includes('oled')) &&
             !lower.includes('battery') &&
-            !lower.includes('back glass')
+            !lower.includes('back glass') &&
+            !lower.includes('tempered') &&
+            !lower.includes('protection') &&
+            !lower.includes('add-on')
           )
         })
       const grade = screenBase
