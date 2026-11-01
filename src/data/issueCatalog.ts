@@ -176,6 +176,32 @@ export function displayIssueLabel(label: string): string {
 /** Compact label for booking issue tiles (matches the smartphone picker reference). */
 export function bookingCardLabel(label: string): string {
   if (BOOKING_CARD_LABELS[label]) return BOOKING_CARD_LABELS[label]
+
+  const lower = label.toLowerCase()
+  if (lower.includes('front screen') && lower.includes('battery')) return 'Screen + Battery'
+  if (lower.includes('front screen')) return 'Front Screen'
+  if (lower.includes('back glass') || lower.includes('backglass')) return 'Back Glass'
+  if (lower.includes('charg') || lower.includes('dock')) return 'Charging Dock'
+  if (lower.includes('ear') && lower.includes('speaker')) return 'Ear Speaker'
+  if (lower.includes('dead') || (lower.includes("won't turn") && lower.includes('on'))) return 'Dead Condition'
+  if (lower.includes('housing')) return 'Housing Replacement'
+  if (lower.includes('rear') && lower.includes('lens')) return 'Rear Camera Lens'
+  if (lower.includes('rear') && lower.includes('camera')) return 'Back Camera'
+  if (lower.includes('front') && lower.includes('camera')) return 'Front Camera'
+
+  const short = shortJobName(label)
+  if (short !== label) {
+    if (short === 'Screen replacement') return 'Front Screen'
+    if (short === 'Battery replacement') return 'Battery Replacement'
+    if (short === 'Charging port repair') return 'Charging Dock'
+    if (short === 'Camera lens') return 'Rear Camera Lens'
+    if (short === 'Rear camera') return 'Back Camera'
+    if (short === 'Front camera') return 'Front Camera'
+    if (short === 'Speaker repair') return 'Ear Speaker'
+    if (short === 'Diagnostics') return 'Other Fault'
+    return short
+  }
+
   return displayIssueLabel(label)
 }
 
