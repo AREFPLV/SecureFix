@@ -337,6 +337,7 @@ export function searchRepairs(rawQuery: string, limit = 8): RepairSearchHit[] {
     return !/^(pro|plus|max|ultra|mini|air|e)$/i.test(next)
   }
   const exactModelHits = ranked.filter((hit) => queryNamesModelExactly(hit.model))
+  // When the query names an exact model, only show that model’s repairs.
   const preferred = exactModelHits.length ? exactModelHits : ranked
 
   // Prefer a mix: keep top model hit + unique repairs (dedupe same repair path).
@@ -356,24 +357,6 @@ export function searchRepairs(rawQuery: string, limit = 8): RepairSearchHit[] {
     seen.add(key)
     results.push(hit)
     if (results.length >= limit) break
-  }
-
-  // Fill remaining slots from the wider ranking only if we still have room.
-  if (results.length < limit) {
-    for (const hit of ranked) {
-      const key = `${hit.kind}:${hit.path}`
-      if (seen.has(key)) continue
-      if (
-        hit.kind === 'model' &&
-        ISSUE_HINTS.some((hint) => hint.pattern.test(query)) &&
-        results.some((r) => r.kind === 'repair' && r.model === hit.model)
-      ) {
-        continue
-      }
-      seen.add(key)
-      results.push(hit)
-      if (results.length >= limit) break
-    }
   }
 
   return results
