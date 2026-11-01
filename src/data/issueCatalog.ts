@@ -672,49 +672,127 @@ function buildOne(
   }
 }
 
-function gradeIssuesForModel(
+/**
+ * Customer-facing smartphone repairs only: the 11 picker faults.
+ * Screen/battery expand to quality grades; Other Fault / Dead Condition stay quote-only.
+ * Price-list add-ons, deals, and misc jobs are intentionally excluded.
+ */
+function customerFacingSmartphoneIssues(
+  brandId: string,
+  model: string,
+): (RepairIssue & { price: number | null; cardTitle?: SmartphonePickerSlot })[] {
+  const picker = smartphonePickerIssues(brandId, model)
+  const isApple = brandId === 'apple-phone'
+  const issues: (RepairIssue & { price: number | null; cardTitle?: SmartphonePickerSlot })[] = []
+  const seen = new Set<string>()
+
+  function pushIssue(
+    issue: RepairIssue & { price: number | null },
+    cardTitle?: SmartphonePickerSlot,
+  ) {
+    const slug = issueSlug(issue.label)
+    if (seen.has(slug)) return
+    seen.add(slug)
+    issues.push(cardTitle ? { ...issue, cardTitle } : issue)
+  }
+
+  for (const item of picker) {
+    if (item.cardTitle === 'Front Screen') {
+      const grades =
+        typeof item.price === 'number'
+          ? isApple
+            ? getScreenGradeOptions(item)
+            : getPremiumScreenOption(item)
+          : []
+      if (grades.length) {
+        for (const grade of grades) {
+          pushIssue(
+            {
+              label: grade.label,
+              price: grade.price,
+              priceText: grade.priceText,
+              time: item.time,
+            },
+            'Front Screen',
+          )
+        }
+      } else {
+        pushIssue(item, item.cardTitle)
+      }
+      continue
+    }
+
+    if (item.cardTitle === 'Battery Replacement') {
+      const grades =
+        typeof item.price === 'number'
+          ? isApple
+            ? getBatteryGradeOptions(item)
+            : getPremiumBatteryOption(item)
+          : []
+      if (grades.length) {
+        for (const grade of grades) {
+          pushIssue(
+            {
+              label: grade.label,
+              price: grade.price,
+              priceText: grade.priceText,
+              time: item.time,
+            },
+            'Battery Replacement',
+          )
+        }
+      } else {
+        pushIssue(item, item.cardTitle)
+      }
+      continue
+    }
+
+    pushIssue(item, item.cardTitle)
+  }
+
+  return issues
+}
+
+/** Related links: the 11 customer fault tiles for this phone (not every price-list SKU). */
+function smartphoneRelatedLinks(
   categoryId: string,
   brandId: string,
   model: string,
-): (RepairIssue & { price: number })[] {
-  if (categoryId !== 'smartphone') return []
+  currentPath: string,
+): IssueLink[] {
+  const modelSlug = slugify(model)
   const picker = smartphonePickerIssues(brandId, model)
-  const extras: (RepairIssue & { price: number })[] = []
   const isApple = brandId === 'apple-phone'
+  const links: IssueLink[] = []
 
-  const screenBase = picker.find((item) => item.cardTitle === 'Front Screen')
-  if (screenBase && typeof screenBase.price === 'number') {
-    const screenGrades = isApple
-      ? getScreenGradeOptions(screenBase)
-      : getPremiumScreenOption(screenBase)
-    for (const grade of screenGrades) {
-      if (typeof grade.price !== 'number') continue
-      extras.push({
-        label: grade.label,
-        price: grade.price,
-        priceText: grade.priceText,
-        time: screenBase.time,
-      })
+  for (const item of picker) {
+    let label = item.cardTitle
+    let targetLabel = item.label
+
+    if (item.cardTitle === 'Front Screen' && typeof item.price === 'number') {
+      const premium = (isApple ? getScreenGradeOptions(item) : getPremiumScreenOption(item)).find(
+        (grade) => grade.id === 'premium',
+      )
+      if (premium) {
+        targetLabel = premium.label
+        label = 'Front Screen'
+      }
+    } else if (item.cardTitle === 'Battery Replacement' && typeof item.price === 'number') {
+      const premium = (isApple ? getBatteryGradeOptions(item) : getPremiumBatteryOption(item)).find(
+        (grade) => grade.id === 'premium',
+      )
+      if (premium) {
+        targetLabel = premium.label
+        label = 'Battery Replacement'
+      }
     }
+
+    const path = `/repair/${categoryId}/${brandId}/${modelSlug}/${issueSlug(targetLabel)}`
+    if (path === currentPath) continue
+    links.push({ label, path })
   }
 
-  const batteryBase = picker.find((item) => item.cardTitle === 'Battery Replacement')
-  if (batteryBase && typeof batteryBase.price === 'number') {
-    const batteryGrades = isApple
-      ? getBatteryGradeOptions(batteryBase)
-      : getPremiumBatteryOption(batteryBase)
-    for (const grade of batteryGrades) {
-      if (typeof grade.price !== 'number') continue
-      extras.push({
-        label: grade.label,
-        price: grade.price,
-        priceText: grade.priceText,
-        time: batteryBase.time,
-      })
-    }
-  }
-
-  return extras
+  return links
 }
 
 function buildIssuePages(): IssuePage[] {
@@ -724,28 +802,21 @@ function buildIssuePages(): IssuePage[] {
       if (skipBrand(brand)) continue
       for (const model of brand.models) {
         if (!isIssuableModel(model)) continue
-        const listed = bookingIssues(category.id, brand.id, model).filter(
+        const modelSlug = slugify(model)
+
+        if (category.id === 'smartphone') {
+          const issues = customerFacingSmartphoneIssues(brand.id, model)
+          for (const issue of issues) {
+            const path = `/repair/${category.id}/${brand.id}/${modelSlug}/${issueSlug(issue.label)}`
+            const siblings = smartphoneRelatedLinks(category.id, brand.id, model, path)
+            pages.push(buildOne(category, brand, model, issue, siblings))
+          }
+          continue
+        }
+
+        const issues = bookingIssues(category.id, brand.id, model).filter(
           (issue): issue is RepairIssue & { price: number } => typeof issue.price === 'number',
         )
-        const grades = gradeIssuesForModel(category.id, brand.id, model)
-        const seen = new Set(listed.map((issue) => issueSlug(issue.label)))
-        const extras: (RepairIssue & { price: number | null })[] = [
-          ...grades.filter((issue) => !seen.has(issueSlug(issue.label))),
-        ]
-        if (category.id === 'smartphone') {
-          for (const quoteLabel of [OTHER_FAULT_LABEL, DEAD_CONDITION_LABEL]) {
-            if (!seen.has(issueSlug(quoteLabel))) {
-              extras.push({
-                label: quoteLabel,
-                price: null,
-                priceText: 'Quote after diagnostics',
-                time: 'Diagnostic',
-              })
-            }
-          }
-        }
-        const issues: (RepairIssue & { price: number | null })[] = [...listed, ...extras]
-        const modelSlug = slugify(model)
         const siblings = issues.map((issue) => ({
           label: displayIssueLabel(issue.label),
           path: `/repair/${category.id}/${brand.id}/${modelSlug}/${issueSlug(issue.label)}`,

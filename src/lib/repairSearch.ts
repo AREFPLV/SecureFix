@@ -32,14 +32,19 @@ type IndexedItem = {
 }
 
 const ISSUE_HINTS: { pattern: RegExp; tokens: string[] }[] = [
-  { pattern: /back\s*(cover|glass)|rear\s*glass/i, tokens: ['back', 'cover'] },
-  { pattern: /\b(screen|display|cracked|lcd|oled)\b/i, tokens: ['screen', 'display', 'oled', 'lcd'] },
+  { pattern: /back\s*(cover|glass)|rear\s*glass/i, tokens: ['back', 'glass'] },
+  { pattern: /\b(screen|display|cracked|lcd|oled|incell)\b/i, tokens: ['screen', 'display', 'oled', 'lcd', 'incell'] },
   { pattern: /battery|drain|swelling/i, tokens: ['battery'] },
   { pattern: /charg(e|ing)|won'?t\s*charge|dock/i, tokens: ['charging', 'charge', 'dock'] },
-  { pattern: /camera|lens|blurry/i, tokens: ['camera', 'lens'] },
+  { pattern: /housing|bent|full\s*body/i, tokens: ['housing', 'bent', 'body'] },
+  { pattern: /front\s*camera|face\s*id/i, tokens: ['front', 'camera', 'face'] },
+  { pattern: /(rear|back)\s*camera(?!\s*lens)/i, tokens: ['rear', 'back', 'camera'] },
+  { pattern: /lens/i, tokens: ['lens', 'camera'] },
+  { pattern: /ear\s*speaker|loudspeaker|speaker|audio/i, tokens: ['speaker', 'audio', 'ear'] },
+  { pattern: /dead|won'?t\s*turn|no\s*power/i, tokens: ['dead', 'turn', 'power', 'diagnostic'] },
+  { pattern: /other\s*fault|frozen|diagnostic|not\s*sure/i, tokens: ['other', 'fault', 'frozen', 'diagnostic'] },
   { pattern: /hdmi/i, tokens: ['hdmi'] },
   { pattern: /water|liquid|spill/i, tokens: ['liquid', 'water'] },
-  { pattern: /speaker|audio|mic(rophone)?/i, tokens: ['speaker', 'audio', 'mic'] },
   { pattern: /keyboard|keys/i, tokens: ['keyboard'] },
   { pattern: /joystick|stick\s*drift|drift/i, tokens: ['joystick', 'drift'] },
   { pattern: /hinge/i, tokens: ['hinge'] },
@@ -257,10 +262,13 @@ export function searchRepairs(rawQuery: string, limit = 8): RepairSearchHit[] {
   const tokens = query.split(' ').filter((token) => token.length > 1)
   const ranked: RepairSearchHit[] = []
 
-  const wantsScreen = /\b(screen|display|cracked|lcd|oled)\b/i.test(query) && !/\bback\b/i.test(query)
+  const wantsScreen =
+    /\b(screen|display|cracked|lcd|oled|incell)\b/i.test(query) && !/\bback\b/i.test(query)
   const wantsBattery = /\bbattery\b/i.test(query)
   const wantsCharging = /\bcharg/i.test(query)
   const wantsHdmi = /\bhdmi\b/i.test(query)
+  const wantsDead = /\bdead\b|\bwon'?t\s*turn\b|\bno\s*power\b/i.test(query)
+  const wantsOther = /\bother\s*fault\b|\bfrozen\b|\bnot\s*sure\b/i.test(query)
   const hasIssueIntent = ISSUE_HINTS.some((hint) => hint.pattern.test(query))
 
   for (const item of getIndex()) {
@@ -270,13 +278,24 @@ export function searchRepairs(rawQuery: string, limit = 8): RepairSearchHit[] {
     // Model-only searches should suggest the model hub, not a random fault list.
     if (item.kind === 'repair' && !hasIssueIntent) continue
 
-    // Keep issue-intent results focused (avoid equal-score noise from add-ons / other faults).
+    // Keep issue-intent results focused on the matching fault family.
     if (item.kind === 'repair' && item.issueKey) {
-      if (wantsScreen && !/\b(screen|display|oled|lcd)\b/.test(item.issueKey)) continue
+      if (
+        wantsScreen &&
+        !/\b(screen|display|oled|lcd|incell)\b/.test(item.issueKey)
+      ) {
+        continue
+      }
       if (wantsBattery && !/\bbattery\b/.test(item.issueKey)) continue
-      if (wantsCharging && !/\bcharg/.test(item.issueKey)) continue
+      if (wantsCharging && !/\bcharg|\bdock\b/.test(item.issueKey)) continue
       if (wantsHdmi && !/\bhdmi\b/.test(item.issueKey)) continue
-      if (wantsScreen && /\btempered glass screen protection\b/.test(item.issueKey)) score -= 40
+      if (wantsDead && !/\bdead\b|\bturn\b|\bdiagnostic\b/.test(item.issueKey)) continue
+      if (wantsOther && !/\bother\b|\bfrozen\b|\bdiagnostic\b|\bfault\b/.test(item.issueKey)) {
+        continue
+      }
+      // Prefer Soft OLED when the query is a generic screen search.
+      if (wantsScreen && /\bsoft oled\b/.test(item.issueKey)) score += 20
+      if (wantsScreen && /\bincell\b/.test(item.issueKey) && !/\bincell\b/i.test(query)) score -= 5
     }
 
     const coverage = modelTokenCoverage(item.modelKey, tokens)
