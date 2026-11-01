@@ -1,6 +1,7 @@
 import { deviceCategories, type Brand, type DeviceCategory } from '@/data/booking'
 import { listedModelNames, listedRepairs, shortJobName } from '@/data/listedPrices'
 import { issuesByCategory, type RepairIssue } from '@/data/repairIssues'
+import { getScreenGradeOptions } from '@/data/screenGrades'
 import { isGenericModel, slugify } from '@/lib/slugify'
 
 export const CANONICAL_ORIGIN = 'https://securefix.uk'
@@ -798,11 +799,37 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
   // Single-model brands (Other Brand, etc.) skip straight to issues.
   if (!model && brand?.models.length === 1) model = brand.models[0]
   const issueParam = params.get('issue')
-  const issue =
-    category && model && issueParam
-      ? (bookingIssues(category.id, brand?.id, model).find((item) => issueSlug(item.label) === issueParam) ??
-        null)
-      : null
+  let issue: RepairIssue | null = null
+  if (category && model && issueParam) {
+    issue =
+      bookingIssues(category.id, brand?.id, model).find((item) => issueSlug(item.label) === issueParam) ??
+      null
+
+    // Screen grade bookings stay on /book-repair (inline) with derived labels.
+    if (!issue && category.id === 'smartphone') {
+      const screenBase =
+        smartphonePickerIssues(brand?.id, model).find((item) => item.cardTitle === 'Front Screen') ??
+        bookingIssues(category.id, brand?.id, model).find((item) => {
+          const lower = item.label.toLowerCase()
+          return (
+            (lower.includes('screen') || lower.includes('lcd') || lower.includes('oled')) &&
+            !lower.includes('battery') &&
+            !lower.includes('back glass')
+          )
+        })
+      const grade = screenBase
+        ? getScreenGradeOptions(screenBase).find((item) => issueSlug(item.label) === issueParam)
+        : undefined
+      if (grade) {
+        issue = {
+          label: grade.label,
+          price: grade.price,
+          priceText: grade.priceText,
+          time: screenBase?.time ?? '30m',
+        }
+      }
+    }
+  }
 
   let step: BookingSeed['step'] = 'device'
   const showForm = params.get('view') !== 'issue'

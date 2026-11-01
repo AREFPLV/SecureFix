@@ -13,6 +13,11 @@ import {
   issueSlug,
   smartphonePickerIssues,
 } from '@/data/issueCatalog'
+import {
+  getScreenGradeOptions,
+  isFrontScreenIssue,
+  type ScreenGrade,
+} from '@/data/screenGrades'
 import { slugify } from '@/lib/slugify'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { bookRepairSeo } from '@/data/seo'
@@ -41,6 +46,15 @@ function usesInlineBooking(categoryId: string | null | undefined, model: string 
   return !isIssuableModel(model)
 }
 
+function isScreenGradeLabel(label: string) {
+  const lower = label.toLowerCase()
+  return (
+    lower.includes('incell') ||
+    lower.includes('genuine apple screen') ||
+    (lower.includes('premium screen replacement') && lower.includes('oled'))
+  )
+}
+
 export default function BookRepair() {
   usePageSeo(bookRepairSeo)
   const [searchParams, setSearchParams] = useSearchParams()
@@ -53,6 +67,7 @@ export default function BookRepair() {
   const [selectedBrand, setSelectedBrand] = useState<Brand | null>(seed.brand)
   const [selectedModel, setSelectedModel] = useState<string | null>(seed.model)
   const [selectedIssue, setSelectedIssue] = useState<SelectableIssue | null>(seed.issue)
+  const [selectedScreenGrade, setSelectedScreenGrade] = useState<ScreenGrade | null>(null)
 
   useEffect(() => {
     const next = bookingSelectionFromQuery(searchParams)
@@ -62,7 +77,8 @@ export default function BookRepair() {
       next.brand &&
       next.model &&
       next.issue &&
-      !usesInlineBooking(next.category.id, next.model)
+      !usesInlineBooking(next.category.id, next.model) &&
+      !isScreenGradeLabel(next.issue.label)
     ) {
       navigate(
         repairBookPath(next.category.id, next.brand.id, next.model, next.issue.label),
@@ -74,6 +90,7 @@ export default function BookRepair() {
     setSelectedBrand(next.brand)
     setSelectedModel(next.model)
     setSelectedIssue(next.issue)
+    setSelectedScreenGrade(null)
     setStep(next.step)
   }, [searchParams, navigate])
 
@@ -138,9 +155,14 @@ export default function BookRepair() {
   function handleIssueSelect(issue: SelectableIssue) {
     // First click selects the card and reveals the description panel below.
     setSelectedIssue(issue)
+    setSelectedScreenGrade(null)
     requestAnimationFrame(() => {
       document.getElementById('issue-detail')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
     })
+  }
+
+  function handleScreenGradeSelect(grade: ScreenGrade) {
+    setSelectedScreenGrade(grade)
   }
 
   function handleIssueContinue() {
@@ -148,18 +170,33 @@ export default function BookRepair() {
     const catId = categoryId()
     const brandId = selectedBrand?.id ?? searchParams.get('brand')
     if (!catId || !brandId || !selectedModel) return
-    if (usesInlineBooking(catId, selectedModel)) {
+
+    const needsGrade = showScreenGrades && !selectedScreenGrade
+    if (needsGrade) return
+
+    const bookingIssue = selectedScreenGrade
+      ? {
+          label: selectedScreenGrade.label,
+          price: selectedScreenGrade.price,
+          priceText: selectedScreenGrade.priceText,
+          time: selectedIssue.time,
+          cardTitle: selectedIssue.cardTitle,
+        }
+      : selectedIssue
+
+    // Screen grades have no prerendered /repair/... pages — keep booking inline.
+    if (selectedScreenGrade || usesInlineBooking(catId, selectedModel)) {
       setSearchParams(
         withEntry({
           category: catId,
           brand: brandId,
           model: slugify(selectedModel),
-          issue: issueSlug(selectedIssue.label),
+          issue: issueSlug(bookingIssue.label),
         }),
       )
       return
     }
-    navigate(repairBookPath(catId, brandId, selectedModel, selectedIssue.label))
+    navigate(repairBookPath(catId, brandId, selectedModel, bookingIssue.label))
   }
 
   function handleBack() {
@@ -208,9 +245,25 @@ export default function BookRepair() {
         : bookingIssues(selectedCategory.id, selectedBrand?.id, selectedModel)
       : []
 
+  const showScreenGrades = Boolean(
+    selectedCategory?.id === 'smartphone' && selectedIssue && isFrontScreenIssue(selectedIssue),
+  )
+  const screenGrades = showScreenGrades && selectedIssue ? getScreenGradeOptions(selectedIssue) : []
+  const detailIssue = selectedScreenGrade
+    ? {
+        label: selectedScreenGrade.label,
+        price: selectedScreenGrade.price,
+        priceText: selectedScreenGrade.priceText,
+        time: selectedIssue?.time ?? '30m',
+      }
+    : selectedIssue
+
   const flowIndex = FLOW.findIndex((item) => item.key === step)
   const showFlow = flowIndex >= 0
-  const genericBooking = usesInlineBooking(selectedCategory?.id ?? categoryId(), selectedModel)
+  const genericBooking =
+    usesInlineBooking(selectedCategory?.id ?? categoryId(), selectedModel) ||
+    Boolean(selectedScreenGrade) ||
+    (step === 'book' && selectedIssue != null && isScreenGradeLabel(selectedIssue.label))
 
   return (
     <div className="book-page site-page">
@@ -358,23 +411,60 @@ export default function BookRepair() {
                     })}
                   </div>
 
-                  {selectedIssue && selectedModel ? (
+                  {selectedIssue && selectedModel && detailIssue ? (
                     <div className="book-issue-detail" id="issue-detail">
                       <div className="book-issue-detail-head">
                         <h3>{selectedIssue.cardTitle ?? displayIssueLabel(selectedIssue.label)}</h3>
                         <p className="book-issue-detail-meta">
-                          <span>{issuePriceShown(selectedIssue)}</span>
-                          <span>Workshop time {selectedIssue.time}</span>
+                          <span>
+                            {showScreenGrades && !selectedScreenGrade
+                              ? 'Choose a screen below'
+                              : issuePriceShown(detailIssue)}
+                          </span>
+                          <span>Workshop time {detailIssue.time}</span>
                         </p>
                       </div>
                       <p className="book-issue-detail-copy">
-                        {issueBlurb(selectedIssue.label, selectedModel)}
+                        {showScreenGrades
+                          ? `Choose the ${selectedModel} screen quality that suits you. All options include fitting and a 1-year warranty (liquid damage excluded).`
+                          : issueBlurb(selectedIssue.label, selectedModel)}
                       </p>
+
+                      {showScreenGrades ? (
+                        <div
+                          className="book-screen-grades"
+                          role="radiogroup"
+                          aria-label="Screen quality options"
+                        >
+                          {screenGrades.map((grade) => {
+                            const selected = selectedScreenGrade?.id === grade.id
+                            return (
+                              <button
+                                key={grade.id}
+                                type="button"
+                                role="radio"
+                                aria-checked={selected}
+                                className={`book-screen-grade${selected ? ' is-selected' : ''}`}
+                                onClick={() => handleScreenGradeSelect(grade)}
+                              >
+                                <span className="book-screen-grade-tag">{grade.tag}</span>
+                                <span className="book-screen-grade-title">{grade.title}</span>
+                                <span className="book-screen-grade-price">
+                                  {issuePriceShown(grade)}
+                                </span>
+                                <span className="book-screen-grade-copy">{grade.description}</span>
+                              </button>
+                            )
+                          })}
+                        </div>
+                      ) : null}
+
                       <div className="book-issue-detail-actions">
                         <button
                           type="button"
                           className="btn btn-primary btn-shiny"
                           onClick={handleIssueContinue}
+                          disabled={showScreenGrades && !selectedScreenGrade}
                         >
                           Continue to book
                         </button>

@@ -304,9 +304,88 @@
   gap: 0.75rem;
 }
 
+.book-page .book-issue-detail-actions .btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.book-page .book-screen-grades {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 0 0 1.25rem;
+}
+
+.book-page .book-screen-grade {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  text-align: left;
+  padding: 1rem 1.05rem 1.1rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  color: var(--color-primary);
+  cursor: pointer;
+  font: inherit;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.book-page .book-screen-grade:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+}
+
+.book-page .book-screen-grade.is-selected {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-accent);
+}
+
+.book-page .book-screen-grade-tag {
+  display: inline-block;
+  font-family: Montserrat, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.book-page .book-screen-grade-title {
+  font-family: Montserrat, sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 1.25;
+  color: var(--color-primary);
+}
+
+.book-page .book-screen-grade-price {
+  font-weight: 800;
+  color: var(--color-accent);
+  font-size: 1.05rem;
+}
+
+.book-page .book-screen-grade-copy {
+  margin-top: 0.15rem;
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
 @media (max-width: 1100px) {
   .book-page .book-issue-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .book-page .book-screen-grades {
+    grid-template-columns: 1fr;
   }
 }
 
