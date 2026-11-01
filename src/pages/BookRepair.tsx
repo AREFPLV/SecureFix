@@ -57,6 +57,7 @@ function isPartGradeLabel(label: string) {
   return (
     lower.includes('incell') ||
     lower.includes('genuine apple screen') ||
+    lower.includes('genuine oled screen') ||
     lower.includes('genuine apple battery') ||
     lower === 'premium battery replacement' ||
     (lower.includes('premium screen replacement') && lower.includes('oled'))

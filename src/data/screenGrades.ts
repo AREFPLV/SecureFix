@@ -53,26 +53,29 @@ export function getScreenGradeOptions(base: {
   return [
     {
       id: 'standard',
-      title: 'Standard (INCELL)',
+      title: 'Incell LCD',
       tag: 'INCELL',
-      description: 'Value LCD-style display. Clear picture and reliable touch for everyday use.',
+      description:
+        'Affordable screen replacement with reliable performance, clear display quality, and responsive touch.',
       label: 'Standard Screen Replacement (INCELL)',
       ...standard,
     },
     {
       id: 'premium',
-      title: 'Premium (Soft OLED)',
+      title: 'Soft OLED',
       tag: 'Soft OLED',
-      description: 'Soft OLED — our most popular screen. Closest look and colour to the original.',
+      description:
+        'Premium display with vibrant colours, deep blacks, and a viewing experience close to the original screen.',
       label: 'Premium Screen Replacement (Soft OLED)',
       ...premium,
     },
     {
       id: 'genuine',
-      title: 'Genuine Apple',
+      title: 'Genuine OLED',
       tag: 'Genuine',
-      description: 'Genuine Apple display part. Best colour accuracy and closest match to the original screen.',
-      label: 'Genuine Apple Screen Replacement',
+      description:
+        'Original-quality display offering the best colour accuracy, brightness, and overall performance.',
+      label: 'Genuine OLED Screen Replacement',
       ...genuine,
     },
   ]
