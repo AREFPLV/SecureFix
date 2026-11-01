@@ -57,7 +57,6 @@ function isPartGradeLabel(label: string) {
   return (
     lower.includes('incell') ||
     lower.includes('genuine apple screen') ||
-    lower.includes('genuine oled screen') ||
     lower.includes('genuine apple battery') ||
     lower === 'premium battery replacement' ||
     (lower.includes('premium screen replacement') && lower.includes('oled'))
@@ -481,7 +480,9 @@ export default function BookRepair() {
                                 className={`book-screen-grade${selected ? ' is-selected' : ''}`}
                                 onClick={() => handlePartGradeSelect(grade)}
                               >
-                                <span className="book-screen-grade-tag">{grade.tag}</span>
+                                {grade.tag ? (
+                                  <span className="book-screen-grade-tag">{grade.tag}</span>
+                                ) : null}
                                 <span className="book-screen-grade-title">{grade.title}</span>
                                 <span className="book-screen-grade-price">
                                   {issuePriceShown(grade)}

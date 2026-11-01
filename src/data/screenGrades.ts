@@ -53,8 +53,8 @@ export function getScreenGradeOptions(base: {
   return [
     {
       id: 'standard',
-      title: 'Incell LCD',
-      tag: 'INCELL',
+      title: 'INCELL',
+      tag: '',
       description:
         'Affordable screen replacement with reliable performance, clear display quality, and responsive touch.',
       label: 'Standard Screen Replacement (INCELL)',
@@ -62,8 +62,8 @@ export function getScreenGradeOptions(base: {
     },
     {
       id: 'premium',
-      title: 'Soft OLED',
-      tag: 'Soft OLED',
+      title: 'SOFT OLED',
+      tag: '',
       description:
         'Premium display with vibrant colours, deep blacks, and a viewing experience close to the original screen.',
       label: 'Premium Screen Replacement (Soft OLED)',
@@ -71,11 +71,11 @@ export function getScreenGradeOptions(base: {
     },
     {
       id: 'genuine',
-      title: 'Genuine OLED',
-      tag: 'Genuine',
+      title: 'GENUINE APPLE',
+      tag: '',
       description:
         'Original-quality display offering the best colour accuracy, brightness, and overall performance.',
-      label: 'Genuine OLED Screen Replacement',
+      label: 'Genuine Apple Screen Replacement',
       ...genuine,
     },
   ]
