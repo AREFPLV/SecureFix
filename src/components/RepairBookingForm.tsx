@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { site } from '@/data/content'
 import { isLondonPostcode } from '@/data/repairIssues'
-import { displayIssueLabel, issuePriceShown } from '@/data/issueCatalog'
+import { displayIssueLabel, isOtherFaultIssue, issuePriceShown } from '@/data/issueCatalog'
 import { createBooking, type BookingServiceType } from '@/actions/createBooking'
 import FormPrivacyNote from '@/components/FormPrivacyNote'
 import '@/pages/BookRepair.css'
@@ -14,6 +14,7 @@ type Props = {
   issueLabel: string
   price: number | null
   priceText?: string
+  quoteOnly?: boolean
 }
 
 const SERVICE_COPY: { id: BookingServiceType; icon: string; title: string; text: string }[] = [
@@ -44,6 +45,7 @@ export default function RepairBookingForm({
   issueLabel,
   price,
   priceText,
+  quoteOnly = false,
 }: Props) {
   const [diagnosticNote, setDiagnosticNote] = useState('')
   const [name, setName] = useState('')
@@ -55,12 +57,16 @@ export default function RepairBookingForm({
   const [trackingNumber, setTrackingNumber] = useState('')
   const [postcodeError, setPostcodeError] = useState('')
   const [serviceError, setServiceError] = useState('')
+  const [diagnosticError, setDiagnosticError] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [reference, setReference] = useState('')
   const [submitError, setSubmitError] = useState('')
 
-  const shown = issuePriceShown({ price, priceText })
+  const needsDiagnostic = quoteOnly || isOtherFaultIssue({ label: issueLabel })
+  const shown = needsDiagnostic
+    ? 'Quote after diagnostics'
+    : issuePriceShown({ price, priceText })
 
   async function submitBooking(resolvedService: BookingServiceType) {
     if (submitting) return
@@ -72,7 +78,7 @@ export default function RepairBookingForm({
       brand: brandLabel,
       model,
       issue: issueLabel,
-      price: price ?? 0,
+      price: needsDiagnostic ? null : price,
       diagnosticNote,
       name,
       email,
@@ -98,6 +104,10 @@ export default function RepairBookingForm({
       setServiceError('Choose drop-off, collection, or mail-in.')
       return
     }
+    if (needsDiagnostic && diagnosticNote.trim().length < 12) {
+      setDiagnosticError('Please describe the issue in more detail so diagnostics can start.')
+      return
+    }
     if (serviceType === 'collection' && !isLondonPostcode(postcode)) {
       setPostcodeError(
         'Collection covers London postcodes. Choose drop-off or mail-in for an address outside London.',
@@ -106,6 +116,7 @@ export default function RepairBookingForm({
     }
     setPostcodeError('')
     setServiceError('')
+    setDiagnosticError('')
     void submitBooking(serviceType)
   }
 
@@ -314,16 +325,43 @@ export default function RepairBookingForm({
             />
           </label>
           <label>
-            What happened <span className="optional-label">(optional)</span>
+            {needsDiagnostic ? (
+              <>
+                Describe the issue <span className="required-mark">(required)</span>
+              </>
+            ) : (
+              <>
+                What happened <span className="optional-label">(optional)</span>
+              </>
+            )}
             <textarea
-              rows={4}
-              placeholder="When it started, and anything else we should know"
+              rows={needsDiagnostic ? 5 : 4}
+              required={needsDiagnostic}
+              placeholder={
+                needsDiagnostic
+                  ? 'What happens, when it started, and anything you have already tried'
+                  : 'When it started, and anything else we should know'
+              }
               value={diagnosticNote}
-              onChange={(e) => setDiagnosticNote(e.target.value)}
+              onChange={(e) => {
+                setDiagnosticNote(e.target.value)
+                setDiagnosticError('')
+              }}
             />
           </label>
+          {needsDiagnostic ? (
+            <p className="collection-note book-price-note">
+              After a full diagnostic, a technician will call you back with the findings and a repair
+              quote before any parts work starts.
+            </p>
+          ) : null}
+          {diagnosticError ? <div className="postcode-error">{diagnosticError}</div> : null}
           <button type="submit" className="btn btn-primary book-submit" disabled={submitting}>
-            {submitting ? 'Submitting…' : `Book for ${shown} — confirm drop-off, collection, or mail-in`}
+            {submitting
+              ? 'Submitting…'
+              : needsDiagnostic
+                ? 'Book diagnostics — technician will call you back'
+                : `Book for ${shown} — confirm drop-off, collection, or mail-in`}
           </button>
           <FormPrivacyNote />
         </div>

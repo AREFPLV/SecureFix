@@ -8,6 +8,7 @@ import {
   bookingSelectionFromQuery,
   displayIssueLabel,
   isIssuableModel,
+  isOtherFaultIssue,
   issueBlurb,
   issuePriceShown,
   issueSlug,
@@ -484,13 +485,21 @@ export default function BookRepair() {
                           <span>
                             {showPartGrades && !selectedPartGrade
                               ? partGradePrompt
-                              : issuePriceShown(detailIssue)}
+                              : isOtherFaultIssue(selectedIssue)
+                                ? 'Quote after diagnostics'
+                                : issuePriceShown(detailIssue)}
                           </span>
-                          <span>Workshop time {detailIssue.time}</span>
+                          <span>
+                            {isOtherFaultIssue(selectedIssue)
+                              ? 'Full diagnostic first'
+                              : `Workshop time ${detailIssue.time}`}
+                          </span>
                         </p>
                       </div>
                       <p className="book-issue-detail-copy">
-                        {partGradeBlurb ?? issueBlurb(selectedIssue.label, selectedModel)}
+                        {isOtherFaultIssue(selectedIssue)
+                          ? `Describe the ${selectedModel} issue in as much detail as you can on the next step. After a full diagnostic, a technician will call you back with the findings and a repair quote.`
+                          : (partGradeBlurb ?? issueBlurb(selectedIssue.label, selectedModel))}
                       </p>
 
                       {showPartGrades ? (
@@ -567,6 +576,7 @@ export default function BookRepair() {
                     selectedIssue.priceText ??
                     (selectedIssue.price == null ? 'Quote on inspection' : undefined)
                   }
+                  quoteOnly={isOtherFaultIssue(selectedIssue)}
                 />
               </section>
             )}

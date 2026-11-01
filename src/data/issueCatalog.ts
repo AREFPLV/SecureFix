@@ -24,6 +24,7 @@ const DISPLAY_LABELS: Record<string, string> = {
   "Won't Turn On (Diagnostics) – I Don't Know": "Won't turn on / Dead condition",
   'Not Charging or Charging Port Repair / Dock Replacement': 'Charging dock repair',
   'Frozen Phone (Nothing Works) Quick Fixing': 'Frozen phone / Other fault',
+  'Other Fault Diagnostics': 'Other Fault',
   'Loudspeaker / Audio Issue Repair / Replacement [Genuine / OEM]': 'Ear speaker / Audio repair',
   'Front Camera and Face ID Fixing / Replacement': 'Front camera repair',
   'Whole Rear Back New Camera Replacement [Genuine / OEM]': 'Back camera repair',
@@ -150,9 +151,11 @@ export type IssuePage = {
   issueLabel: string
   displayLabel: string
   issueSlug: string
-  price: number
+  price: number | null
   priceText: string
   time: string
+  /** Quote-only jobs (e.g. Other Fault) hide price and require a diagnostic note. */
+  quoteOnly?: boolean
   path: string
   title: string
   description: string
@@ -167,6 +170,14 @@ export type IssuePage = {
   related: IssueLink[]
   bookingPath: string
   jsonLd: Record<string, unknown>
+}
+
+export const OTHER_FAULT_LABEL = 'Other Fault Diagnostics'
+
+export function isOtherFaultIssue(issue: { cardTitle?: string; label: string }): boolean {
+  if (issue.cardTitle === 'Other Fault') return true
+  const lower = issue.label.toLowerCase()
+  return lower.includes('other fault')
 }
 
 export function issueSlug(label: string): string {
@@ -459,13 +470,14 @@ function buildOne(
   category: DeviceCategory,
   brand: Brand,
   model: string,
-  issue: RepairIssue & { price: number },
+  issue: RepairIssue & { price: number | null },
   siblings: IssueLink[],
 ): IssuePage {
   const modelSlug = slugify(model)
   const slug = issueSlug(issue.label)
   const display = displayIssueLabel(issue.label)
-  const shown = issuePriceShown(issue)
+  const quoteOnly = issue.price == null || isOtherFaultIssue(issue)
+  const shown = quoteOnly ? 'Quote after diagnostics' : issuePriceShown(issue)
   const path = `/repair/${category.id}/${brand.id}/${modelSlug}/${slug}`
   const canonical = `${CANONICAL_ORIGIN}${path}`
   const h1 = `${model} ${display}`
@@ -473,25 +485,46 @@ function buildOne(
   const brandPath = `/repair/${category.id}/${brand.id}`
   const catPath = categoryHubPath(category.id)
   const fault = display.toLowerCase()
-  const lead = `${display} for the ${model} is carried out at ${SHOP_ADDRESS}, priced at ${shown}, with a workshop time of ${issue.time}, and a 1-year warranty.`
-  const faqs: IssueFaq[] = [
-    {
-      question: `How much does ${model} ${fault} cost?`,
-      answer: `${model} ${fault} is ${shown} at ${SHOP_ADDRESS}.`,
-    },
-    {
-      question: `How long does ${model} ${fault} take?`,
-      answer: `${model} ${fault} is listed at ${issue.time} on the SecureFix price list.`,
-    },
-    {
-      question: `Is there a warranty on ${model} ${fault}?`,
-      answer: `Yes. ${model} ${fault} includes a 1-year warranty. Liquid damage is excluded.`,
-    },
-    {
-      question: `Can SecureFix fix ${model} ${fault}?`,
-      answer: outlookFor(issue.label, model, display),
-    },
-  ]
+  const lead = quoteOnly
+    ? `Describe the ${model} fault in as much detail as you can. After a full diagnostic, a SecureFix technician will call you back with the findings and a repair quote.`
+    : `${display} for the ${model} is carried out at ${SHOP_ADDRESS}, priced at ${shown}, with a workshop time of ${issue.time}, and a 1-year warranty.`
+  const faqs: IssueFaq[] = quoteOnly
+    ? [
+        {
+          question: `How much does ${model} other fault repair cost?`,
+          answer: `Pricing is confirmed after a full diagnostic. A technician will call you back with the quote before any parts work starts.`,
+        },
+        {
+          question: `What should I write in the diagnostic box?`,
+          answer: `Describe what happens, when it started, and anything already tried. The more detail you give, the faster diagnostics can find the fault.`,
+        },
+        {
+          question: `Will someone contact me after diagnostics?`,
+          answer: `Yes. After the full diagnostic, a SecureFix technician will call you back to explain the findings and the repair options.`,
+        },
+        {
+          question: `Can SecureFix investigate ${model} other faults?`,
+          answer: outlookFor(issue.label, model, display),
+        },
+      ]
+    : [
+        {
+          question: `How much does ${model} ${fault} cost?`,
+          answer: `${model} ${fault} is ${shown} at ${SHOP_ADDRESS}.`,
+        },
+        {
+          question: `How long does ${model} ${fault} take?`,
+          answer: `${model} ${fault} is listed at ${issue.time} on the SecureFix price list.`,
+        },
+        {
+          question: `Is there a warranty on ${model} ${fault}?`,
+          answer: `Yes. ${model} ${fault} includes a 1-year warranty. Liquid damage is excluded.`,
+        },
+        {
+          question: `Can SecureFix fix ${model} ${fault}?`,
+          answer: outlookFor(issue.label, model, display),
+        },
+      ]
   const breadcrumbs: Crumb[] = [
     { name: 'Home', path: '/' },
     { name: category.label, path: catPath },
@@ -504,7 +537,20 @@ function buildOne(
     { label: `${model} repair`, path: hub },
     { label: categoryHubLabel(category.id), path: catPath },
   ]
-  const process = processStepsFor(issue.label, model)
+  const process = quoteOnly
+    ? [
+        `Tell us more about the ${model} issue in the diagnostic box when you book.`,
+        'Bring or send the device for a full diagnostic at the workshop.',
+        'A SecureFix technician completes the diagnostic and identifies the fault.',
+        'The technician calls you back with the findings and a repair quote before any parts work starts.',
+      ]
+    : processStepsFor(issue.label, model)
+  const blurb = quoteOnly
+    ? `Please describe the ${model} issue in detail. After a full diagnostic, a technician will call you back to explain what was found and the repair cost.`
+    : blurbFor(issue.label, model)
+  const description = quoteOnly
+    ? `${model} other fault diagnostics at SecureFix, 218 City Road, London EC1V. Describe the issue, then a technician calls you back after a full diagnostic with a repair quote.`
+    : metaDescription(model, display, shown, issue.time)
   return {
     categoryId: category.id,
     categoryLabel: category.label,
@@ -515,23 +561,33 @@ function buildOne(
     issueLabel: issue.label,
     displayLabel: display,
     issueSlug: slug,
-    price: issue.price,
+    price: quoteOnly ? null : issue.price,
     priceText: shown,
-    time: issue.time,
+    time: quoteOnly ? 'Diagnostic' : issue.time,
+    quoteOnly,
     path,
-    title: `${h1} in London | ${shown} | SecureFix EC1V`,
-    description: metaDescription(model, display, shown, issue.time),
+    title: quoteOnly
+      ? `${h1} in London | Quote after diagnostics | SecureFix EC1V`
+      : `${h1} in London | ${shown} | SecureFix EC1V`,
+    description,
     h1,
     lead,
-    blurb: blurbFor(issue.label, model),
+    blurb,
     outlook: outlookFor(issue.label, model, display),
     process,
-    included: [
-      `${display} for the ${model}`,
-      'A test before handover',
-      '1-year warranty (liquid damage is excluded)',
-      'Drop-off, London collection, or mail-in',
-    ],
+    included: quoteOnly
+      ? [
+          'Full diagnostic assessment',
+          'Technician callback with findings and quote',
+          'No parts work until you approve the quote',
+          'Drop-off, London collection, or mail-in',
+        ]
+      : [
+          `${display} for the ${model}`,
+          'A test before handover',
+          '1-year warranty (liquid damage is excluded)',
+          'Drop-off, London collection, or mail-in',
+        ],
     faqs,
     breadcrumbs,
     related,
@@ -569,7 +625,7 @@ function buildOne(
         {
           '@type': 'Service',
           name: h1,
-          description: metaDescription(model, display, shown, issue.time),
+          description,
           provider: {
             '@type': 'Organization',
             name: LEGAL_NAME,
@@ -586,13 +642,17 @@ function buildOne(
               addressCountry: 'GB',
             },
           },
-          offers: {
-            '@type': 'Offer',
-            price: issue.price.toFixed(2),
-            priceCurrency: 'GBP',
-            url: canonical,
-            availability: 'https://schema.org/InStock',
-          },
+          ...(quoteOnly
+            ? {}
+            : {
+                offers: {
+                  '@type': 'Offer',
+                  price: Number(issue.price).toFixed(2),
+                  priceCurrency: 'GBP',
+                  url: canonical,
+                  availability: 'https://schema.org/InStock',
+                },
+              }),
         },
       ],
     },
@@ -656,10 +716,18 @@ function buildIssuePages(): IssuePage[] {
         )
         const grades = gradeIssuesForModel(category.id, brand.id, model)
         const seen = new Set(listed.map((issue) => issueSlug(issue.label)))
-        const issues = [
-          ...listed,
+        const extras: (RepairIssue & { price: number | null })[] = [
           ...grades.filter((issue) => !seen.has(issueSlug(issue.label))),
         ]
+        if (category.id === 'smartphone' && !seen.has(issueSlug(OTHER_FAULT_LABEL))) {
+          extras.push({
+            label: OTHER_FAULT_LABEL,
+            price: null,
+            priceText: 'Quote after diagnostics',
+            time: 'Diagnostic',
+          })
+        }
+        const issues: (RepairIssue & { price: number | null })[] = [...listed, ...extras]
         const modelSlug = slugify(model)
         const siblings = issues.map((issue) => ({
           label: displayIssueLabel(issue.label),
@@ -977,6 +1045,17 @@ export function smartphonePickerIssues(
     : (issuesByCategory.smartphone ?? []).map(withQuoteText)
 
   return SMARTPHONE_PICKER_SLOTS.map((slot) => {
+    // Other Fault is always quote-only — customer describes the issue, then a technician calls back.
+    if (slot === 'Other Fault') {
+      return {
+        label: OTHER_FAULT_LABEL,
+        price: null,
+        priceText: 'Quote after diagnostics',
+        time: 'Diagnostic',
+        cardTitle: slot,
+      }
+    }
+
     const matched = pickBestMatch(pool, slot)
     if (matched) {
       return { ...matched, cardTitle: slot }

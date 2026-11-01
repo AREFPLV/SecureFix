@@ -310,6 +310,12 @@
   box-shadow: none;
 }
 
+.book-page .required-mark {
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 0.85em;
+}
+
 .book-page .book-screen-grades {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
