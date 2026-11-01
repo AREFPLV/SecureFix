@@ -34,13 +34,6 @@ export default function RepairIssuePage({ page }: { page: IssuePage }) {
               </span>
             ))}
           </nav>
-          <h1>{page.h1}</h1>
-          <div className="book-summary-bar">
-            <span className="chip">{page.brandLabel}</span>
-            <span className="chip">{page.model}</span>
-            <span className="chip chip-accent">{page.displayLabel}</span>
-            <span className="chip chip-price">{page.priceText}</span>
-          </div>
 
           <div className="repair-hero-layout">
             <RepairHeroArt
@@ -50,17 +43,42 @@ export default function RepairIssuePage({ page }: { page: IssuePage }) {
               issueLabel={page.issueLabel}
               displayLabel={page.displayLabel}
             />
+
             <div className="repair-hero-copy">
-              <p className="service-landing-lead">{page.lead}</p>
+              <p className="issue-selected-label">Selected repair</p>
+              <h1>{page.h1}</h1>
+              <div className="book-summary-bar">
+                <span className="chip">{page.brandLabel}</span>
+                <span className="chip">{page.model}</span>
+                <span className="chip chip-accent">{page.displayLabel}</span>
+                <span className="chip chip-price">{page.priceText}</span>
+              </div>
+
               <p className="issue-price-line">
-                {page.priceText} · {page.time}
+                {page.priceText} · Workshop time {page.time}
               </p>
-              <p className="service-landing-lead">{page.outlook}</p>
+              <p className="service-landing-lead">{page.lead}</p>
               <p className="service-landing-lead">{page.blurb}</p>
-              <p className="service-landing-lead">Collection is available across London.</p>
+
+              <section className="issue-process" aria-labelledby="issue-process-heading">
+                <h2 id="issue-process-heading">
+                  Repair <span className="accent">process</span>
+                </h2>
+                <ol className="issue-process-list">
+                  {page.process.map((step, index) => (
+                    <li key={step}>
+                      <span className="issue-process-num" aria-hidden="true">
+                        {index + 1}
+                      </span>
+                      <span>{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+
               <div className="service-landing-actions">
                 <a href="#book" className="btn btn-primary btn-shiny">
-                  Choose drop-off, collection, or mail-in
+                  Book for {page.priceText} — mail, collection, or store visit
                 </a>
                 <a href={`${site.phoneHref}`} className="btn btn-secondary">
                   Call {site.phone}
@@ -88,6 +106,7 @@ export default function RepairIssuePage({ page }: { page: IssuePage }) {
               ))}
             </ul>
           </section>
+
           <section className="service-landing-section">
             <h2>
               Frequently asked <span className="accent">questions</span>
@@ -101,6 +120,7 @@ export default function RepairIssuePage({ page }: { page: IssuePage }) {
               ))}
             </dl>
           </section>
+
           <nav className="service-landing-related" aria-label="Related repairs">
             <h2>
               Related <span className="accent">repairs</span>

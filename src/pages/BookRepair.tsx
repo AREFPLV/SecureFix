@@ -192,8 +192,8 @@ export default function BookRepair() {
         }
       : selectedIssue
 
-    // Part grades have no prerendered /repair/... pages — keep booking inline.
-    if (selectedPartGrade || usesInlineBooking(catId, selectedModel)) {
+    // Dedicated SEO fault pages for each repair (including screen/battery grades).
+    if (usesInlineBooking(catId, selectedModel)) {
       setSearchParams(
         withEntry({
           category: catId,

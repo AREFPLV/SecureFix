@@ -15,6 +15,11 @@ const NOT_ISSUABLE_SLUGS = new Set(['iphone-duo'])
 const DISPLAY_LABELS: Record<string, string> = {
   'Premium Screen Replacement': 'Screen Replacement',
   'BackGlass Replacement': 'Back glass replacement',
+  'Standard Screen Replacement (INCELL)': 'INCELL',
+  'Premium Screen Replacement (Soft OLED)': 'SOFT OLED',
+  'Genuine Apple Screen Replacement': 'GENUINE APPLE',
+  'Premium Battery Replacement': 'Premium Battery',
+  'Genuine Apple Battery Replacement': 'Genuine Apple Battery',
 }
 
 /** Short card titles used on the booking issue picker (smartphone-style tiles). */
@@ -144,6 +149,7 @@ export type IssuePage = {
   lead: string
   blurb: string
   outlook: string
+  process: string[]
   included: string[]
   faqs: IssueFaq[]
   breadcrumbs: Crumb[]
@@ -299,6 +305,82 @@ function outlookFor(label: string, model: string, display: string): string {
   return `Most ${model} ${fault} jobs are completed in one workshop visit when the matching part is ready. The device is tested before handover, and this repair includes a 1-year warranty. Liquid damage is excluded.`
 }
 
+/** Step-by-step repair process shown on the SEO fault page. */
+export function processStepsFor(label: string, model: string): string[] {
+  const lower = label.toLowerCase()
+  const display = displayIssueLabel(label).toLowerCase()
+
+  if (lower.includes('screen') || lower.includes('lcd') || lower.includes('oled') || lower.includes('incell')) {
+    return [
+      `Book ${display} for your ${model} and choose drop-off, London collection, or mail-in.`,
+      'We inspect the device and fit the selected display assembly.',
+      'Picture, touch, and sensors are checked in the workshop.',
+      'You collect the repaired phone, or we return it by collection or post.',
+    ]
+  }
+  if (lower.includes('battery')) {
+    return [
+      `Book ${display} for your ${model} and choose drop-off, London collection, or mail-in.`,
+      'We open the device and fit the selected battery cell.',
+      'Battery health and charging are checked before handover.',
+      'You collect the repaired phone, or we return it by collection or post.',
+    ]
+  }
+  if (lower.includes('charg') || lower.includes('dock')) {
+    return [
+      `Book charging repair for your ${model} and choose how to send the device.`,
+      'We diagnose the port or dock and replace the faulty part.',
+      'The phone is tested with a cable to confirm a stable charge.',
+      'The device is returned by drop-off collection, London collection, or mail.',
+    ]
+  }
+  if (lower.includes('back') && (lower.includes('glass') || lower.includes('housing') || lower.includes('cover'))) {
+    return [
+      `Book ${display} for your ${model} and choose drop-off, collection, or mail-in.`,
+      'We remove the damaged rear glass or housing and fit the replacement.',
+      'Camera openings and fit are checked, then the phone is powered on.',
+      'You collect the device or receive it back by collection or post.',
+    ]
+  }
+  if (lower.includes('camera') || lower.includes('lens')) {
+    return [
+      `Book ${display} for your ${model} and choose how the device reaches the shop.`,
+      'We replace the camera module or lens glass with a matching part.',
+      'Focus and image quality are checked before handover.',
+      'The repaired device is returned by drop-off, London collection, or mail.',
+    ]
+  }
+  if (lower.includes('speaker') || lower.includes('audio') || lower.includes('ear') || lower.includes('mic')) {
+    return [
+      `Book ${display} for your ${model} and choose drop-off, collection, or mail-in.`,
+      'We diagnose the audio path and replace the faulty speaker or microphone.',
+      'Sound in and out is tested in the workshop.',
+      'The device is handed back or returned by collection or post.',
+    ]
+  }
+  if (
+    lower.includes('liquid') ||
+    lower.includes('water') ||
+    lower.includes('diagnostic') ||
+    lower.includes('frozen') ||
+    lower.includes("won't turn") ||
+    lower.includes('dead')
+  ) {
+    return [
+      `Book diagnostics for your ${model} and choose drop-off, London collection, or mail-in.`,
+      'We assess the fault and confirm what can be repaired before parts work starts.',
+      'Agreed repairs are completed and the device is tested.',
+      'You collect the phone or we return it by collection or post.',
+    ]
+  }
+  return [
+    `Book ${display} for your ${model} and choose drop-off, London collection, or mail-in.`,
+    'We diagnose the fault and fit the matching part when stock is ready.',
+    'The repair is tested in the workshop before handover.',
+    'You collect the device, or we return it by London collection or mail.',
+  ]
+}
+
 export function categoryHubPath(categoryId: string): string {
   if (categoryId === 'smartphone') return '/phone-repair'
   if (categoryId === 'pc-laptop') return '/computer-repair'
@@ -381,6 +463,7 @@ function buildOne(
     { label: `${model} repair`, path: hub },
     { label: categoryHubLabel(category.id), path: catPath },
   ]
+  const process = processStepsFor(issue.label, model)
   return {
     categoryId: category.id,
     categoryLabel: category.label,
@@ -401,10 +484,12 @@ function buildOne(
     lead,
     blurb: blurbFor(issue.label, model),
     outlook: outlookFor(issue.label, model, display),
+    process,
     included: [
       `${display} for the ${model}`,
       'A test before handover',
       '1-year warranty (liquid damage is excluded)',
+      'Drop-off, London collection, or mail-in',
     ],
     faqs,
     breadcrumbs,
@@ -431,8 +516,19 @@ function buildOne(
           })),
         },
         {
+          '@type': 'HowTo',
+          name: `How ${h1} works at SecureFix`,
+          step: process.map((text, index) => ({
+            '@type': 'HowToStep',
+            position: index + 1,
+            name: `Step ${index + 1}`,
+            text,
+          })),
+        },
+        {
           '@type': 'Service',
           name: h1,
+          description: metaDescription(model, display, shown, issue.time),
           provider: {
             '@type': 'Organization',
             name: LEGAL_NAME,
@@ -462,6 +558,46 @@ function buildOne(
   }
 }
 
+function gradeIssuesForModel(
+  categoryId: string,
+  brandId: string,
+  model: string,
+): (RepairIssue & { price: number })[] {
+  if (categoryId !== 'smartphone') return []
+  const picker = smartphonePickerIssues(brandId, model)
+  const extras: (RepairIssue & { price: number })[] = []
+
+  const screenBase = picker.find((item) => item.cardTitle === 'Front Screen')
+  if (screenBase && typeof screenBase.price === 'number') {
+    for (const grade of getScreenGradeOptions(screenBase)) {
+      if (typeof grade.price !== 'number') continue
+      extras.push({
+        label: grade.label,
+        price: grade.price,
+        priceText: grade.priceText,
+        time: screenBase.time,
+      })
+    }
+  }
+
+  if (brandId === 'apple-phone') {
+    const batteryBase = picker.find((item) => item.cardTitle === 'Battery Replacement')
+    if (batteryBase && typeof batteryBase.price === 'number') {
+      for (const grade of getBatteryGradeOptions(batteryBase)) {
+        if (typeof grade.price !== 'number') continue
+        extras.push({
+          label: grade.label,
+          price: grade.price,
+          priceText: grade.priceText,
+          time: batteryBase.time,
+        })
+      }
+    }
+  }
+
+  return extras
+}
+
 function buildIssuePages(): IssuePage[] {
   const pages: IssuePage[] = []
   for (const category of deviceCategories) {
@@ -469,9 +605,15 @@ function buildIssuePages(): IssuePage[] {
       if (skipBrand(brand)) continue
       for (const model of brand.models) {
         if (!isIssuableModel(model)) continue
-        const issues = bookingIssues(category.id, brand.id, model).filter(
+        const listed = bookingIssues(category.id, brand.id, model).filter(
           (issue): issue is RepairIssue & { price: number } => typeof issue.price === 'number',
         )
+        const grades = gradeIssuesForModel(category.id, brand.id, model)
+        const seen = new Set(listed.map((issue) => issueSlug(issue.label)))
+        const issues = [
+          ...listed,
+          ...grades.filter((issue) => !seen.has(issueSlug(issue.label))),
+        ]
         const modelSlug = slugify(model)
         const siblings = issues.map((issue) => ({
           label: displayIssueLabel(issue.label),

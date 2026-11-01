@@ -40,12 +40,65 @@
   font-size: clamp(1.8rem, 4vw, 2.6rem);
 }
 
+.issue-selected-label {
+  margin: 0 0 0.35rem;
+  font-family: Montserrat, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
 .repair-hero-layout {
   display: grid;
   grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
   gap: 1.75rem 2rem;
   align-items: start;
   margin: 0 0 2rem;
+}
+
+.issue-process {
+  margin: 1.35rem 0 0.35rem;
+  padding: 1.1rem 1.15rem 1.15rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(165deg, var(--color-surface-raised) 0%, var(--color-surface) 100%);
+}
+
+.issue-process h2 {
+  margin: 0 0 0.85rem;
+  font-size: 1.15rem;
+}
+
+.issue-process-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.issue-process-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  color: var(--color-text);
+  line-height: 1.45;
+}
+
+.issue-process-num {
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
 }
 
 .repair-hero-art {

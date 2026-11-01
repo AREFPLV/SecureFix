@@ -323,7 +323,7 @@ export default function RepairBookingForm({
             />
           </label>
           <button type="submit" className="btn btn-primary book-submit" disabled={submitting}>
-            {submitting ? 'Submitting…' : 'Book Your Repair Now'}
+            {submitting ? 'Submitting…' : `Book for ${shown} — confirm drop-off, collection, or mail-in`}
           </button>
           <FormPrivacyNote />
         </div>
