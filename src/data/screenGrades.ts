@@ -61,10 +61,10 @@ export function getScreenGradeOptions(base: {
     },
     {
       id: 'premium',
-      title: 'Premium (OLED)',
-      tag: 'OLED',
+      title: 'Premium (Soft OLED)',
+      tag: 'Soft OLED',
       description: 'Soft OLED — our most popular screen. Closest look and colour to the original.',
-      label: 'Premium Screen Replacement (OLED)',
+      label: 'Premium Screen Replacement (Soft OLED)',
       ...premium,
     },
     {
