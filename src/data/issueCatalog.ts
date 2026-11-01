@@ -237,7 +237,29 @@ export function issuePriceShown(issue: { price: number | null; priceText?: strin
 function blurbFor(label: string, model: string): string {
   const known = BLURBS[label]
   if (known) return known(model)
-  return `${label} for the ${model} is carried out at the shop. The device is tested before handover.`
+
+  const lower = label.toLowerCase()
+  if (lower.includes('screen') && lower.includes('battery')) {
+    return `The display and battery on the ${model} are replaced in one visit when both parts are ready. Picture, touch, and battery health are checked before collection.`
+  }
+  if (lower.includes('screen') || lower.includes('lcd') || lower.includes('oled')) {
+    return BLURBS['Premium Screen Replacement'](model)
+  }
+  if (lower.includes('back') && (lower.includes('glass') || lower.includes('cover'))) {
+    return BLURBS['BackGlass Replacement'](model)
+  }
+  if (lower.includes('battery')) return BLURBS['Battery Replacement'](model)
+  if (lower.includes('charg') || lower.includes('dock')) return BLURBS['Charging Unit Repair'](model)
+  if (lower.includes('lens')) return BLURBS['Camera Lens Glass Repair'](model)
+  if (lower.includes('front') && lower.includes('camera')) return BLURBS['Front Camera Replacement'](model)
+  if (lower.includes('rear') && lower.includes('camera')) return BLURBS['Rear Camera Replacement'](model)
+  if (lower.includes('speaker') || lower.includes('audio') || lower.includes('ear')) {
+    return BLURBS['Audio Repair'](model)
+  }
+  if (lower.includes('mic')) return BLURBS['Mic Replacement'](model)
+  if (lower.includes('software')) return BLURBS['Software Restore'](model)
+
+  return `${displayIssueLabel(label)} for the ${model} is carried out at the shop. The device is tested before handover.`
 }
 
 /** Short repair description shown under the selected issue card on booking. */
