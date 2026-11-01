@@ -317,6 +317,11 @@
   margin: 0 0 1.25rem;
 }
 
+.book-page .book-screen-grades-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 40rem;
+}
+
 .book-page .book-screen-grade {
   display: flex;
   flex-direction: column;

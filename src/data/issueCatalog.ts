@@ -1,6 +1,7 @@
 import { deviceCategories, type Brand, type DeviceCategory } from '@/data/booking'
 import { listedModelNames, listedRepairs, shortJobName } from '@/data/listedPrices'
 import { issuesByCategory, type RepairIssue } from '@/data/repairIssues'
+import { getBatteryGradeOptions } from '@/data/batteryGrades'
 import { getScreenGradeOptions } from '@/data/screenGrades'
 import { isGenericModel, slugify } from '@/lib/slugify'
 
@@ -824,10 +825,11 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
       bookingIssues(category.id, brand?.id, model).find((item) => issueSlug(item.label) === issueParam) ??
       null
 
-    // Screen grade bookings stay on /book-repair (inline) with derived labels.
+    // Screen / battery grade bookings stay on /book-repair (inline) with derived labels.
     if (!issue && category.id === 'smartphone') {
+      const picker = smartphonePickerIssues(brand?.id, model)
       const screenBase =
-        smartphonePickerIssues(brand?.id, model).find((item) => item.cardTitle === 'Front Screen') ??
+        picker.find((item) => item.cardTitle === 'Front Screen') ??
         bookingIssues(category.id, brand?.id, model).find((item) => {
           const lower = item.label.toLowerCase()
           return (
@@ -839,15 +841,33 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
             !lower.includes('add-on')
           )
         })
-      const grade = screenBase
+      const screenGrade = screenBase
         ? getScreenGradeOptions(screenBase).find((item) => issueSlug(item.label) === issueParam)
         : undefined
-      if (grade) {
+      if (screenGrade) {
         issue = {
-          label: grade.label,
-          price: grade.price,
-          priceText: grade.priceText,
+          label: screenGrade.label,
+          price: screenGrade.price,
+          priceText: screenGrade.priceText,
           time: screenBase?.time ?? '30m',
+        }
+      } else if (brand?.id === 'apple-phone') {
+        const batteryBase =
+          picker.find((item) => item.cardTitle === 'Battery Replacement') ??
+          bookingIssues(category.id, brand.id, model).find((item) => {
+            const lower = item.label.toLowerCase()
+            return lower.includes('battery') && !lower.includes('screen') && !lower.includes('deal')
+          })
+        const batteryGrade = batteryBase
+          ? getBatteryGradeOptions(batteryBase).find((item) => issueSlug(item.label) === issueParam)
+          : undefined
+        if (batteryGrade) {
+          issue = {
+            label: batteryGrade.label,
+            price: batteryGrade.price,
+            priceText: batteryGrade.priceText,
+            time: batteryBase?.time ?? '30m',
+          }
         }
       }
     }
