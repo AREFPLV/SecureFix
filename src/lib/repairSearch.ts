@@ -32,14 +32,19 @@ type IndexedItem = {
 }
 
 const ISSUE_HINTS: { pattern: RegExp; tokens: string[] }[] = [
-  { pattern: /back\s*(cover|glass)|rear\s*glass/i, tokens: ['back', 'cover'] },
-  { pattern: /\b(screen|display|cracked|lcd|oled)\b/i, tokens: ['screen', 'display', 'oled', 'lcd'] },
+  { pattern: /back\s*(cover|glass)|rear\s*glass/i, tokens: ['back', 'glass'] },
+  { pattern: /\b(screen|display|cracked|lcd|oled|incell)\b/i, tokens: ['screen', 'display', 'oled', 'lcd', 'incell'] },
   { pattern: /battery|drain|swelling/i, tokens: ['battery'] },
   { pattern: /charg(e|ing)|won'?t\s*charge|dock/i, tokens: ['charging', 'charge', 'dock'] },
-  { pattern: /camera|lens|blurry/i, tokens: ['camera', 'lens'] },
+  { pattern: /housing|bent|full\s*body/i, tokens: ['housing', 'bent', 'body'] },
+  { pattern: /front\s*camera|face\s*id/i, tokens: ['front', 'camera', 'face'] },
+  { pattern: /(rear|back)\s*camera(?!\s*lens)/i, tokens: ['rear', 'back', 'camera'] },
+  { pattern: /lens/i, tokens: ['lens', 'camera'] },
+  { pattern: /ear\s*speaker|loudspeaker|speaker|audio/i, tokens: ['speaker', 'audio', 'ear'] },
+  { pattern: /dead|won'?t\s*turn|no\s*power/i, tokens: ['dead', 'turn', 'power', 'diagnostic'] },
+  { pattern: /other\s*fault|frozen|diagnostic|not\s*sure/i, tokens: ['other', 'fault', 'frozen', 'diagnostic'] },
   { pattern: /hdmi/i, tokens: ['hdmi'] },
   { pattern: /water|liquid|spill/i, tokens: ['liquid', 'water'] },
-  { pattern: /speaker|audio|mic(rophone)?/i, tokens: ['speaker', 'audio', 'mic'] },
   { pattern: /keyboard|keys/i, tokens: ['keyboard'] },
   { pattern: /joystick|stick\s*drift|drift/i, tokens: ['joystick', 'drift'] },
   { pattern: /hinge/i, tokens: ['hinge'] },
@@ -55,10 +60,64 @@ function normalize(value: string): string {
     .replace(/\s+/g, ' ')
 }
 
+/** Map long brand/model phrases in the query to short catalog names (e.g. playstation 5 → ps5). */
+const QUERY_REWRITES: { pattern: RegExp; replace: string }[] = [
+  { pattern: /\bplay\s*station\s*5\s*slim\b/g, replace: 'ps5 slim' },
+  { pattern: /\bplay\s*station\s*5\s*digital\b/g, replace: 'ps5 digital' },
+  { pattern: /\bplay\s*station\s*5\b/g, replace: 'ps5' },
+  { pattern: /\bplaystation\s*5\s*slim\b/g, replace: 'ps5 slim' },
+  { pattern: /\bplaystation\s*5\s*digital\b/g, replace: 'ps5 digital' },
+  { pattern: /\bplaystation\s*5\b/g, replace: 'ps5' },
+  { pattern: /\bps\s*5\s*slim\b/g, replace: 'ps5 slim' },
+  { pattern: /\bps\s*5\s*digital\b/g, replace: 'ps5 digital' },
+  { pattern: /\bps\s*5\b/g, replace: 'ps5' },
+  { pattern: /\bplay\s*station\s*4\s*pro\b/g, replace: 'ps4 pro' },
+  { pattern: /\bplay\s*station\s*4\s*slim\b/g, replace: 'ps4 slim' },
+  { pattern: /\bplay\s*station\s*4\b/g, replace: 'ps4' },
+  { pattern: /\bplaystation\s*4\s*pro\b/g, replace: 'ps4 pro' },
+  { pattern: /\bplaystation\s*4\s*slim\b/g, replace: 'ps4 slim' },
+  { pattern: /\bplaystation\s*4\b/g, replace: 'ps4' },
+  { pattern: /\bps\s*4\s*pro\b/g, replace: 'ps4 pro' },
+  { pattern: /\bps\s*4\s*slim\b/g, replace: 'ps4 slim' },
+  { pattern: /\bps\s*4\b/g, replace: 'ps4' },
+  { pattern: /\bplay\s*station\s*3\b/g, replace: 'ps3' },
+  { pattern: /\bplaystation\s*3\b/g, replace: 'ps3' },
+  { pattern: /\bnintendo\s+switch\b/g, replace: 'switch' },
+  { pattern: /\bmac\s*book\b/g, replace: 'macbook' },
+]
+
+function expandQuery(raw: string): string {
+  let next = normalize(raw)
+  for (const rule of QUERY_REWRITES) {
+    next = next.replace(rule.pattern, rule.replace)
+  }
+  return normalize(next)
+}
+
 function modelAliases(name: string): string[] {
   const full = normalize(name)
-  const stripped = full.replace(/^(samsung|google|apple|huawei|oneplus)\s+/, '').trim()
-  return stripped && stripped !== full ? [full, stripped] : [full]
+  const aliases = new Set<string>([full])
+  const stripped = full.replace(/^(samsung|google|apple|huawei|oneplus|sony)\s+/, '').trim()
+  if (stripped) aliases.add(stripped)
+
+  // Catalog short names → common spoken / typed forms.
+  if (full === 'ps5' || full.startsWith('ps5 ')) {
+    aliases.add(full.replace(/^ps5/, 'playstation 5'))
+    aliases.add(full.replace(/^ps5/, 'play station 5'))
+  }
+  if (full === 'ps4' || full.startsWith('ps4 ')) {
+    aliases.add(full.replace(/^ps4/, 'playstation 4'))
+    aliases.add(full.replace(/^ps4/, 'play station 4'))
+  }
+  if (full === 'ps3') {
+    aliases.add('playstation 3')
+    aliases.add('play station 3')
+  }
+  if (full === 'switch' || full.startsWith('switch ')) {
+    aliases.add(full.replace(/^switch/, 'nintendo switch'))
+  }
+
+  return [...aliases]
 }
 
 let cachedIndex: IndexedItem[] | null = null
@@ -101,6 +160,7 @@ function buildIndex(): IndexedItem[] {
           // Still add a model hub hit so bare model searches can jump to the issue list.
         }
         const modelKey = normalize(model)
+        const aliasText = modelAliases(model).join(' ')
         items.push({
           kind: 'model',
           title: model,
@@ -109,7 +169,7 @@ function buildIndex(): IndexedItem[] {
           categoryId: category.id,
           brandId: brand.id,
           model,
-          haystack: normalize(`${brand.label} ${model} ${category.label}`),
+          haystack: normalize(`${brand.label} ${model} ${aliasText} ${category.label}`),
           modelKey,
           issueKey: '',
         })
@@ -251,16 +311,19 @@ function scoreItem(item: IndexedItem, query: string, tokens: string[]): number {
 
 /** Find closest repair pages and model hubs for a free-text device + issue query. */
 export function searchRepairs(rawQuery: string, limit = 8): RepairSearchHit[] {
-  const query = normalize(rawQuery)
+  const query = expandQuery(rawQuery)
   if (query.length < 2) return []
 
   const tokens = query.split(' ').filter((token) => token.length > 1)
   const ranked: RepairSearchHit[] = []
 
-  const wantsScreen = /\b(screen|display|cracked|lcd|oled)\b/i.test(query) && !/\bback\b/i.test(query)
+  const wantsScreen =
+    /\b(screen|display|cracked|lcd|oled|incell)\b/i.test(query) && !/\bback\b/i.test(query)
   const wantsBattery = /\bbattery\b/i.test(query)
   const wantsCharging = /\bcharg/i.test(query)
   const wantsHdmi = /\bhdmi\b/i.test(query)
+  const wantsDead = /\bdead\b|\bwon'?t\s*turn\b|\bno\s*power\b/i.test(query)
+  const wantsOther = /\bother\s*fault\b|\bfrozen\b|\bnot\s*sure\b/i.test(query)
   const hasIssueIntent = ISSUE_HINTS.some((hint) => hint.pattern.test(query))
 
   for (const item of getIndex()) {
@@ -270,13 +333,24 @@ export function searchRepairs(rawQuery: string, limit = 8): RepairSearchHit[] {
     // Model-only searches should suggest the model hub, not a random fault list.
     if (item.kind === 'repair' && !hasIssueIntent) continue
 
-    // Keep issue-intent results focused (avoid equal-score noise from add-ons / other faults).
+    // Keep issue-intent results focused on the matching fault family.
     if (item.kind === 'repair' && item.issueKey) {
-      if (wantsScreen && !/\b(screen|display|oled|lcd)\b/.test(item.issueKey)) continue
+      if (
+        wantsScreen &&
+        !/\b(screen|display|oled|lcd|incell)\b/.test(item.issueKey)
+      ) {
+        continue
+      }
       if (wantsBattery && !/\bbattery\b/.test(item.issueKey)) continue
-      if (wantsCharging && !/\bcharg/.test(item.issueKey)) continue
+      if (wantsCharging && !/\bcharg|\bdock\b/.test(item.issueKey)) continue
       if (wantsHdmi && !/\bhdmi\b/.test(item.issueKey)) continue
-      if (wantsScreen && /\btempered glass screen protection\b/.test(item.issueKey)) score -= 40
+      if (wantsDead && !/\bdead\b|\bturn\b|\bdiagnostic\b/.test(item.issueKey)) continue
+      if (wantsOther && !/\bother\b|\bfrozen\b|\bdiagnostic\b|\bfault\b/.test(item.issueKey)) {
+        continue
+      }
+      // Prefer Soft OLED when the query is a generic screen search.
+      if (wantsScreen && /\bsoft oled\b/.test(item.issueKey)) score += 20
+      if (wantsScreen && /\bincell\b/.test(item.issueKey) && !/\bincell\b/i.test(query)) score -= 5
     }
 
     const coverage = modelTokenCoverage(item.modelKey, tokens)
@@ -304,10 +378,27 @@ export function searchRepairs(rawQuery: string, limit = 8): RepairSearchHit[] {
     return a.title.localeCompare(b.title)
   })
 
+  // If the query names an exact model (e.g. "iphone 16"), keep that model first
+  // and avoid flooding results with Plus / Pro / neighbouring generations.
+  function queryNamesModelExactly(model: string): boolean {
+    const modelNorm = normalize(model)
+    if (!modelNorm) return false
+    const escaped = modelNorm.replace(/\s+/g, '\\s+')
+    const re = new RegExp(`(?:^|\\s)${escaped}(?=\\s|$)`, 'i')
+    const match = query.match(re)
+    if (!match || match.index == null) return false
+    const after = query.slice(match.index + match[0].length).trim()
+    const next = after.split(/\s+/)[0] ?? ''
+    return !/^(pro|plus|max|ultra|mini|air|e)$/i.test(next)
+  }
+  const exactModelHits = ranked.filter((hit) => queryNamesModelExactly(hit.model))
+  // When the query names an exact model, only show that model’s repairs.
+  const preferred = exactModelHits.length ? exactModelHits : ranked
+
   // Prefer a mix: keep top model hit + unique repairs (dedupe same repair path).
   const seen = new Set<string>()
   const results: RepairSearchHit[] = []
-  for (const hit of ranked) {
+  for (const hit of preferred) {
     const key = `${hit.kind}:${hit.path}`
     if (seen.has(key)) continue
     // Skip model hub if we already have a stronger repair for the same model and query has issue hints.

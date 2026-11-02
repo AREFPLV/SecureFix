@@ -1,6 +1,8 @@
 import { deviceCategories, type Brand, type DeviceCategory } from '@/data/booking'
 import { listedModelNames, listedRepairs, shortJobName } from '@/data/listedPrices'
 import { issuesByCategory, type RepairIssue } from '@/data/repairIssues'
+import { getBatteryGradeOptions, getPremiumBatteryOption } from '@/data/batteryGrades'
+import { getPremiumScreenOption, getScreenGradeOptions } from '@/data/screenGrades'
 import { isGenericModel, slugify } from '@/lib/slugify'
 
 export const CANONICAL_ORIGIN = 'https://securefix.uk'
@@ -13,6 +15,40 @@ const NOT_ISSUABLE_SLUGS = new Set(['iphone-duo'])
 const DISPLAY_LABELS: Record<string, string> = {
   'Premium Screen Replacement': 'Screen Replacement',
   'BackGlass Replacement': 'Back glass replacement',
+  'Standard Screen Replacement (INCELL)': 'INCELL',
+  'Premium Screen Replacement (Soft OLED)': 'SOFT OLED',
+  'Genuine Apple Screen Replacement': 'GENUINE APPLE',
+  'Premium Battery Replacement': 'Premium Battery',
+  'Genuine Apple Battery Replacement': 'Genuine Apple Battery',
+  'Won’t Turn On (Diagnostics) – I Don’t Know': "Won't turn on / Dead condition",
+  "Won't Turn On (Diagnostics) – I Don't Know": "Won't turn on / Dead condition",
+  'Not Charging or Charging Port Repair / Dock Replacement': 'Charging dock repair',
+  'Frozen Phone (Nothing Works) Quick Fixing': 'Frozen phone / Other fault',
+  'Other Fault Diagnostics': 'Other Fault',
+  'Dead Condition Diagnostics': 'Dead Condition',
+  'Loudspeaker / Audio Issue Repair / Replacement [Genuine / OEM]': 'Ear speaker / Audio repair',
+  'Front Camera and Face ID Fixing / Replacement': 'Front camera repair',
+  'Whole Rear Back New Camera Replacement [Genuine / OEM]': 'Back camera repair',
+  'Back / Rear Camera Glass Lens Replacement': 'Rear camera lens repair',
+  'Back Glass, Bent and Full Body Replacement (Housing Solution)': 'Housing replacement',
+  'Back Glass Replacement (Compatible / OEM)': 'Back glass replacement',
+  'Battery Replacement (Apple Original or OEM Quality)': 'Battery replacement',
+}
+
+/** Short card titles used on the booking issue picker (smartphone-style tiles). */
+const BOOKING_CARD_LABELS: Record<string, string> = {
+  'Premium Screen Replacement': 'Front Screen',
+  'BackGlass Replacement': 'Back Glass',
+  'Charging Unit Repair': 'Charging Dock',
+  'Camera Lens Glass Repair': 'Rear Camera Lens',
+  'Front Camera Replacement': 'Front Camera',
+  'Rear Camera Replacement': 'Back Camera',
+  'Audio Repair': 'Ear Speaker',
+  'Power/Volume Button': 'Dead Condition',
+  Diagnostics: 'Other Fault',
+  'Mic Replacement': 'Microphone',
+  'IC Replacement': 'Board / IC Repair',
+  'Liquid Diagnostics': 'Liquid Damage',
 }
 
 const BLURBS: Record<string, (model: string) => string> = {
@@ -116,9 +152,11 @@ export type IssuePage = {
   issueLabel: string
   displayLabel: string
   issueSlug: string
-  price: number
+  price: number | null
   priceText: string
   time: string
+  /** Quote-only jobs (e.g. Other Fault) hide price and require a diagnostic note. */
+  quoteOnly?: boolean
   path: string
   title: string
   description: string
@@ -126,12 +164,33 @@ export type IssuePage = {
   lead: string
   blurb: string
   outlook: string
+  process: string[]
   included: string[]
   faqs: IssueFaq[]
   breadcrumbs: Crumb[]
   related: IssueLink[]
   bookingPath: string
   jsonLd: Record<string, unknown>
+}
+
+export const OTHER_FAULT_LABEL = 'Other Fault Diagnostics'
+export const DEAD_CONDITION_LABEL = 'Dead Condition Diagnostics'
+
+export function isOtherFaultIssue(issue: { cardTitle?: string; label: string }): boolean {
+  if (issue.cardTitle === 'Other Fault') return true
+  const lower = issue.label.toLowerCase()
+  return lower.includes('other fault')
+}
+
+export function isDeadConditionIssue(issue: { cardTitle?: string; label: string }): boolean {
+  if (issue.cardTitle === 'Dead Condition') return true
+  const lower = issue.label.toLowerCase()
+  return lower.includes('dead condition')
+}
+
+/** Quote-only diagnostic bookings: no fixed price; customer describes the fault. */
+export function isQuoteDiagnosticIssue(issue: { cardTitle?: string; label: string }): boolean {
+  return isOtherFaultIssue(issue) || isDeadConditionIssue(issue)
 }
 
 export function issueSlug(label: string): string {
@@ -155,6 +214,38 @@ export function displayIssueLabel(label: string): string {
     return normalized.charAt(0).toUpperCase() + normalized.slice(1).toLowerCase()
   }
   return label
+}
+
+/** Compact label for booking issue tiles (matches the smartphone picker reference). */
+export function bookingCardLabel(label: string): string {
+  if (BOOKING_CARD_LABELS[label]) return BOOKING_CARD_LABELS[label]
+
+  const lower = label.toLowerCase()
+  if (lower.includes('front screen') && lower.includes('battery')) return 'Screen + Battery'
+  if (lower.includes('front screen')) return 'Front Screen'
+  if (lower.includes('back glass') || lower.includes('backglass')) return 'Back Glass'
+  if (lower.includes('charg') || lower.includes('dock')) return 'Charging Dock'
+  if (lower.includes('ear') && lower.includes('speaker')) return 'Ear Speaker'
+  if (lower.includes('dead') || (lower.includes("won't turn") && lower.includes('on'))) return 'Dead Condition'
+  if (lower.includes('housing')) return 'Housing Replacement'
+  if (lower.includes('rear') && lower.includes('lens')) return 'Rear Camera Lens'
+  if (lower.includes('rear') && lower.includes('camera')) return 'Back Camera'
+  if (lower.includes('front') && lower.includes('camera')) return 'Front Camera'
+
+  const short = shortJobName(label)
+  if (short !== label) {
+    if (short === 'Screen replacement') return 'Front Screen'
+    if (short === 'Battery replacement') return 'Battery Replacement'
+    if (short === 'Charging port repair') return 'Charging Dock'
+    if (short === 'Camera lens') return 'Rear Camera Lens'
+    if (short === 'Rear camera') return 'Back Camera'
+    if (short === 'Front camera') return 'Front Camera'
+    if (short === 'Speaker repair') return 'Ear Speaker'
+    if (short === 'Diagnostics') return 'Other Fault'
+    return short
+  }
+
+  return displayIssueLabel(label)
 }
 
 export function isIssuableModel(label: string): boolean {
@@ -189,7 +280,40 @@ export function issuePriceShown(issue: { price: number | null; priceText?: strin
 function blurbFor(label: string, model: string): string {
   const known = BLURBS[label]
   if (known) return known(model)
-  return `${label} for the ${model} is carried out at the shop. The device is tested before handover.`
+
+  const lower = label.toLowerCase()
+  if (lower.includes('screen') && lower.includes('battery')) {
+    return `The display and battery on the ${model} are replaced in one visit when both parts are ready. Picture, touch, and battery health are checked before collection.`
+  }
+  if (lower.includes('screen') || lower.includes('lcd') || lower.includes('oled')) {
+    return BLURBS['Premium Screen Replacement'](model)
+  }
+  // Lens lines often include "back" + "glass" — check before back-glass blurbs.
+  if (lower.includes('lens')) return BLURBS['Camera Lens Glass Repair'](model)
+  if (lower.includes('front') && lower.includes('camera')) return BLURBS['Front Camera Replacement'](model)
+  if (lower.includes('rear') && lower.includes('camera')) return BLURBS['Rear Camera Replacement'](model)
+  if (
+    (lower.includes('back glass') || lower.includes('backglass') || lower.includes('back cover')) &&
+    !lower.includes('camera')
+  ) {
+    return BLURBS['BackGlass Replacement'](model)
+  }
+  if (lower.includes('battery')) return BLURBS['Battery Replacement'](model)
+  if (lower.includes('charg') || (lower.includes('dock') && !lower.includes('microphone'))) {
+    return BLURBS['Charging Unit Repair'](model)
+  }
+  if (lower.includes('speaker') || lower.includes('audio') || lower.includes('ear')) {
+    return BLURBS['Audio Repair'](model)
+  }
+  if (lower.includes('mic')) return BLURBS['Mic Replacement'](model)
+  if (lower.includes('software')) return BLURBS['Software Restore'](model)
+
+  return `${displayIssueLabel(label)} for the ${model} is carried out at the shop. The device is tested before handover.`
+}
+
+/** Short repair description shown under the selected issue card on booking. */
+export function issueBlurb(label: string, model: string): string {
+  return blurbFor(label, model)
 }
 
 function outlookFor(label: string, model: string, display: string): string {
@@ -204,7 +328,18 @@ function outlookFor(label: string, model: string, display: string): string {
   if (lower.includes('charg') || lower.includes('dock')) {
     return `Most ${model} charging repairs are completed in one visit when the port or dock part is ready. The device is tested with a cable before collection.`
   }
-  if (lower.includes('back') && (lower.includes('glass') || lower.includes('cover') || lower.includes('housing'))) {
+  if (lower.includes('lens')) {
+    return `Most ${model} camera lens jobs are completed in one workshop visit when the matching glass is ready. Focus is checked before handover.`
+  }
+  if (lower.includes('camera')) {
+    return `Most ${model} camera repairs are completed in one workshop visit when the matching module is ready. Focus is checked before handover.`
+  }
+  if (
+    lower.includes('housing') ||
+    lower.includes('full body') ||
+    ((lower.includes('back glass') || lower.includes('backglass') || lower.includes('cover')) &&
+      !lower.includes('camera'))
+  ) {
     return `Most ${model} ${fault} jobs are completed in one workshop visit when the matching cover is ready. The device is powered on and checked before handover.`
   }
   if (lower.includes('hdmi')) {
@@ -220,6 +355,95 @@ function outlookFor(label: string, model: string, display: string): string {
     return `Diagnostics for the ${model} usually identify the fault in one workshop visit. Once the cause is clear, we confirm the repair price before any parts work starts.`
   }
   return `Most ${model} ${fault} jobs are completed in one workshop visit when the matching part is ready. The device is tested before handover, and this repair includes a 1-year warranty. Liquid damage is excluded.`
+}
+
+/** Step-by-step repair process shown on the SEO fault page. */
+export function processStepsFor(label: string, model: string): string[] {
+  const lower = label.toLowerCase()
+  const display = displayIssueLabel(label).toLowerCase()
+
+  if (lower.includes('screen') || lower.includes('lcd') || lower.includes('oled') || lower.includes('incell')) {
+    return [
+      `Book ${display} for your ${model} and choose drop-off, London collection, or mail-in.`,
+      'We inspect the device and fit the selected display assembly.',
+      'Picture, touch, and sensors are checked in the workshop.',
+      'You collect the repaired phone, or we return it by collection or post.',
+    ]
+  }
+  if (lower.includes('battery')) {
+    return [
+      `Book ${display} for your ${model} and choose drop-off, London collection, or mail-in.`,
+      'We open the device and fit the selected battery cell.',
+      'Battery health and charging are checked before handover.',
+      'You collect the repaired phone, or we return it by collection or post.',
+    ]
+  }
+  if (lower.includes('charg') || (lower.includes('dock') && !lower.includes('microphone'))) {
+    return [
+      `Book charging repair for your ${model} and choose how to send the device.`,
+      'We diagnose the port or dock and replace the faulty part.',
+      'The phone is tested with a cable to confirm a stable charge.',
+      'The device is returned by drop-off collection, London collection, or mail.',
+    ]
+  }
+  if (lower.includes('lens')) {
+    return [
+      `Book ${display} for your ${model} and choose how the device reaches the shop.`,
+      'We replace the camera lens glass with a matching part.',
+      'Focus and image quality are checked before handover.',
+      'The repaired device is returned by drop-off, London collection, or mail.',
+    ]
+  }
+  if (lower.includes('camera')) {
+    return [
+      `Book ${display} for your ${model} and choose how the device reaches the shop.`,
+      'We replace the camera module with a matching part.',
+      'Focus and image quality are checked before handover.',
+      'The repaired device is returned by drop-off, London collection, or mail.',
+    ]
+  }
+  if (
+    lower.includes('housing') ||
+    lower.includes('full body') ||
+    ((lower.includes('back glass') || lower.includes('backglass') || lower.includes('cover')) &&
+      !lower.includes('camera'))
+  ) {
+    return [
+      `Book ${display} for your ${model} and choose drop-off, collection, or mail-in.`,
+      'We remove the damaged rear glass or housing and fit the replacement.',
+      'Camera openings and fit are checked, then the phone is powered on.',
+      'You collect the device or receive it back by collection or post.',
+    ]
+  }
+  if (lower.includes('speaker') || lower.includes('audio') || lower.includes('ear') || lower.includes('mic')) {
+    return [
+      `Book ${display} for your ${model} and choose drop-off, collection, or mail-in.`,
+      'We diagnose the audio path and replace the faulty speaker or microphone.',
+      'Sound in and out is tested in the workshop.',
+      'The device is handed back or returned by collection or post.',
+    ]
+  }
+  if (
+    lower.includes('liquid') ||
+    lower.includes('water') ||
+    lower.includes('diagnostic') ||
+    lower.includes('frozen') ||
+    lower.includes("won't turn") ||
+    lower.includes('dead')
+  ) {
+    return [
+      `Book diagnostics for your ${model} and choose drop-off, London collection, or mail-in.`,
+      'We assess the fault and confirm what can be repaired before parts work starts.',
+      'Agreed repairs are completed and the device is tested.',
+      'You collect the phone or we return it by collection or post.',
+    ]
+  }
+  return [
+    `Book ${display} for your ${model} and choose drop-off, London collection, or mail-in.`,
+    'We diagnose the fault and fit the matching part when stock is ready.',
+    'The repair is tested in the workshop before handover.',
+    'You collect the device, or we return it by London collection or mail.',
+  ]
 }
 
 export function categoryHubPath(categoryId: string): string {
@@ -259,13 +483,14 @@ function buildOne(
   category: DeviceCategory,
   brand: Brand,
   model: string,
-  issue: RepairIssue & { price: number },
+  issue: RepairIssue & { price: number | null },
   siblings: IssueLink[],
 ): IssuePage {
   const modelSlug = slugify(model)
   const slug = issueSlug(issue.label)
   const display = displayIssueLabel(issue.label)
-  const shown = issuePriceShown(issue)
+  const quoteOnly = issue.price == null || isQuoteDiagnosticIssue(issue)
+  const shown = quoteOnly ? 'Quote after diagnostics' : issuePriceShown(issue)
   const path = `/repair/${category.id}/${brand.id}/${modelSlug}/${slug}`
   const canonical = `${CANONICAL_ORIGIN}${path}`
   const h1 = `${model} ${display}`
@@ -273,25 +498,46 @@ function buildOne(
   const brandPath = `/repair/${category.id}/${brand.id}`
   const catPath = categoryHubPath(category.id)
   const fault = display.toLowerCase()
-  const lead = `${display} for the ${model} is carried out at ${SHOP_ADDRESS}, priced at ${shown}, with a workshop time of ${issue.time}, and a 1-year warranty.`
-  const faqs: IssueFaq[] = [
-    {
-      question: `How much does ${model} ${fault} cost?`,
-      answer: `${model} ${fault} is ${shown} at ${SHOP_ADDRESS}.`,
-    },
-    {
-      question: `How long does ${model} ${fault} take?`,
-      answer: `${model} ${fault} is listed at ${issue.time} on the SecureFix price list.`,
-    },
-    {
-      question: `Is there a warranty on ${model} ${fault}?`,
-      answer: `Yes. ${model} ${fault} includes a 1-year warranty. Liquid damage is excluded.`,
-    },
-    {
-      question: `Can SecureFix fix ${model} ${fault}?`,
-      answer: outlookFor(issue.label, model, display),
-    },
-  ]
+  const lead = quoteOnly
+    ? `Describe the ${model} ${fault} in as much detail as you can. After a full diagnostic, a SecureFix technician will call you back with the findings and a repair quote.`
+    : `${display} for the ${model} is carried out at ${SHOP_ADDRESS}, priced at ${shown}, with a workshop time of ${issue.time}, and a 1-year warranty.`
+  const faqs: IssueFaq[] = quoteOnly
+    ? [
+        {
+          question: `How much does ${model} ${fault} cost?`,
+          answer: `Pricing is confirmed after a full diagnostic. A technician will call you back with the quote before any parts work starts.`,
+        },
+        {
+          question: `What should I write in the diagnostic box?`,
+          answer: `Describe what happens, when it started, and anything already tried. The more detail you give, the faster diagnostics can find the fault.`,
+        },
+        {
+          question: `Will someone contact me after diagnostics?`,
+          answer: `Yes. After the full diagnostic, a SecureFix technician will call you back to explain the findings and the repair options.`,
+        },
+        {
+          question: `Can SecureFix investigate ${model} ${fault}?`,
+          answer: outlookFor(issue.label, model, display),
+        },
+      ]
+    : [
+        {
+          question: `How much does ${model} ${fault} cost?`,
+          answer: `${model} ${fault} is ${shown} at ${SHOP_ADDRESS}.`,
+        },
+        {
+          question: `How long does ${model} ${fault} take?`,
+          answer: `${model} ${fault} is listed at ${issue.time} on the SecureFix price list.`,
+        },
+        {
+          question: `Is there a warranty on ${model} ${fault}?`,
+          answer: `Yes. ${model} ${fault} includes a 1-year warranty. Liquid damage is excluded.`,
+        },
+        {
+          question: `Can SecureFix fix ${model} ${fault}?`,
+          answer: outlookFor(issue.label, model, display),
+        },
+      ]
   const breadcrumbs: Crumb[] = [
     { name: 'Home', path: '/' },
     { name: category.label, path: catPath },
@@ -304,6 +550,20 @@ function buildOne(
     { label: `${model} repair`, path: hub },
     { label: categoryHubLabel(category.id), path: catPath },
   ]
+  const process = quoteOnly
+    ? [
+        `Tell us more about the ${model} ${fault} in the diagnostic box when you book.`,
+        'Bring or send the device for a full diagnostic at the workshop.',
+        'A SecureFix technician completes the diagnostic and identifies the fault.',
+        'The technician calls you back with the findings and a repair quote before any parts work starts.',
+      ]
+    : processStepsFor(issue.label, model)
+  const blurb = quoteOnly
+    ? `Please describe the ${model} ${fault} in detail. After a full diagnostic, a technician will call you back to explain what was found and the repair cost.`
+    : blurbFor(issue.label, model)
+  const description = quoteOnly
+    ? `${model} ${fault} diagnostics at SecureFix, 218 City Road, London EC1V. Describe the issue, then a technician calls you back after a full diagnostic with a repair quote.`
+    : metaDescription(model, display, shown, issue.time)
   return {
     categoryId: category.id,
     categoryLabel: category.label,
@@ -314,21 +574,33 @@ function buildOne(
     issueLabel: issue.label,
     displayLabel: display,
     issueSlug: slug,
-    price: issue.price,
+    price: quoteOnly ? null : issue.price,
     priceText: shown,
-    time: issue.time,
+    time: quoteOnly ? 'Diagnostic' : issue.time,
+    quoteOnly,
     path,
-    title: `${h1} in London | ${shown} | SecureFix EC1V`,
-    description: metaDescription(model, display, shown, issue.time),
+    title: quoteOnly
+      ? `${h1} in London | Quote after diagnostics | SecureFix EC1V`
+      : `${h1} in London | ${shown} | SecureFix EC1V`,
+    description,
     h1,
     lead,
-    blurb: blurbFor(issue.label, model),
+    blurb,
     outlook: outlookFor(issue.label, model, display),
-    included: [
-      `${display} for the ${model}`,
-      'A test before handover',
-      '1-year warranty (liquid damage is excluded)',
-    ],
+    process,
+    included: quoteOnly
+      ? [
+          'Full diagnostic assessment',
+          'Technician callback with findings and quote',
+          'No parts work until you approve the quote',
+          'Drop-off, London collection, or mail-in',
+        ]
+      : [
+          `${display} for the ${model}`,
+          'A test before handover',
+          '1-year warranty (liquid damage is excluded)',
+          'Drop-off, London collection, or mail-in',
+        ],
     faqs,
     breadcrumbs,
     related,
@@ -354,8 +626,19 @@ function buildOne(
           })),
         },
         {
+          '@type': 'HowTo',
+          name: `How ${h1} works at SecureFix`,
+          step: process.map((text, index) => ({
+            '@type': 'HowToStep',
+            position: index + 1,
+            name: `Step ${index + 1}`,
+            text,
+          })),
+        },
+        {
           '@type': 'Service',
           name: h1,
+          description,
           provider: {
             '@type': 'Organization',
             name: LEGAL_NAME,
@@ -372,17 +655,144 @@ function buildOne(
               addressCountry: 'GB',
             },
           },
-          offers: {
-            '@type': 'Offer',
-            price: issue.price.toFixed(2),
-            priceCurrency: 'GBP',
-            url: canonical,
-            availability: 'https://schema.org/InStock',
-          },
+          ...(quoteOnly
+            ? {}
+            : {
+                offers: {
+                  '@type': 'Offer',
+                  price: Number(issue.price).toFixed(2),
+                  priceCurrency: 'GBP',
+                  url: canonical,
+                  availability: 'https://schema.org/InStock',
+                },
+              }),
         },
       ],
     },
   }
+}
+
+/**
+ * Customer-facing smartphone repairs only: the 11 picker faults.
+ * Screen/battery expand to quality grades; Other Fault / Dead Condition stay quote-only.
+ * Price-list add-ons, deals, and misc jobs are intentionally excluded.
+ */
+function customerFacingSmartphoneIssues(
+  brandId: string,
+  model: string,
+): (RepairIssue & { price: number | null; cardTitle?: SmartphonePickerSlot })[] {
+  const picker = smartphonePickerIssues(brandId, model)
+  const isApple = brandId === 'apple-phone'
+  const issues: (RepairIssue & { price: number | null; cardTitle?: SmartphonePickerSlot })[] = []
+  const seen = new Set<string>()
+
+  function pushIssue(
+    issue: RepairIssue & { price: number | null },
+    cardTitle?: SmartphonePickerSlot,
+  ) {
+    const slug = issueSlug(issue.label)
+    if (seen.has(slug)) return
+    seen.add(slug)
+    issues.push(cardTitle ? { ...issue, cardTitle } : issue)
+  }
+
+  for (const item of picker) {
+    if (item.cardTitle === 'Front Screen') {
+      const grades =
+        typeof item.price === 'number'
+          ? isApple
+            ? getScreenGradeOptions(item)
+            : getPremiumScreenOption(item)
+          : []
+      if (grades.length) {
+        for (const grade of grades) {
+          pushIssue(
+            {
+              label: grade.label,
+              price: grade.price,
+              priceText: grade.priceText,
+              time: item.time,
+            },
+            'Front Screen',
+          )
+        }
+      } else {
+        pushIssue(item, item.cardTitle)
+      }
+      continue
+    }
+
+    if (item.cardTitle === 'Battery Replacement') {
+      const grades =
+        typeof item.price === 'number'
+          ? isApple
+            ? getBatteryGradeOptions(item)
+            : getPremiumBatteryOption(item)
+          : []
+      if (grades.length) {
+        for (const grade of grades) {
+          pushIssue(
+            {
+              label: grade.label,
+              price: grade.price,
+              priceText: grade.priceText,
+              time: item.time,
+            },
+            'Battery Replacement',
+          )
+        }
+      } else {
+        pushIssue(item, item.cardTitle)
+      }
+      continue
+    }
+
+    pushIssue(item, item.cardTitle)
+  }
+
+  return issues
+}
+
+/** Related links: the 11 customer fault tiles for this phone (not every price-list SKU). */
+function smartphoneRelatedLinks(
+  categoryId: string,
+  brandId: string,
+  model: string,
+  currentPath: string,
+): IssueLink[] {
+  const modelSlug = slugify(model)
+  const picker = smartphonePickerIssues(brandId, model)
+  const isApple = brandId === 'apple-phone'
+  const links: IssueLink[] = []
+
+  for (const item of picker) {
+    let label = item.cardTitle
+    let targetLabel = item.label
+
+    if (item.cardTitle === 'Front Screen' && typeof item.price === 'number') {
+      const premium = (isApple ? getScreenGradeOptions(item) : getPremiumScreenOption(item)).find(
+        (grade) => grade.id === 'premium',
+      )
+      if (premium) {
+        targetLabel = premium.label
+        label = 'Front Screen'
+      }
+    } else if (item.cardTitle === 'Battery Replacement' && typeof item.price === 'number') {
+      const premium = (isApple ? getBatteryGradeOptions(item) : getPremiumBatteryOption(item)).find(
+        (grade) => grade.id === 'premium',
+      )
+      if (premium) {
+        targetLabel = premium.label
+        label = 'Battery Replacement'
+      }
+    }
+
+    const path = `/repair/${categoryId}/${brandId}/${modelSlug}/${issueSlug(targetLabel)}`
+    if (path === currentPath) continue
+    links.push({ label, path })
+  }
+
+  return links
 }
 
 function buildIssuePages(): IssuePage[] {
@@ -392,10 +802,21 @@ function buildIssuePages(): IssuePage[] {
       if (skipBrand(brand)) continue
       for (const model of brand.models) {
         if (!isIssuableModel(model)) continue
+        const modelSlug = slugify(model)
+
+        if (category.id === 'smartphone') {
+          const issues = customerFacingSmartphoneIssues(brand.id, model)
+          for (const issue of issues) {
+            const path = `/repair/${category.id}/${brand.id}/${modelSlug}/${issueSlug(issue.label)}`
+            const siblings = smartphoneRelatedLinks(category.id, brand.id, model, path)
+            pages.push(buildOne(category, brand, model, issue, siblings))
+          }
+          continue
+        }
+
         const issues = bookingIssues(category.id, brand.id, model).filter(
           (issue): issue is RepairIssue & { price: number } => typeof issue.price === 'number',
         )
-        const modelSlug = slugify(model)
         const siblings = issues.map((issue) => ({
           label: displayIssueLabel(issue.label),
           path: `/repair/${category.id}/${brand.id}/${modelSlug}/${issueSlug(issue.label)}`,
@@ -495,6 +916,251 @@ function withQuoteText(issue: RepairIssue): RepairIssue & { price: number | null
   return { ...issue, priceText: 'Quote on inspection' }
 }
 
+/** Fixed smartphone picker tiles — only the repairs from the booking reference image. */
+export const SMARTPHONE_PICKER_SLOTS = [
+  'Front Screen',
+  'Back Glass',
+  'Charging Dock',
+  'Battery Replacement',
+  'Other Fault',
+  'Ear Speaker',
+  'Dead Condition',
+  'Front Camera',
+  'Back Camera',
+  'Housing Replacement',
+  'Rear Camera Lens',
+] as const
+
+export type SmartphonePickerSlot = (typeof SMARTPHONE_PICKER_SLOTS)[number]
+
+type PickerIssue = RepairIssue & { cardTitle: SmartphonePickerSlot }
+
+function matchSmartphoneSlot(label: string, slot: SmartphonePickerSlot): boolean {
+  const lower = label.toLowerCase()
+  switch (slot) {
+    case 'Front Screen':
+      return (
+        (lower.includes('screen') || lower.includes('lcd') || lower.includes('oled')) &&
+        !lower.includes('battery') &&
+        !lower.includes('back glass') &&
+        !lower.includes('inner') &&
+        !lower.includes('outer') &&
+        !lower.includes('tempered') &&
+        !lower.includes('protection') &&
+        !lower.includes('add-on') &&
+        !lower.includes('addon')
+      )
+    case 'Back Glass':
+      return (
+        (lower.includes('back glass') || lower.includes('backglass')) &&
+        !lower.includes('housing') &&
+        !lower.includes('full body') &&
+        !lower.includes('screen') &&
+        !lower.includes('bent')
+      )
+    case 'Charging Dock':
+      // Prefer real charging-port jobs; never mic/dock-only lines.
+      return (
+        (lower.includes('charg') || lower.includes('charging port') || lower.includes('not charging')) &&
+        !lower.includes('microphone') &&
+        !lower.includes('mic ')
+      )
+    case 'Battery Replacement':
+      return (
+        lower.includes('battery') &&
+        !lower.includes('screen') &&
+        !lower.includes('deal') &&
+        !lower.includes('and new battery')
+      )
+    case 'Other Fault':
+      return (
+        lower.includes('frozen') ||
+        lower.includes('overheating') ||
+        lower.includes('bluetooth') ||
+        lower.includes('wifi') ||
+        lower.includes('wi-fi') ||
+        lower.includes('gps') ||
+        lower.includes('liquid') ||
+        lower.includes('water') ||
+        lower.includes('software') ||
+        lower.includes('other fault')
+      )
+    case 'Ear Speaker':
+      return (
+        lower.includes('loudspeaker') ||
+        lower.includes('ear speaker') ||
+        lower.includes('earpiece') ||
+        ((lower.includes('speaker') || lower.includes('audio')) &&
+          !lower.includes('mic') &&
+          !lower.includes('microphone'))
+      )
+    case 'Dead Condition':
+      // Dead / no-power diagnostics only — never volume/power button jobs.
+      return (
+        (lower.includes("won't turn") ||
+          lower.includes('wont turn') ||
+          lower.includes('won’t turn') ||
+          lower.includes('no power') ||
+          (lower.includes('dead') && !lower.includes('pixel'))) &&
+        !lower.includes('volume') &&
+        !lower.includes('button') &&
+        !lower.includes('sides')
+      )
+    case 'Front Camera':
+      return (
+        (lower.includes('front camera') || lower.includes('face id')) &&
+        !lower.includes('rear') &&
+        !lower.includes('back camera')
+      )
+    case 'Back Camera':
+      return (
+        (lower.includes('rear') || lower.includes('back')) &&
+        lower.includes('camera') &&
+        !lower.includes('lens') &&
+        !lower.includes('glass lens') &&
+        !lower.includes('front')
+      )
+    case 'Housing Replacement':
+      return (
+        lower.includes('housing') ||
+        lower.includes('full body') ||
+        (lower.includes('bent') && lower.includes('back'))
+      )
+    case 'Rear Camera Lens':
+      return lower.includes('lens') && (lower.includes('camera') || lower.includes('rear') || lower.includes('back'))
+    default:
+      return false
+  }
+}
+
+const SLOT_FALLBACKS: Record<SmartphonePickerSlot, string> = {
+  'Front Screen': 'Premium Screen Replacement',
+  'Back Glass': 'BackGlass Replacement',
+  'Charging Dock': 'Charging Unit Repair',
+  'Battery Replacement': 'Battery Replacement',
+  'Other Fault': 'Diagnostics',
+  'Ear Speaker': 'Audio Repair',
+  'Dead Condition': 'Diagnostics',
+  'Front Camera': 'Front Camera Replacement',
+  'Back Camera': 'Rear Camera Replacement',
+  'Housing Replacement': 'BackGlass Replacement',
+  'Rear Camera Lens': 'Camera Lens Glass Repair',
+}
+
+function screenMatchRank(label: string): number {
+  const lower = label.toLowerCase()
+  if (lower.includes('soft oled') || lower.includes('oled/compatible') || lower.includes('premium quality')) {
+    return 0
+  }
+  if (lower.includes('new screen') || lower.includes('screen replacement')) return 1
+  if (lower.includes('lcd')) return 2
+  return 3
+}
+
+function slotMatchRank(slot: SmartphonePickerSlot, label: string): number {
+  const lower = label.toLowerCase()
+  switch (slot) {
+    case 'Front Screen':
+      return screenMatchRank(label)
+    case 'Charging Dock':
+      if (lower.includes('not charging') || lower.includes('charging port')) return 0
+      if (lower.includes('charg')) return 1
+      return 2
+    case 'Dead Condition':
+      if (lower.includes("won't turn") || lower.includes('wont turn') || lower.includes('won’t turn')) return 0
+      if (lower.includes('no power') || lower.includes('dead')) return 1
+      return 2
+    case 'Other Fault':
+      if (lower.includes('frozen')) return 0
+      if (lower.includes('liquid') || lower.includes('water')) return 1
+      if (lower.includes('software')) return 2
+      return 3
+    case 'Back Glass':
+      if (lower.includes('back glass replacement') && !lower.includes('bent')) return 0
+      return 1
+    case 'Back Camera':
+      if (lower.includes('whole rear') || lower.includes('rear camera replacement')) return 0
+      return 1
+    case 'Rear Camera Lens':
+      if (lower.includes('lens') && lower.includes('glass')) return 0
+      return 1
+    case 'Housing Replacement':
+      if (lower.includes('housing') || lower.includes('full body')) return 0
+      return 1
+    default:
+      return 0
+  }
+}
+
+function pickBestMatch(
+  repairs: RepairIssue[],
+  slot: SmartphonePickerSlot,
+): RepairIssue | undefined {
+  const matches = repairs.filter((repair) => matchSmartphoneSlot(repair.label, slot))
+  if (!matches.length) return undefined
+  // Prefer the most specific job for the slot, then a concrete price, then shorter labels.
+  return [...matches].sort((a, b) => {
+    const ar = slotMatchRank(slot, a.label)
+    const br = slotMatchRank(slot, b.label)
+    if (ar !== br) return ar - br
+    const ap = typeof a.price === 'number' ? 0 : 1
+    const bp = typeof b.price === 'number' ? 0 : 1
+    if (ap !== bp) return ap - bp
+    return a.label.length - b.label.length
+  })[0]
+}
+
+/**
+ * Smartphone booking tiles: exactly the 11 reference repairs.
+ * Maps each tile to the closest listed/catalog job for pricing and booking.
+ */
+export function smartphonePickerIssues(
+  brandId?: string | null,
+  model?: string | null,
+): PickerIssue[] {
+  const listed =
+    brandId && model && !isGenericModel(model)
+      ? listedRepairs('smartphone', brandId, model)
+      : null
+
+  const pool: RepairIssue[] = listed?.length
+    ? listed.map((repair) => ({
+        label: repair.label,
+        price: repair.price,
+        priceText: repair.priceText,
+        time: repairTime('smartphone', repair.label),
+      }))
+    : (issuesByCategory.smartphone ?? []).map(withQuoteText)
+
+  return SMARTPHONE_PICKER_SLOTS.map((slot) => {
+    // Other Fault and Dead Condition are quote-only — customer describes the issue, then a technician calls back.
+    if (slot === 'Other Fault' || slot === 'Dead Condition') {
+      return {
+        label: slot === 'Other Fault' ? OTHER_FAULT_LABEL : DEAD_CONDITION_LABEL,
+        price: null,
+        priceText: 'Quote after diagnostics',
+        time: 'Diagnostic',
+        cardTitle: slot,
+      }
+    }
+
+    const matched = pickBestMatch(pool, slot)
+    if (matched) {
+      return { ...matched, cardTitle: slot }
+    }
+
+    const fallbackLabel = SLOT_FALLBACKS[slot]
+    const catalog = (issuesByCategory.smartphone ?? []).find((issue) => issue.label === fallbackLabel)
+    return {
+      label: catalog?.label ?? fallbackLabel,
+      price: catalog?.price ?? null,
+      priceText: catalog?.priceText ?? (catalog?.price == null ? 'Quote on inspection' : undefined),
+      time: catalog?.time ?? repairTime('smartphone', fallbackLabel),
+      cardTitle: slot,
+    }
+  })
+}
+
 /** Repairs for one model. Listed brands use that model's price list; generic/other fall back to category issues (including quote-only jobs). */
 export function bookingIssues(categoryId: string, brandId?: string | null, model?: string | null) {
   if (brandId && model && !isGenericModel(model)) {
@@ -573,11 +1239,66 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
   // Single-model brands (Other Brand, etc.) skip straight to issues.
   if (!model && brand?.models.length === 1) model = brand.models[0]
   const issueParam = params.get('issue')
-  const issue =
-    category && model && issueParam
-      ? (bookingIssues(category.id, brand?.id, model).find((item) => issueSlug(item.label) === issueParam) ??
-        null)
-      : null
+  let issue: RepairIssue | null = null
+  if (category && model && issueParam) {
+    issue =
+      bookingIssues(category.id, brand?.id, model).find((item) => issueSlug(item.label) === issueParam) ??
+      null
+
+    // Grade bookings (iPhone tiers / other-brand Premium) resolve from derived labels.
+    if (!issue && category.id === 'smartphone') {
+      const picker = smartphonePickerIssues(brand?.id, model)
+      const isApple = brand?.id === 'apple-phone'
+      const screenBase =
+        picker.find((item) => item.cardTitle === 'Front Screen') ??
+        bookingIssues(category.id, brand?.id, model).find((item) => {
+          const lower = item.label.toLowerCase()
+          return (
+            (lower.includes('screen') || lower.includes('lcd') || lower.includes('oled')) &&
+            !lower.includes('battery') &&
+            !lower.includes('back glass') &&
+            !lower.includes('tempered') &&
+            !lower.includes('protection') &&
+            !lower.includes('add-on')
+          )
+        })
+      const screenOptions = screenBase
+        ? isApple
+          ? getScreenGradeOptions(screenBase)
+          : getPremiumScreenOption(screenBase)
+        : []
+      const screenGrade = screenOptions.find((item) => issueSlug(item.label) === issueParam)
+      if (screenGrade) {
+        issue = {
+          label: screenGrade.label,
+          price: screenGrade.price,
+          priceText: screenGrade.priceText,
+          time: screenBase?.time ?? '30m',
+        }
+      } else {
+        const batteryBase =
+          picker.find((item) => item.cardTitle === 'Battery Replacement') ??
+          bookingIssues(category.id, brand?.id, model).find((item) => {
+            const lower = item.label.toLowerCase()
+            return lower.includes('battery') && !lower.includes('screen') && !lower.includes('deal')
+          })
+        const batteryOptions = batteryBase
+          ? isApple
+            ? getBatteryGradeOptions(batteryBase)
+            : getPremiumBatteryOption(batteryBase)
+          : []
+        const batteryGrade = batteryOptions.find((item) => issueSlug(item.label) === issueParam)
+        if (batteryGrade) {
+          issue = {
+            label: batteryGrade.label,
+            price: batteryGrade.price,
+            priceText: batteryGrade.priceText,
+            time: batteryBase?.time ?? '30m',
+          }
+        }
+      }
+    }
+  }
 
   let step: BookingSeed['step'] = 'device'
   const showForm = params.get('view') !== 'issue'
