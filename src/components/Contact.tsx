@@ -108,7 +108,7 @@ export default function Contact() {
                     <span>
                       Google Reviews
                       {totalReviews > 0 ? ` · ${totalReviews} reviews` : ''}
-                      {source === 'google' ? ' · Live' : ''}
+                      {source === 'google' ? ' · Live from Google' : source === 'fallback' ? ' · Preview' : ''}
                     </span>
                   </div>
                 </div>
