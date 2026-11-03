@@ -3,6 +3,11 @@ import { listedModelNames, listedRepairs, shortJobName } from '@/data/listedPric
 import { issuesByCategory, type RepairIssue } from '@/data/repairIssues'
 import { getBatteryGradeOptions, getPremiumBatteryOption } from '@/data/batteryGrades'
 import { getPremiumScreenOption, getScreenGradeOptions } from '@/data/screenGrades'
+import {
+  getSamsungSeries,
+  usesSamsungSeriesPicker,
+  type SamsungSeries,
+} from '@/data/samsungSeries'
 import { isGenericModel, slugify } from '@/lib/slugify'
 
 export const CANONICAL_ORIGIN = 'https://securefix.uk'
@@ -269,6 +274,13 @@ function repairTime(categoryId: string, label: string): string {
   if (lower.includes('screen') || lower.includes('lcd') || lower.includes('battery')) return '30m'
   if (lower.includes('charg') || lower.includes('dock')) return '1h'
   return '1h'
+}
+
+/** Shown instead of a price for Other / Not Listed devices. */
+export const UNLISTED_MODEL_PRICE_TEXT = 'Our technicians will get in touch with you'
+
+export function isUnlistedModel(model: string | null | undefined): boolean {
+  return Boolean(model && isGenericModel(model))
 }
 
 export function issuePriceShown(issue: { price: number | null; priceText?: string }): string {
@@ -916,6 +928,16 @@ function withQuoteText(issue: RepairIssue): RepairIssue & { price: number | null
   return { ...issue, priceText: 'Quote on inspection' }
 }
 
+/** Strip fixed prices for Other / Not Listed models across the booking flow. */
+function asUnlistedModelIssue(issue: RepairIssue): RepairIssue & { price: null; priceText: string } {
+  return {
+    ...issue,
+    price: null,
+    priceText: UNLISTED_MODEL_PRICE_TEXT,
+    time: issue.time || 'Diagnostic',
+  }
+}
+
 /** Fixed smartphone picker tiles — only the repairs from the booking reference image. */
 export const SMARTPHONE_PICKER_SLOTS = [
   'Front Screen',
@@ -1118,10 +1140,9 @@ export function smartphonePickerIssues(
   brandId?: string | null,
   model?: string | null,
 ): PickerIssue[] {
+  const unlisted = isUnlistedModel(model)
   const listed =
-    brandId && model && !isGenericModel(model)
-      ? listedRepairs('smartphone', brandId, model)
-      : null
+    brandId && model && !unlisted ? listedRepairs('smartphone', brandId, model) : null
 
   const pool: RepairIssue[] = listed?.length
     ? listed.map((repair) => ({
@@ -1138,7 +1159,7 @@ export function smartphonePickerIssues(
       return {
         label: slot === 'Other Fault' ? OTHER_FAULT_LABEL : DEAD_CONDITION_LABEL,
         price: null,
-        priceText: 'Quote after diagnostics',
+        priceText: unlisted ? UNLISTED_MODEL_PRICE_TEXT : 'Quote after diagnostics',
         time: 'Diagnostic',
         cardTitle: slot,
       }
@@ -1146,24 +1167,29 @@ export function smartphonePickerIssues(
 
     const matched = pickBestMatch(pool, slot)
     if (matched) {
-      return { ...matched, cardTitle: slot }
+      return {
+        ...(unlisted ? asUnlistedModelIssue(matched) : matched),
+        cardTitle: slot,
+      }
     }
 
     const fallbackLabel = SLOT_FALLBACKS[slot]
     const catalog = (issuesByCategory.smartphone ?? []).find((issue) => issue.label === fallbackLabel)
-    return {
+    const fallback = {
       label: catalog?.label ?? fallbackLabel,
       price: catalog?.price ?? null,
       priceText: catalog?.priceText ?? (catalog?.price == null ? 'Quote on inspection' : undefined),
       time: catalog?.time ?? repairTime('smartphone', fallbackLabel),
       cardTitle: slot,
     }
+    return unlisted ? { ...asUnlistedModelIssue(fallback), cardTitle: slot } : fallback
   })
 }
 
 /** Repairs for one model. Listed brands use that model's price list; generic/other fall back to category issues (including quote-only jobs). */
 export function bookingIssues(categoryId: string, brandId?: string | null, model?: string | null) {
-  if (brandId && model && !isGenericModel(model)) {
+  const unlisted = isUnlistedModel(model)
+  if (brandId && model && !unlisted) {
     const listed = listedRepairs(categoryId, brandId, model)
     if (listed?.length) {
       return listed.map((repair) => ({
@@ -1175,9 +1201,11 @@ export function bookingIssues(categoryId: string, brandId?: string | null, model
     }
   }
 
-  const allowQuoteOnly = Boolean(model && isGenericModel(model)) || categoryId === 'other'
+  const allowQuoteOnly = unlisted || categoryId === 'other'
   const source = allowQuoteOnly
-    ? (issuesByCategory[categoryId] ?? []).map(withQuoteText)
+    ? (issuesByCategory[categoryId] ?? []).map((issue) =>
+        unlisted ? asUnlistedModelIssue(issue) : withQuoteText(issue),
+      )
     : pricedIssues(categoryId)
 
   return source
@@ -1213,9 +1241,10 @@ export function jobLabelsFor(categoryId: string, brandId?: string, model?: strin
 export type BookingSeed = {
   category: DeviceCategory | null
   brand: Brand | null
+  series: SamsungSeries | null
   model: string | null
   issue: RepairIssue | null
-  step: 'device' | 'brand' | 'model' | 'issue' | 'book'
+  step: 'device' | 'brand' | 'series' | 'model' | 'issue' | 'book'
 }
 
 /** Path for the crawlable repair booking page. */
@@ -1231,6 +1260,8 @@ export function repairBookingPath(
 export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed {
   const category = deviceCategories.find((item) => item.id === params.get('category')) ?? null
   const brand = category?.brands.find((item) => item.id === params.get('brand')) ?? null
+  const series =
+    brand && usesSamsungSeriesPicker(brand.id) ? getSamsungSeries(params.get('series')) : null
   const modelParam = params.get('model')
   let model =
     brand && modelParam
@@ -1302,10 +1333,13 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
 
   let step: BookingSeed['step'] = 'device'
   const showForm = params.get('view') !== 'issue'
+  const samsungSeriesFlow = Boolean(brand && usesSamsungSeriesPicker(brand.id))
   if (category && brand && model && issue && showForm) step = 'book'
   else if (category && brand && model) step = 'issue'
+  else if (category && brand && samsungSeriesFlow && series) step = 'model'
+  else if (category && brand && samsungSeriesFlow) step = 'series'
   else if (category && brand) step = 'model'
   else if (category) step = 'brand'
 
-  return { category, brand, model, issue, step }
+  return { category, brand, series, model, issue, step }
 }

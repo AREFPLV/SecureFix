@@ -9,11 +9,19 @@ import {
   displayIssueLabel,
   isIssuableModel,
   isQuoteDiagnosticIssue,
+  isUnlistedModel,
   issueBlurb,
   issuePriceShown,
   issueSlug,
   smartphonePickerIssues,
+  UNLISTED_MODEL_PRICE_TEXT,
 } from '@/data/issueCatalog'
+import {
+  modelsInSamsungSeries,
+  samsungSeriesWithModels,
+  usesSamsungSeriesPicker,
+  type SamsungSeries,
+} from '@/data/samsungSeries'
 import {
   getPremiumScreenOption,
   getScreenGradeOptions,
@@ -34,14 +42,15 @@ import BookingRepairSearch from '@/components/BookingRepairSearch'
 import { repairIssueIcon } from '@/components/RepairIssueIcons'
 import './BookRepair.css'
 
-type Step = 'device' | 'brand' | 'model' | 'issue' | 'book'
+type Step = 'device' | 'brand' | 'series' | 'model' | 'issue' | 'book'
 type SelectableIssue = RepairIssue & { cardTitle?: string }
 type PartGrade = ScreenGrade | BatteryGrade
 
 const FLOW: { key: Step; num: number; label: string }[] = [
-  { key: 'model', num: 1, label: 'Model' },
-  { key: 'issue', num: 2, label: 'Issue' },
-  { key: 'book', num: 3, label: 'Book' },
+  { key: 'series', num: 1, label: 'Series' },
+  { key: 'model', num: 2, label: 'Model' },
+  { key: 'issue', num: 3, label: 'Issue' },
+  { key: 'book', num: 4, label: 'Book' },
 ]
 
 function repairBookPath(categoryId: string, brandId: string, model: string, issueLabel: string) {
@@ -76,6 +85,7 @@ export default function BookRepair() {
   const [step, setStep] = useState<Step>(seed.step)
   const [selectedCategory, setSelectedCategory] = useState<DeviceCategory | null>(seed.category)
   const [selectedBrand, setSelectedBrand] = useState<Brand | null>(seed.brand)
+  const [selectedSeries, setSelectedSeries] = useState<SamsungSeries | null>(seed.series)
   const [selectedModel, setSelectedModel] = useState<string | null>(seed.model)
   const [selectedIssue, setSelectedIssue] = useState<SelectableIssue | null>(seed.issue)
   const [selectedPartGrade, setSelectedPartGrade] = useState<PartGrade | null>(null)
@@ -99,6 +109,7 @@ export default function BookRepair() {
     }
     setSelectedCategory(next.category)
     setSelectedBrand(next.brand)
+    setSelectedSeries(next.series)
     setSelectedModel(next.model)
     setSelectedIssue(next.issue)
     setSelectedPartGrade(null)
@@ -150,7 +161,7 @@ export default function BookRepair() {
     setSearchParams({ category: catId, brand: brand.id, entry: 'list' })
   }
 
-  function handleModelSelect(model: string) {
+  function handleSeriesSelect(series: SamsungSeries) {
     const catId = categoryId()
     const brandId = selectedBrand?.id ?? searchParams.get('brand')
     if (!catId || !brandId) return
@@ -158,9 +169,22 @@ export default function BookRepair() {
       withEntry({
         category: catId,
         brand: brandId,
-        model: slugify(model),
+        series: series.id,
       }),
     )
+  }
+
+  function handleModelSelect(model: string) {
+    const catId = categoryId()
+    const brandId = selectedBrand?.id ?? searchParams.get('brand')
+    if (!catId || !brandId) return
+    const params: Record<string, string> = {
+      category: catId,
+      brand: brandId,
+      model: slugify(model),
+    }
+    if (selectedSeries) params.series = selectedSeries.id
+    setSearchParams(withEntry(params))
   }
 
   function handleIssueSelect(issue: SelectableIssue) {
@@ -197,14 +221,14 @@ export default function BookRepair() {
 
     // Dedicated SEO fault pages for each repair (including screen/battery grades).
     if (usesInlineBooking(catId, selectedModel)) {
-      setSearchParams(
-        withEntry({
-          category: catId,
-          brand: brandId,
-          model: slugify(selectedModel),
-          issue: issueSlug(bookingIssue.label),
-        }),
-      )
+      const params: Record<string, string> = {
+        category: catId,
+        brand: brandId,
+        model: slugify(selectedModel),
+        issue: issueSlug(bookingIssue.label),
+      }
+      if (selectedSeries) params.series = selectedSeries.id
+      setSearchParams(withEntry(params))
       return
     }
     navigate(repairBookPath(catId, brandId, selectedModel, bookingIssue.label))
@@ -228,16 +252,36 @@ export default function BookRepair() {
       // so back from issues should return to the brand list.
       if (brand && brand.models.length === 1) {
         next.delete('brand')
+        next.delete('series')
       }
       setSearchParams(next, { replace: true })
       return
     }
     if (step === 'model') {
+      next.delete('model')
+      next.delete('issue')
+      next.delete('view')
+      // Samsung returns to series categories; other brands leave the brand picker.
+      if (usesSamsungSeriesPicker(next.get('brand')) && next.get('series')) {
+        setSearchParams(next, { replace: true })
+        return
+      }
       if (next.get('entry') === 'list') {
         next.delete('brand')
-        next.delete('model')
-        next.delete('issue')
-        next.delete('view')
+        next.delete('series')
+        setSearchParams(next, { replace: true })
+        return
+      }
+      setSearchParams(new URLSearchParams(), { replace: true })
+      return
+    }
+    if (step === 'series') {
+      next.delete('series')
+      next.delete('model')
+      next.delete('issue')
+      next.delete('view')
+      if (next.get('entry') === 'list') {
+        next.delete('brand')
         setSearchParams(next, { replace: true })
         return
       }
@@ -256,27 +300,32 @@ export default function BookRepair() {
         : bookingIssues(selectedCategory.id, selectedBrand?.id, selectedModel)
       : []
 
+  const unlistedModel = isUnlistedModel(selectedModel)
   const isApplePhone = selectedBrand?.id === 'apple-phone'
   const showIphoneScreenGrades = Boolean(
-    selectedCategory?.id === 'smartphone' &&
+    !unlistedModel &&
+      selectedCategory?.id === 'smartphone' &&
       isApplePhone &&
       selectedIssue &&
       isFrontScreenIssue(selectedIssue),
   )
   const showOtherScreenPremium = Boolean(
-    selectedCategory?.id === 'smartphone' &&
+    !unlistedModel &&
+      selectedCategory?.id === 'smartphone' &&
       !isApplePhone &&
       selectedIssue &&
       isFrontScreenIssue(selectedIssue),
   )
   const showIphoneBatteryGrades = Boolean(
-    selectedCategory?.id === 'smartphone' &&
+    !unlistedModel &&
+      selectedCategory?.id === 'smartphone' &&
       isApplePhone &&
       selectedIssue &&
       isBatteryReplacementIssue(selectedIssue),
   )
   const showOtherBatteryPremium = Boolean(
-    selectedCategory?.id === 'smartphone' &&
+    !unlistedModel &&
+      selectedCategory?.id === 'smartphone' &&
       !isApplePhone &&
       selectedIssue &&
       isBatteryReplacementIssue(selectedIssue),
@@ -324,12 +373,24 @@ export default function BookRepair() {
             : null
     : null
 
-  const flowIndex = FLOW.findIndex((item) => item.key === step)
+  const samsungSeriesFlow = usesSamsungSeriesPicker(selectedBrand?.id)
+  const flowSteps = (
+    samsungSeriesFlow ? FLOW : FLOW.filter((item) => item.key !== 'series')
+  ).map((item, index) => ({ ...item, num: index + 1 }))
+  const flowIndex = flowSteps.findIndex((item) => item.key === step)
   const showFlow = flowIndex >= 0
   const genericBooking =
     usesInlineBooking(selectedCategory?.id ?? categoryId(), selectedModel) ||
     Boolean(selectedPartGrade) ||
     (step === 'book' && selectedIssue != null && isPartGradeLabel(selectedIssue.label))
+
+  const samsungSeriesOptions = selectedBrand
+    ? samsungSeriesWithModels(selectedBrand.models)
+    : []
+  const visibleModels =
+    selectedBrand && selectedSeries
+      ? modelsInSamsungSeries(selectedBrand.models, selectedSeries.id)
+      : (selectedBrand?.models ?? [])
 
   return (
     <div className="book-page site-page">
@@ -351,9 +412,11 @@ export default function BookRepair() {
 
           {showFlow && (
             <div className="book-progress" aria-label="Booking steps">
-              {FLOW.filter((item) => item.key !== 'book' || genericBooking).map((item, index, list) => (
+              {flowSteps
+                .filter((item) => item.key !== 'book' || genericBooking)
+                .map((item, index, list) => (
                 <div key={item.key} className="book-progress-item">
-                  <div className={`progress-step ${flowIndex >= FLOW.indexOf(item) ? 'active' : ''}`}>
+                  <div className={`progress-step ${flowIndex >= flowSteps.findIndex((flow) => flow.key === item.key) ? 'active' : ''}`}>
                     <span className="progress-num">{item.num}</span>
                     <span className="progress-label">{item.label}</span>
                   </div>
@@ -415,13 +478,48 @@ export default function BookRepair() {
             </section>
           )}
 
+          {step === 'series' && selectedBrand && (
+            <section className="book-step">
+              <h2>
+                Select a <span className="accent">{selectedBrand.label}</span> series
+              </h2>
+              <p className="book-price-note">
+                Choose a Galaxy category, then pick your exact model.
+              </p>
+              <div className="book-grid book-grid-brands">
+                {samsungSeriesOptions.map(({ series, models }) => (
+                  <button
+                    key={series.id}
+                    className="book-card book-card-brand"
+                    onClick={() => handleSeriesSelect(series)}
+                    type="button"
+                  >
+                    <h3>{series.label}</h3>
+                    <p>{series.description}</p>
+                    <span className="book-card-count">{models.length} models</span>
+                  </button>
+                ))}
+              </div>
+            </section>
+          )}
+
           {step === 'model' && selectedBrand && (
             <section className="book-step">
               <h2>
-                Select the <span className="accent">{selectedBrand.label}</span> model
+                Select the{' '}
+                <span className="accent">
+                  {selectedSeries ? selectedSeries.label : selectedBrand.label}
+                </span>{' '}
+                model
               </h2>
+              {selectedSeries && (
+                <div className="book-summary-bar">
+                  <span className="chip">{selectedBrand.label}</span>
+                  <span className="chip chip-accent">{selectedSeries.label}</span>
+                </div>
+              )}
               <div className="book-grid book-grid-models">
-                {selectedBrand.models.map((model) => (
+                {visibleModels.map((model) => (
                   <button
                     key={model}
                     className="book-card book-card-model"
@@ -485,21 +583,25 @@ export default function BookRepair() {
                           <span>
                             {showPartGrades && !selectedPartGrade
                               ? partGradePrompt
-                              : isQuoteDiagnosticIssue(selectedIssue)
-                                ? 'Quote after diagnostics'
-                                : issuePriceShown(detailIssue)}
+                              : unlistedModel
+                                ? UNLISTED_MODEL_PRICE_TEXT
+                                : isQuoteDiagnosticIssue(selectedIssue)
+                                  ? 'Quote after diagnostics'
+                                  : issuePriceShown(detailIssue)}
                           </span>
                           <span>
-                            {isQuoteDiagnosticIssue(selectedIssue)
+                            {unlistedModel || isQuoteDiagnosticIssue(selectedIssue)
                               ? 'Full diagnostic first'
                               : `Workshop time ${detailIssue.time}`}
                           </span>
                         </p>
                       </div>
                       <p className="book-issue-detail-copy">
-                        {isQuoteDiagnosticIssue(selectedIssue)
-                          ? `Describe the ${selectedModel} issue in as much detail as you can on the next step. After a full diagnostic, a technician will call you back with the findings and a repair quote.`
-                          : (partGradeBlurb ?? issueBlurb(selectedIssue.label, selectedModel))}
+                        {unlistedModel
+                          ? `There is no fixed online price for ${selectedModel}. Describe the issue on the next step and our technicians will get in touch with you.`
+                          : isQuoteDiagnosticIssue(selectedIssue)
+                            ? `Describe the ${selectedModel} issue in as much detail as you can on the next step. After a full diagnostic, a technician will call you back with the findings and a repair quote.`
+                            : (partGradeBlurb ?? issueBlurb(selectedIssue.label, selectedModel))}
                       </p>
 
                       {showPartGrades ? (
@@ -571,12 +673,14 @@ export default function BookRepair() {
                   brandLabel={selectedBrand.label}
                   model={selectedModel}
                   issueLabel={selectedIssue.label}
-                  price={selectedIssue.price}
+                  price={unlistedModel ? null : selectedIssue.price}
                   priceText={
-                    selectedIssue.priceText ??
-                    (selectedIssue.price == null ? 'Quote on inspection' : undefined)
+                    unlistedModel
+                      ? UNLISTED_MODEL_PRICE_TEXT
+                      : selectedIssue.priceText ??
+                        (selectedIssue.price == null ? 'Quote on inspection' : undefined)
                   }
-                  quoteOnly={isQuoteDiagnosticIssue(selectedIssue)}
+                  quoteOnly={unlistedModel || isQuoteDiagnosticIssue(selectedIssue)}
                 />
               </section>
             )}

@@ -2,7 +2,12 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { site } from '@/data/content'
 import { isLondonPostcode } from '@/data/repairIssues'
-import { displayIssueLabel, isQuoteDiagnosticIssue, issuePriceShown } from '@/data/issueCatalog'
+import {
+  displayIssueLabel,
+  isQuoteDiagnosticIssue,
+  issuePriceShown,
+  UNLISTED_MODEL_PRICE_TEXT,
+} from '@/data/issueCatalog'
 import { createBooking, type BookingServiceType } from '@/actions/createBooking'
 import FormPrivacyNote from '@/components/FormPrivacyNote'
 import '@/pages/BookRepair.css'
@@ -63,10 +68,13 @@ export default function RepairBookingForm({
   const [reference, setReference] = useState('')
   const [submitError, setSubmitError] = useState('')
 
-  const needsDiagnostic = quoteOnly || isQuoteDiagnosticIssue({ label: issueLabel })
-  const shown = needsDiagnostic
-    ? 'Quote after diagnostics'
-    : issuePriceShown({ price, priceText })
+  const needsDiagnostic =
+    quoteOnly || price == null || isQuoteDiagnosticIssue({ label: issueLabel })
+  const unlistedModel = price == null && priceText === UNLISTED_MODEL_PRICE_TEXT
+  const shown =
+    price == null
+      ? priceText || 'Quote after diagnostics'
+      : issuePriceShown({ price, priceText })
 
   async function submitBooking(resolvedService: BookingServiceType) {
     if (submitting) return
@@ -351,17 +359,20 @@ export default function RepairBookingForm({
           </label>
           {needsDiagnostic ? (
             <p className="collection-note book-price-note">
-              After a full diagnostic, a technician will call you back with the findings and a repair
-              quote before any parts work starts.
+              {unlistedModel
+                ? 'No fixed online price for this device. Send the request and our technicians will get in touch with you.'
+                : 'After a full diagnostic, a technician will call you back with the findings and a repair quote before any parts work starts.'}
             </p>
           ) : null}
           {diagnosticError ? <div className="postcode-error">{diagnosticError}</div> : null}
           <button type="submit" className="btn btn-primary book-submit" disabled={submitting}>
             {submitting
               ? 'Submitting…'
-              : needsDiagnostic
-                ? 'Book diagnostics — technician will call you back'
-                : `Book for ${shown} — confirm drop-off, collection, or mail-in`}
+              : unlistedModel
+                ? 'Send request — technicians will get in touch'
+                : needsDiagnostic
+                  ? 'Book diagnostics — technician will call you back'
+                  : `Book for ${shown} — confirm drop-off, collection, or mail-in`}
           </button>
           <FormPrivacyNote />
         </div>

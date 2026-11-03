@@ -1,14 +1,28 @@
 import { listedDevices, type ListedRepair } from '@/data/priceLists'
 
+/** Align booking names (e.g. Pixel 9) with price-list labels (e.g. Google Pixel 9 Pro XL 6.8"). */
 function norm(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, '')
+  return value
+    .toLowerCase()
+    .replace(/^google\s+/, '')
+    .replace(/^huawei\s+/, '')
+    .replace(/^oppo\s+/, '')
+    .replace(/^samsung\s+/, '')
+    .replace(/^xiaomi\s+/, '')
+    .replace(/\+/g, 'plus')
+    .replace(/\b\d+\.\d+\s*(?:inch|["”])?/gi, '')
+    .replace(/[^a-z0-9]+/g, '')
 }
 
 const modelsByBrand = new Map<string, Map<string, ListedRepair[]>>()
 
 for (const device of listedDevices) {
   const models = new Map<string, ListedRepair[]>()
-  for (const model of device.models) models.set(norm(model.name), model.repairs)
+  for (const model of device.models) {
+    const key = norm(model.name)
+    // Keep the first entry when size-suffixed duplicates collapse to one key.
+    if (!models.has(key)) models.set(key, model.repairs)
+  }
   modelsByBrand.set(`${device.categoryId}/${device.brandId}`, models)
 }
 
