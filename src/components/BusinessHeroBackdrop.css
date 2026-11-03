@@ -473,3 +473,95 @@
     animation: none;
   }
 }
+
+/* Orbit rings for Business IT hub background */
+.biz-hero-backdrop-orbits {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+}
+.biz-hero-backdrop-orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid #fbaf0033;
+  border-top-color: #fbaf00aa;
+  border-left-color: #fbaf0044;
+}
+.biz-hero-backdrop-orbit-a {
+  width: min(72vw, 34rem);
+  height: min(72vw, 34rem);
+  animation: biz-ring-spin 22s linear infinite;
+}
+.biz-hero-backdrop-orbit-b {
+  width: min(56vw, 26rem);
+  height: min(56vw, 26rem);
+  border-style: dashed;
+  animation: biz-ring-spin 16s linear infinite reverse;
+}
+.biz-hero-backdrop-orbit-c {
+  width: min(38vw, 17rem);
+  height: min(38vw, 17rem);
+  opacity: 0.7;
+  animation: biz-ring-spin 11s linear infinite;
+}
+
+/* Industry line-draw motifs */
+.industry-motif {
+  position: absolute;
+  inset: auto 0 0;
+  width: 100%;
+  height: min(58%, 420px);
+  z-index: 2;
+  color: #fbaf00;
+  opacity: 0.55;
+}
+.industry-draw {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.industry-draw path,
+.industry-draw rect,
+.industry-draw circle {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: industry-line-draw 4.8s ease forwards infinite;
+}
+.industry-draw path:nth-child(2),
+.industry-draw rect:nth-child(2),
+.industry-draw circle:nth-child(2) { animation-delay: 0.15s; }
+.industry-draw path:nth-child(3),
+.industry-draw rect:nth-child(3),
+.industry-draw circle:nth-child(3) { animation-delay: 0.3s; }
+.industry-draw path:nth-child(4),
+.industry-draw rect:nth-child(4) { animation-delay: 0.45s; }
+.industry-draw path:nth-child(5),
+.industry-draw rect:nth-child(5) { animation-delay: 0.6s; }
+.industry-ground {
+  opacity: 0.45;
+}
+
+@keyframes industry-line-draw {
+  0% { stroke-dashoffset: 900; opacity: 0.2; }
+  18% { opacity: 0.85; }
+  42%, 72% { stroke-dashoffset: 0; opacity: 0.85; }
+  100% { stroke-dashoffset: 0; opacity: 0.35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .industry-draw path,
+  .industry-draw rect,
+  .industry-draw circle,
+  .biz-hero-backdrop-orbit-ring {
+    animation: none !important;
+  }
+  .industry-draw path,
+  .industry-draw rect,
+  .industry-draw circle {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    opacity: 0.7;
+  }
+}

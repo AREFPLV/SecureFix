@@ -1,8 +1,13 @@
 import type { BusinessHeroVariant } from '@/components/BusinessHeroArt'
+import IndustryBackdropMotif from '@/components/IndustryBackdropMotif'
 import './BusinessHeroBackdrop.css'
 
 type Props = {
   variant?: BusinessHeroVariant
+  /** When set, draws a sector-specific line motif (hospital, law, school, etc.). */
+  industrySlug?: string
+  /** Soft rotating rings behind the hero copy/widget (Business IT hub). */
+  showOrbit?: boolean
 }
 
 function BackdropMotif({ variant, uid }: { variant: BusinessHeroVariant; uid: string }) {
@@ -208,19 +213,38 @@ function BackdropMotif({ variant, uid }: { variant: BusinessHeroVariant; uid: st
   }
 }
 
-/** Full-bleed futuristic animated hero background — service-themed (replaces photo). */
-export default function BusinessHeroBackdrop({ variant = 'business' }: Props) {
-  const uid = `bizBg-${variant}`
+/** Full-bleed futuristic animated hero background — service / industry themed. */
+export default function BusinessHeroBackdrop({
+  variant = 'business',
+  industrySlug,
+  showOrbit = false,
+}: Props) {
+  const uid = `bizBg-${variant}${industrySlug ? `-${industrySlug}` : ''}`
 
   return (
-    <div className={`biz-hero-backdrop biz-hero-backdrop-${variant}`} aria-hidden="true">
+    <div
+      className={`biz-hero-backdrop biz-hero-backdrop-${variant}${industrySlug ? ` biz-hero-backdrop-industry-page` : ''}${showOrbit ? ' biz-hero-backdrop-orbit' : ''}`}
+      aria-hidden="true"
+    >
       <div className="biz-hero-backdrop-sky" />
       <div className="biz-hero-backdrop-aurora biz-hero-backdrop-aurora-a" />
       <div className="biz-hero-backdrop-aurora biz-hero-backdrop-aurora-b" />
       <div className="biz-hero-backdrop-stars" />
       <div className="biz-hero-backdrop-beams" />
 
-      <BackdropMotif variant={variant} uid={uid} />
+      {showOrbit ? (
+        <div className="biz-hero-backdrop-orbits">
+          <span className="biz-hero-backdrop-orbit-ring biz-hero-backdrop-orbit-a" />
+          <span className="biz-hero-backdrop-orbit-ring biz-hero-backdrop-orbit-b" />
+          <span className="biz-hero-backdrop-orbit-ring biz-hero-backdrop-orbit-c" />
+        </div>
+      ) : null}
+
+      {industrySlug ? (
+        <IndustryBackdropMotif slug={industrySlug} uid={uid} />
+      ) : (
+        <BackdropMotif variant={variant} uid={uid} />
+      )}
 
       <div className="biz-hero-backdrop-grid" />
       <div className="biz-hero-backdrop-scan" />

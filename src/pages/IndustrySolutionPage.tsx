@@ -5,6 +5,7 @@ import {
   industrySolutionRoute,
   industrySolutions,
 } from '@/data/industrySolutions'
+import { getIndustrySolutionSeo } from '@/data/businessSeoExtras'
 import BusinessHeroArt from '@/components/BusinessHeroArt'
 import BusinessHeroBackdrop from '@/components/BusinessHeroBackdrop'
 import { usePageSeo } from '@/hooks/usePageSeo'
@@ -12,16 +13,19 @@ import { localBusinessJsonLd } from '@/data/seo'
 import './Procurement.css'
 import './IndustrySolution.css'
 import './BusinessHeroLayout.css'
+import './BusinessItHero.css'
+import '@/components/Hero.css'
 
 export default function IndustrySolutionPage() {
   const { industrySlug } = useParams<{ industrySlug: string }>()
   const industry = getIndustrySolution(industrySlug)
+  const seoExtra = getIndustrySolutionSeo(industrySlug)
 
   usePageSeo(
     industry
       ? {
           title: industry.title,
-          description: industry.description,
+          description: seoExtra?.executiveSummary ?? industry.description,
           path: industrySolutionRoute(industry.slug),
           keywords: industry.keywords,
           image: industry.image,
@@ -32,7 +36,7 @@ export default function IndustrySolutionPage() {
               '@type': 'Service',
               name: `${industry.h1} IT Support`,
               serviceType: 'Business IT support',
-              description: industry.description,
+              description: seoExtra?.executiveSummary ?? industry.description,
               provider: {
                 '@type': 'LocalBusiness',
                 name: site.name,
@@ -60,6 +64,19 @@ export default function IndustrySolutionPage() {
                 },
               ],
             },
+            ...(seoExtra?.faqs?.length
+              ? [
+                  {
+                    '@context': 'https://schema.org',
+                    '@type': 'FAQPage',
+                    mainEntity: seoExtra.faqs.map((faq) => ({
+                      '@type': 'Question',
+                      name: faq.question,
+                      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+                    })),
+                  },
+                ]
+              : []),
           ],
         }
       : {
@@ -77,40 +94,70 @@ export default function IndustrySolutionPage() {
 
   return (
     <div className="procurement-page industry-solution-page site-page">
-      <section className="procurement-hero procurement-hero-photo procurement-hero-align-left" aria-label={industry.h1}>
-        <div className="procurement-hero-media procurement-hero-media-animated" aria-hidden="true">
-          <BusinessHeroBackdrop variant="industry" />
+      <section className="hero business-it-hero" aria-label={industry.h1}>
+        <div className="business-it-hero-bg" aria-hidden="true">
+          <BusinessHeroBackdrop variant="industry" industrySlug={industry.slug} showOrbit />
         </div>
-        <div className="container procurement-hero-inner procurement-hero-inner-photo procurement-hero-inner-widget">
-          <aside className="procurement-hero-widget business-hero-widget" aria-label="Business IT animation">
-            <BusinessHeroArt variant="industry" />
-          </aside>
-          <div className="procurement-hero-copy">
-            <p className="procurement-eyebrow">
+        <div className="container hero-layout">
+          <div className="hero-content">
+            <p className="hero-eyebrow">
               <Link to={LIFECYCLE_ROUTE} className="industry-back-link">
                 ← Business IT
               </Link>
               {' · '}
-              Solutions we provide
+              Industry solution
             </p>
             <h1>
-              {industry.h1} <span className="accent">{industry.accent}</span>
+              <span className="hero-line">{industry.h1}</span>
+              <span className="hero-line accent">{industry.accent}</span>
             </h1>
-            <p>{industry.intro}</p>
-            <div className="procurement-hero-actions">
+            <p className="hero-subtitle">{industry.intro}</p>
+            <div className="hero-actions">
               <Link to={`${LIFECYCLE_ROUTE}#quote`} className="btn btn-primary btn-shiny">
                 Request a Quote
               </Link>
-              <a href={`${site.phoneHref}`} className="btn btn-secondary procurement-hero-btn-outline">
+              <a href={`${site.phoneHref}`} className="btn btn-secondary btn-shiny">
                 Call {site.phone}
               </a>
             </div>
+            <div className="hero-stats">
+              <div className="hero-stat">
+                <strong>Sector-fit IT</strong>
+                <span>Devices matched to how you work</span>
+              </div>
+              <div className="hero-stat">
+                <strong>London based</strong>
+                <span>Source · deploy · support · recycle</span>
+              </div>
+            </div>
+          </div>
+          <div className="hero-visual">
+            <aside className="business-hero-widget" aria-label="Business IT animation">
+              <BusinessHeroArt variant="industry" />
+            </aside>
           </div>
         </div>
       </section>
 
       <main className="procurement-main">
         <div className="container">
+          {seoExtra ? (
+            <section className="procurement-section business-seo-block">
+              <h2>
+                Executive <span className="accent">summary</span>
+              </h2>
+              <p className="procurement-lead">{seoExtra.executiveSummary}</p>
+              <div className="business-seo-grid">
+                {seoExtra.ceoOutcomes.map((item) => (
+                  <article key={item.title} className="business-seo-card">
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           <section className="procurement-section">
             <h2>
               Challenges we <span className="accent">solve</span>
@@ -161,6 +208,22 @@ export default function IndustrySolutionPage() {
               </ul>
             </div>
           </section>
+
+          {seoExtra?.faqs?.length ? (
+            <section className="procurement-section business-seo-block" aria-label="Frequently asked questions">
+              <h2>
+                Frequently asked <span className="accent">questions</span>
+              </h2>
+              <div className="business-faq-list">
+                {seoExtra.faqs.map((faq) => (
+                  <article key={faq.question} className="business-faq-item">
+                    <h3>{faq.question}</h3>
+                    <p>{faq.answer}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           <section className="procurement-section">
             <h2>
