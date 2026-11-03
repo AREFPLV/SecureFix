@@ -657,7 +657,7 @@ function normalizeModelKey(model: string): string {
     .replace(/^xiaomi\s+/, '')
     .replace(/\+/g, 'plus')
     // Drop screen-size suffixes from price-list labels (e.g. Pixel 9 Pro XL 6.8").
-    .replace(/\b\d+\.\d+\s*(inch|"|”)?\b/g, '')
+    .replace(/\b\d+\.\d+\s*(?:inch|["”])?/gi, '')
     .replace(/[^a-z0-9]+/g, '')
 }
 
