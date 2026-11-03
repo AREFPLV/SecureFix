@@ -5,28 +5,25 @@
 }
 
 /*
- * Compact inner-page heroes (Business IT, Training, etc.).
- * Avoid home 100vh centering, and cancel .site-page's header offset
- * so we don't double-count padding under the fixed header.
+ * Pages that use the home .hero inside .site-page would otherwise get
+ * header offset twice (.site-page + .hero). Keep only the hero's own
+ * padding so spacing matches the homepage.
  */
 .site-page:has(> .hero) {
   padding-top: 0;
 }
 
+/*
+ * Match homepage header→content space (~4rem under the fixed header).
+ * Keep 100vh like home, but pin content to the top so short pages
+ * (Training) don't sink when vertically centered in the viewport.
+ */
 .hero.page-hero {
-  min-height: auto;
   align-items: flex-start;
 }
 
 .hero.page-hero .hero-layout {
-  padding-top: 1.25rem;
-  padding-bottom: 2.5rem;
-  gap: 2rem;
-}
-
-@media (max-width: 900px) {
-  .hero.page-hero .hero-layout {
-    padding-top: 0.75rem;
-    padding-bottom: 2rem;
-  }
+  align-items: start;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
