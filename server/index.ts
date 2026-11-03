@@ -1,7 +1,9 @@
 import './loadEnv.ts'
 import { createServer, type IncomingMessage } from 'node:http'
+import { ROUTES, type AgentAction } from '../shared/agentKnowledge.ts'
 import { isLeadComplete } from '../shared/customerLead.ts'
-import { fallbackChat, trimConversation, type ChatTurn } from '../shared/fallbackChat.ts'
+import { fallbackChat, trimConversation, type ChatResponse, type ChatTurn } from '../shared/fallbackChat.ts'
+import { lookupRepairEstimate } from '../shared/repairCatalog.ts'
 import { chatWithGroq, groqModel, groqReady } from './groq.ts'
 import { sendLeadEmail } from './sendLeadEmail.ts'
 
@@ -16,10 +18,31 @@ function readBody(req: IncomingMessage) {
   })
 }
 
+function lastUser(messages: ChatTurn[]) {
+  return [...messages].reverse().find((m) => m.role === 'user')?.content ?? ''
+}
+
+/** Ensure price answers always carry a booking deep-link from the catalogue search. */
+function withBookingActions(result: ChatResponse, messages: ChatTurn[]): ChatResponse {
+  const user = lastUser(messages)
+  const estimate = lookupRepairEstimate(user, messages.map((m) => m.content).join(' '))
+  if (!estimate?.bookingPath) return result
+
+  const bookAction: AgentAction = { label: 'Book this repair', route: estimate.bookingPath }
+  const existing = result.actions ?? []
+  const withoutBook = existing.filter(
+    (action) => action.route !== bookAction.route && action.route !== ROUTES.bookRepair,
+  )
+  return {
+    ...result,
+    actions: [bookAction, ...withoutBook].slice(0, 4),
+  }
+}
+
 async function handleChat(messages: ChatTurn[]) {
   if (groqReady()) {
     try {
-      return await chatWithGroq(messages)
+      return withBookingActions(await chatWithGroq(messages), messages)
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Groq error'
       const local = fallbackChat(messages) as ReturnType<typeof fallbackChat> & {
@@ -30,17 +53,20 @@ async function handleChat(messages: ChatTurn[]) {
       if (local.submitLead && isLeadComplete(local.lead)) {
         const sent = await sendLeadEmail(local.lead, messages)
         if (sent.ok) {
-          return {
-            reply: `${local.reply}\n\nReference: ${sent.reference}.`,
-            reference: sent.reference,
-            leadSubmitted: true,
-            mode: 'local' as const,
-            warning: msg.slice(0, 120),
-          }
+          return withBookingActions(
+            {
+              reply: `${local.reply}\n\nReference: ${sent.reference}.`,
+              reference: sent.reference,
+              leadSubmitted: true,
+              mode: 'local' as const,
+              warning: msg.slice(0, 120),
+            },
+            messages,
+          )
         }
       }
 
-      return { ...local, warning: msg.slice(0, 120) }
+      return withBookingActions({ ...local, warning: msg.slice(0, 120) }, messages)
     }
   }
 
@@ -52,16 +78,19 @@ async function handleChat(messages: ChatTurn[]) {
   if (local.submitLead && isLeadComplete(local.lead)) {
     const sent = await sendLeadEmail(local.lead, messages)
     if (sent.ok) {
-      return {
-        reply: `${local.reply}\n\nReference: ${sent.reference}.`,
-        reference: sent.reference,
-        leadSubmitted: true,
-        mode: 'local' as const,
-      }
+      return withBookingActions(
+        {
+          reply: `${local.reply}\n\nReference: ${sent.reference}.`,
+          reference: sent.reference,
+          leadSubmitted: true,
+          mode: 'local' as const,
+        },
+        messages,
+      )
     }
   }
 
-  return local
+  return withBookingActions(local, messages)
 }
 
 createServer(async (req, res) => {
