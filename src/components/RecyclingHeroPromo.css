@@ -1,4 +1,4 @@
-/* Home-style promo box with recycling icon + line-draw background. */
+/* Home-style promo box: recycle logo + circle only. */
 
 .recycling-hero-promo-media {
   inset: 0;
@@ -7,104 +7,47 @@
     linear-gradient(165deg, #252525 0%, #1a1a1a 55%, #121212 100%);
 }
 
-.recycling-hero-promo-lines {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  color: #fbaf00;
-  opacity: 0.55;
-  pointer-events: none;
-}
-
-.recycling-hero-promo-lines .promo-line-motif {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-@keyframes recycle-promo-line-draw {
-  0% {
-    stroke-dashoffset: 700;
-    opacity: 0.25;
-  }
-  22% {
-    opacity: 0.9;
-  }
-  48%,
-  70% {
-    stroke-dashoffset: 0;
-    opacity: 0.9;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    opacity: 0.4;
-  }
-}
-
-.recycling-promo-draw path,
-.recycling-promo-draw circle {
-  stroke-dasharray: 700;
-  stroke-dashoffset: 700;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  animation: recycle-promo-line-draw 5.4s ease-in-out infinite;
-}
-
-.recycling-promo-draw path:nth-child(2),
-.recycling-promo-draw circle:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.recycling-promo-draw path:nth-child(3),
-.recycling-promo-draw circle:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-.recycling-promo-draw path:nth-child(4) {
-  animation-delay: 0.55s;
-}
-
 .recycling-hero-promo-icon {
   position: absolute;
   inset: 0;
   z-index: 1;
   display: grid;
   place-items: center;
-  padding: 1.25rem 1.25rem 4.75rem;
+  padding: 1.5rem;
   pointer-events: none;
 }
 
 .recycling-hero-promo .recycle-hero-art {
-  width: min(72%, 15.5rem);
+  width: min(78%, 17rem);
   margin: 0;
+}
+
+.recycling-hero-promo .recycle-hero-art-stage {
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 45%, #fbaf0022 0%, #0f141bcc 55%, #05080ef2 100%);
+  box-shadow: 0 0 28px #fbaf002e, inset 0 0 24px #0008;
+}
+
+.recycling-hero-promo .recycle-hero-art-ring-outer {
+  border: 2px solid #fbaf0066;
+  border-top-color: #fbaf00;
+  border-right-color: #fbaf0033;
+}
+
+.recycling-hero-promo .recycle-hero-art-ring-inner {
+  border: 1.5px dashed #fbaf0059;
 }
 
 .recycling-hero-promo .recycle-hero-art-caption {
   display: none;
 }
 
-.recycling-hero-promo .hero-promo-overlay {
-  background:
-    linear-gradient(#2d2d2d14 0%, #2d2d2d40 48%, #2d2d2de8 100%),
-    linear-gradient(90deg, #2d2d2d33 0%, transparent 40%, transparent 60%, #2d2d2d33 100%);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .recycling-promo-draw path,
-  .recycling-promo-draw circle {
-    animation: none;
-    stroke-dasharray: none;
-    stroke-dashoffset: 0;
-    opacity: 0.75;
-  }
+.recycling-hero-promo-overlay {
+  background: radial-gradient(circle at 50% 45%, transparent 35%, #2d2d2d66 100%) !important;
 }
 
 @media (max-width: 767px) {
   .recycling-hero-promo .recycle-hero-art {
-    width: min(68%, 12.5rem);
-  }
-
-  .recycling-hero-promo-icon {
-    padding-bottom: 5.25rem;
+    width: min(72%, 13.5rem);
   }
 }

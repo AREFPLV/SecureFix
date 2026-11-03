@@ -92,26 +92,7 @@ export default function RecyclingTopicPage() {
             </div>
           </div>
           <div className="hero-visual">
-            <RecyclingHeroPromo
-              label={topic.h1}
-              slides={[
-                {
-                  tag: topic.h1,
-                  title: 'Recycle With Confidence',
-                  subtitle: 'Secure wipe · compliant disposal · London',
-                },
-                {
-                  tag: 'Data Safe',
-                  title: 'Destruction Done Right',
-                  subtitle: 'Certified erasure before materials leave',
-                },
-                {
-                  tag: 'Get Started',
-                  title: 'Request A Quote',
-                  subtitle: 'Collection or drop-off for homes and business',
-                },
-              ]}
-            />
+            <RecyclingHeroPromo label={topic.h1} />
           </div>
         </div>
       </section>
