@@ -4,15 +4,16 @@ import { Link } from 'react-router-dom'
 import { site, RECYCLING_ROUTE } from '@/data/content'
 import { lifecycleContent } from '@/data/lifecycle'
 import { industrySolutions, industrySolutionRoute } from '@/data/industrySolutions'
+import { businessHubSeo } from '@/data/businessSeoExtras'
 import { createLifecycleQuote } from '@/actions/createLifecycleQuote'
 import FormPrivacyNote from '@/components/FormPrivacyNote'
-import BusinessHeroArt from '@/components/BusinessHeroArt'
-import BusinessHeroBackdrop from '@/components/BusinessHeroBackdrop'
+import BusinessHeroPromo from '@/components/BusinessHeroPromo'
 import { usePageSeo } from '@/hooks/usePageSeo'
-import { lifecycleSeo } from '@/data/seo'
+import { lifecycleSeo, localBusinessJsonLd } from '@/data/seo'
 import './Lifecycle.css'
 import './IndustrySolution.css'
-import './BusinessHeroLayout.css'
+import './BusinessItHero.css'
+import '@/components/Hero.css'
 
 const emptyForm = {
   name: '',
@@ -25,7 +26,36 @@ const emptyForm = {
 }
 
 export default function Lifecycle() {
-  usePageSeo(lifecycleSeo)
+  usePageSeo({
+    ...lifecycleSeo,
+    description: businessHubSeo.executiveSummary,
+    jsonLd: [
+      localBusinessJsonLd(),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'SecureFix for Business',
+        serviceType: 'Business IT lifecycle',
+        description: businessHubSeo.executiveSummary,
+        provider: {
+          '@type': 'LocalBusiness',
+          name: site.name,
+          url: `https://${site.website}`,
+        },
+        areaServed: 'London',
+        url: `https://${site.website}${lifecycleSeo.path}`,
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: businessHubSeo.faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+        })),
+      },
+    ],
+  })
   const [form, setForm] = useState(emptyForm)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
@@ -47,42 +77,83 @@ export default function Lifecycle() {
 
   return (
     <div className="lifecycle-page site-page">
-      <section className="lifecycle-hero" aria-label="SecureFix for Business">
-        <div className="lifecycle-hero-media lifecycle-hero-media-animated" aria-hidden="true">
-          <BusinessHeroBackdrop variant="business" />
-        </div>
-        <div className="container lifecycle-hero-inner lifecycle-hero-inner-widget">
-          <aside className="lifecycle-hero-widget business-hero-widget" aria-label="Business IT animation">
-            <BusinessHeroArt variant="business" />
-          </aside>
-          <div className="lifecycle-hero-copy">
+      <section className="hero page-hero" aria-label="SecureFix for Business">
+        <div className="hero-bg" />
+        <div className="container hero-layout">
+          <div className="hero-content">
+            <p className="hero-eyebrow">Business IT · London EC1V</p>
             <h1>
-              {lifecycleContent.hero.title}{' '}
-              <span className="accent">{lifecycleContent.hero.accent}</span>
+              <span className="hero-line">{lifecycleContent.hero.title}</span>
+              <span className="hero-line accent">{lifecycleContent.hero.accent}</span>
             </h1>
-            <p>{lifecycleContent.hero.subtitle}</p>
-            <div className="lifecycle-hero-actions">
+            <p className="hero-subtitle">{lifecycleContent.hero.subtitle}</p>
+            <div className="hero-actions">
               <a href="#quote" className="btn btn-primary btn-shiny">
                 Request a Quote
               </a>
-              <a href={`${site.phoneHref}`} className="btn btn-secondary">
+              <a href={`${site.phoneHref}`} className="btn btn-secondary btn-shiny">
                 Book a Consultation
               </a>
             </div>
-            <div className="lifecycle-partners">
-              <span className="lifecycle-partners-label">Trusted Partners</span>
-              <div className="lifecycle-partners-row">
-                {lifecycleContent.partners.map((partner) => (
-                  <span key={partner}>{partner}</span>
-                ))}
+            <div className="hero-stats">
+              <div className="hero-stat">
+                <strong>Buy · Deploy</strong>
+                <span>Source to desk-ready</span>
+              </div>
+              <div className="hero-stat">
+                <strong>Fix · Recycle</strong>
+                <span>Support to secure wipe</span>
               </div>
             </div>
+            <div className="business-it-hero-partners" aria-label="Trusted partners">
+              {lifecycleContent.partners.map((partner) => (
+                <span key={partner}>{partner}</span>
+              ))}
+            </div>
+          </div>
+          <div className="hero-visual">
+            <BusinessHeroPromo
+              variant="business"
+              label="SecureFix Business IT"
+              slides={[
+                {
+                  tag: 'Business IT',
+                  title: 'Source To Support',
+                  subtitle: 'One partner for the full device lifecycle',
+                },
+                {
+                  tag: 'London Based',
+                  title: 'Workshop Speed',
+                  subtitle: 'Configure, deploy and repair from EC1V',
+                },
+                {
+                  tag: 'Trusted Brands',
+                  title: 'Dell · HP · Lenovo · Apple',
+                  subtitle: 'Role-based fleets for growing teams',
+                },
+              ]}
+            />
           </div>
         </div>
       </section>
 
       <main className="lifecycle-main">
         <div className="container">
+          <section className="lifecycle-section business-seo-block" aria-label="Executive summary">
+            <h2>
+              Executive <span className="accent">summary</span>
+            </h2>
+            <p className="lifecycle-lead">{businessHubSeo.executiveSummary}</p>
+            <div className="business-seo-grid">
+              {businessHubSeo.ceoOutcomes.map((item) => (
+                <article key={item.title} className="business-seo-card">
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
           <section className="lifecycle-section" aria-label="Solutions we provide">
             <h2>
               Solutions we <span className="accent">provide</span>
@@ -289,6 +360,20 @@ export default function Lifecycle() {
                   </div>
                 ))}
               </div>
+            </div>
+          </section>
+
+          <section className="lifecycle-section business-seo-block" aria-label="Frequently asked questions">
+            <h2>
+              Frequently asked <span className="accent">questions</span>
+            </h2>
+            <div className="business-faq-list">
+              {businessHubSeo.faqs.map((faq) => (
+                <article key={faq.question} className="business-faq-item">
+                  <h3>{faq.question}</h3>
+                  <p>{faq.answer}</p>
+                </article>
+              ))}
             </div>
           </section>
 

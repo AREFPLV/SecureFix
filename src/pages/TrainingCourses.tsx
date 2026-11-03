@@ -11,6 +11,7 @@ import { usePageSeo } from '@/hooks/usePageSeo'
 import { trainingSeo } from '@/data/seo'
 import './About.css'
 import './TrainingCourses.css'
+import '@/components/Hero.css'
 
 export default function TrainingCourses() {
   usePageSeo(trainingSeo)
@@ -22,7 +23,7 @@ export default function TrainingCourses() {
 
   return (
     <div className="about-page training-page site-page">
-      <section className="hero training-page-hero">
+      <section className="hero page-hero training-page-hero">
         <div className="hero-bg" />
         <div className="container hero-layout training-hero-layout">
           <div className="hero-content training-hero-copy">

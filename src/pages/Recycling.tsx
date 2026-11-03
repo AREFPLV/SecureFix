@@ -4,10 +4,11 @@ import { site } from '@/data/content'
 import { recyclingContent } from '@/data/recycling'
 import { recyclingTopics } from '@/data/seoCatalog'
 import RecyclingQuoteForm from '@/components/RecyclingQuoteForm'
-import RecycleHeroArt from '@/components/RecycleHeroArt'
+import RecyclingHeroPromo from '@/components/RecyclingHeroPromo'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { recyclingSeo } from '@/data/seo'
 import './Recycling.css'
+import '@/components/Hero.css'
 
 export default function Recycling() {
   usePageSeo(recyclingSeo)
@@ -19,39 +20,35 @@ export default function Recycling() {
 
   return (
     <div className="recycle-page site-page">
-      <section className="recycle-hero recycle-hero-photo" aria-label="SecureFix recycling">
-        <div className="recycle-hero-media" aria-hidden="true">
-          <img src="/images/recycling-hero.png" alt="" className="recycle-hero-img" />
-          <div className="recycle-hero-blur" />
-          <div className="recycle-hero-shade" />
-        </div>
-        <div className="container recycle-hero-inner recycle-hero-inner-photo">
-          <aside className="recycle-hero-widget" aria-label="Recycling symbol">
-            <RecycleHeroArt />
-          </aside>
-          <div className="recycle-hero-copy">
-            <p className="recycle-eyebrow">Secure · Compliant · Sustainable</p>
+      <section className="hero page-hero" aria-label="SecureFix recycling">
+        <div className="hero-bg" />
+        <div className="container hero-layout">
+          <div className="hero-content">
+            <p className="hero-eyebrow">Secure · Compliant · Sustainable</p>
             <h1>
-              Professional {recyclingContent.hero.title} &amp;{' '}
-              <span className="accent">{recyclingContent.hero.accent}</span>
+              <span className="hero-line">Professional {recyclingContent.hero.title}</span>
+              <span className="hero-line accent">&amp; {recyclingContent.hero.accent}</span>
             </h1>
-            <p>{recyclingContent.hero.subtitle}</p>
-            <div className="recycle-hero-actions">
+            <p className="hero-subtitle">{recyclingContent.hero.subtitle}</p>
+            <div className="hero-actions">
               <a href="#quote" className="btn btn-primary btn-shiny">
                 Request a Quote
               </a>
-              <a href="#process" className="btn btn-secondary recycle-hero-btn-outline">
+              <a href="#process" className="btn btn-secondary btn-shiny">
                 Our Recycling Process
               </a>
             </div>
-            <div className="recycle-trust-badges">
-              {recyclingContent.trustBadges.map((badge) => (
-                <div key={badge.label} className="recycle-trust-badge">
-                  <span>{badge.icon}</span>
-                  <small>{badge.label}</small>
+            <div className="hero-stats">
+              {recyclingContent.trustBadges.slice(0, 2).map((badge) => (
+                <div className="hero-stat" key={badge.label}>
+                  <strong>{badge.label}</strong>
+                  <span>SecureFix recycling standard</span>
                 </div>
               ))}
             </div>
+          </div>
+          <div className="hero-visual">
+            <RecyclingHeroPromo />
           </div>
         </div>
       </section>

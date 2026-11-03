@@ -1,12 +1,15 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { site, LIFECYCLE_ROUTE } from '@/data/content'
 import { getBusinessService, businessServiceRoute } from '@/data/businessServices'
+import { getBusinessServiceSeo } from '@/data/businessSeoExtras'
 import { getSeoPageByPath } from '@/data/seoCatalog'
-import BusinessHeroArt, { businessHeroVariantFromSlug } from '@/components/BusinessHeroArt'
-import BusinessHeroBackdrop from '@/components/BusinessHeroBackdrop'
+import { localBusinessJsonLd } from '@/data/seo'
+import { businessHeroVariantFromSlug } from '@/components/BusinessHeroArt'
+import BusinessHeroPromo from '@/components/BusinessHeroPromo'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import './Procurement.css'
-import './BusinessHeroLayout.css'
+import './BusinessItHero.css'
+import '@/components/Hero.css'
 
 const lifecycleApproach = [
   {
@@ -72,10 +75,67 @@ export default function BusinessService() {
   const { serviceSlug } = useParams<{ serviceSlug: string }>()
   const service = serviceSlug ? getBusinessService(serviceSlug) : undefined
   const seo = serviceSlug ? getSeoPageByPath(businessServiceRoute(serviceSlug)) : undefined
+  const seoExtra = getBusinessServiceSeo(serviceSlug)
+  const servicePath = serviceSlug ? businessServiceRoute(serviceSlug) : LIFECYCLE_ROUTE
+
   usePageSeo({
     title: seo?.title ?? 'Business IT | SecureFix',
-    description: seo?.description ?? 'SecureFix business IT services in London.',
-    path: seo?.path ?? LIFECYCLE_ROUTE,
+    description:
+      seoExtra?.executiveSummary ??
+      seo?.description ??
+      'SecureFix business IT services in London.',
+    path: seo?.path ?? servicePath,
+    jsonLd: service
+      ? [
+          localBusinessJsonLd(),
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            name: service.cardTitle,
+            serviceType: 'Business IT',
+            description: seoExtra?.executiveSummary ?? service.intro,
+            provider: {
+              '@type': 'LocalBusiness',
+              name: site.name,
+              url: `https://${site.website}`,
+            },
+            areaServed: 'London',
+            url: `https://${site.website}${servicePath}`,
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${site.website}/` },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Business IT',
+                item: `https://${site.website}${LIFECYCLE_ROUTE}`,
+              },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: service.cardTitle,
+                item: `https://${site.website}${servicePath}`,
+              },
+            ],
+          },
+          ...(seoExtra?.faqs?.length
+            ? [
+                {
+                  '@context': 'https://schema.org',
+                  '@type': 'FAQPage',
+                  mainEntity: seoExtra.faqs.map((faq) => ({
+                    '@type': 'Question',
+                    name: faq.question,
+                    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+                  })),
+                },
+              ]
+            : []),
+        ]
+      : undefined,
   })
 
   if (!service) {
@@ -86,56 +146,81 @@ export default function BusinessService() {
 
   return (
     <div className="procurement-page site-page">
-      <section
-        className="procurement-hero procurement-hero-photo procurement-hero-align-left"
-        aria-label={service.cardTitle}
-      >
-        <div className="procurement-hero-media procurement-hero-media-animated" aria-hidden="true">
-          <BusinessHeroBackdrop variant={heroVariant} />
-        </div>
-
-        <div className="container procurement-hero-inner procurement-hero-inner-photo procurement-hero-inner-widget">
-          <aside className="procurement-hero-widget business-hero-widget" aria-label="Business IT animation">
-            <BusinessHeroArt variant={heroVariant} />
-          </aside>
-
-          <div className="procurement-hero-content">
-            <div className="procurement-hero-copy">
-              <p className="procurement-eyebrow">
-                {service.hero.eyebrow || `${service.icon} SecureFix for Business`}
-              </p>
-              <h1>
-                {service.hero.title}{' '}
-                <span className="accent">{service.hero.accent}</span>
-              </h1>
-              <p>{service.hero.subtitle}</p>
-              <div className="procurement-hero-actions">
-                <a href={`${site.phoneHref}`} className="btn btn-primary btn-shiny">
-                  Talk to an IT Specialist
-                </a>
-                <Link to={`${LIFECYCLE_ROUTE}#quote`} className="btn btn-secondary procurement-hero-btn-outline">
-                  Request a Quote
-                </Link>
-              </div>
+      <section className="hero page-hero" aria-label={service.cardTitle}>
+        <div className="hero-bg" />
+        <div className="container hero-layout">
+          <div className="hero-content">
+            <p className="hero-eyebrow">
+              {service.hero.eyebrow || 'SecureFix for Business'}
+            </p>
+            <h1>
+              <span className="hero-line">{service.hero.title}</span>
+              <span className="hero-line accent">{service.hero.accent}</span>
+            </h1>
+            <p className="hero-subtitle">{service.hero.subtitle}</p>
+            <div className="hero-actions">
+              <a href={`${site.phoneHref}`} className="btn btn-primary btn-shiny">
+                Talk to an IT Specialist
+              </a>
+              <Link to={`${LIFECYCLE_ROUTE}#quote`} className="btn btn-secondary btn-shiny">
+                Request a Quote
+              </Link>
             </div>
-
-            <div className="procurement-lifecycle-strip">
-              <span className="procurement-lifecycle-label">Our Full Lifecycle Approach</span>
-              <ol className="procurement-lifecycle-steps">
-                {lifecycleApproach.map((step) => (
-                  <li key={step.label}>
-                    <span className="procurement-lifecycle-icon">{step.icon}</span>
-                    <span className="procurement-lifecycle-name">{step.label}</span>
-                  </li>
-                ))}
-              </ol>
+            <div className="hero-stats">
+              {lifecycleApproach.slice(0, 2).map((step) => (
+                <div className="hero-stat" key={step.label}>
+                  <strong>{step.label}</strong>
+                  <span>Part of the SecureFix lifecycle</span>
+                </div>
+              ))}
             </div>
+          </div>
+          <div className="hero-visual">
+            <BusinessHeroPromo
+              variant={heroVariant}
+              serviceSlug={service.slug}
+              label={service.cardTitle}
+              slides={[
+                {
+                  tag: service.cardTitle,
+                  title: service.hero.accent || 'Business IT',
+                  subtitle: service.hero.subtitle.slice(0, 72),
+                },
+                {
+                  tag: 'Lifecycle',
+                  title: 'Source · Deploy · Support',
+                  subtitle: 'One SecureFix partner for London fleets',
+                },
+                {
+                  tag: 'Get Started',
+                  title: 'Request A Quote',
+                  subtitle: 'Transparent pricing for team rollouts',
+                },
+              ]}
+            />
           </div>
         </div>
       </section>
 
       <main className="procurement-main">
         <div className="container">
+          {seoExtra ? (
+            <section className="procurement-section business-seo-block">
+              <h2>
+                Executive <span className="accent">summary</span>
+              </h2>
+              <p className="procurement-lead">{seoExtra.executiveSummary}</p>
+              <div className="business-seo-grid">
+                {seoExtra.ceoOutcomes.map((item) => (
+                  <article key={item.title} className="business-seo-card">
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           <section className="procurement-section">
             <h2>
               What Is This <span className="accent">Service?</span>
@@ -196,6 +281,22 @@ export default function BusinessService() {
               </div>
             </div>
           </section>
+
+          {seoExtra?.faqs?.length ? (
+            <section className="procurement-section business-seo-block" aria-label="Frequently asked questions">
+              <h2>
+                Frequently asked <span className="accent">questions</span>
+              </h2>
+              <div className="business-faq-list">
+                {seoExtra.faqs.map((faq) => (
+                  <article key={faq.question} className="business-faq-item">
+                    <h3>{faq.question}</h3>
+                    <p>{faq.answer}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           <section className="procurement-cta">
             <div>

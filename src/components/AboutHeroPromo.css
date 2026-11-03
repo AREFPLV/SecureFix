@@ -1,0 +1,96 @@
+/* Home-style promo box: question mark + circle only. */
+
+.about-hero-promo-media {
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 42%, #fbaf0024 0%, transparent 48%),
+    linear-gradient(165deg, #252525 0%, #1a1a1a 55%, #121212 100%);
+}
+
+.about-hero-promo-icon {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  pointer-events: none;
+}
+
+.about-hero-promo-orb {
+  position: relative;
+  width: min(78%, 17rem);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 45%, #fbaf0028 0%, #0c1016 58%, #05080e 100%);
+  box-shadow: 0 0 28px #fbaf002e, inset 0 0 24px #0008;
+}
+
+.about-hero-promo-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.about-hero-promo-ring-outer {
+  inset: 7%;
+  border: 2px solid #fbaf0066;
+  border-top-color: #fbaf00;
+  border-right-color: #fbaf0033;
+  animation: about-promo-spin 10s linear infinite;
+}
+
+.about-hero-promo-ring-inner {
+  inset: 17%;
+  border: 1.5px dashed #fbaf0059;
+  animation: about-promo-spin 16s linear infinite reverse;
+}
+
+.about-hero-promo-mark {
+  position: relative;
+  z-index: 1;
+  color: #fbaf00;
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(5rem, 14vw, 7.5rem);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-shadow: 0 0 24px #fbaf0066;
+  transform-origin: center center;
+  animation: about-promo-spin 8s linear infinite;
+}
+
+.about-hero-promo-overlay {
+  background: radial-gradient(circle at 50% 45%, transparent 35%, #2d2d2d66 100%) !important;
+}
+
+@keyframes about-promo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-hero-promo-ring-outer,
+  .about-hero-promo-ring-inner,
+  .about-hero-promo-mark {
+    animation: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-hero-promo-orb {
+    width: min(72%, 13.5rem);
+  }
+
+  .about-hero-promo-mark {
+    font-size: clamp(4rem, 22vw, 5.5rem);
+  }
+}
