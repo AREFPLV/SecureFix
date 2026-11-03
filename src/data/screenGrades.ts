@@ -39,16 +39,33 @@ function priced(
 
 /**
  * Build the three screen options from the model's listed Soft OLED / Premium
- * screen price. Standard and Genuine are derived; Premium keeps the list price.
+ * screen price. Premium keeps the list price. INCELL uses an exact standardPrice
+ * when provided (matched from competitor Standard), otherwise a derived tier.
  */
 export function getScreenGradeOptions(base: {
   price: number | null
   priceText?: string
+  /** Exact INCELL / Standard price when known; otherwise derived from Premium. */
+  standardPrice?: number | null
+  /** Exact Genuine Apple price when Soft OLED was uplifted without changing Genuine. */
+  genuinePrice?: number | null
 }): ScreenGrade[] {
   const premiumBase = typeof base.price === 'number' ? base.price : null
-  const standard = priced(premiumBase == null ? null : toNinetyNine(premiumBase * 0.75))
+  const standard = priced(
+    typeof base.standardPrice === 'number'
+      ? base.standardPrice
+      : premiumBase == null
+        ? null
+        : toNinetyNine(premiumBase * 0.75),
+  )
   const premium = priced(premiumBase, base.priceText)
-  const genuine = priced(premiumBase == null ? null : toNinetyNine(premiumBase * 1.4))
+  const genuine = priced(
+    typeof base.genuinePrice === 'number'
+      ? base.genuinePrice
+      : premiumBase == null
+        ? null
+        : toNinetyNine(premiumBase * 1.4),
+  )
 
   return [
     {
@@ -123,7 +140,12 @@ export function isFrontScreenIssue(issue: { cardTitle?: string; label: string })
 
 export function findScreenGradeBySlug(
   slug: string,
-  base: { price: number | null; priceText?: string },
+  base: {
+    price: number | null
+    priceText?: string
+    standardPrice?: number | null
+    genuinePrice?: number | null
+  },
 ): ScreenGrade | null {
   return getScreenGradeOptions(base).find((grade) => screenGradeSlug(grade.label) === slug) ?? null
 }

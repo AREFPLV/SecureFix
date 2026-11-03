@@ -48,152 +48,152 @@ iPhone 17 Pro MaxiPhone 17 ProiPhone AiriPhone 17iPhone 16eiPhone 16 Pro MaxiPho
 
 iPhone 17
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£194.99** 
-Battery Replacement (Apple Original or OEM Quality) **£129.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£239.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£139.99** 
-Back Glass Replacement (Compatible / OEM) **£179.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£249.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£274.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£149.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£149.99** 
-Microphone Repair / Dock Replacement **£139.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£169.00**
+Battery Replacement (Apple Original or OEM Quality) **£129.99**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£239.99**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£89.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£249.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£228.00**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 17 Air
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£249.99** 
-Battery Replacement (Apple Original or OEM Quality) **£139.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£324.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£139.99** 
-Back Glass Replacement (Compatible / OEM) **£195.00** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£149.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£149.99** 
-Microphone Repair / Dock Replacement **£139.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£239.00**
+Battery Replacement (Apple Original or OEM Quality) **£139.99**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£324.99**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 17 Pro
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£249.99** 
-Battery Replacement (Apple Original or OEM Quality) **£139.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£324.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£139.99** 
-Back Glass Replacement (Compatible / OEM) **£195.00** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£149.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£149.99** 
-Microphone Repair / Dock Replacement **£139.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
+Battery Replacement (Apple Original or OEM Quality) **£139.99**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£324.99**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 17 Pro Max
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£249.99** 
-Battery Replacement (Apple Original or OEM Quality) **£139.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£324.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£139.99** 
-Back Glass Replacement (Compatible / OEM) **£195.00** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£149.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£149.99** 
-Microphone Repair / Dock Replacement **£139.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 16e - Issues
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.99** 
-Battery Replacement (Apple Original or OEM Quality) **£119.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£209.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£129.99** 
-Back Glass Replacement (Compatible / OEM) **£169.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£229.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£229.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£165.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£139.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£149.99** 
-Microphone Repair / Dock Replacement **£139.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 16 Pro Max - Issues
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£194.99** 
-Battery Replacement (Apple Original or OEM Quality) **£119.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£229.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£139.99** 
-Back Glass Replacement (Compatible / OEM) **£179.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£239.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£274.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£149.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£149.99** 
-Microphone Repair / Dock Replacement **£139.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 16 Pro Max - Issues
@@ -202,202 +202,202 @@ New Screen replacement \[ Genuine\] £389.99 New OLED Screen replacement \[ Comp
 
 iPhone 16 Pro - Issues
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£194.99** 
-Battery Replacement (Apple Original or OEM Quality) **£119.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£229.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£139.99** 
-Back Glass Replacement (Compatible / OEM) **£179.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£239.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£274.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£149.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£149.99** 
-Microphone Repair / Dock Replacement **£139.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 16 Plus - Issues
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.99** 
-Battery Replacement (Apple Original or OEM Quality) **£119.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£209.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£129.99** 
-Back Glass Replacement (Compatible / OEM) **£169.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£229.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£229.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£165.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£139.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£149.99** 
-Microphone Repair / Dock Replacement **£139.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 16 - Issues
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.99** 
-Battery Replacement (Apple Original or OEM Quality) **£119.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£209.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£129.99** 
-Back Glass Replacement (Compatible / OEM) **£169.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£229.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£229.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£165.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£139.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£149.99** 
-Microphone Repair / Dock Replacement **£139.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 15 Pro Max - Issues
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£164.99** 
-Battery Replacement (Apple Original or OEM Quality) **£119.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£194.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£129.99** 
-Back Glass Replacement (Compatible / OEM) **£159.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£209.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£209.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£155.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£139.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£149.99** 
-Microphone Repair / Dock Replacement **£139.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 15 Pro - Issues
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£164.99** 
-Battery Replacement (Apple Original or OEM Quality) **£119.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£194.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£129.99** 
-Back Glass Replacement (Compatible / OEM) **£159.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£209.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£209.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£155.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£139.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£149.99** 
-Microphone Repair / Dock Replacement **£139.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 15 Plus - Issues
 
 New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£144.99** 
-Battery Replacement (Apple Original or OEM Quality) **£119.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£174.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£129.99** 
-Back Glass Replacement (Compatible / OEM) **£149.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£194.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£179.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£145.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£139.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£129.99** 
-Microphone Repair / Dock Replacement **£129.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£129.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 15 - Issues
 
 New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£144.99** 
-Battery Replacement (Apple Original or OEM Quality) **£119.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£174.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£129.99** 
-Back Glass Replacement (Compatible / OEM) **£149.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£194.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£179.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£145.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£139.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£129.99** 
-Microphone Repair / Dock Replacement **£129.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£129.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone XR - Issues
 
 New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£94.99** 
-Battery Replacement (Apple Original or OEM Quality) **£94.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£129.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£129.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£124.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£125.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£109.99** 
-Front Camera and Face ID Fixing / Replacement **£129.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£94.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£94.99** 
-Microphone Repair / Dock Replacement **£94.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99** 
-Phone Overheating Issues Assessment and Fixing **£109.99–£149.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone SE 2020 (2nd Gen) Issues
@@ -407,176 +407,176 @@ iPhone SE 2020 (2nd Gen) Issues
 iPhone 14 Pro Max - Issues
 
 New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£144.99** 
-Battery Replacement (Apple Original or OEM Quality) **£119.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£174.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£129.99** 
-Back Glass Replacement (Compatible / OEM) **£149.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£194.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£179.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£145.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£139.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£129.99** 
-Microphone Repair / Dock Replacement **£129.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£129.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 14 - Issues
 
 New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£129.99** 
-Battery Replacement (Apple Original or OEM Quality) **£109.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£149.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£139.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£174.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£145.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£139.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£129.99** 
-Microphone Repair / Dock Replacement **£129.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£129.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 14 Plus - Issues
 
 New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£129.99** 
-Battery Replacement (Apple Original or OEM Quality) **£109.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£149.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£139.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£174.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£145.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£139.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£129.99** 
-Microphone Repair / Dock Replacement **£129.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£129.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 14 Pro - Issues
 
 New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£144.99** 
-Battery Replacement (Apple Original or OEM Quality) **£119.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£174.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£129.99** 
-Back Glass Replacement (Compatible / OEM) **£149.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£194.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£179.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£145.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£139.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£129.99** 
-Microphone Repair / Dock Replacement **£129.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£129.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone XS Max - Issues
 
 New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£94.99** 
-Battery Replacement (Apple Original or OEM Quality) **£94.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£129.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£129.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£124.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£125.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£109.99** 
-Front Camera and Face ID Fixing / Replacement **£129.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£94.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£94.99** 
-Microphone Repair / Dock Replacement **£94.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99** 
-Phone Overheating Issues Assessment and Fixing **£109.99–£149.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone XS - Issues
 
 New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£94.99** 
-Battery Replacement (Apple Original or OEM Quality) **£94.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£129.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£129.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£124.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£125.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£109.99** 
-Front Camera and Face ID Fixing / Replacement **£129.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£94.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£94.99** 
-Microphone Repair / Dock Replacement **£94.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99** 
-Phone Overheating Issues Assessment and Fixing **£109.99–£149.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone X - Issues
 
 New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£94.99** 
-Battery Replacement (Apple Original or OEM Quality) **£94.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£129.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£129.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£124.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£125.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£109.99** 
-Front Camera and Face ID Fixing / Replacement **£129.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£94.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£94.99** 
-Microphone Repair / Dock Replacement **£94.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99** 
-Phone Overheating Issues Assessment and Fixing **£109.99–£149.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 8 Plus - Issues
@@ -630,76 +630,76 @@ iPhone 5 - Issues
 iPhone 11- Issues
 
 New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£94.99** 
-Battery Replacement (Apple Original or OEM Quality) **£94.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£129.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£129.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£124.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£125.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£109.99** 
-Front Camera and Face ID Fixing / Replacement **£129.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£94.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£94.99** 
-Microphone Repair / Dock Replacement **£94.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99** 
-Phone Overheating Issues Assessment and Fixing **£109.99–£149.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 11 Pro - Issues
 
 New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£94.99** 
-Battery Replacement (Apple Original or OEM Quality) **£94.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£129.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£129.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£124.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£125.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£109.99** 
-Front Camera and Face ID Fixing / Replacement **£129.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£94.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£94.99** 
-Microphone Repair / Dock Replacement **£94.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99** 
-Phone Overheating Issues Assessment and Fixing **£109.99–£149.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 11 Pro Max- Issues
 
 New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£94.99** 
-Battery Replacement (Apple Original or OEM Quality) **£94.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£129.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£129.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£124.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£125.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£109.99** 
-Front Camera and Face ID Fixing / Replacement **£129.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£94.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£94.99** 
-Microphone Repair / Dock Replacement **£94.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99** 
-Phone Overheating Issues Assessment and Fixing **£109.99–£149.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+Battery Replacement (Apple Original or OEM Quality) **£109.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
+Not Charging or Charging Port Repair / Dock Replacement **£139.99**
+Back Glass Replacement (Compatible / OEM) **£195.00**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£294.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£349.99**
+Back / Rear Camera Glass Lens Replacement **£94.99**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£175.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99**
+Front Camera and Face ID Fixing / Replacement **£149.90**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£149.99**
+Microphone Repair / Dock Replacement **£139.99**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£149.99**
+Phone Overheating Issues Assessment and Fixing **£149.99–£249.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone SE 2020 (2nd gen) Issue
@@ -708,202 +708,202 @@ New Screen (Front Glass & OLED) replacement \[ Best Premium Quality \] Most Popu
 
 iPhone 12
 
-New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£94.99** 
-Battery Replacement (Apple Original or OEM Quality) **£94.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£129.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£129.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£124.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£125.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£109.99** 
-Front Camera and Face ID Fixing / Replacement **£129.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£94.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£94.99** 
-Microphone Repair / Dock Replacement **£94.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99** 
-Phone Overheating Issues Assessment and Fixing **£109.99–£149.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£74.00**
+Battery Replacement (Apple Original or OEM Quality) **£49.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£123.00**
+Not Charging or Charging Port Repair / Dock Replacement **£55.00**
+Back Glass Replacement (Compatible / OEM) **£129.99**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£124.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99**
+Back / Rear Camera Glass Lens Replacement **£35.00**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£69.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£49.00**
+Front Camera and Face ID Fixing / Replacement **£50.00**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£94.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£94.99**
+Microphone Repair / Dock Replacement **£55.00**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99**
+Phone Overheating Issues Assessment and Fixing **£109.99–£149.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 12 mini
 
-New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£94.99** 
-Battery Replacement (Apple Original or OEM Quality) **£94.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£129.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£129.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£124.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£125.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£109.99** 
-Front Camera and Face ID Fixing / Replacement **£129.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£94.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£94.99** 
-Microphone Repair / Dock Replacement **£94.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99** 
-Phone Overheating Issues Assessment and Fixing **£109.99–£149.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£49.00**
+Battery Replacement (Apple Original or OEM Quality) **£49.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£98.00**
+Not Charging or Charging Port Repair / Dock Replacement **£55.00**
+Back Glass Replacement (Compatible / OEM) **£129.99**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£124.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99**
+Back / Rear Camera Glass Lens Replacement **£35.00**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£69.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£49.00**
+Front Camera and Face ID Fixing / Replacement **£65.00**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£94.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£94.99**
+Microphone Repair / Dock Replacement **£55.00**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99**
+Phone Overheating Issues Assessment and Fixing **£109.99–£149.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 12 Pro
 
-New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£94.99** 
-Battery Replacement (Apple Original or OEM Quality) **£94.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£129.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£129.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£124.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£125.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£109.99** 
-Front Camera and Face ID Fixing / Replacement **£129.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£94.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£94.99** 
-Microphone Repair / Dock Replacement **£94.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99** 
-Phone Overheating Issues Assessment and Fixing **£109.99–£149.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£74.00**
+Battery Replacement (Apple Original or OEM Quality) **£49.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£123.00**
+Not Charging or Charging Port Repair / Dock Replacement **£55.00**
+Back Glass Replacement (Compatible / OEM) **£129.99**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£124.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99**
+Back / Rear Camera Glass Lens Replacement **£45.00**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£99.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£55.00**
+Front Camera and Face ID Fixing / Replacement **£50.00**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£94.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£94.99**
+Microphone Repair / Dock Replacement **£55.00**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99**
+Phone Overheating Issues Assessment and Fixing **£109.99–£149.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 12 Pro Max
 
-New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£114.99** 
-Battery Replacement (Apple Original or OEM Quality) **£109.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£139.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£139.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£144.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£169.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£135.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£109.99** 
-Front Camera and Face ID Fixing / Replacement **£129.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£109.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£109.99** 
-Microphone Repair / Dock Replacement **£109.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99** 
-Phone Overheating Issues Assessment and Fixing **£109.99–£149.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£79.00**
+Battery Replacement (Apple Original or OEM Quality) **£49.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£128.00**
+Not Charging or Charging Port Repair / Dock Replacement **£65.00**
+Back Glass Replacement (Compatible / OEM) **£139.99**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£144.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£169.99**
+Back / Rear Camera Glass Lens Replacement **£45.00**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£99.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£55.00**
+Front Camera and Face ID Fixing / Replacement **£70.00**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£109.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£109.99**
+Microphone Repair / Dock Replacement **£65.00**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99**
+Phone Overheating Issues Assessment and Fixing **£109.99–£149.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 13 Issues
 
-New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£124.99** 
-Battery Replacement (Apple Original or OEM Quality) **£109.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£139.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£139.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£144.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£169.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£145.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£139.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£119.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£119.99** 
-Microphone Repair / Dock Replacement **£119.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£129.99** 
-Phone Overheating Issues Assessment and Fixing **£109.99–£149.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£79.00**
+Battery Replacement (Apple Original or OEM Quality) **£49.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£128.00**
+Not Charging or Charging Port Repair / Dock Replacement **£65.00**
+Back Glass Replacement (Compatible / OEM) **£139.99**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£144.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£169.99**
+Back / Rear Camera Glass Lens Replacement **£45.00**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£99.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£55.00**
+Front Camera and Face ID Fixing / Replacement **£70.00**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£109.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£109.99**
+Microphone Repair / Dock Replacement **£65.00**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99**
+Phone Overheating Issues Assessment and Fixing **£109.99–£149.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 13 mini Issues
 
-New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£124.99** 
-Battery Replacement (Apple Original or OEM Quality) **£109.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£139.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£139.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£144.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£169.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£145.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£139.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£119.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£119.99** 
-Microphone Repair / Dock Replacement **£119.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£129.99** 
-Phone Overheating Issues Assessment and Fixing **£109.99–£149.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£79.00**
+Battery Replacement (Apple Original or OEM Quality) **£49.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£128.00**
+Not Charging or Charging Port Repair / Dock Replacement **£65.00**
+Back Glass Replacement (Compatible / OEM) **£139.99**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£144.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£169.99**
+Back / Rear Camera Glass Lens Replacement **£45.00**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£99.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£55.00**
+Front Camera and Face ID Fixing / Replacement **£70.00**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£109.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£109.99**
+Microphone Repair / Dock Replacement **£65.00**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99**
+Phone Overheating Issues Assessment and Fixing **£109.99–£149.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 13 Pro Issues
 
-New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£129.99** 
-Battery Replacement (Apple Original or OEM Quality) **£109.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£149.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£139.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£174.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£145.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£139.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£129.99** 
-Microphone Repair / Dock Replacement **£129.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£129.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£79.00**
+Battery Replacement (Apple Original or OEM Quality) **£49.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£128.00**
+Not Charging or Charging Port Repair / Dock Replacement **£65.00**
+Back Glass Replacement (Compatible / OEM) **£139.99**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£144.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£169.99**
+Back / Rear Camera Glass Lens Replacement **£45.00**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£99.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£55.00**
+Front Camera and Face ID Fixing / Replacement **£70.00**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£109.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£109.99**
+Microphone Repair / Dock Replacement **£65.00**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99**
+Phone Overheating Issues Assessment and Fixing **£109.99–£149.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone 13 Pro Max Issues
 
-New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£129.99** 
-Battery Replacement (Apple Original or OEM Quality) **£109.99** 
-Front Screen Replacement and New Battery Replacement \[Deal Price\] **£149.99** 
-Not Charging or Charging Port Repair / Dock Replacement **£119.99** 
-Back Glass Replacement (Compatible / OEM) **£139.99** 
-Back Glass, Bent and Full Body Replacement (Housing Solution) **£174.99** 
-Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£159.99** 
-Back / Rear Camera Glass Lens Replacement **£94.99** 
-Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£145.00** 
-Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£129.99** 
-Front Camera and Face ID Fixing / Replacement **£139.90** 
-Won’t Turn On (Diagnostics) – I Don’t Know **£94.99** 
-Frozen Phone (Nothing Works) Quick Fixing **£94.99** 
-Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£129.99** 
-Sides Volume Buttons / Power Button Fixing / Replacement **£129.99** 
-Microphone Repair / Dock Replacement **£129.99** 
-Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99** 
-Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£129.99** 
-Phone Overheating Issues Assessment and Fixing **£149.99–£249.99** 
-Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99** 
-Phone Case for Protection (Add-on with Any Repair) **£24.99** 
+New Screen Replacement \[OLED/Compatible – Most Popular\] – Premium Quality **£79.00**
+Battery Replacement (Apple Original or OEM Quality) **£49.00**
+Front Screen Replacement and New Battery Replacement \[Deal Price\] **£128.00**
+Not Charging or Charging Port Repair / Dock Replacement **£65.00**
+Back Glass Replacement (Compatible / OEM) **£139.99**
+Back Glass, Bent and Full Body Replacement (Housing Solution) **£144.99**
+Front Screen Replacement and Back Glass Replacement \[Deal Price\] **£169.99**
+Back / Rear Camera Glass Lens Replacement **£45.00**
+Whole Rear Back New Camera Replacement \[Genuine / OEM\] **£99.00**
+Loudspeaker / Audio Issue Repair / Replacement \[Genuine / OEM\] **£55.00**
+Front Camera and Face ID Fixing / Replacement **£70.00**
+Won’t Turn On (Diagnostics) – I Don’t Know **£94.99**
+Frozen Phone (Nothing Works) Quick Fixing **£94.99**
+Software iOS Fixing – Apple Logo Issues (Pick and Deliver Only) **£109.99**
+Sides Volume Buttons / Power Button Fixing / Replacement **£109.99**
+Microphone Repair / Dock Replacement **£65.00**
+Water or Liquid Damage (Diagnostics and Assessment for Fixing) **£94.99**
+Issues Like Bluetooth / WiFi / Connection / GPS Fixing (Pick and Drop Service Only) **£119.99**
+Phone Overheating Issues Assessment and Fixing **£109.99–£149.99**
+Tempered Glass Screen Protection (Add-on with Any Repair) **£24.99**
+Phone Case for Protection (Add-on with Any Repair) **£24.99**
 Any Issue Not Listed Here **Not Applicable** 
 
 iPhone SE 2022 (3rd Gen) Issues
