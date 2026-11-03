@@ -508,15 +508,21 @@
   animation: biz-ring-spin 11s linear infinite;
 }
 
-/* Industry line-draw motifs */
+/* Industry line-draw motifs — above shade so hospital/law/etc. stay readable */
+.biz-hero-backdrop-industry-page .biz-hero-backdrop-shade {
+  background:
+    linear-gradient(90deg, #05080eb8 0%, #05080e40 40%, #05080e22 58%, #05080e88 100%),
+    linear-gradient(180deg, #05080e4d 0%, transparent 30%, transparent 48%, #05080ee6 100%);
+}
 .industry-motif {
   position: absolute;
   inset: auto 0 0;
   width: 100%;
-  height: min(58%, 420px);
-  z-index: 2;
+  height: min(62%, 460px);
+  z-index: 5;
   color: #fbaf00;
-  opacity: 0.55;
+  opacity: 0.82;
+  pointer-events: none;
 }
 .industry-draw {
   stroke-linecap: round;
@@ -525,9 +531,10 @@
 .industry-draw path,
 .industry-draw rect,
 .industry-draw circle {
+  stroke-width: 2.6;
   stroke-dasharray: 900;
   stroke-dashoffset: 900;
-  animation: industry-line-draw 4.8s ease forwards infinite;
+  animation: industry-line-draw 5.2s ease-in-out infinite;
 }
 .industry-draw path:nth-child(2),
 .industry-draw rect:nth-child(2),
