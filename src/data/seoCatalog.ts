@@ -22,6 +22,7 @@ import {
   TRADE_IN_ROUTE,
   TERMS_ROUTE,
 } from '@/data/content'
+import { trainingCourses, trainingLevelPath } from '@/data/training'
 
 export type SeoPageKind =
   | 'static'
@@ -32,6 +33,7 @@ export type SeoPageKind =
   | 'business'
   | 'industry'
   | 'recycling-topic'
+  | 'training-level'
 
 export type SeoPageEntry = {
   kind: SeoPageKind
@@ -223,9 +225,9 @@ export function buildSeoCatalog(): SeoPageEntry[] {
     {
       kind: 'static',
       path: TRAINING_ROUTE,
-      title: 'Training Courses London | SecureFix',
+      title: 'SecureFix Academy Training Courses London | Junior to Advance',
       description:
-        'Phone, tablet and laptop repair training courses at SecureFix London EC1V.',
+        'Mobile, computer and Apple repair training in London EC1V — Junior, Intermediate and Advance levels with clear session pricing.',
       h1: 'Training Courses',
       intro: [],
     },
@@ -479,6 +481,29 @@ export function buildSeoCatalog(): SeoPageEntry[] {
         .slice(0, 8)
         .map((t) => ({ label: t.h1, path: `/recycling/${t.slug}` })),
     })
+  }
+
+  for (const course of trainingCourses) {
+    for (const level of course.levels) {
+      pages.push({
+        kind: 'training-level',
+        path: trainingLevelPath(course.slug, level.id),
+        title: `${course.title} · ${level.label} | SecureFix Academy`,
+        description: `${level.label} ${course.title} in London — ${level.sessions} sessions from ${level.priceText}. ${level.summary}`,
+        h1: `${level.label} ${course.title}`,
+        accent: level.label,
+        intro: [level.learnIntro, level.whoFor],
+        bullets: [...level.outcomes],
+        ctaPath: TRAINING_ROUTE,
+        ctaLabel: 'All training courses',
+        relatedPaths: course.levels
+          .filter((item) => item.id !== level.id)
+          .map((item) => ({
+            label: `${item.label} · ${item.priceText}`,
+            path: trainingLevelPath(course.slug, item.id),
+          })),
+      })
+    }
   }
 
   // Dedupe by path

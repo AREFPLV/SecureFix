@@ -399,12 +399,12 @@ export const aboutSeo: PageSeoConfig = {
 }
 
 export const trainingSeo: PageSeoConfig = {
-  title: 'Phone & Laptop Repair Training Courses London | SecureFix',
+  title: 'SecureFix Academy | Mobile, Computer & Apple Repair Training London',
   description:
-    'Hands-on phone, tablet and laptop repair training courses in London EC1V. Learn from SecureFix technicians at our City Road workshop.',
+    'Junior, Intermediate and Advance repair courses in London EC1V — mobile, computer and Apple programmes with equipped classroom benches.',
   path: TRAINING_ROUTE,
   keywords:
-    'phone repair course London, laptop repair training, mobile repair training EC1V, SecureFix training',
+    'SecureFix Academy, phone repair course London, laptop repair training, Apple repair course EC1V, Junior Intermediate Advance',
   image: '/images/about-banner.png',
   jsonLd: localBusinessJsonLd(),
 }
