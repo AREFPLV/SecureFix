@@ -156,6 +156,67 @@ function nearbyModelTokens(token: string): string[] {
   return [`${prefix}${num - 1}`, `${prefix}${num + 1}`]
 }
 
+const QUERY_STOPWORDS = new Set([
+  'how',
+  'much',
+  'is',
+  'are',
+  'the',
+  'and',
+  'for',
+  'my',
+  'me',
+  'an',
+  'a',
+  'to',
+  'of',
+  'do',
+  'you',
+  'please',
+  'want',
+  'need',
+  'cost',
+  'price',
+  'quote',
+  'repair',
+  'repairs',
+  'fix',
+  'broken',
+  'cracked',
+  'replace',
+  'replacement',
+  'whats',
+  'what',
+])
+
+/** Brand / family words in the query that results must honour. */
+const DEVICE_FAMILIES: { pattern: RegExp; match: RegExp; label: string }[] = [
+  { pattern: /\biphone\b/i, match: /\biphone\b/i, label: 'iPhone' },
+  { pattern: /\bipad\b/i, match: /\bipad\b/i, label: 'iPad' },
+  { pattern: /\b(macbook|imac)\b/i, match: /\b(macbook|imac)\b/i, label: 'Mac' },
+  { pattern: /\b(samsung|galaxy)\b/i, match: /\b(samsung|galaxy)\b/i, label: 'Samsung' },
+  { pattern: /\bpixel\b/i, match: /\bpixel\b/i, label: 'Pixel' },
+  { pattern: /\boneplus\b/i, match: /\boneplus\b/i, label: 'OnePlus' },
+  { pattern: /\bhuawei\b/i, match: /\bhuawei\b/i, label: 'Huawei' },
+  { pattern: /\b(apple\s*watch|iwatch)\b/i, match: /\bwatch\b/i, label: 'Apple Watch' },
+  { pattern: /\b(ps5|playstation)\b/i, match: /\b(ps5|playstation)\b/i, label: 'PlayStation' },
+  { pattern: /\bxbox\b/i, match: /\bxbox\b/i, label: 'Xbox' },
+]
+
+function queryDeviceFamilies(query: string) {
+  return DEVICE_FAMILIES.filter((family) => family.pattern.test(query))
+}
+
+function itemMatchesFamilies(item: IndexedItem, families: ReturnType<typeof queryDeviceFamilies>) {
+  if (!families.length) return true
+  const hay = `${item.modelKey} ${item.haystack}`
+  return families.some((family) => family.match.test(hay))
+}
+
+function meaningfulTokens(tokens: string[]) {
+  return tokens.filter((token) => !QUERY_STOPWORDS.has(token))
+}
+
 /** Significant model tokens such as s24, iphone, 14, macbook — must mostly match. */
 function modelTokenCoverage(
   modelKey: string,
@@ -254,7 +315,8 @@ export function searchRepairs(rawQuery: string, limit = 8): RepairSearchHit[] {
   const query = normalize(rawQuery)
   if (query.length < 2) return []
 
-  const tokens = query.split(' ').filter((token) => token.length > 1)
+  const tokens = meaningfulTokens(query.split(' ').filter((token) => token.length > 1))
+  const families = queryDeviceFamilies(query)
   const ranked: RepairSearchHit[] = []
 
   const wantsScreen = /\b(screen|display|cracked|lcd|oled)\b/i.test(query) && !/\bback\b/i.test(query)
@@ -264,6 +326,8 @@ export function searchRepairs(rawQuery: string, limit = 8): RepairSearchHit[] {
   const hasIssueIntent = ISSUE_HINTS.some((hint) => hint.pattern.test(query))
 
   for (const item of getIndex()) {
+    if (!itemMatchesFamilies(item, families)) continue
+
     let score = scoreItem(item, query, tokens)
     if (score < 30) continue
 
@@ -276,8 +340,22 @@ export function searchRepairs(rawQuery: string, limit = 8): RepairSearchHit[] {
       if (wantsBattery && !/\bbattery\b/.test(item.issueKey)) continue
       if (wantsCharging && !/\bcharg/.test(item.issueKey)) continue
       if (wantsHdmi && !/\bhdmi\b/.test(item.issueKey)) continue
-      if (wantsScreen && /\btempered glass screen protection\b/.test(item.issueKey)) score -= 40
+      if (wantsScreen && /\btempered glass screen protection\b/.test(item.issueKey)) score -= 80
+      // Prefer real replacement jobs over protector add-ons when quoting prices.
+      if (/\btempered glass screen protection\b/.test(item.issueKey)) score -= 50
+      // Brand-level queries (e.g. "iPhone screen") — boost popular OLED/LCD replacements.
+      if (
+        families.length &&
+        !/\d/.test(query) &&
+        /\b(screen|display|oled|lcd)\b/.test(item.issueKey) &&
+        /\b(most popular|oled|lcd|screen repair|screen replacement)\b/.test(item.issueKey)
+      ) {
+        score += 35
+      }
     }
+
+    // Prefer exact family token hits so brand-level searches stay on that range.
+    if (families.some((family) => family.match.test(item.modelKey))) score += 50
 
     const coverage = modelTokenCoverage(item.modelKey, tokens)
     ranked.push({
@@ -300,7 +378,17 @@ export function searchRepairs(rawQuery: string, limit = 8): RepairSearchHit[] {
       const aScreen = /\bscreen\b/i.test(a.title) ? 1 : 0
       const bScreen = /\bscreen\b/i.test(b.title) ? 1 : 0
       if (bScreen !== aScreen) return bScreen - aScreen
+      const aPopular = /most popular|oled|lcd & glass|screen repair/i.test(a.title) ? 1 : 0
+      const bPopular = /most popular|oled|lcd & glass|screen repair/i.test(b.title) ? 1 : 0
+      if (bPopular !== aPopular) return bPopular - aPopular
     }
+    // Prefer newer generations when scores tie (e.g. brand-level “iPhone screen”).
+    const gen = (title: string) => {
+      const match = title.match(/\b(?:iphone|galaxy\s*s|pixel|series)?\s*(\d{1,2})\b/i)
+      return match ? Number(match[1]) : 0
+    }
+    const genDiff = gen(b.title) - gen(a.title)
+    if (genDiff) return genDiff
     return a.title.localeCompare(b.title)
   })
 

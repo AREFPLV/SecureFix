@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently -n web,api -c blue,green \"vite\" \"tsx watch server/index.ts\"",
+    "dev": "concurrently -n web,api -c blue,green \"vite\" \"tsx watch --tsconfig tsconfig.app.json server/index.ts\"",
     "dev:web": "vite",
-    "dev:api": "tsx watch server/index.ts",
+    "dev:api": "tsx watch --tsconfig tsconfig.app.json server/index.ts",
     "build": "node scripts/refresh-google-reviews.mjs && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && tsx scripts/prerender.ts",
     "lint": "oxlint",
     "preview": "vite preview",
