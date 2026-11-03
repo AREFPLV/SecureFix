@@ -3,3 +3,30 @@
   text-justify: inter-word;
   hyphens: auto;
 }
+
+/*
+ * Compact inner-page heroes (Business IT, Training, etc.).
+ * Avoid home 100vh centering, and cancel .site-page's header offset
+ * so we don't double-count padding under the fixed header.
+ */
+.site-page:has(> .hero) {
+  padding-top: 0;
+}
+
+.hero.page-hero {
+  min-height: auto;
+  align-items: flex-start;
+}
+
+.hero.page-hero .hero-layout {
+  padding-top: 1.25rem;
+  padding-bottom: 2.5rem;
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .hero.page-hero .hero-layout {
+    padding-top: 0.75rem;
+    padding-bottom: 2rem;
+  }
+}

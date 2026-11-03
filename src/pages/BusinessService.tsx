@@ -146,7 +146,7 @@ export default function BusinessService() {
 
   return (
     <div className="procurement-page site-page">
-      <section className="hero" aria-label={service.cardTitle}>
+      <section className="hero page-hero" aria-label={service.cardTitle}>
         <div className="hero-bg" />
         <div className="container hero-layout">
           <div className="hero-content">

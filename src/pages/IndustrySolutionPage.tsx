@@ -92,7 +92,7 @@ export default function IndustrySolutionPage() {
 
   return (
     <div className="procurement-page industry-solution-page site-page">
-      <section className="hero" aria-label={industry.h1}>
+      <section className="hero page-hero" aria-label={industry.h1}>
         <div className="hero-bg" />
         <div className="container hero-layout">
           <div className="hero-content">

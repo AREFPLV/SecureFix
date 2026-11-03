@@ -1,5 +1,10 @@
 /* Shared Business IT page helpers (home hero colours come from Hero.css / index.css). */
 
+.lifecycle-page .page-hero .hero-subtitle,
+.procurement-page .page-hero .hero-subtitle {
+  max-width: 36rem;
+}
+
 .business-it-hero-partners {
   display: flex;
   flex-wrap: wrap;

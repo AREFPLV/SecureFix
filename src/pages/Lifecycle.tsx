@@ -77,7 +77,7 @@ export default function Lifecycle() {
 
   return (
     <div className="lifecycle-page site-page">
-      <section className="hero" aria-label="SecureFix for Business">
+      <section className="hero page-hero" aria-label="SecureFix for Business">
         <div className="hero-bg" />
         <div className="container hero-layout">
           <div className="hero-content">
