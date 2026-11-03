@@ -1,0 +1,49 @@
+/* Extends the home .hero-promo look with rotating certificate frames. */
+
+.training-promo-media {
+  inset: 0;
+}
+
+.training-promo-frame {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: 15s ease-in-out infinite trainingCertCycle;
+}
+
+.training-promo-img {
+  object-fit: contain;
+  object-position: center;
+  background: #0f0f0f;
+  animation: none;
+  padding: 0.65rem;
+}
+
+/* 15s loop · 5s delay per frame → each certificate fills one third with soft crossfade. */
+@keyframes trainingCertCycle {
+  0%,
+  30% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  36%,
+  96% {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .training-promo-frame {
+    animation: none;
+    opacity: 0;
+  }
+
+  .training-promo-frame:first-child {
+    opacity: 1;
+  }
+}
