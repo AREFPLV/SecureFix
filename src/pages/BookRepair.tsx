@@ -9,10 +9,12 @@ import {
   displayIssueLabel,
   isIssuableModel,
   isQuoteDiagnosticIssue,
+  isUnlistedModel,
   issueBlurb,
   issuePriceShown,
   issueSlug,
   smartphonePickerIssues,
+  UNLISTED_MODEL_PRICE_TEXT,
 } from '@/data/issueCatalog'
 import {
   modelsInSamsungSeries,
@@ -298,27 +300,32 @@ export default function BookRepair() {
         : bookingIssues(selectedCategory.id, selectedBrand?.id, selectedModel)
       : []
 
+  const unlistedModel = isUnlistedModel(selectedModel)
   const isApplePhone = selectedBrand?.id === 'apple-phone'
   const showIphoneScreenGrades = Boolean(
-    selectedCategory?.id === 'smartphone' &&
+    !unlistedModel &&
+      selectedCategory?.id === 'smartphone' &&
       isApplePhone &&
       selectedIssue &&
       isFrontScreenIssue(selectedIssue),
   )
   const showOtherScreenPremium = Boolean(
-    selectedCategory?.id === 'smartphone' &&
+    !unlistedModel &&
+      selectedCategory?.id === 'smartphone' &&
       !isApplePhone &&
       selectedIssue &&
       isFrontScreenIssue(selectedIssue),
   )
   const showIphoneBatteryGrades = Boolean(
-    selectedCategory?.id === 'smartphone' &&
+    !unlistedModel &&
+      selectedCategory?.id === 'smartphone' &&
       isApplePhone &&
       selectedIssue &&
       isBatteryReplacementIssue(selectedIssue),
   )
   const showOtherBatteryPremium = Boolean(
-    selectedCategory?.id === 'smartphone' &&
+    !unlistedModel &&
+      selectedCategory?.id === 'smartphone' &&
       !isApplePhone &&
       selectedIssue &&
       isBatteryReplacementIssue(selectedIssue),
@@ -576,21 +583,25 @@ export default function BookRepair() {
                           <span>
                             {showPartGrades && !selectedPartGrade
                               ? partGradePrompt
-                              : isQuoteDiagnosticIssue(selectedIssue)
-                                ? 'Quote after diagnostics'
-                                : issuePriceShown(detailIssue)}
+                              : unlistedModel
+                                ? UNLISTED_MODEL_PRICE_TEXT
+                                : isQuoteDiagnosticIssue(selectedIssue)
+                                  ? 'Quote after diagnostics'
+                                  : issuePriceShown(detailIssue)}
                           </span>
                           <span>
-                            {isQuoteDiagnosticIssue(selectedIssue)
+                            {unlistedModel || isQuoteDiagnosticIssue(selectedIssue)
                               ? 'Full diagnostic first'
                               : `Workshop time ${detailIssue.time}`}
                           </span>
                         </p>
                       </div>
                       <p className="book-issue-detail-copy">
-                        {isQuoteDiagnosticIssue(selectedIssue)
-                          ? `Describe the ${selectedModel} issue in as much detail as you can on the next step. After a full diagnostic, a technician will call you back with the findings and a repair quote.`
-                          : (partGradeBlurb ?? issueBlurb(selectedIssue.label, selectedModel))}
+                        {unlistedModel
+                          ? `There is no fixed online price for ${selectedModel}. Describe the issue on the next step and our technicians will get in touch with you.`
+                          : isQuoteDiagnosticIssue(selectedIssue)
+                            ? `Describe the ${selectedModel} issue in as much detail as you can on the next step. After a full diagnostic, a technician will call you back with the findings and a repair quote.`
+                            : (partGradeBlurb ?? issueBlurb(selectedIssue.label, selectedModel))}
                       </p>
 
                       {showPartGrades ? (
@@ -662,12 +673,14 @@ export default function BookRepair() {
                   brandLabel={selectedBrand.label}
                   model={selectedModel}
                   issueLabel={selectedIssue.label}
-                  price={selectedIssue.price}
+                  price={unlistedModel ? null : selectedIssue.price}
                   priceText={
-                    selectedIssue.priceText ??
-                    (selectedIssue.price == null ? 'Quote on inspection' : undefined)
+                    unlistedModel
+                      ? UNLISTED_MODEL_PRICE_TEXT
+                      : selectedIssue.priceText ??
+                        (selectedIssue.price == null ? 'Quote on inspection' : undefined)
                   }
-                  quoteOnly={isQuoteDiagnosticIssue(selectedIssue)}
+                  quoteOnly={unlistedModel || isQuoteDiagnosticIssue(selectedIssue)}
                 />
               </section>
             )}

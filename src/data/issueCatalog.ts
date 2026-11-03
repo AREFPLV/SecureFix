@@ -276,6 +276,13 @@ function repairTime(categoryId: string, label: string): string {
   return '1h'
 }
 
+/** Shown instead of a price for Other / Not Listed devices. */
+export const UNLISTED_MODEL_PRICE_TEXT = 'Our technicians will get in touch with you'
+
+export function isUnlistedModel(model: string | null | undefined): boolean {
+  return Boolean(model && isGenericModel(model))
+}
+
 export function issuePriceShown(issue: { price: number | null; priceText?: string }): string {
   if (issue.priceText) return issue.priceText
   if (issue.price == null) return 'Quote on inspection'
@@ -921,6 +928,16 @@ function withQuoteText(issue: RepairIssue): RepairIssue & { price: number | null
   return { ...issue, priceText: 'Quote on inspection' }
 }
 
+/** Strip fixed prices for Other / Not Listed models across the booking flow. */
+function asUnlistedModelIssue(issue: RepairIssue): RepairIssue & { price: null; priceText: string } {
+  return {
+    ...issue,
+    price: null,
+    priceText: UNLISTED_MODEL_PRICE_TEXT,
+    time: issue.time || 'Diagnostic',
+  }
+}
+
 /** Fixed smartphone picker tiles — only the repairs from the booking reference image. */
 export const SMARTPHONE_PICKER_SLOTS = [
   'Front Screen',
@@ -1123,10 +1140,9 @@ export function smartphonePickerIssues(
   brandId?: string | null,
   model?: string | null,
 ): PickerIssue[] {
+  const unlisted = isUnlistedModel(model)
   const listed =
-    brandId && model && !isGenericModel(model)
-      ? listedRepairs('smartphone', brandId, model)
-      : null
+    brandId && model && !unlisted ? listedRepairs('smartphone', brandId, model) : null
 
   const pool: RepairIssue[] = listed?.length
     ? listed.map((repair) => ({
@@ -1143,7 +1159,7 @@ export function smartphonePickerIssues(
       return {
         label: slot === 'Other Fault' ? OTHER_FAULT_LABEL : DEAD_CONDITION_LABEL,
         price: null,
-        priceText: 'Quote after diagnostics',
+        priceText: unlisted ? UNLISTED_MODEL_PRICE_TEXT : 'Quote after diagnostics',
         time: 'Diagnostic',
         cardTitle: slot,
       }
@@ -1151,24 +1167,29 @@ export function smartphonePickerIssues(
 
     const matched = pickBestMatch(pool, slot)
     if (matched) {
-      return { ...matched, cardTitle: slot }
+      return {
+        ...(unlisted ? asUnlistedModelIssue(matched) : matched),
+        cardTitle: slot,
+      }
     }
 
     const fallbackLabel = SLOT_FALLBACKS[slot]
     const catalog = (issuesByCategory.smartphone ?? []).find((issue) => issue.label === fallbackLabel)
-    return {
+    const fallback = {
       label: catalog?.label ?? fallbackLabel,
       price: catalog?.price ?? null,
       priceText: catalog?.priceText ?? (catalog?.price == null ? 'Quote on inspection' : undefined),
       time: catalog?.time ?? repairTime('smartphone', fallbackLabel),
       cardTitle: slot,
     }
+    return unlisted ? { ...asUnlistedModelIssue(fallback), cardTitle: slot } : fallback
   })
 }
 
 /** Repairs for one model. Listed brands use that model's price list; generic/other fall back to category issues (including quote-only jobs). */
 export function bookingIssues(categoryId: string, brandId?: string | null, model?: string | null) {
-  if (brandId && model && !isGenericModel(model)) {
+  const unlisted = isUnlistedModel(model)
+  if (brandId && model && !unlisted) {
     const listed = listedRepairs(categoryId, brandId, model)
     if (listed?.length) {
       return listed.map((repair) => ({
@@ -1180,9 +1201,11 @@ export function bookingIssues(categoryId: string, brandId?: string | null, model
     }
   }
 
-  const allowQuoteOnly = Boolean(model && isGenericModel(model)) || categoryId === 'other'
+  const allowQuoteOnly = unlisted || categoryId === 'other'
   const source = allowQuoteOnly
-    ? (issuesByCategory[categoryId] ?? []).map(withQuoteText)
+    ? (issuesByCategory[categoryId] ?? []).map((issue) =>
+        unlisted ? asUnlistedModelIssue(issue) : withQuoteText(issue),
+      )
     : pricedIssues(categoryId)
 
   return source
