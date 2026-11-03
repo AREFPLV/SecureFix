@@ -2,12 +2,13 @@ import { Link, useParams } from 'react-router-dom'
 import { site, RECYCLING_ROUTE } from '@/data/content'
 import { recyclingContent } from '@/data/recycling'
 import { getRecyclingTopic, recyclingTopicList } from '@/data/recyclingTopics'
-import RecycleHeroArt from '@/components/RecycleHeroArt'
+import RecyclingHeroPromo from '@/components/RecyclingHeroPromo'
 import RecyclingQuoteForm from '@/components/RecyclingQuoteForm'
 import NotFound from '@/pages/NotFound'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { localBusinessJsonLd } from '@/data/seo'
 import './Recycling.css'
+import '@/components/Hero.css'
 
 export default function RecyclingTopicPage() {
   const { topicSlug } = useParams<{ topicSlug: string }>()
@@ -57,27 +58,11 @@ export default function RecyclingTopicPage() {
 
   return (
     <div className="recycle-page site-page">
-      <section className="recycle-hero recycle-hero-photo" aria-label={topic.h1}>
-        <div className="recycle-hero-media" aria-hidden="true">
-          <img
-            src={topic.image ?? '/images/recycling-hero.png'}
-            alt=""
-            className="recycle-hero-img"
-          />
-          <div
-            className="recycle-hero-blur"
-            style={{
-              backgroundImage: `url(${topic.image ?? '/images/recycling-hero.png'})`,
-            }}
-          />
-          <div className="recycle-hero-shade" />
-        </div>
-        <div className="container recycle-hero-inner recycle-hero-inner-photo">
-          <aside className="recycle-hero-widget" aria-label="Recycling symbol">
-            <RecycleHeroArt />
-          </aside>
-          <div className="recycle-hero-copy">
-            <p className="recycle-eyebrow">
+      <section className="hero page-hero" aria-label={topic.h1}>
+        <div className="hero-bg" />
+        <div className="container hero-layout">
+          <div className="hero-content">
+            <p className="hero-eyebrow">
               <Link to={RECYCLING_ROUTE} className="recycle-hero-back">
                 ← Recycling
               </Link>
@@ -85,25 +70,48 @@ export default function RecyclingTopicPage() {
               Secure · Compliant · Sustainable
             </p>
             <h1>
-              {topic.h1} {topic.accent ? <span className="accent">{topic.accent}</span> : null}
+              <span className="hero-line">{topic.h1}</span>
+              {topic.accent ? <span className="hero-line accent">{topic.accent}</span> : null}
             </h1>
-            <p>{topic.lead}</p>
-            <div className="recycle-hero-actions">
+            <p className="hero-subtitle">{topic.lead}</p>
+            <div className="hero-actions">
               <a href="#quote" className="btn btn-primary btn-shiny">
                 Request a Quote
               </a>
-              <a href="#process" className="btn btn-secondary recycle-hero-btn-outline">
+              <a href="#process" className="btn btn-secondary btn-shiny">
                 Our Recycling Process
               </a>
             </div>
-            <div className="recycle-trust-badges">
-              {recyclingContent.trustBadges.map((badge) => (
-                <div key={badge.label} className="recycle-trust-badge">
-                  <span>{badge.icon}</span>
-                  <small>{badge.label}</small>
+            <div className="hero-stats">
+              {recyclingContent.trustBadges.slice(0, 2).map((badge) => (
+                <div className="hero-stat" key={badge.label}>
+                  <strong>{badge.label}</strong>
+                  <span>SecureFix recycling standard</span>
                 </div>
               ))}
             </div>
+          </div>
+          <div className="hero-visual">
+            <RecyclingHeroPromo
+              label={topic.h1}
+              slides={[
+                {
+                  tag: topic.h1,
+                  title: 'Recycle With Confidence',
+                  subtitle: 'Secure wipe · compliant disposal · London',
+                },
+                {
+                  tag: 'Data Safe',
+                  title: 'Destruction Done Right',
+                  subtitle: 'Certified erasure before materials leave',
+                },
+                {
+                  tag: 'Get Started',
+                  title: 'Request A Quote',
+                  subtitle: 'Collection or drop-off for homes and business',
+                },
+              ]}
+            />
           </div>
         </div>
       </section>
