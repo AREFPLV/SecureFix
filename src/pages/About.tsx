@@ -2,9 +2,11 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { site, BOOKING_ROUTE } from '@/data/content'
 import { aboutContent, faqItems } from '@/data/about'
+import AboutHeroPromo from '@/components/AboutHeroPromo'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { aboutSeo } from '@/data/seo'
 import './About.css'
+import '@/components/Hero.css'
 
 export default function About() {
   usePageSeo(aboutSeo)
@@ -16,12 +18,40 @@ export default function About() {
 
   return (
     <div className="about-page site-page">
-      <div className="about-hero site-hero-bg">
-        <div className="container">
-          <h1>About <span className="accent">SecureFix</span></h1>
-          <p>Your trusted device repair specialists in London</p>
+      <section className="hero page-hero" aria-label="About SecureFix">
+        <div className="hero-bg" />
+        <div className="container hero-layout">
+          <div className="hero-content">
+            <p className="hero-eyebrow">SecureFix · London EC1V</p>
+            <h1>
+              <span className="hero-line">About</span>
+              <span className="hero-line accent">SecureFix</span>
+            </h1>
+            <p className="hero-subtitle">Your trusted device repair specialists in London</p>
+            <div className="hero-actions">
+              <Link to={BOOKING_ROUTE} className="btn btn-primary btn-shiny">
+                Book Repair Now
+              </Link>
+              <a href={`${site.phoneHref}`} className="btn btn-secondary btn-shiny">
+                Call {site.phone}
+              </a>
+            </div>
+            <div className="hero-stats">
+              <div className="hero-stat">
+                <strong>2 Year</strong>
+                <span>Warranty</span>
+              </div>
+              <div className="hero-stat">
+                <strong>Same Day</strong>
+                <span>Service</span>
+              </div>
+            </div>
+          </div>
+          <div className="hero-visual">
+            <AboutHeroPromo />
+          </div>
         </div>
-      </div>
+      </section>
 
       <main className="about-main">
         <div className="container">
