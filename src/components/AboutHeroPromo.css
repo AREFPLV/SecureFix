@@ -60,7 +60,8 @@
   line-height: 1;
   letter-spacing: -0.04em;
   text-shadow: 0 0 24px #fbaf0066;
-  transform: translateY(-4%);
+  transform-origin: center center;
+  animation: about-promo-spin 8s linear infinite;
 }
 
 .about-hero-promo-overlay {
@@ -78,7 +79,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .about-hero-promo-ring-outer,
-  .about-hero-promo-ring-inner {
+  .about-hero-promo-ring-inner,
+  .about-hero-promo-mark {
     animation: none;
   }
 }
