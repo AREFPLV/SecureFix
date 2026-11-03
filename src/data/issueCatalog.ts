@@ -2,8 +2,16 @@ import { deviceCategories, type Brand, type DeviceCategory } from '@/data/bookin
 import { listedModelNames, listedRepairs, shortJobName } from '@/data/listedPrices'
 import { issuesByCategory, type RepairIssue } from '@/data/repairIssues'
 import { getBatteryGradeOptions, getPremiumBatteryOption } from '@/data/batteryGrades'
+import { iphoneIncellPrices } from '@/data/iphoneIncellPrices'
 import { getPremiumScreenOption, getScreenGradeOptions } from '@/data/screenGrades'
 import { isGenericModel, slugify } from '@/lib/slugify'
+
+function appleScreenGradeBase(item: { price: number | null; priceText?: string }, model: string) {
+  return {
+    ...item,
+    standardPrice: iphoneIncellPrices[model] ?? null,
+  }
+}
 
 export const CANONICAL_ORIGIN = 'https://securefix.uk'
 export const SHOP_ADDRESS = '218 City Road, London EC1V 2PN'
@@ -701,7 +709,7 @@ function customerFacingSmartphoneIssues(
       const grades =
         typeof item.price === 'number'
           ? isApple
-            ? getScreenGradeOptions(item)
+            ? getScreenGradeOptions(appleScreenGradeBase(item, model))
             : getPremiumScreenOption(item)
           : []
       if (grades.length) {
@@ -770,7 +778,9 @@ function smartphoneRelatedLinks(
     let targetLabel = item.label
 
     if (item.cardTitle === 'Front Screen' && typeof item.price === 'number') {
-      const premium = (isApple ? getScreenGradeOptions(item) : getPremiumScreenOption(item)).find(
+      const premium = (
+        isApple ? getScreenGradeOptions(appleScreenGradeBase(item, model)) : getPremiumScreenOption(item)
+      ).find(
         (grade) => grade.id === 'premium',
       )
       if (premium) {
@@ -1264,7 +1274,7 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
         })
       const screenOptions = screenBase
         ? isApple
-          ? getScreenGradeOptions(screenBase)
+          ? getScreenGradeOptions(appleScreenGradeBase(screenBase, model))
           : getPremiumScreenOption(screenBase)
         : []
       const screenGrade = screenOptions.find((item) => issueSlug(item.label) === issueParam)
