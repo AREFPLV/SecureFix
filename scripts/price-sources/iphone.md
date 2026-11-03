@@ -48,7 +48,7 @@ iPhone 17 Pro MaxiPhone 17 ProiPhone AiriPhone 17iPhone 16eiPhone 16 Pro MaxiPho
 
 iPhone 17
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£139.00**
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£169.00**
 Battery Replacement (Apple Original or OEM Quality) **£129.99**
 Front Screen Replacement and New Battery Replacement \[Deal Price\] **£239.99**
 Not Charging or Charging Port Repair / Dock Replacement **£139.99**
@@ -73,7 +73,7 @@ Any Issue Not Listed Here **Not Applicable**
 
 iPhone 17 Air
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£209.00**
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£239.00**
 Battery Replacement (Apple Original or OEM Quality) **£139.99**
 Front Screen Replacement and New Battery Replacement \[Deal Price\] **£324.99**
 Not Charging or Charging Port Repair / Dock Replacement **£139.99**
@@ -98,7 +98,7 @@ Any Issue Not Listed Here **Not Applicable**
 
 iPhone 17 Pro
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£149.00**
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
 Battery Replacement (Apple Original or OEM Quality) **£139.99**
 Front Screen Replacement and New Battery Replacement \[Deal Price\] **£324.99**
 Not Charging or Charging Port Repair / Dock Replacement **£139.99**
@@ -123,7 +123,7 @@ Any Issue Not Listed Here **Not Applicable**
 
 iPhone 17 Pro Max
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£149.00**
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
 Battery Replacement (Apple Original or OEM Quality) **£109.00**
 Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
 Not Charging or Charging Port Repair / Dock Replacement **£139.99**
@@ -148,7 +148,7 @@ Any Issue Not Listed Here **Not Applicable**
 
 iPhone 16e - Issues
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£149.00**
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
 Battery Replacement (Apple Original or OEM Quality) **£109.00**
 Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
 Not Charging or Charging Port Repair / Dock Replacement **£139.99**
@@ -173,7 +173,7 @@ Any Issue Not Listed Here **Not Applicable**
 
 iPhone 16 Pro Max - Issues
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£149.00**
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
 Battery Replacement (Apple Original or OEM Quality) **£109.00**
 Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
 Not Charging or Charging Port Repair / Dock Replacement **£139.99**
@@ -202,7 +202,7 @@ New Screen replacement \[ Genuine\] £389.99 New OLED Screen replacement \[ Comp
 
 iPhone 16 Pro - Issues
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£149.00**
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
 Battery Replacement (Apple Original or OEM Quality) **£109.00**
 Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
 Not Charging or Charging Port Repair / Dock Replacement **£139.99**
@@ -227,7 +227,7 @@ Any Issue Not Listed Here **Not Applicable**
 
 iPhone 16 Plus - Issues
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£149.00**
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
 Battery Replacement (Apple Original or OEM Quality) **£109.00**
 Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
 Not Charging or Charging Port Repair / Dock Replacement **£139.99**
@@ -252,7 +252,7 @@ Any Issue Not Listed Here **Not Applicable**
 
 iPhone 16 - Issues
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£149.00**
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
 Battery Replacement (Apple Original or OEM Quality) **£109.00**
 Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
 Not Charging or Charging Port Repair / Dock Replacement **£139.99**
@@ -277,7 +277,7 @@ Any Issue Not Listed Here **Not Applicable**
 
 iPhone 15 Pro Max - Issues
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£149.00**
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
 Battery Replacement (Apple Original or OEM Quality) **£109.00**
 Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
 Not Charging or Charging Port Repair / Dock Replacement **£139.99**
@@ -302,7 +302,7 @@ Any Issue Not Listed Here **Not Applicable**
 
 iPhone 15 Pro - Issues
 
-New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£149.00**
+New Screen Replacement \[Soft OLED – Most Popular\] – Premium Quality **£179.00**
 Battery Replacement (Apple Original or OEM Quality) **£109.00**
 Front Screen Replacement and New Battery Replacement \[Deal Price\] **£258.00**
 Not Charging or Charging Port Repair / Dock Replacement **£139.99**

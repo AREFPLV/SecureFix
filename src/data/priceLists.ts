@@ -25,7 +25,7 @@ export const listedDevices: ListedDevice[] = [
     brandId: "apple-phone",
     models: [
       { name: "iPhone 18 Pro Max", repairs: [
-        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 269.99, priceText: "£269.99" },
+        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 299.99, priceText: "£299.99" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 149.99, priceText: "£149.99" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 344.99, priceText: "£344.99" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 149.99, priceText: "£149.99" },
@@ -33,7 +33,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Back Glass, Bent and Full Body Replacement (Housing Solution)", price: 314.99, priceText: "£314.99" },
         { label: "Front Screen Replacement and Back Glass Replacement [Deal Price]", price: 369.99, priceText: "£369.99" },
         { label: "Back / Rear Camera Glass Lens Replacement", price: 99.99, priceText: "£99.99" },
-        { label: "Whole Rear Back New Camera Replacement [Genuine / OEM]", price: 185.0, priceText: "£185.00" },
+        { label: "Whole Rear Back New Camera Replacement [Genuine / OEM]", price: 185, priceText: "£185.00" },
         { label: "Loudspeaker / Audio Issue Repair / Replacement [Genuine / OEM]", price: 139.99, priceText: "£139.99" },
         { label: "Front Camera and Face ID Fixing / Replacement", price: 159.9, priceText: "£159.9" },
         { label: "Won’t Turn On (Diagnostics) – I Don’t Know", price: 94.99, priceText: "£94.99" },
@@ -48,7 +48,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 18 Pro", repairs: [
-        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 269.99, priceText: "£269.99" },
+        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 299.99, priceText: "£299.99" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 149.99, priceText: "£149.99" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 344.99, priceText: "£344.99" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 149.99, priceText: "£149.99" },
@@ -56,7 +56,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Back Glass, Bent and Full Body Replacement (Housing Solution)", price: 314.99, priceText: "£314.99" },
         { label: "Front Screen Replacement and Back Glass Replacement [Deal Price]", price: 369.99, priceText: "£369.99" },
         { label: "Back / Rear Camera Glass Lens Replacement", price: 99.99, priceText: "£99.99" },
-        { label: "Whole Rear Back New Camera Replacement [Genuine / OEM]", price: 185.0, priceText: "£185.00" },
+        { label: "Whole Rear Back New Camera Replacement [Genuine / OEM]", price: 185, priceText: "£185.00" },
         { label: "Loudspeaker / Audio Issue Repair / Replacement [Genuine / OEM]", price: 139.99, priceText: "£139.99" },
         { label: "Front Camera and Face ID Fixing / Replacement", price: 159.9, priceText: "£159.9" },
         { label: "Won’t Turn On (Diagnostics) – I Don’t Know", price: 94.99, priceText: "£94.99" },
@@ -71,7 +71,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 18 Air", repairs: [
-        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 269.99, priceText: "£269.99" },
+        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 299.99, priceText: "£299.99" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 149.99, priceText: "£149.99" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 344.99, priceText: "£344.99" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 149.99, priceText: "£149.99" },
@@ -79,7 +79,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Back Glass, Bent and Full Body Replacement (Housing Solution)", price: 314.99, priceText: "£314.99" },
         { label: "Front Screen Replacement and Back Glass Replacement [Deal Price]", price: 369.99, priceText: "£369.99" },
         { label: "Back / Rear Camera Glass Lens Replacement", price: 99.99, priceText: "£99.99" },
-        { label: "Whole Rear Back New Camera Replacement [Genuine / OEM]", price: 185.0, priceText: "£185.00" },
+        { label: "Whole Rear Back New Camera Replacement [Genuine / OEM]", price: 185, priceText: "£185.00" },
         { label: "Loudspeaker / Audio Issue Repair / Replacement [Genuine / OEM]", price: 139.99, priceText: "£139.99" },
         { label: "Front Camera and Face ID Fixing / Replacement", price: 159.9, priceText: "£159.9" },
         { label: "Won’t Turn On (Diagnostics) – I Don’t Know", price: 94.99, priceText: "£94.99" },
@@ -94,7 +94,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 18", repairs: [
-        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 214.99, priceText: "£214.99" },
+        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 244.99, priceText: "£244.99" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 139.99, priceText: "£139.99" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 259.99, priceText: "£259.99" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 149.99, priceText: "£149.99" },
@@ -102,7 +102,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Back Glass, Bent and Full Body Replacement (Housing Solution)", price: 269.99, priceText: "£269.99" },
         { label: "Front Screen Replacement and Back Glass Replacement [Deal Price]", price: 294.99, priceText: "£294.99" },
         { label: "Back / Rear Camera Glass Lens Replacement", price: 99.99, priceText: "£99.99" },
-        { label: "Whole Rear Back New Camera Replacement [Genuine / OEM]", price: 185.0, priceText: "£185.00" },
+        { label: "Whole Rear Back New Camera Replacement [Genuine / OEM]", price: 185, priceText: "£185.00" },
         { label: "Loudspeaker / Audio Issue Repair / Replacement [Genuine / OEM]", price: 139.99, priceText: "£139.99" },
         { label: "Front Camera and Face ID Fixing / Replacement", price: 159.9, priceText: "£159.9" },
         { label: "Won’t Turn On (Diagnostics) – I Don’t Know", price: 94.99, priceText: "£94.99" },
@@ -117,7 +117,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 17", repairs: [
-        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 139, priceText: "£139.00" },
+        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 169, priceText: "£169.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 129.99, priceText: "£129.99" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 239.99, priceText: "£239.99" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 139.99, priceText: "£139.99" },
@@ -140,7 +140,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 17 Air", repairs: [
-        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 209, priceText: "£209.00" },
+        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 239, priceText: "£239.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 139.99, priceText: "£139.99" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 324.99, priceText: "£324.99" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 139.99, priceText: "£139.99" },
@@ -163,7 +163,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 17 Pro", repairs: [
-        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 149, priceText: "£149.00" },
+        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 179, priceText: "£179.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 139.99, priceText: "£139.99" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 324.99, priceText: "£324.99" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 139.99, priceText: "£139.99" },
@@ -186,7 +186,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 17 Pro Max", repairs: [
-        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 149, priceText: "£149.00" },
+        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 179, priceText: "£179.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 109, priceText: "£109.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 258, priceText: "£258.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 139.99, priceText: "£139.99" },
@@ -209,7 +209,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 16e", repairs: [
-        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 99, priceText: "£99.00" },
+        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 129, priceText: "£129.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 75, priceText: "£75.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 174, priceText: "£174.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 129.99, priceText: "£129.99" },
@@ -232,7 +232,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 16 Pro Max", repairs: [
-        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 139, priceText: "£139.00" },
+        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 169, priceText: "£169.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 74, priceText: "£74.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 213, priceText: "£213.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 74, priceText: "£74.00" },
@@ -255,7 +255,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 16 Pro", repairs: [
-        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 135, priceText: "£135.00" },
+        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 165, priceText: "£165.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 74, priceText: "£74.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 209, priceText: "£209.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 74, priceText: "£74.00" },
@@ -278,7 +278,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 16 Plus", repairs: [
-        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 109, priceText: "£109.00" },
+        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 139, priceText: "£139.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 74, priceText: "£74.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 183, priceText: "£183.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 74, priceText: "£74.00" },
@@ -301,7 +301,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 16", repairs: [
-        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 109, priceText: "£109.00" },
+        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 139, priceText: "£139.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 74, priceText: "£74.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 183, priceText: "£183.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 74, priceText: "£74.00" },
@@ -324,7 +324,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 15 Pro Max", repairs: [
-        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 125, priceText: "£125.00" },
+        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 155, priceText: "£155.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 69, priceText: "£69.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 194, priceText: "£194.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 74, priceText: "£74.00" },
@@ -347,7 +347,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 15 Pro", repairs: [
-        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 120, priceText: "£120.00" },
+        { label: "New Screen Replacement [Soft OLED – Most Popular] – Premium Quality", price: 150, priceText: "£150.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 69, priceText: "£69.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 189, priceText: "£189.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 74, priceText: "£74.00" },
@@ -370,7 +370,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 15 Plus", repairs: [
-        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 119, priceText: "£119.00" },
+        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 149, priceText: "£149.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 59, priceText: "£59.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 178, priceText: "£178.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 74, priceText: "£74.00" },
@@ -393,7 +393,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 15", repairs: [
-        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 115, priceText: "£115.00" },
+        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 145, priceText: "£145.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 59, priceText: "£59.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 174, priceText: "£174.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 74, priceText: "£74.00" },
@@ -462,7 +462,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Home Button Repair / Replacement", price: 79.99, priceText: "£79.99" },
       ] },
       { name: "iPhone 14 Pro Max", repairs: [
-        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 125, priceText: "£125.00" },
+        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 155, priceText: "£155.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 49, priceText: "£49.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 174, priceText: "£174.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 69, priceText: "£69.00" },
@@ -485,7 +485,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 14", repairs: [
-        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 79, priceText: "£79.00" },
+        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 109, priceText: "£109.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 49, priceText: "£49.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 128, priceText: "£128.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 59, priceText: "£59.00" },
@@ -508,7 +508,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 14 Plus", repairs: [
-        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 79, priceText: "£79.00" },
+        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 109, priceText: "£109.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 49, priceText: "£49.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 128, priceText: "£128.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 65, priceText: "£65.00" },
@@ -531,7 +531,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 14 Pro", repairs: [
-        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 119, priceText: "£119.00" },
+        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 149, priceText: "£149.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 49, priceText: "£49.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 168, priceText: "£168.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 65, priceText: "£65.00" },
@@ -1030,7 +1030,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 13", repairs: [
-        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 74, priceText: "£74.00" },
+        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 104, priceText: "£104.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 49, priceText: "£49.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 123, priceText: "£123.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 59, priceText: "£59.00" },
@@ -1053,7 +1053,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 13 mini", repairs: [
-        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 59, priceText: "£59.00" },
+        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 89, priceText: "£89.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 49, priceText: "£49.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 108, priceText: "£108.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 59, priceText: "£59.00" },
@@ -1076,7 +1076,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 13 Pro", repairs: [
-        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 89, priceText: "£89.00" },
+        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 119, priceText: "£119.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 49, priceText: "£49.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 138, priceText: "£138.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 59, priceText: "£59.00" },
@@ -1099,7 +1099,7 @@ export const listedDevices: ListedDevice[] = [
         { label: "Phone Case for Protection (Add-on with Any Repair)", price: 24.99, priceText: "£24.99" },
       ] },
       { name: "iPhone 13 Pro Max", repairs: [
-        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 89, priceText: "£89.00" },
+        { label: "New Screen Replacement [OLED/Compatible – Most Popular] – Premium Quality", price: 119, priceText: "£119.00" },
         { label: "Battery Replacement (Apple Original or OEM Quality)", price: 49, priceText: "£49.00" },
         { label: "Front Screen Replacement and New Battery Replacement [Deal Price]", price: 138, priceText: "£138.00" },
         { label: "Not Charging or Charging Port Repair / Dock Replacement", price: 65, priceText: "£65.00" },
