@@ -1,0 +1,60 @@
+{
+  "ok": true,
+  "source": "google",
+  "rating": 5,
+  "totalReviews": 51,
+  "googleUrl": "https://search.google.com/local/reviews?placeid=ChIJSVMnvdMddkgRfZBMxr6FMyU",
+  "reviews": [
+    {
+      "name": "MRM",
+      "rating": 5,
+      "text": "Best service. If you have any problem they will find the solution! I truly recomend!",
+      "device": "",
+      "date": "2 weeks ago",
+      "time": 1792156711175509,
+      "authorUrl": "https://www.google.com/maps/contrib/116739235791507135240/reviews?hl=en-US",
+      "photoUrl": "https://lh3.googleusercontent.com/a/ACg8ocJ2TVAtYmB4NhZ7OKqGR_j3ucqRI0fcf12cqKKiAs58YxXEuw=s120-c-rp-mo-br100"
+    },
+    {
+      "name": "Mohammed Abdul Muzamil",
+      "rating": 5,
+      "text": "I had my iPhone 15 Pro repaired here, and I was really happy with the service. The repair was done professionally, quickly, and everything is working perfectly.\n\nI also had my PS5 repaired, and once again, the service was excellent. The staff were friendly, professional, and clearly knew what they were doing.\n\nReally good service and reasonable prices. I would definitely recommend them to anyone looking for reliable phone or console repairs!",
+      "device": "",
+      "date": "a month ago",
+      "time": 1790186708840914,
+      "authorUrl": "https://www.google.com/maps/contrib/101137161269599486228/reviews?hl=en-US",
+      "photoUrl": "https://lh3.googleusercontent.com/a/ACg8ocIx5M1nuvIzfLKzmdZx3VqUdPihwtYrRocD4sCgaZCwd1p2-Q=s120-c-rp-mo-br100"
+    },
+    {
+      "name": "Santosh Baral",
+      "rating": 5,
+      "text": "Awesome guys fixed my phone he is quick he fixed my phone in no time. Very professional liked the service I will definitely recommend you guys",
+      "device": "",
+      "date": "a month ago",
+      "time": 1790186530771610,
+      "authorUrl": "https://www.google.com/maps/contrib/111812194874851033485/reviews?hl=en-US",
+      "photoUrl": "https://lh3.googleusercontent.com/a/ACg8ocL6zsZMbD-iEtbOQMW6OfDo84TateR-8ZZ3uHrt7RtEWx-sPA=s120-c-rp-mo-br100"
+    },
+    {
+      "name": "Rawzat Mohmand",
+      "rating": 5,
+      "text": "Excellent service! They fixed my laptop quickly and professionally. Very reliable and friendly service, and I’m really happy with the result. I would definitely recommend this shop to anyone who needs phone or laptop repairs!",
+      "device": "",
+      "date": "a month ago",
+      "time": 1789588100903781,
+      "authorUrl": "https://www.google.com/maps/contrib/110869467889369283020/reviews?hl=en-US",
+      "photoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjUgBvjkaH0Beq0iHvsZC9Z5rdU1MILaQdHOR-uY0ANlIHF9558=s120-c-rp-mo-br100"
+    },
+    {
+      "name": "Khurshed Komilov",
+      "rating": 5,
+      "text": "Excellent service! I would like to thank the whole team for their amazing work. My phone was repaired quickly and to a very high standard. A special thank you to Mr. Khalifat for his excellent service, professionalism, and support. I’m very happy with the experience and would highly recommend them!",
+      "device": "",
+      "date": "a month ago",
+      "time": 1789417679147434,
+      "authorUrl": "https://www.google.com/maps/contrib/104816949611159617818/reviews?hl=en-US",
+      "photoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjVf9tO8cB22pFJrjj8AbTZg3X4OguvZYXoQJDPcylPQNebxhlZO9A=s120-c-rp-mo-ba12-br100"
+    }
+  ],
+  "fetchedAt": "2026-11-03T22:19:15Z"
+}

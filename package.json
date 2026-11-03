@@ -7,9 +7,10 @@
     "dev": "concurrently -n web,api -c blue,green \"vite\" \"tsx watch server/index.ts\"",
     "dev:web": "vite",
     "dev:api": "tsx watch server/index.ts",
-    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && tsx scripts/prerender.ts",
+    "build": "node scripts/refresh-google-reviews.mjs && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && tsx scripts/prerender.ts",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "reviews:refresh": "node scripts/refresh-google-reviews.mjs"
   },
   "dependencies": {
     "react": "^19.2.7",

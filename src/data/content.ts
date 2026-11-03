@@ -285,7 +285,7 @@ export const customerReviews: CustomerReview[] = [
 
 export const googleReviews = {
   rating: 5.0,
-  totalReviews: 3,
+  totalReviews: 51,
   /** Stable Place ID link — opens the correct SecureFix Google Business profile */
   placeId: 'ChIJSVMnvdMddkgRfZBMxr6FMyU',
   googleUrl:
