@@ -11,6 +11,7 @@ import TradeIn from '@/pages/TradeIn'
 import AccessoriesShop from '@/pages/AccessoriesShop'
 import About from '@/pages/About'
 import TrainingCourses from '@/pages/TrainingCourses'
+import TrainingLevelPage from '@/pages/TrainingLevelPage'
 import Terms from '@/pages/Terms'
 import Privacy from '@/pages/Privacy'
 import NotFound from '@/pages/NotFound'
@@ -61,6 +62,7 @@ function AppShell() {
         <Route path="/accessories" element={<AccessoriesShop />} />
         <Route path="/about" element={<About />} />
         <Route path="/training-courses" element={<TrainingCourses />} />
+        <Route path="/training-courses/:courseSlug/:levelId" element={<TrainingLevelPage />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/recycling" element={<Recycling />} />

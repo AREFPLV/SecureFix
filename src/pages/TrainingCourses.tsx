@@ -1,9 +1,16 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { site } from '@/data/content'
-import { trainingContent } from '@/data/training'
+import {
+  trainingContent,
+  trainingCourses,
+  trainingLevelPath,
+} from '@/data/training'
+import TrainingClassroomHero from '@/components/TrainingClassroomHero'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { trainingSeo } from '@/data/seo'
 import './About.css'
+import './TrainingCourses.css'
 
 export default function TrainingCourses() {
   usePageSeo(trainingSeo)
@@ -14,14 +21,25 @@ export default function TrainingCourses() {
   }
 
   return (
-    <div className="about-page site-page">
-      <div className="about-hero site-hero-bg">
-        <div className="container">
-          <h1>
-            {trainingContent.heroTitle}{' '}
-            <span className="accent">{trainingContent.heroAccent}</span>
-          </h1>
-          <p>{trainingContent.heroSubtitle}</p>
+    <div className="about-page training-page site-page">
+      <div className="about-hero site-hero-bg training-hero">
+        <div className="container training-hero-layout">
+          <div className="training-hero-copy">
+            <h1>
+              {trainingContent.heroTitle}{' '}
+              <span className="accent">{trainingContent.heroAccent}</span>
+            </h1>
+            <p>{trainingContent.heroSubtitle}</p>
+            <div className="training-hero-actions">
+              <a href="#courses" className="btn btn-primary btn-shiny">
+                View courses
+              </a>
+              <a href={`${site.phoneHref}`} className="btn btn-secondary btn-shiny">
+                Call {site.phone}
+              </a>
+            </div>
+          </div>
+          <TrainingClassroomHero />
         </div>
       </div>
 
@@ -36,25 +54,31 @@ export default function TrainingCourses() {
             ))}
           </section>
 
-          <section className="about-section">
+          <section id="courses" className="about-section">
             <h2>
               Our <span className="accent">Courses</span>
             </h2>
-            <div className="about-services-grid">
-              {trainingContent.courses.map((course) => (
-                <article key={course.title} className="about-service-card">
+            <div className="training-course-grid">
+              {trainingCourses.map((course) => (
+                <article key={course.slug} className="training-course-card">
                   <h3>{course.title}</h3>
-                  <p>
-                    <strong>{course.duration}</strong>
-                    <br />
-                    {course.mode}
+                  <p className="training-course-meta">
+                    <strong>{course.sessions} sessions</strong> per level · {course.mode}
                   </p>
-                  <p>{course.description}</p>
-                  <ul>
-                    {course.highlights.map((item) => (
-                      <li key={item}>{item}</li>
+                  <p className="training-course-desc">{course.description}</p>
+                  <div className="training-level-tags" aria-label={`${course.title} levels`}>
+                    {course.levels.map((item) => (
+                      <Link
+                        key={item.id}
+                        to={trainingLevelPath(course.slug, item.id)}
+                        className="training-level-tag"
+                      >
+                        <span className="training-level-tag-rank">Level {item.rank}</span>
+                        <span className="training-level-tag-name">{item.label}</span>
+                        <span className="training-level-tag-price">{item.priceText}</span>
+                      </Link>
                     ))}
-                  </ul>
+                  </div>
                 </article>
               ))}
             </div>
