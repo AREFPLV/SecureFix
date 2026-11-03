@@ -1,4 +1,4 @@
-/* Home-style promo box: recycle logo + circle only. */
+/* Home-style promo box: recycle logo + circle only (no rectangles). */
 
 .recycling-hero-promo-media {
   inset: 0;
@@ -17,25 +17,56 @@
   pointer-events: none;
 }
 
-.recycling-hero-promo .recycle-hero-art {
+.recycling-hero-promo-orb {
   width: min(78%, 17rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 45%, #fbaf0028 0%, #0c1016 58%, #05080e 100%);
+  box-shadow: 0 0 28px #fbaf002e, inset 0 0 24px #0008;
+}
+
+.recycling-hero-promo .recycle-hero-art {
+  width: 100%;
   margin: 0;
 }
 
 .recycling-hero-promo .recycle-hero-art-stage {
+  width: 100%;
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 45%, #fbaf0022 0%, #0f141bcc 55%, #05080ef2 100%);
-  box-shadow: 0 0 28px #fbaf002e, inset 0 0 24px #0008;
+  overflow: hidden;
+  background: transparent;
+}
+
+.recycling-hero-promo .recycle-hero-art-glow {
+  inset: 18%;
 }
 
 .recycling-hero-promo .recycle-hero-art-ring-outer {
+  inset: 7%;
   border: 2px solid #fbaf0066;
   border-top-color: #fbaf00;
   border-right-color: #fbaf0033;
 }
 
 .recycling-hero-promo .recycle-hero-art-ring-inner {
+  inset: 17%;
   border: 1.5px dashed #fbaf0059;
+}
+
+.recycling-hero-promo .recycle-hero-art-mark {
+  width: 58%;
+  border-radius: 50%;
+  overflow: hidden;
+  /* Knock out the GIF's light-grey square backdrop against the dark orb */
+  mix-blend-mode: multiply;
+  filter: brightness(1.35) saturate(1.35) contrast(1.05);
+}
+
+.recycling-hero-promo .recycle-hero-art-gif {
+  border-radius: 50%;
 }
 
 .recycling-hero-promo .recycle-hero-art-caption {
@@ -47,7 +78,7 @@
 }
 
 @media (max-width: 767px) {
-  .recycling-hero-promo .recycle-hero-art {
+  .recycling-hero-promo-orb {
     width: min(72%, 13.5rem);
   }
 }

@@ -12,7 +12,9 @@ export default function RecyclingHeroPromo({ label = 'SecureFix recycling' }: Pr
     <div className="hero-promo recycling-hero-promo" aria-label={label}>
       <div className="hero-promo-media recycling-hero-promo-media">
         <div className="recycling-hero-promo-icon">
-          <RecycleHeroArt />
+          <div className="recycling-hero-promo-orb">
+            <RecycleHeroArt />
+          </div>
         </div>
       </div>
 
