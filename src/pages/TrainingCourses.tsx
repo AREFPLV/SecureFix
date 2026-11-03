@@ -6,7 +6,7 @@ import {
   trainingCourses,
   trainingLevelPath,
 } from '@/data/training'
-import TrainingClassroomHero from '@/components/TrainingClassroomHero'
+import TrainingHeroPromo from '@/components/TrainingHeroPromo'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { trainingSeo } from '@/data/seo'
 import './About.css'
@@ -22,15 +22,17 @@ export default function TrainingCourses() {
 
   return (
     <div className="about-page training-page site-page">
-      <div className="about-hero site-hero-bg training-hero">
-        <div className="container training-hero-layout">
-          <div className="training-hero-copy">
+      <section className="hero training-page-hero">
+        <div className="hero-bg" />
+        <div className="container hero-layout training-hero-layout">
+          <div className="hero-content training-hero-copy">
+            <p className="hero-eyebrow">SecureFix Academy · London EC1V</p>
             <h1>
-              {trainingContent.heroTitle}{' '}
-              <span className="accent">{trainingContent.heroAccent}</span>
+              <span className="hero-line">{trainingContent.heroTitle}</span>
+              <span className="hero-line accent">{trainingContent.heroAccent}</span>
             </h1>
-            <p>{trainingContent.heroSubtitle}</p>
-            <div className="training-hero-actions">
+            <p className="hero-subtitle">{trainingContent.heroSubtitle}</p>
+            <div className="hero-actions training-hero-actions">
               <a href="#courses" className="btn btn-primary btn-shiny">
                 View courses
               </a>
@@ -38,10 +40,22 @@ export default function TrainingCourses() {
                 Call {site.phone}
               </a>
             </div>
+            <div className="hero-stats">
+              <div className="hero-stat">
+                <strong>3 Courses</strong>
+                <span>Mobile · PC · Apple</span>
+              </div>
+              <div className="hero-stat">
+                <strong>3 Levels</strong>
+                <span>Junior to Advance</span>
+              </div>
+            </div>
           </div>
-          <TrainingClassroomHero />
+          <div className="hero-visual">
+            <TrainingHeroPromo />
+          </div>
         </div>
-      </div>
+      </section>
 
       <main className="about-main">
         <div className="container">
