@@ -6,13 +6,11 @@ import {
   industrySolutions,
 } from '@/data/industrySolutions'
 import { getIndustrySolutionSeo } from '@/data/businessSeoExtras'
-import BusinessHeroArt from '@/components/BusinessHeroArt'
-import BusinessHeroBackdrop from '@/components/BusinessHeroBackdrop'
+import BusinessHeroPromo from '@/components/BusinessHeroPromo'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { localBusinessJsonLd } from '@/data/seo'
 import './Procurement.css'
 import './IndustrySolution.css'
-import './BusinessHeroLayout.css'
 import './BusinessItHero.css'
 import '@/components/Hero.css'
 
@@ -94,10 +92,8 @@ export default function IndustrySolutionPage() {
 
   return (
     <div className="procurement-page industry-solution-page site-page">
-      <section className="hero business-it-hero" aria-label={industry.h1}>
-        <div className="business-it-hero-bg" aria-hidden="true">
-          <BusinessHeroBackdrop variant="industry" industrySlug={industry.slug} showOrbit />
-        </div>
+      <section className="hero" aria-label={industry.h1}>
+        <div className="hero-bg" />
         <div className="container hero-layout">
           <div className="hero-content">
             <p className="hero-eyebrow">
@@ -132,9 +128,28 @@ export default function IndustrySolutionPage() {
             </div>
           </div>
           <div className="hero-visual">
-            <aside className="business-hero-widget" aria-label="Business IT animation">
-              <BusinessHeroArt variant="industry" />
-            </aside>
+            <BusinessHeroPromo
+              variant="industry"
+              industrySlug={industry.slug}
+              label={`${industry.h1} IT`}
+              slides={[
+                {
+                  tag: industry.shortLabel,
+                  title: `${industry.h1} IT`,
+                  subtitle: 'Devices matched to how your sector works',
+                },
+                {
+                  tag: 'SecureFix',
+                  title: 'Source · Deploy · Support',
+                  subtitle: 'Practical lifecycle cover for London teams',
+                },
+                {
+                  tag: 'Get A Plan',
+                  title: 'Request A Quote',
+                  subtitle: 'Tell us your sites, headcount and devices',
+                },
+              ]}
+            />
           </div>
         </div>
       </section>

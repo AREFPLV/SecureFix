@@ -7,13 +7,11 @@ import { industrySolutions, industrySolutionRoute } from '@/data/industrySolutio
 import { businessHubSeo } from '@/data/businessSeoExtras'
 import { createLifecycleQuote } from '@/actions/createLifecycleQuote'
 import FormPrivacyNote from '@/components/FormPrivacyNote'
-import BusinessHeroArt from '@/components/BusinessHeroArt'
-import BusinessHeroBackdrop from '@/components/BusinessHeroBackdrop'
+import BusinessHeroPromo from '@/components/BusinessHeroPromo'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { lifecycleSeo, localBusinessJsonLd } from '@/data/seo'
 import './Lifecycle.css'
 import './IndustrySolution.css'
-import './BusinessHeroLayout.css'
 import './BusinessItHero.css'
 import '@/components/Hero.css'
 
@@ -79,10 +77,8 @@ export default function Lifecycle() {
 
   return (
     <div className="lifecycle-page site-page">
-      <section className="hero business-it-hero" aria-label="SecureFix for Business">
-        <div className="business-it-hero-bg" aria-hidden="true">
-          <BusinessHeroBackdrop variant="business" showOrbit />
-        </div>
+      <section className="hero" aria-label="SecureFix for Business">
+        <div className="hero-bg" />
         <div className="container hero-layout">
           <div className="hero-content">
             <p className="hero-eyebrow">Business IT · London EC1V</p>
@@ -116,9 +112,27 @@ export default function Lifecycle() {
             </div>
           </div>
           <div className="hero-visual">
-            <aside className="business-hero-widget" aria-label="Business IT animation">
-              <BusinessHeroArt variant="business" />
-            </aside>
+            <BusinessHeroPromo
+              variant="business"
+              label="SecureFix Business IT"
+              slides={[
+                {
+                  tag: 'Business IT',
+                  title: 'Source To Support',
+                  subtitle: 'One partner for the full device lifecycle',
+                },
+                {
+                  tag: 'London Based',
+                  title: 'Workshop Speed',
+                  subtitle: 'Configure, deploy and repair from EC1V',
+                },
+                {
+                  tag: 'Trusted Brands',
+                  title: 'Dell · HP · Lenovo · Apple',
+                  subtitle: 'Role-based fleets for growing teams',
+                },
+              ]}
+            />
           </div>
         </div>
       </section>

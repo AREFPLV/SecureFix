@@ -4,11 +4,10 @@ import { getBusinessService, businessServiceRoute } from '@/data/businessService
 import { getBusinessServiceSeo } from '@/data/businessSeoExtras'
 import { getSeoPageByPath } from '@/data/seoCatalog'
 import { localBusinessJsonLd } from '@/data/seo'
-import BusinessHeroArt, { businessHeroVariantFromSlug } from '@/components/BusinessHeroArt'
-import BusinessHeroBackdrop from '@/components/BusinessHeroBackdrop'
+import { businessHeroVariantFromSlug } from '@/components/BusinessHeroArt'
+import BusinessHeroPromo from '@/components/BusinessHeroPromo'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import './Procurement.css'
-import './BusinessHeroLayout.css'
 import './BusinessItHero.css'
 import '@/components/Hero.css'
 
@@ -147,10 +146,8 @@ export default function BusinessService() {
 
   return (
     <div className="procurement-page site-page">
-      <section className="hero business-it-hero" aria-label={service.cardTitle}>
-        <div className="business-it-hero-bg" aria-hidden="true">
-          <BusinessHeroBackdrop variant={heroVariant} showOrbit />
-        </div>
+      <section className="hero" aria-label={service.cardTitle}>
+        <div className="hero-bg" />
         <div className="container hero-layout">
           <div className="hero-content">
             <p className="hero-eyebrow">
@@ -179,9 +176,28 @@ export default function BusinessService() {
             </div>
           </div>
           <div className="hero-visual">
-            <aside className="business-hero-widget" aria-label="Business IT animation">
-              <BusinessHeroArt variant={heroVariant} />
-            </aside>
+            <BusinessHeroPromo
+              variant={heroVariant}
+              serviceSlug={service.slug}
+              label={service.cardTitle}
+              slides={[
+                {
+                  tag: service.cardTitle,
+                  title: service.hero.accent || 'Business IT',
+                  subtitle: service.hero.subtitle.slice(0, 72),
+                },
+                {
+                  tag: 'Lifecycle',
+                  title: 'Source · Deploy · Support',
+                  subtitle: 'One SecureFix partner for London fleets',
+                },
+                {
+                  tag: 'Get Started',
+                  title: 'Request A Quote',
+                  subtitle: 'Transparent pricing for team rollouts',
+                },
+              ]}
+            />
           </div>
         </div>
       </section>
