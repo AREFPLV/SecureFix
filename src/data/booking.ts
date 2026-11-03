@@ -69,14 +69,290 @@ export const deviceCategories: DeviceCategory[] = [
           'Other Samsung',
         ],
       },
-      { id: 'google', label: 'Google Pixel', models: ['Pixel 9 Pro XL', 'Pixel 9 Pro', 'Pixel 9', 'Pixel 8 Pro', 'Pixel 8', 'Pixel 8a', 'Pixel 7 Pro', 'Pixel 7', 'Pixel 7a', 'Pixel 6 Pro', 'Pixel 6', 'Pixel 6a', 'Other Pixel'] },
+      { id: 'google', label: 'Google Pixel', models: [
+          'Pixel 11 Pro Fold',
+          'Pixel 11 Pro XL',
+          'Pixel 11 Pro',
+          'Pixel 11',
+          'Pixel 10 Pro Fold',
+          'Pixel 10 Pro XL',
+          'Pixel 10 Pro',
+          'Pixel 10a',
+          'Pixel 10',
+          'Pixel 9 Pro Fold',
+          'Pixel 9 Pro XL',
+          'Pixel 9 Pro',
+          'Pixel 9a',
+          'Pixel 9',
+          'Pixel 8 Pro',
+          'Pixel 8a',
+          'Pixel 8',
+          'Pixel 7 Pro',
+          'Pixel 7a',
+          'Pixel 7',
+          'Pixel 6 Pro',
+          'Pixel 6a',
+          'Pixel 6',
+          'Pixel 5a',
+          'Pixel 5',
+          'Pixel 4a',
+          'Pixel 4a 5G',
+          'Pixel 4',
+          'Pixel 4 XL',
+          'Pixel 3a',
+          'Pixel 3a XL',
+          'Pixel 3',
+          'Pixel 3 XL',
+          'Pixel 2',
+          'Pixel 2 XL',
+          'Pixel Fold',
+          'Pixel',
+          'Pixel XL',
+          'Other Pixel',
+        ] },
       { id: 'oneplus', label: 'OnePlus', models: ['OnePlus 13', 'OnePlus 12', 'OnePlus 11', 'OnePlus Nord 4', 'OnePlus Nord 3', 'OnePlus Nord CE', 'Other OnePlus'] },
-      { id: 'huawei', label: 'Huawei', models: ['P60 Pro', 'P50 Pro', 'Mate 60 Pro', 'Mate 50 Pro', 'Nova 12', 'Nova 11', 'Other Huawei'] },
-      { id: 'xiaomi', label: 'Xiaomi', models: ['Xiaomi 14 Ultra', 'Xiaomi 14', 'Xiaomi 13 Pro', 'Xiaomi 13', 'Redmi Note 13 Pro', 'Redmi Note 13', 'Redmi Note 12 Pro', 'POCO F6 Pro', 'POCO F5', 'POCO X6 Pro', 'Other Xiaomi'] },
+      { id: 'huawei', label: 'Huawei', models: [
+          'P Smart 2021',
+          'P Smart 2020',
+          'P Smart 2019',
+          'P Smart 2018',
+          'Mate 60 Pro',
+          'Mate 50 Pro',
+          'Mate 40 Pro',
+          'Mate 20 Pro',
+          'Mate 20',
+          'Mate 20 Lite',
+          'Mate 10 Pro',
+          'Mate 10 Lite',
+          'Mate 9',
+          'Mate 9 Lite',
+          'P60 Pro',
+          'P50 Pro',
+          'P40 Pro',
+          'P40',
+          'P40 Lite',
+          'P40 Lite E',
+          'P30 Pro',
+          'P30',
+          'P30 Lite',
+          'P20 Pro',
+          'P20',
+          'P20 Lite',
+          'P10',
+          'P10 Lite',
+          'P9 Lite',
+          'Nova 12',
+          'Nova 11',
+          'Nova 10',
+          'Nova 9',
+          'Honor 20 Pro',
+          'Honor 20',
+          'Honor 20 Lite',
+          'Honor X 20',
+          'Honor 10',
+          'Honor 10 Lite',
+          'Honor 8 X',
+          'P Smart',
+          'Y9 2018',
+          'Y9 2019',
+          'Y9 Prime',
+          'Y7 2019',
+          'Y6 2018',
+          'Other Huawei',
+        ] },
+      { id: 'xiaomi', label: 'Xiaomi', models: [
+          'Xiaomi 15 Ultra',
+          'Xiaomi 15 Pro',
+          'Xiaomi 15',
+          'Xiaomi 14 Ultra',
+          'Xiaomi 14T Pro',
+          'Xiaomi 14T',
+          'Xiaomi 14 Pro',
+          'Xiaomi 14',
+          'Xiaomi 13T Pro',
+          'Xiaomi 13T',
+          'Xiaomi 13 Ultra',
+          'Xiaomi 13 Pro',
+          'Xiaomi 13',
+          'Xiaomi 13 Lite',
+          'Xiaomi 12T Pro',
+          'Xiaomi 12T',
+          'Xiaomi 12 Pro',
+          'Xiaomi 12',
+          'Xiaomi 12 Lite',
+          'Xiaomi 11T Pro',
+          'Xiaomi 11T',
+          'Xiaomi 11 Ultra',
+          'Xiaomi 11 Pro',
+          'Xiaomi 11',
+          'Xiaomi 11 Lite 5G NE',
+          'Xiaomi Mi 10T Pro',
+          'Xiaomi Mi 10T',
+          'Xiaomi Mi 10 Pro',
+          'Xiaomi Mi 10',
+          'Xiaomi Mi 9T Pro',
+          'Xiaomi Mi 9T',
+          'Xiaomi Mi 9',
+          'Xiaomi Mix Fold 3',
+          'Xiaomi Mix Fold 2',
+          'Redmi Note 14 Pro+',
+          'Redmi Note 14 Pro',
+          'Redmi Note 14',
+          'Redmi Note 13 Pro+',
+          'Redmi Note 13 Pro',
+          'Redmi Note 13',
+          'Redmi Note 13 5G',
+          'Redmi Note 12 Pro+',
+          'Redmi Note 12 Pro',
+          'Redmi Note 12',
+          'Redmi Note 12 5G',
+          'Redmi Note 11 Pro+',
+          'Redmi Note 11 Pro',
+          'Redmi Note 11',
+          'Redmi Note 11S',
+          'Redmi Note 10 Pro',
+          'Redmi Note 10',
+          'Redmi Note 10S',
+          'Redmi Note 9 Pro',
+          'Redmi Note 9',
+          'Redmi Note 8 Pro',
+          'Redmi Note 8',
+          'Redmi 14C',
+          'Redmi 13C',
+          'Redmi 13',
+          'Redmi 12',
+          'Redmi 12C',
+          'Redmi 11',
+          'Redmi 10',
+          'Redmi 9',
+          'Redmi 9A',
+          'Redmi A3',
+          'Redmi A2',
+          'POCO F6 Pro',
+          'POCO F6',
+          'POCO F5 Pro',
+          'POCO F5',
+          'POCO F4 GT',
+          'POCO F4',
+          'POCO F3',
+          'POCO X6 Pro',
+          'POCO X6',
+          'POCO X5 Pro',
+          'POCO X5',
+          'POCO X4 Pro',
+          'POCO X4 GT',
+          'POCO X3 Pro',
+          'POCO X3 NFC',
+          'POCO M6 Pro',
+          'POCO M6',
+          'POCO M5',
+          'POCO M4 Pro',
+          'POCO M3',
+          'POCO C65',
+          'POCO C55',
+          'Other Xiaomi',
+        ] },
       { id: 'sony-phone', label: 'Sony', models: ['Xperia 1 VI', 'Xperia 1 V', 'Xperia 5 V', 'Xperia 10 VI', 'Other Sony'] },
       { id: 'nokia', label: 'Nokia', models: ['Nokia G42', 'Nokia G22', 'Nokia X30', 'Nokia XR21', 'Other Nokia'] },
       { id: 'motorola', label: 'Motorola', models: ['Edge 50 Pro', 'Edge 40 Pro', 'Moto G84', 'Moto G54', 'Razr 50', 'Razr 40', 'Other Motorola'] },
-      { id: 'oppo', label: 'OPPO', models: ['Find X7 Ultra', 'Find X6 Pro', 'Reno 12 Pro', 'Reno 11', 'A98', 'Other OPPO'] },
+      { id: 'oppo', label: 'OPPO', models: [
+          'Find X7 Ultra',
+          'Find X7',
+          'Find X6 Pro',
+          'Find X6',
+          'Find X5 Pro',
+          'Find X5',
+          'Find X5 Lite',
+          'Find X3 Pro',
+          'Find X3',
+          'Find X3 Lite',
+          'Find X3 Neo',
+          'Find N2 Flip',
+          'Find X2 Pro',
+          'Find X2',
+          'Find X2 Lite',
+          'Find X2 Neo',
+          'Reno 12 Pro',
+          'Reno 12',
+          'Reno 12 F 5G',
+          'Reno 12 FS 5G',
+          'Reno 11 Pro',
+          'Reno 11',
+          'Reno 11 F 5G',
+          'Reno 10 Pro',
+          'Reno 10',
+          'Reno 10x Zoom',
+          'Reno 9 Pro',
+          'Reno 9',
+          'Reno 8 Pro',
+          'Reno 8 Pro 5G',
+          'Reno 8',
+          'Reno 8 Lite',
+          'Reno 8 Lite 5G',
+          'Reno 7 Pro',
+          'Reno 7',
+          'Reno 6 Pro Plus',
+          'Reno 6 Pro',
+          'Reno 6',
+          'Reno 5 Pro Plus',
+          'Reno 5 Pro',
+          'Reno 5',
+          'Reno 4 Pro',
+          'Reno 4',
+          'Reno 4 Z',
+          'Reno 3 Pro',
+          'Reno 3',
+          'F27',
+          'F23',
+          'F21 Pro',
+          'F19 Pro Plus',
+          'F19 Pro',
+          'F19',
+          'F15',
+          'K11',
+          'K11X',
+          'K10',
+          'K10X',
+          'K9 Pro',
+          'K9',
+          'K9X',
+          'K7 5G',
+          'K7X',
+          'K5',
+          'A98',
+          'A96',
+          'A94',
+          'A92',
+          'A92S',
+          'A80 5G',
+          'A78 5G',
+          'A77S',
+          'A74',
+          'A74 5G',
+          'A72',
+          'A58',
+          'A57',
+          'A55',
+          'A54',
+          'A54 5G',
+          'A54S',
+          'A53',
+          'A53S',
+          'A52',
+          'A40',
+          'A38',
+          'A31',
+          'A17',
+          'A17K',
+          'A16',
+          'A16S',
+          'A15',
+          'A12',
+          'A9 2020',
+          'A5 2020',
+          'A3 5G',
+          'Other OPPO',
+        ] },
       { id: 'other-phone', label: 'Other Brand', models: ['Other / Not Listed'] },
     ],
   },
@@ -218,8 +494,11 @@ function phoneModelSortKey(label: string): [number, number, number, string] {
     return [760 + gen, kind, 0, name]
   }
 
-  // Galaxy Note series.
-  const galaxyNote = lower.match(/\b(?:galaxy\s*)?note\s*(\d{1,2})?\b/)
+  // Galaxy Note series (do not match Redmi Note).
+  const galaxyNote = lower.includes('redmi')
+    ? null
+    : lower.match(/\b(?:galaxy|samsung)\s+note\s*(\d{1,2})?\b/) ||
+      lower.match(/\bnote\s*(\d{1,2})\b/)
   if (galaxyNote) {
     const gen = Number(galaxyNote[1] || 0)
     let tier = 20
@@ -251,10 +530,104 @@ function phoneModelSortKey(label: string): [number, number, number, string] {
   if (pixel) {
     const gen = Number(pixel[1])
     let tier = 20
-    if (lower.includes('pro xl')) tier = 50
+    if (lower.includes('pro fold')) tier = 55
+    else if (lower.includes('pro xl')) tier = 50
+    else if (lower.includes('fold')) tier = 45
     else if (lower.includes('pro')) tier = 40
-    else if (lower.includes('a')) tier = 10
+    else if (/\ba\b/.test(lower) || /pixel\s*\d+a\b/.test(lower)) tier = 10
     return [700 + gen, tier, 0, name]
+  }
+  if (/\bpixel\s*fold\b/.test(lower)) return [695, 45, 0, name]
+  if (/\bpixel\b/.test(lower)) return [690, 20, 0, name]
+
+  // Huawei.
+  if (/\bp\s*smart\b/.test(lower)) {
+    const year = Number(lower.match(/20\d{2}/)?.[0] || 0)
+    return [520, year ? year - 2000 : 0, 0, name]
+  }
+  const huaweiMate = lower.match(/\bmate\s*(\d{1,2})\b/)
+  if (huaweiMate) {
+    const gen = Number(huaweiMate[1])
+    let tier = 20
+    if (lower.includes('pro')) tier = 40
+    else if (lower.includes('lite')) tier = 10
+    return [880 + gen, tier, 0, name]
+  }
+  const huaweiP = lower.match(/\bp(\d{1,2})\b/)
+  if (huaweiP && !lower.includes('poco') && !lower.includes('pixel')) {
+    const gen = Number(huaweiP[1])
+    let tier = 20
+    if (lower.includes('pro')) tier = 40
+    else if (lower.includes('lite')) tier = 10
+    return [840 + gen, tier, 0, name]
+  }
+  const huaweiNova = lower.match(/\bnova\s*(\d{1,2})\b/)
+  if (huaweiNova) return [800 + Number(huaweiNova[1]), 20, 0, name]
+  const huaweiHonor = lower.match(/\bhonor\s*([a-z]*\s*)?(\d{1,2})?\b/)
+  if (/\bhonor\b/.test(lower)) {
+    const gen = Number(huaweiHonor?.[2] || 0)
+    return [760 + gen, 20, 0, name]
+  }
+  const huaweiY = lower.match(/\by(\d{1,2})\b/)
+  if (huaweiY && lower.includes('y')) return [500 + Number(huaweiY[1]), 10, 0, name]
+
+  // Xiaomi / Redmi / POCO before OPPO letter series (POCO F6 must not match OPPO F).
+  if (/\bpoco\b/.test(lower)) {
+    if (/\bc\d/.test(lower)) {
+      const gen = Number(lower.match(/\bc(\d{1,2})\b/)?.[1] || 0)
+      return [560, gen, 0, name]
+    }
+    const series = /\bf\d/.test(lower) ? 30 : /\bx\d/.test(lower) ? 20 : /\bm\d/.test(lower) ? 10 : 5
+    const gen = Number(lower.match(/\b[fxm]\s?(\d{1,2})\b/)?.[1] || lower.match(/\b(\d{1,2})\b/)?.[1] || 0)
+    return [640 + gen, series, 0, name]
+  }
+  if (/\bredmi\s*note\b/.test(lower)) {
+    const gen = Number(lower.match(/\bnote\s*(\d{1,2})/)?.[1] || 0)
+    let tier = 20
+    if (lower.includes('pro+') || lower.includes('pro +') || lower.includes('proplus')) tier = 45
+    else if (lower.includes('pro')) tier = 35
+    return [620 + gen, tier, 0, name]
+  }
+  if (/\bredmi\b/.test(lower)) {
+    const gen = Number(lower.match(/\bredmi\s*[a]?(\d{1,2})/)?.[1] || 0)
+    return [600 + gen, 15, 0, name]
+  }
+  if (/\bxiaomi\b|\bmi\s*\d/.test(lower)) {
+    const gen = Number(lower.match(/\b(?:xiaomi|mi)\s*(\d{1,2})/)?.[1] || 0)
+    let tier = 20
+    if (lower.includes('ultra')) tier = 55
+    else if (lower.includes('pro')) tier = 40
+    else if (lower.includes('fold')) tier = 50
+    else if (/\bt\b/.test(lower)) tier = 30
+    return [660 + gen, tier, 0, name]
+  }
+
+  // OPPO.
+  if (/\bfind\b/.test(lower)) {
+    const gen = Number(lower.match(/\bx\s*(\d{1,2})|\bn\s*(\d{1,2})/)?.[1] || lower.match(/\b(\d{1,2})\b/)?.[1] || 0)
+    let tier = 20
+    if (lower.includes('ultra')) tier = 55
+    else if (lower.includes('pro')) tier = 40
+    else if (lower.includes('flip')) tier = 45
+    return [920 + gen, tier, 0, name]
+  }
+  if (/\breno\b/.test(lower)) {
+    const gen = Number(lower.match(/\breno\s*(\d{1,2})/)?.[1] || 0)
+    let tier = 20
+    if (lower.includes('pro')) tier = 40
+    return [860 + gen, tier, 0, name]
+  }
+  if (/\bf(\d{1,2})\b/.test(lower) && !lower.includes('fe') && !lower.includes('fold') && !lower.includes('poco')) {
+    const gen = Number(lower.match(/\bf(\d{1,2})\b/)?.[1] || 0)
+    return [820 + gen, 20, 0, name]
+  }
+  if (/\bk(\d{1,2})\b/.test(lower)) {
+    const gen = Number(lower.match(/\bk(\d{1,2})\b/)?.[1] || 0)
+    return [780 + gen, 20, 0, name]
+  }
+  if (/\ba(\d{1,2})\b/.test(lower) && (lower.includes('oppo') || /^a\d/i.test(name.trim()))) {
+    const gen = Number(lower.match(/\ba(\d{1,2})\b/)?.[1] || 0)
+    return [740 + gen, 20, 0, name]
   }
 
   // Fallback: prefer labels with higher numbers, keep stable alphabetical otherwise.
@@ -274,6 +647,20 @@ function sortModelsNewestFirst(models: string[]): string[] {
   })
 }
 
+function normalizeModelKey(model: string): string {
+  return model
+    .toLowerCase()
+    .replace(/^google\s+/, '')
+    .replace(/^huawei\s+/, '')
+    .replace(/^oppo\s+/, '')
+    .replace(/^samsung\s+/, '')
+    .replace(/^xiaomi\s+/, '')
+    .replace(/\+/g, 'plus')
+    // Drop screen-size suffixes from price-list labels (e.g. Pixel 9 Pro XL 6.8").
+    .replace(/\b\d+\.\d+\s*(inch|"|”)?\b/g, '')
+    .replace(/[^a-z0-9]+/g, '')
+}
+
 for (const category of deviceCategories) {
   for (const brand of category.brands) {
     const curated = [...brand.models]
@@ -281,12 +668,14 @@ for (const category of deviceCategories) {
       curated.find((model) => isGenericModel(model)) ?? 'Other / Not Listed'
     const names = listedModelNames(category.id, brand.id)
     if (names?.length) {
-      // Keep price-list models, and retain curated names missing from the scrape
-      // (e.g. current Galaxy Z / S25 phones) so booking series stay complete.
-      const merged = [...names]
-      for (const model of curated) {
+      // Prefer curated booking names, then add any price-list-only models.
+      const merged = [...curated.filter((model) => !isGenericModel(model))]
+      const seen = new Set(merged.map((model) => normalizeModelKey(model)))
+      for (const model of names) {
         if (isGenericModel(model)) continue
-        if (merged.some((item) => item.toLowerCase() === model.toLowerCase())) continue
+        const key = normalizeModelKey(model)
+        if (seen.has(key)) continue
+        seen.add(key)
         merged.push(model)
       }
       brand.models = merged
