@@ -1,0 +1,94 @@
+/* Home-style promo box: shield + circle only. */
+
+.protect-hero-promo-media {
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 42%, #fbaf0024 0%, transparent 48%),
+    linear-gradient(165deg, #252525 0%, #1a1a1a 55%, #121212 100%);
+}
+
+.protect-hero-promo-icon {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  pointer-events: none;
+}
+
+.protect-hero-promo-orb {
+  position: relative;
+  width: min(78%, 17rem);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 45%, #fbaf0028 0%, #0c1016 58%, #05080e 100%);
+  box-shadow: 0 0 28px #fbaf002e, inset 0 0 24px #0008;
+}
+
+.protect-hero-promo-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.protect-hero-promo-ring-outer {
+  inset: 7%;
+  border: 2px solid #fbaf0066;
+  border-top-color: #fbaf00;
+  border-right-color: #fbaf0033;
+  animation: protect-promo-spin 12s linear infinite;
+}
+
+.protect-hero-promo-ring-inner {
+  inset: 17%;
+  border: 1.5px dashed #fbaf0059;
+  animation: protect-promo-spin 18s linear infinite reverse;
+}
+
+.protect-hero-promo-mark {
+  position: relative;
+  z-index: 1;
+  width: min(46%, 7.5rem);
+  height: auto;
+  color: #fbaf00;
+  filter: drop-shadow(0 0 18px #fbaf0066);
+  transform-origin: center center;
+  animation: protect-promo-pulse 2.8s ease-in-out infinite;
+}
+
+.protect-hero-promo-overlay {
+  background: radial-gradient(circle at 50% 45%, transparent 35%, #2d2d2d66 100%) !important;
+}
+
+@keyframes protect-promo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes protect-promo-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .protect-hero-promo-ring-outer,
+  .protect-hero-promo-ring-inner,
+  .protect-hero-promo-mark {
+    animation: none;
+  }
+}

@@ -4,6 +4,7 @@ export const ROUTES = {
   bookRepair: '/book-repair',
   tradeIn: '/trade-in',
   accessories: '/accessories',
+  protect: '/protect',
   about: '/about',
   training: '/training-courses',
   recycling: '/recycling',
@@ -42,7 +43,7 @@ When a customer wants help, a callback, or to book via chat:
 
 Contact: 020 3336 7147 | info@securefix.uk | WhatsApp https://wa.me/447438083630
 
-Pages: Book ${ROUTES.bookRepair} | Trade-in ${ROUTES.tradeIn} | Recycling ${ROUTES.recycling} | Business IT ${ROUTES.lifecycle} | About ${ROUTES.about} | Training ${ROUTES.training}
+Pages: Book ${ROUTES.bookRepair} | Trade-in ${ROUTES.tradeIn} | Recycling ${ROUTES.recycling} | Business IT ${ROUTES.lifecycle} | Protect ${ROUTES.protect} | About ${ROUTES.about} | Training ${ROUTES.training}
 
 REPAIR PRICES (from booking page):
 ${prices}

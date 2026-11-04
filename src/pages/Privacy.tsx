@@ -30,9 +30,9 @@ export default function Privacy() {
           <section className="about-section">
             <h2>What the forms collect</h2>
             <p className="about-text">
-              The repair booking, call-out, trade-in, recycling quote and lifecycle quote forms
-              collect your name, email, phone, device and fault. The call-out form also collects
-              your address and postcode. You may add notes about the job.
+              The repair booking, call-out, trade-in, recycling quote, lifecycle quote and Protect
+              consultation forms collect your name, email, phone, device and fault. The call-out
+              form also collects your address and postcode. You may add notes about the job.
             </p>
           </section>
           <section className="about-section">
@@ -45,9 +45,9 @@ export default function Privacy() {
           <section className="about-section">
             <h2>How the form is sent</h2>
             <p className="about-text">
-              Repair booking, call-out, trade-in, recycling and business IT quote forms are sent
-              through FormSubmit to {site.bookingEmail}. FormSubmit receives the fields you submit
-              so the message can be delivered to SecureFix.
+              Repair booking, call-out, trade-in, recycling, business IT quote and Protect
+              consultation forms are sent through FormSubmit to {site.bookingEmail}. FormSubmit
+              receives the fields you submit so the message can be delivered to SecureFix.
             </p>
           </section>
           <section className="about-section">
