@@ -8,6 +8,10 @@ import {
   SHOP_ADDRESS,
 } from '@/data/issueCatalog'
 import type { SeoPageEntry } from '@/data/seoCatalog'
+import {
+  samsungSeriesWithModels,
+  usesSamsungSeriesPicker,
+} from '@/data/samsungSeries'
 import { isGenericModel, slugify } from '@/lib/slugify'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { localBusinessJsonLd } from '@/data/seo'
@@ -22,7 +26,7 @@ type Props = {
   models: string[]
 }
 
-/** iRepairZone-style brand hub: pick your phone model, then see services. */
+/** Brand hub: pick your phone model (Samsung groups by series first). */
 export default function BrandModelsPage({
   page,
   categoryId,
@@ -33,6 +37,8 @@ export default function BrandModelsPage({
   const brandPath = page.path
   const catPath = categoryHubPath(categoryId)
   const categoryLabel = deviceCategories.find((item) => item.id === categoryId)?.label ?? 'Repair'
+  const samsungGrouped = usesSamsungSeriesPicker(brandId)
+  const seriesGroups = samsungGrouped ? samsungSeriesWithModels(models) : []
   const listed = models.filter((model) => !isGenericModel(model))
   const other = models.find((model) => isGenericModel(model))
 
@@ -68,40 +74,80 @@ export default function BrandModelsPage({
 
           <h1>{brandLabel} Repair</h1>
           <p className="phone-brand-hub-lead">
-            Specialists in {brandLabel} repairs at {SHOP_ADDRESS}. Select your exact model to see
-            the services we provide — screen, battery, charging port, camera and more — with clear
-            prices.
+            Specialists in {brandLabel} repairs at {SHOP_ADDRESS}.{' '}
+            {samsungGrouped
+              ? 'Pick a Galaxy series, then your exact model, to see services and prices.'
+              : 'Select your exact model to see the services we provide — screen, battery, charging port, camera and more — with clear prices.'}
           </p>
 
-          <section className="phone-services" aria-labelledby="select-model-heading">
-            <div className="phone-services-intro">
-              <p className="phone-services-eyebrow">Book a repair</p>
-              <h2 id="select-model-heading">Select your device model</h2>
-              <p className="phone-services-lead">
-                Choosing a model opens the repair services and prices for that phone.
-              </p>
-            </div>
+          {samsungGrouped ? (
+            seriesGroups.map(({ series, models: seriesModels }) => {
+              const seriesListed = seriesModels.filter((model) => !isGenericModel(model))
+              const seriesOther = seriesModels.find((model) => isGenericModel(model))
+              return (
+                <section
+                  key={series.id}
+                  className="phone-services phone-series-section"
+                  aria-labelledby={`series-${series.id}`}
+                >
+                  <div className="phone-services-intro">
+                    <p className="phone-services-eyebrow">{series.label}</p>
+                    <h2 id={`series-${series.id}`}>{series.label}</h2>
+                    <p className="phone-services-lead">{series.description}</p>
+                  </div>
+                  <div className="phone-model-grid">
+                    {seriesListed.map((model) => (
+                      <Link
+                        key={model}
+                        to={`${brandPath}/${slugify(model)}`}
+                        className="phone-model-card"
+                      >
+                        {model}
+                      </Link>
+                    ))}
+                    {seriesOther ? (
+                      <Link
+                        to={`/book-repair?category=${categoryId}&brand=${brandId}&series=${series.id}&model=${slugify(seriesOther)}&entry=list`}
+                        className="phone-model-card"
+                      >
+                        {seriesOther}
+                      </Link>
+                    ) : null}
+                  </div>
+                </section>
+              )
+            })
+          ) : (
+            <section className="phone-services" aria-labelledby="select-model-heading">
+              <div className="phone-services-intro">
+                <p className="phone-services-eyebrow">Book a repair</p>
+                <h2 id="select-model-heading">Select your device model</h2>
+                <p className="phone-services-lead">
+                  Choosing a model opens the repair services and prices for that phone.
+                </p>
+              </div>
 
-            <div className="phone-model-grid">
-              {listed.map((model) => (
-                <Link
-                  key={model}
-                  to={`${brandPath}/${slugify(model)}`}
-                  className="phone-model-card"
-                >
-                  {model}
-                </Link>
-              ))}
-              {other ? (
-                <Link
-                  to={`/book-repair?category=${categoryId}&brand=${brandId}&model=${slugify(other)}&entry=list`}
-                  className="phone-model-card"
-                >
-                  {other}
-                </Link>
-              ) : null}
-            </div>
-          </section>
+              <div className="phone-model-grid">
+                {listed.map((model) => (
+                  <Link
+                    key={model}
+                    to={`${brandPath}/${slugify(model)}`}
+                    className="phone-model-card"
+                  >
+                    {model}
+                  </Link>
+                ))}
+                {other ? (
+                  <Link
+                    to={`/book-repair?category=${categoryId}&brand=${brandId}&model=${slugify(other)}&entry=list`}
+                    className="phone-model-card"
+                  >
+                    {other}
+                  </Link>
+                ) : null}
+              </div>
+            </section>
+          )}
 
           <div className="service-landing-actions">
             <Link

@@ -4,6 +4,7 @@ import { issuesByCategory, type RepairIssue } from '@/data/repairIssues'
 import { getBatteryGradeOptions, getPremiumBatteryOption } from '@/data/batteryGrades'
 import { iphoneIncellPrices } from '@/data/iphoneIncellPrices'
 import { getPremiumScreenOption, getScreenGradeOptions } from '@/data/screenGrades'
+import { getSamsungSeries, usesSamsungSeriesPicker, type SamsungSeries } from '@/data/samsungSeries'
 import { isGenericModel, slugify } from '@/lib/slugify'
 
 /** Attach exact INCELL / Standard price (iRepairZone Standard + £30 where uplifted). */
@@ -1227,9 +1228,10 @@ export function jobLabelsFor(categoryId: string, brandId?: string, model?: strin
 export type BookingSeed = {
   category: DeviceCategory | null
   brand: Brand | null
+  series: SamsungSeries | null
   model: string | null
   issue: RepairIssue | null
-  step: 'device' | 'brand' | 'model' | 'issue' | 'book'
+  step: 'device' | 'brand' | 'series' | 'model' | 'issue' | 'book'
 }
 
 /** Path for the crawlable repair booking page. */
@@ -1245,6 +1247,8 @@ export function repairBookingPath(
 export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed {
   const category = deviceCategories.find((item) => item.id === params.get('category')) ?? null
   const brand = category?.brands.find((item) => item.id === params.get('brand')) ?? null
+  const series =
+    brand && usesSamsungSeriesPicker(brand.id) ? getSamsungSeries(params.get('series')) : null
   const modelParam = params.get('model')
   let model =
     brand && modelParam
@@ -1316,10 +1320,13 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
 
   let step: BookingSeed['step'] = 'device'
   const showForm = params.get('view') !== 'issue'
+  const samsungSeriesFlow = Boolean(brand && usesSamsungSeriesPicker(brand.id))
   if (category && brand && model && issue && showForm) step = 'book'
   else if (category && brand && model) step = 'issue'
+  else if (category && brand && samsungSeriesFlow && series) step = 'model'
+  else if (category && brand && samsungSeriesFlow) step = 'series'
   else if (category && brand) step = 'model'
   else if (category) step = 'brand'
 
-  return { category, brand, model, issue, step }
+  return { category, brand, series, model, issue, step }
 }
