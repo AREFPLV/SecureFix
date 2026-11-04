@@ -14,6 +14,7 @@ import {
 import {
   BOOKING_ROUTE,
   ACCESSORIES_ROUTE,
+  PROTECT_ROUTE,
   ABOUT_ROUTE,
   TRAINING_ROUTE,
   RECYCLING_ROUTE,
@@ -212,6 +213,15 @@ export function buildSeoCatalog(): SeoPageEntry[] {
       title: 'Phone & Laptop Accessories London | SecureFix',
       description: 'Cases, chargers, screen protectors and accessories from SecureFix London.',
       h1: 'Accessories',
+      intro: [],
+    },
+    {
+      kind: 'static',
+      path: PROTECT_ROUTE,
+      title: 'Business Cybersecurity London | 24/7 Protect | SecureFix',
+      description:
+        '24/7 cybersecurity, antivirus and anti-malware for London businesses. Book a SecureFix Protect consultation.',
+      h1: 'Protect',
       intro: [],
     },
     {

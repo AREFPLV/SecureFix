@@ -9,6 +9,7 @@ import BookRepair from '@/pages/BookRepair'
 import CallOut from '@/pages/CallOut'
 import TradeIn from '@/pages/TradeIn'
 import AccessoriesShop from '@/pages/AccessoriesShop'
+import Protect from '@/pages/Protect'
 import About from '@/pages/About'
 import TrainingCourses from '@/pages/TrainingCourses'
 import TrainingLevelPage from '@/pages/TrainingLevelPage'
@@ -60,6 +61,7 @@ function AppShell() {
         <Route path="/book-call-out" element={<Navigate to="/call-out" replace />} />
         <Route path="/trade-in" element={<TradeIn />} />
         <Route path="/accessories" element={<AccessoriesShop />} />
+        <Route path="/protect" element={<Protect />} />
         <Route path="/about" element={<About />} />
         <Route path="/training-courses" element={<TrainingCourses />} />
         <Route path="/training-courses/:courseSlug/:levelId" element={<TrainingLevelPage />} />
