@@ -1,5 +1,28 @@
 /* Shared page styles live in src/index.css; local extras for About-style pages */
 
+.about-service-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.about-service-card-link:hover,
+.about-service-card-link:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-accent);
+  outline: none;
+}
+
+.about-service-card-link:hover h3,
+.about-service-card-link:focus-visible h3 {
+  color: var(--color-accent);
+}
+
 .about-service-card ul {
   list-style: none;
   margin-top: 0.75rem;

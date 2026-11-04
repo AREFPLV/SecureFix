@@ -1,6 +1,23 @@
+import {
+  ACCESSORIES_ROUTE,
+  BOOKING_ROUTE,
+  CALL_OUT_ROUTE,
+  LIFECYCLE_ROUTE,
+  PHONE_REPAIR_ROUTE,
+  TRADE_IN_ROUTE,
+} from '@/data/content'
+
 export type FaqItem = {
   question: string
   answer: string
+}
+
+export type AboutServiceItem = {
+  icon: string
+  title: string
+  description: string
+  /** Related page opened when the card is clicked. */
+  to: string
 }
 
 export const aboutContent = {
@@ -17,34 +34,46 @@ export const aboutContent = {
       {
         icon: '🔧',
         title: 'Expert Repairs',
-        description: 'Screen replacements, battery swaps, charging port fixes, board-level repairs and more, often completed the same day.',
+        description:
+          'Screen replacements, battery swaps, charging port fixes, board-level repairs and more, often completed the same day.',
+        to: PHONE_REPAIR_ROUTE,
       },
       {
         icon: '📱',
         title: 'Buy, Sell & Trade-In',
-        description: 'We buy and sell new and refurbished devices. Get an instant quote and trade in your old phone, tablet or console.',
+        description:
+          'We buy and sell new and refurbished devices. Get an instant quote and trade in your old phone, tablet or console.',
+        to: TRADE_IN_ROUTE,
       },
       {
         icon: '🛡️',
         title: 'Protection & Accessories',
-        description: 'Premium cases, screen protectors, chargers and cables to keep your devices safe after repair.',
+        description:
+          'Premium cases, screen protectors, chargers and cables to keep your devices safe after repair.',
+        to: ACCESSORIES_ROUTE,
       },
       {
         icon: '🚚',
         title: 'Free Collection & Return',
-        description: 'Can\'t visit us? We offer free collection and return across London. We collect, repair and deliver back to you.',
+        description:
+          "Can't visit us? We offer free collection and return across London. We collect, repair and deliver back to you.",
+        to: CALL_OUT_ROUTE,
       },
       {
         icon: '💾',
         title: 'Data Recovery',
-        description: '100% confidential data recovery from damaged phones, laptops and storage devices.',
+        description:
+          '100% confidential data recovery from damaged phones, laptops and storage devices.',
+        to: `${BOOKING_ROUTE}?category=other&brand=data-recovery`,
       },
       {
         icon: '🏢',
         title: 'Business Services',
-        description: 'Corporate repair plans and fleet device management for businesses across London.',
+        description:
+          'Corporate repair plans and fleet device management for businesses across London.',
+        to: LIFECYCLE_ROUTE,
       },
-    ],
+    ] satisfies AboutServiceItem[],
   },
 }
 

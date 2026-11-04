@@ -70,11 +70,17 @@ export default function About() {
             <h2>{aboutContent.whatWeDo.title}</h2>
             <div className="about-services-grid">
               {aboutContent.whatWeDo.items.map((item) => (
-                <article key={item.title} className="about-service-card">
-                  <span className="about-service-icon">{item.icon}</span>
+                <Link
+                  key={item.title}
+                  to={item.to}
+                  className="about-service-card about-service-card-link"
+                >
+                  <span className="about-service-icon" aria-hidden="true">
+                    {item.icon}
+                  </span>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
-                </article>
+                </Link>
               ))}
             </div>
           </section>
