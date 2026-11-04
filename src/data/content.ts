@@ -19,7 +19,7 @@ export const site = {
   phone: '020 3336 7147',
   phoneHref: 'tel:+442033367147',
   email: 'info@securefix.uk',
-  /** All booking / quote / chat-lead forms are delivered here via FormSubmit. */
+  /** All booking / quote / chat-lead forms are delivered here (Hostinger /api/booking.php). */
   bookingEmail: 'repair@securefix.uk',
   website: 'securefix.uk',
   location: 'SecureFix, 218 City Road, London EC1V 2PN',
