@@ -62,16 +62,8 @@ export async function chatWithGroq(messages: ChatTurn[]): Promise<ChatResponse> 
   const full = history.map((m) => m.content).join(' ')
   const lastUser = [...history].reverse().find((m) => m.role === 'user')?.content ?? ''
   const hint = lookupRepairEstimate(lastUser, full)
-  const hitLines =
-    hint?.hits
-      ?.slice(0, 5)
-      .map((hit) => `- ${hit.title}${hit.priceText ? ` | ${hit.priceText}` : ''} | book: ${hit.path}`)
-      .join('\n') ?? ''
-  const extra = hint
-    ? `\nLIVE LOOKUP (from booking search):\n${hint.summary}${
-        hint.bookingPath ? `\nBook link: ${hint.bookingPath}` : ''
-      }${hitLines ? `\nMatches:\n${hitLines}` : ''}\nAlways quote these booking prices and include a Book this repair action when relevant.`
-    : '\nLIVE LOOKUP: no exact booking match. Ask for the exact device model, then search again. Do not invent prices.'
+  const extra = hint ? `\nLIVE LOOKUP: ${hint.summary}` : ''
+  const prompt = buildSystemPrompt(extra)
 
   const res = await fetch(GROQ_URL, {
     method: 'POST',

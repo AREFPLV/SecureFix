@@ -28,8 +28,7 @@ const CONNECT_ACTION = { label: 'Chat on WhatsApp', route: 'chat:whatsapp' }
 const GREETING: ChatMessage = {
   id: 'hi',
   role: 'assistant',
-  content:
-    "Hey! I'm Alex from SecureFix. Ask me anything about repairs, prices, booking, or trade-in. Prefer a real technician? Tap Chat on WhatsApp — leave your details and we'll open WhatsApp with your message ready (technicians available Monday to Saturday, 09:00–19:00).",
+  content: "Hey! I'm Alex from SecureFix. How can I help — repair, price, booking, or trade-in?",
   actions: [
     { label: 'Book a repair', route: '/book-repair' },
     CONNECT_ACTION,
@@ -233,7 +232,7 @@ export default function ChatAgent() {
                   ? aiOn
                     ? 'AI assistant · ask anything'
                     : 'Assistant · ask anything'
-                  : 'Technicians available Monday to Saturday, 09:00–19:00'}
+                  : 'Chat with the team on WhatsApp'}
               </span>
             </div>
             <div className="chat-header-actions">
@@ -348,7 +347,7 @@ export default function ChatAgent() {
                 <>
                   <p>
                     WhatsApp should have opened with your details. If it didn&apos;t, tap below to try
-                    again. Our technicians reply Monday to Saturday, 09:00–19:00. Closed Sunday.
+                    again.
                   </p>
                   <button type="button" className="btn btn-primary chat-start-btn" onClick={openWhatsApp}>
                     Open WhatsApp again
@@ -359,10 +358,7 @@ export default function ChatAgent() {
                 </>
               ) : (
                 <>
-                  <p>
-                    Leave your details and we&apos;ll open WhatsApp with a ready message for our
-                    team. Technicians are available Monday to Saturday, 09:00–19:00. Closed Sunday.
-                  </p>
+                  <p>Leave your details and we&apos;ll open WhatsApp with a ready message for our team.</p>
                   <label>
                     Name
                     <input
