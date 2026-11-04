@@ -1,4 +1,5 @@
 import { listedModelNames } from '@/data/listedPrices'
+import { sortIphoneModels } from '@/lib/sortIphoneModels'
 import { isGenericModel } from '@/lib/slugify'
 
 export type DeviceCategory = {
@@ -129,6 +130,9 @@ for (const category of deviceCategories) {
     if (names?.length) brand.models = [...names]
     if (!brand.models.some((model) => isGenericModel(model))) {
       brand.models.push(fallbackOther)
+    }
+    if (brand.id === 'apple-phone') {
+      brand.models = sortIphoneModels(brand.models)
     }
   }
 }
