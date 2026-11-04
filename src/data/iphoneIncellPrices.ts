@@ -1,0 +1,32 @@
+/* Exact INCELL screen prices. iPhone 13–18 include +£30 uplift with Soft OLED. */
+
+export const iphoneIncellPrices: Record<string, number> = {
+  "iPhone 12": 49,
+  "iPhone 12 Pro": 49,
+  "iPhone 12 Pro Max": 59,
+  "iPhone 13": 89,
+  "iPhone 13 mini": 74.99,
+  "iPhone 13 Pro": 99,
+  "iPhone 13 Pro Max": 99,
+  "iPhone 14": 89,
+  "iPhone 14 Plus": 89,
+  "iPhone 14 Pro": 99,
+  "iPhone 14 Pro Max": 104,
+  "iPhone 15": 95,
+  "iPhone 15 Plus": 99,
+  "iPhone 15 Pro": 120.99,
+  "iPhone 15 Pro Max": 123.99,
+  "iPhone 16": 111.99,
+  "iPhone 16 Plus": 111.99,
+  "iPhone 16 Pro": 131.99,
+  "iPhone 16 Pro Max": 134.99,
+  "iPhone 16e": 104.99,
+  "iPhone 17": 134.99,
+  "iPhone 17 Air": 186.99,
+  "iPhone 17 Pro": 141.99,
+  "iPhone 17 Pro Max": 141.99,
+  "iPhone 18": 191.99,
+  "iPhone 18 Air": 232.99,
+  "iPhone 18 Pro": 232.99,
+  "iPhone 18 Pro Max": 232.99
+}

@@ -3,6 +3,7 @@ import { deviceCategories } from '@/data/booking'
 import { getIssuePage } from '@/data/issueCatalog'
 import { isGenericModel, slugify } from '@/lib/slugify'
 import { getSeoPageByPath } from '@/data/seoCatalog'
+import BrandModelsPage from '@/pages/BrandModelsPage'
 import ModelHubPage from '@/pages/ModelHubPage'
 import NotFound from '@/pages/NotFound'
 import RepairIssuePage from '@/pages/RepairIssuePage'
@@ -19,7 +20,20 @@ export function RepairCategoryPage() {
 export function RepairBrandPage() {
   const { categoryId, brandId } = useParams<{ categoryId: string; brandId: string }>()
   const page = getSeoPageByPath(`/repair/${categoryId}/${brandId}`)
+  const category = deviceCategories.find((item) => item.id === categoryId)
+  const brand = category?.brands.find((item) => item.id === brandId)
   if (!page) return <NotFound />
+  if (categoryId === 'smartphone' && category && brand) {
+    return (
+      <BrandModelsPage
+        page={page}
+        categoryId={category.id}
+        brandId={brand.id}
+        brandLabel={brand.label}
+        models={brand.models}
+      />
+    )
+  }
   return <SeoEntityPage page={page} />
 }
 
