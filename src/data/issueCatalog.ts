@@ -958,8 +958,7 @@ function matchSmartphoneSlot(label: string, slot: SmartphonePickerSlot): boolean
         (lower.includes('screen') || lower.includes('lcd') || lower.includes('oled')) &&
         !lower.includes('battery') &&
         !lower.includes('back glass') &&
-        !lower.includes('inner') &&
-        !lower.includes('outer') &&
+        !lower.includes('back cover') &&
         !lower.includes('tempered') &&
         !lower.includes('protection') &&
         !lower.includes('add-on') &&
@@ -967,7 +966,9 @@ function matchSmartphoneSlot(label: string, slot: SmartphonePickerSlot): boolean
       )
     case 'Back Glass':
       return (
-        (lower.includes('back glass') || lower.includes('backglass')) &&
+        (lower.includes('back glass') ||
+          lower.includes('backglass') ||
+          lower.includes('back cover')) &&
         !lower.includes('housing') &&
         !lower.includes('full body') &&
         !lower.includes('screen') &&
@@ -1064,12 +1065,15 @@ const SLOT_FALLBACKS: Record<SmartphonePickerSlot, string> = {
 
 function screenMatchRank(label: string): number {
   const lower = label.toLowerCase()
+  // Foldables: prefer the main inner display over the cover screen.
+  if (lower.includes('inner screen')) return 0
   if (lower.includes('soft oled') || lower.includes('oled/compatible') || lower.includes('premium quality')) {
-    return 0
+    return 1
   }
-  if (lower.includes('new screen') || lower.includes('screen replacement')) return 1
-  if (lower.includes('lcd')) return 2
-  return 3
+  if (lower.includes('front screen') || lower.includes('screen replacement')) return 2
+  if (lower.includes('outer screen')) return 3
+  if (lower.includes('lcd')) return 4
+  return 5
 }
 
 function slotMatchRank(slot: SmartphonePickerSlot, label: string): number {

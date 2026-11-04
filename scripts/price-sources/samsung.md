@@ -1,36 +1,8 @@
 ---
-description: Booking in your Samsung phone for repair couldn’t be easier, simply go to our booking page and follow the on-screen instructions.
-title: Book Samsung Phone Repairs Online - iRepairMan London
+description: Samsung phone repair prices matched to iRepairZone (screens same; other faults +£20).
+title: Samsung Phone Repairs - iRepairZone matched
+source: https://irepairzone.co.uk/devices-catagory/mobile/samsung
 ---
-
- 
-
-* Open 7 days a week
-* 7 AM - 11 PM — Repairs that fit your schedule
-
- (02070460476) 
-
- Need a repair today? (02070460476) 
-
-020 7046 0476 (02070460476) 
-
- REQUEST CALL BACK 
-
- (02070460476) 
-
- REQUEST CALL BACK 
-
- BOOK YOUR REPAIR NOW 
-
-## Select Your Samsung Model To Book a Repair Now
-
-\[\[\[\["field38","equal\_to","Galaxy Note Edge"\]\],\[\["show\_fields","field51"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy Note"\]\],\[\["show\_fields","field65"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy Note 2 \\/ N7100"\]\],\[\["show\_fields","field82"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy Note 3\\/ N9005"\]\],\[\["show\_fields","field81"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy Note 4Galaxy Note 4 \\/ N910"\]\],\[\["show\_fields","field80"\]\],"and"\],\[\[\["field38","equal\_to","Samsung Note 5 \\/ N920"\]\],\[\["show\_fields","field79"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy Note 8"\]\],\[\["show\_fields","field78"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S5 Mini"\]\],\[\["show\_fields","field77"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S5"\]\],\[\["show\_fields","field76"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S6"\]\],\[\["show\_fields","field75"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S6 Edge"\]\],\[\["show\_fields","field74"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S6 Edge +"\]\],\[\["show\_fields","field73"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S7"\]\],\[\["show\_fields","field72"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S7 Edge"\]\],\[\["show\_fields","field71"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S8"\]\],\[\["show\_fields","field70"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S8 Plus"\]\],\[\["show\_fields","field69"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy J7"\]\],\[\["show\_fields","field93"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy J530"\]\],\[\["show\_fields","field96"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S3 (2016) SM A310F"\]\],\[\["show\_fields","field105"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S3 i9300"\]\],\[\["show\_fields","field84"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S4"\]\],\[\["show\_fields","field85"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy Tab 4 10.1"\]\],\[\["show\_fields","field104"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy J2 Prime"\]\],\[\["show\_fields","field101"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy J3 (2016)"\]\],\[\["show\_fields","field100"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S4 Mini"\]\],\[\["show\_fields","field86"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S5 Neo"\]\],\[\["show\_fields","field87"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S9"\]\],\[\["show\_fields","field88"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S9 Plus"\]\],\[\["show\_fields","field89"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S10"\]\],\[\["show\_fields","field90"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy S10 Plus"\]\],\[\["show\_fields","field91"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy J3 (2017)"\]\],\[\["show\_fields","field98"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy A3 SM-A300FU"\]\],\[\["show\_fields","field107"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy A3 (2017)\\/ A320"\]\],\[\["show\_fields","field106"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy A5 (2017)"\]\],\[\["show\_fields","field109"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy A5"\]\],\[\["show\_fields","field108"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy A7"\]\],\[\["show\_fields","field110"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy A70 \\/ A705"\]\],\[\["show\_fields","field111"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy A80"\]\],\[\["show\_fields","field117"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy J5 (SMJ500F)"\]\],\[\["show\_fields","field99"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy J5 (2016)"\]\],\[\["show\_fields","field97"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy J5 (2017)"\]\],\[\["show\_fields","field95"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy J5 Prime"\]\],\[\["show\_fields","field94"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy J6"\]\],\[\["show\_fields","field103"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy J7 Prime"\]\],\[\["show\_fields","field92"\]\],"and"\],\[\[\["field38","equal\_to","Galaxy J7 Pro"\]\],\[\["show\_fields","field102"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S21 Ultra \\/ G998"\]\],\[\["show\_fields","field118"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S21 Plus \\/ G996"\]\],\[\["show\_fields","field119"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S21 5G \\/ G991"\]\],\[\["show\_fields","field120"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S21 G990"\]\],\[\["show\_fields","field121"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S20 Ultra \\/ G988"\]\],\[\["show\_fields","field122"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S20 FE \\/ G780"\]\],\[\["show\_fields","field123"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S20+ \\/ G985"\]\],\[\["show\_fields","field125"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S20 \\/ G980"\]\],\[\["show\_fields","field126"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S10 Lite \\/ G770"\]\],\[\["show\_fields","field127"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S10 + \\/ G975"\]\],\[\["show\_fields","field128"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S10 E \\/ G970"\]\],\[\["show\_fields","field129"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S10 5G \\/ G977"\]\],\[\["show\_fields","field131"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S10 \\/ G973"\]\],\[\["show\_fields","field132"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S9 + \\/ G965"\]\],\[\["show\_fields","field133"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S9 \\/ G960"\]\],\[\["show\_fields","field134"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S8 + \\/ G955"\]\],\[\["show\_fields","field135"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S8 \\/ G950"\]\],\[\["show\_fields","field191"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S7 Edge \\/ G935"\]\],\[\["show\_fields","field137"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S7 \\/ G930"\]\],\[\["show\_fields","field138"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S6 Edge + \\/ G928"\]\],\[\["show\_fields","field139"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S6 Edge \\/ G925"\]\],\[\["show\_fields","field140"\]\],"and"\],\[\[\["field38","equal\_to","Samsung S6 \\/ G920"\]\],\[\["show\_fields","field141"\]\],"and"\],\[\[\["field38","equal\_to","Samsung Note 20 Ultra \\/ N985"\]\],\[\["show\_fields","field142"\]\],"and"\],\[\[\["field38","equal\_to","Samsung Note 20 \\/ N980"\]\],\[\["show\_fields","field143"\]\],"and"\],\[\[\["field38","equal\_to","Samsung Note 10 Lite \\/ N770"\]\],\[\["show\_fields","field144"\]\],"and"\],\[\[\["field38","equal\_to","Samsung Note 10 + 5G \\/ N976"\]\],\[\["show\_fields","field145"\]\],"and"\],\[\[\["field38","equal\_to","Samsung Note 10 \\/ N970"\]\],\[\["show\_fields","field147"\]\],"and"\],\[\[\["field38","equal\_to","Samsung Note 9 \\/ N960"\]\],\[\["show\_fields","field148"\]\],"and"\],\[\[\["field38","equal\_to","Samsung Note 8 \\/ N950"\]\],\[\["show\_fields","field149"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A90 5G \\/ A908"\]\],\[\["show\_fields","field151"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A90 \\/ A9050 (2019)"\]\],\[\["show\_fields","field152"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A72 \\/ A725"\]\],\[\["show\_fields","field154"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A71 5G \\/ A7160"\]\],\[\["show\_fields","field155"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A71 \\/ A715"\]\],\[\["show\_fields","field156"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A70s \\/ A707"\]\],\[\["show\_fields","field157"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A52 \\/ A525"\]\],\[\["show\_fields","field159"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A51 5G \\/ A516"\]\],\[\["show\_fields","field160"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A51 \\/ A515"\]\],\[\["show\_fields","field161"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A50 \\/ A505"\]\],\[\["show\_fields","field162"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A42 5G \\/ A426"\]\],\[\["show\_fields","field163"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A41 \\/ A415"\]\],\[\["show\_fields","field164"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A40S \\/ A3040 (2019)"\]\],\[\["show\_fields","field165"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A40 \\/ A405"\]\],\[\["show\_fields","field166"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A32 \\/ A325"\]\],\[\["show\_fields","field167"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A31 \\/ A315"\]\],\[\["show\_fields","field168"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A30S \\/ A307"\]\],\[\["show\_fields","field169"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A30 \\/ A305"\]\],\[\["show\_fields","field170"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A21s \\/ A217"\]\],\[\["show\_fields","field171"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A21 \\/ A215"\]\],\[\["show\_fields","field172"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A20 S\\/ A207"\]\],\[\["show\_fields","field173"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A20e \\/ A202"\]\],\[\["show\_fields","field174"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A20 \\/ A205"\]\],\[\["show\_fields","field175"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A12 \\/ A125"\]\],\[\["show\_fields","field176"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A11 \\/ A115"\]\],\[\["show\_fields","field177"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A10s \\/ A107"\]\],\[\["show\_fields","field178"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A10 \\/ A105"\]\],\[\["show\_fields","field178"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A10 \\/ A105"\]\],\[\["show\_fields","field178"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A10s \\/ A107"\]\],\[\["show\_fields","field179"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A9 2018 \\/ A920"\]\],\[\["show\_fields","field180"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A8 + 2018 \\/ A730"\]\],\[\["show\_fields","field181"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A7 2018 \\/ A750"\]\],\[\["show\_fields","field183"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A7 2016 \\/ A710"\]\],\[\["show\_fields","field184"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A6 Plus \\/ A605"\]\],\[\["show\_fields","field185"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A6 \\/ A600"\]\],\[\["show\_fields","field186"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A5 2017 \\/ A520"\]\],\[\["show\_fields","field187"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A5 2016 \\/ A510"\]\],\[\["show\_fields","field188"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A5 \\/ A500"\]\],\[\["show\_fields","field189"\]\],"and"\],\[\[\["field38","equal\_to","Samsung A3 2016 \\/ A310"\]\],\[\["show\_fields","field191"\]\],"and"\],\[\[\["field38","equal\_to","UK-galaxy-s22-ultra"\]\],\[\["show\_fields","field200"\]\],"and"\],\[\[\["field38","equal\_to","Samsung-Galaxy-S22 5G"\]\],\[\["show\_fields","field201"\]\],"and"\],\[\[\["field38","equal\_to","Samsung-Galaxy-S22+ 5G"\]\],\[\["show\_fields","field202"\]\],"and"\],\[\[\["field38","equal\_to","Samsung-Galaxy-S23"\]\],\[\["show\_fields","field203"\]\],"and"\],\[\[\["field38","equal\_to","Samsung-Galaxy-S23+"\]\],\[\["show\_fields","field204"\]\],"and"\],\[\[\["field38","equal\_to","Samsung-Galaxy-S23 Ultra"\]\],\[\["show\_fields","field51"\]\],"and"\]\]
-
-1 Step 1 
-
-2 Step 2 
-
-3 Step 3 
 
 # Step 1
 
@@ -38,641 +10,528 @@ title: Book Samsung Phone Repairs Online - iRepairMan London
 
 Phone Models
 
-Samsung Galaxy S22 UltraSamsung Galaxy S22 5GSamsung Galaxy S22+ 5GSamsung Galaxy S23Samsung Galaxy S23+Samsung Galaxy S23 UltraSamsung S21 Ultra / G998Samsung S21 Plus / G996Samsung S21 5G / G991Samsung S21 G990Samsung S20 Ultra / G988Samsung S20 FE / G780Samsung S20+ / G985Samsung S20 / G980Samsung S10 Lite / G770Samsung S10 + / G975Samsung S10 E / G970Samsung S10 5G / G977Samsung S10 / G973Galaxy S10 PlusGalaxy S10Samsung S9 + / G965Samsung S9 / G960Galaxy S9 PlusGalaxy S9Samsung S8 + / G955Samsung S8 / G950Galaxy S8 PlusGalaxy S8Samsung S7 Edge / G935Samsung S7 / G930Galaxy S7 EdgeGalaxy S7Samsung S6 Edge + / G928Samsung S6 Edge / G925Samsung S6 / G920Galaxy S6 Edge +Galaxy S6 EdgeGalaxy S6Galaxy S5Galaxy S5 MiniGalaxy S5 NeoGalaxy S4Galaxy S4 MiniGalaxy S3 (2016) SM A310FGalaxy S3 i9300Samsung Note 20 Ultra / N985Samsung Note 20 / N980Samsung Note 10 Lite / N770Samsung Note 10 + 5G / N976Samsung Note 10 + / N975Samsung Note 10 / N970Samsung Note 9 / N960Samsung Note 8 / N950Galaxy Note 8Samsung Note 5 / N920Galaxy Note 4 / N910Galaxy Note 3 / N9005Galaxy Note 2 / N7100Galaxy Note / i9220Galaxy Note EdgeGalaxy J6Galaxy J3 (2017)Galaxy J7 ProGalaxy J5 (2017)Galaxy J2 PrimeGalaxy J5 PrimeGalaxy J7 PrimeGalaxy J5 (2016)Galaxy J530Galaxy J5 (SMJ500F)Galaxy J3 (2016)Galaxy J7Galaxy A80 / A805Galaxy A70 / A705Galaxy A7Galaxy A5Galaxy A5 (2017)Galaxy A3 (2017)/ A320Galaxy A3 SM-A300FUGalaxy Tab 4 10.1Samsung A90 5G / A908Samsung A90 / A9050 (2019)Samsung A72 / A725Samsung A71 5G / A7160Samsung A71 / A715Samsung A70s / A707Samsung A52 / A525Samsung A51 5G / A516Samsung A51 / A515Samsung A50 / A505Samsung A42 5G / A426Samsung A41 / A415Samsung A40S / A3040 (2019)Samsung A40 / A405Samsung A32 / A325Samsung A31 / A315Samsung A30S / A307Samsung A30 / A305Samsung A21s / A217Samsung A21 / A215Samsung A20 S/ A207Samsung A20e / A202Samsung A20 / A205Samsung A12 / A125Samsung A11 / A115Samsung A10s / A107Samsung A10 / A105Samsung A9 2018 / A920Samsung A8 + 2018 / A730Samsung A8 2018 / A530Samsung A7 2018 / A750Samsung A7 2016 / A710Samsung A6 Plus / A605Samsung A6 / A600Samsung A5 2017 / A520Samsung A5 2016 / A510Samsung A5 / A500Samsung A3 2016 / A310
+Samsung Galaxy A01Samsung Galaxy A01 CoreSamsung Galaxy A02Samsung Galaxy A02SSamsung Galaxy A03Samsung Galaxy A03 CoreSamsung Galaxy A03SSamsung Galaxy A04 4GSamsung Galaxy A04E 4GSamsung Galaxy A04S 4GSamsung Galaxy A05 4GSamsung Galaxy A05s 4GSamsung Galaxy A06Samsung Galaxy A07sSamsung Galaxy A10 4GSamsung Galaxy A10S 4GSamsung Galaxy A11 4GSamsung Galaxy A12 4GSamsung Galaxy A13 4GSamsung Galaxy A13 5GSamsung Galaxy A14 4GSamsung Galaxy A14 5GSamsung Galaxy A15 4GSamsung Galaxy A15 5GSamsung Galaxy A16Samsung Galaxy A17Samsung Galaxy A20 4GSamsung Galaxy A20E 4GSamsung Galaxy A20S 4GSamsung Galaxy A21 4GSamsung Galaxy A21S 4GSamsung Galaxy A22 4GSamsung Galaxy A22 5GSamsung Galaxy A23 4GSamsung Galaxy A23 5GSamsung Galaxy A24 4GSamsung Galaxy A25 4GSamsung Galaxy A26Samsung Galaxy A27Samsung Galaxy A30 4GSamsung Galaxy A31 4GSamsung Galaxy A32 4GSamsung Galaxy A32 5GSamsung Galaxy A33 5GSamsung Galaxy A34 5GSamsung Galaxy A35 5GSamsung Galaxy A36Samsung Galaxy A37Samsung Galaxy A40 4GSamsung Galaxy A41 4GSamsung Galaxy A42 5GSamsung Galaxy A50 4GSamsung Galaxy A50S 4GSamsung Galaxy A51 5GSamsung Galaxy A52 4GSamsung Galaxy A52 5GSamsung Galaxy A52S 5GSamsung Galaxy A53 5GSamsung Galaxy A54 5GSamsung Galaxy A55 5GSamsung Galaxy A56Samsung Galaxy A57Samsung Galaxy A60 4GSamsung Galaxy A70 4GSamsung Galaxy A70S 4GSamsung Galaxy A71 4GSamsung Galaxy A71 5GSamsung Galaxy A72 4GSamsung Galaxy A73 5GSamsung Galaxy A80 4GSamsung Galaxy A90 5GSamsung Galaxy J6Samsung Galaxy j6 PlusSamsung Galaxy J7 CoreSamsung Galaxy J7 ProSamsung Galaxy J8Samsung Galaxy Note 10 PlusSamsung Galaxy Note 20Samsung Galaxy Note 8Samsung Galaxy Note 9Samsung Galaxy S10Samsung Galaxy S10 5GSamsung Galaxy S10 LiteSamsung Galaxy S10 PlusSamsung Galaxy S20Samsung Galaxy S20 5GSamsung Galaxy S20 FE liteSamsung Galaxy S20 PlusSamsung Galaxy S20 UltraSamsung Galaxy S21Samsung Galaxy S21 FESamsung Galaxy S21 Plus 5GSamsung Galaxy S21 UltraSamsung Galaxy S22Samsung Galaxy S22 PlusSamsung Galaxy S22 UltraSamsung Galaxy S23Samsung Galaxy S23 FESamsung Galaxy S23 PlusSamsung Galaxy S23 UltraSamsung Galaxy S24Samsung Galaxy S24 FESamsung Galaxy S24 PlusSamsung Galaxy S24 UltraSamsung Galaxy S25Samsung Galaxy S25 FESamsung Galaxy S25 PlusSamsung Galaxy S25 UltraSamsung Galaxy S26Samsung Galaxy S26 PlusSamsung Galaxy S26 UltraSamsung Galaxy S8Samsung Galaxy S8 PlusSamsung Galaxy S9Samsung Galaxy S9 PlusSamsung Galaxy Z FlipSamsung Galaxy Z Flip 5GSamsung Galaxy Z Flip 8Samsung Galaxy Z Flip3 5GSamsung Galaxy Z Flip4Samsung Galaxy Z Flip5Samsung Galaxy Z Flip6Samsung Galaxy Z Fold 2-5gSamsung Galaxy Z Fold 3-5gSamsung Galaxy Z Fold 4Samsung Galaxy Z Fold 5Samsung Galaxy Z Fold 6Samsung Galaxy Z Fold 7Samsung Galaxy Z Fold 8Samsung Galaxy Z Fold 8 Ultra
 
 # Step 2
 
-### Please select the iPhone issue to fix:
+### Please select the Samsung issue to fix:
 
-Samsung Galaxy S23 Ultra
+Samsung Galaxy A01
 
-Screen Repair (LCD & Glass) £209.99Battery Replacement £49.99Full Diagnostic Service £24.99Power Button Repair £49.99Rear Housing replacement £39.99Earpiece Repair £49.99Microphone Repair £49.99Loudspeaker Repair £49.99HeadPhone Jack Repair £49.99Front Camera Repair £49.99Rear Camera Repair £49.99Software Fix £39.99Vibration Repair £49.99
+Front Screen Replacement £70.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
 
-Samsung-Galaxy-S23+
+Samsung Galaxy A01 Core
 
-Screen Repair (LCD & Glass) £209.99Battery Replacement £49.99Full Diagnostic Service £24.99Power Button Repair £49.99Rear Housing replacement £39.99Earpiece Repair £49.99Microphone Repair £49.99Loudspeaker Repair £49.99HeadPhone Jack Repair £49.99Front Camera Repair £49.99Rear Camera Repair £49.99Software Fix £39.99Vibration Repair £49.99
+Front Screen Replacement £70.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
 
-Samsung-Galaxy-S23
+Samsung Galaxy A02
 
-Screen Repair (LCD & Glass) £209.99Battery Replacement £49.99Full Diagnostic Service £24.99Power Button Repair £49.99Rear Housing replacement £39.99Earpiece Repair £49.99Microphone Repair £49.99Loudspeaker Repair £49.99HeadPhone Jack Repair £49.99Front Camera Repair £49.99Rear Camera Repair £49.99Software Fix £39.99Vibration Repair £49.99
+Front Screen Replacement £59.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
 
-Samsung-Galaxy-S22+ 5G
+Samsung Galaxy A02S
 
-Screen Repair (LCD & Glass) £209.99Battery Replacement £49.99Full Diagnostic Service £24.99Power Button Repair £49.99Rear Housing replacement £39.99Earpiece Repair £49.99Microphone Repair £49.99Loudspeaker Repair £49.99HeadPhone Jack Repair £49.99Front Camera Repair £49.99Rear Camera Repair £49.99Software Fix £39.99Vibration Repair £49.99
+Front Screen Replacement £59.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
 
-Samsung-Galaxy-S22 5G
+Samsung Galaxy A03
 
-Screen Repair (LCD & Glass) £209.99Battery Replacement £49.99Full Diagnostic Service £24.99Power Button Repair £49.99Rear Housing replacement £39.99Earpiece Repair £49.99Microphone Repair £49.99Loudspeaker Repair £49.99HeadPhone Jack Repair £49.99Front Camera Repair £49.99Rear Camera Repair £49.99Software Fix £39.99Vibration Repair £49.99
+Front Screen Replacement £65.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A03 Core
+
+Front Screen Replacement £90.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A03S
+
+Front Screen Replacement £70.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A04 4G
+
+Front Screen Replacement £70.00Battery Replacement £65.00Charging Dock Repair £59.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A04E 4G
+
+Front Screen Replacement £80.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A04S 4G
+
+Front Screen Replacement £69.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A05 4G
+
+Front Screen Replacement £75.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A05s 4G
+
+Front Screen Replacement £75.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A06
+
+Front Screen Replacement £75.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A07s
+
+Other Fault Diagnostics £40.00
+
+Samsung Galaxy A10 4G
+
+Front Screen Replacement £70.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A10S 4G
+
+Front Screen Replacement £70.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A11 4G
+
+Front Screen Replacement £79.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A12 4G
+
+Front Screen Replacement £79.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A13 4G
+
+Front Screen Replacement £79.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A13 5G
+
+Front Screen Replacement £79.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A14 4G
+
+Front Screen Replacement £79.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A14 5G
+
+Front Screen Replacement £79.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A15 4G
+
+Front Screen Replacement £79.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A15 5G
+
+Front Screen Replacement £79.00Battery Replacement £65.00Charging Dock Repair £69.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A16
+
+Front Screen Replacement £89.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A17
+
+Front Screen Replacement £95.00
+
+Samsung Galaxy A20 4G
+
+Front Screen Replacement £90.00Back Glass Replacement £55.00Battery Replacement £55.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A20E 4G
+
+Front Screen Replacement £79.00Back Glass Replacement £55.00Battery Replacement £55.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A20S 4G
+
+Front Screen Replacement £90.00Back Glass Replacement £55.00Battery Replacement £55.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A21 4G
+
+Front Screen Replacement £60.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £80.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A21S 4G
+
+Front Screen Replacement £79.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A22 4G
+
+Front Screen Replacement £79.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A22 5G
+
+Front Screen Replacement £90.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A23 4G
+
+Front Screen Replacement £90.00Battery Replacement £65.00Charging Dock Repair £69.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A23 5G
+
+Front Screen Replacement £79.00Battery Replacement £65.00Charging Dock Repair £69.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A24 4G
+
+Front Screen Replacement £89.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A25 4G
+
+Front Screen Replacement £89.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A26
+
+Front Screen Replacement £99.00Back Glass Replacement £45.00Battery Replacement £69.00Charging Dock Repair £65.00Dead Condition Repair £90.00Other Fault Diagnostics £45.00
+
+Samsung Galaxy A27
+
+Front Screen Replacement £99.00
+
+Samsung Galaxy A30 4G
+
+Front Screen Replacement £89.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A31 4G
+
+Front Screen Replacement £89.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A32 4G
+
+Front Screen Replacement £90.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A32 5G
+
+Front Screen Replacement £99.00Back Glass Replacement £55.00Battery Replacement £55.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A33 5G
+
+Front Screen Replacement £99.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A34 5G
+
+Front Screen Replacement £99.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A35 5G
+
+Front Screen Replacement £119.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A36
+
+Front Screen Replacement £119.00Back Glass Replacement £45.00Battery Replacement £69.00Charging Dock Repair £65.00Other Fault Diagnostics £45.00
+
+Samsung Galaxy A37
+
+Front Screen Replacement £104.00
+
+Samsung Galaxy A40 4G
+
+Front Screen Replacement £99.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A41 4G
+
+Front Screen Replacement £95.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A42 5G
+
+Front Screen Replacement £95.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00ack Cover Replacement £55.00
+
+Samsung Galaxy A50 4G
+
+Front Screen Replacement £89.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A50S 4G
+
+Front Screen Replacement £89.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A51 5G
+
+Front Screen Replacement £99.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A52 4G
+
+Front Screen Replacement £115.00Back Glass Replacement £55.00Battery Replacement £55.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £80.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A52 5G
+
+Front Screen Replacement £75.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A52S 5G
+
+Front Screen Replacement £115.00Back Glass Replacement £65.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A53 5G
+
+Front Screen Replacement £109.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A54 5G
+
+Front Screen Replacement £109.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A55 5G
+
+Front Screen Replacement £129.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A56
+
+Front Screen Replacement £149.00Back Glass Replacement £45.00Battery Replacement £69.00Charging Dock Repair £65.00Dead Condition Repair £90.00Other Fault Diagnostics £45.00
+
+Samsung Galaxy A57
+
+Front Screen Replacement £119.00
+
+Samsung Galaxy A60 4G
+
+Front Screen Replacement £120.00Battery Replacement £65.00Charging Dock Repair £69.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A70 4G
+
+Front Screen Replacement £109.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A70S 4G
+
+Front Screen Replacement £120.00Battery Replacement £65.00Dead Phone Repair £90.00
+
+Samsung Galaxy A71 4G
+
+Front Screen Replacement £75.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A71 5G
+
+Front Screen Replacement £120.00Battery Replacement £65.00Charging Dock Repair £69.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A72 4G
+
+Front Screen Replacement £115.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A73 5G
+
+Front Screen Replacement £134.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A80 4G
+
+Front Screen Replacement £129.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy A90 5G
+
+Front Screen Replacement £179.00Back Glass Replacement £55.00Battery Replacement £65.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £55.00Dead Condition Repair £90.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy J6
+
+Front Screen Replacement £99.00Back Glass Replacement £40.00Battery Replacement £40.00Charging Dock Repair £45.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy j6 Plus
+
+Front Screen Replacement £99.00Back Glass Replacement £40.00Battery Replacement £45.00Charging Dock Repair £45.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy J7 Core
+
+Front Screen Replacement £99.00Back Glass Replacement £40.00Battery Replacement £45.00Charging Dock Repair £45.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy J7 Pro
+
+Back Glass Replacement £40.00Battery Replacement £45.00Charging Dock Repair £45.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy J8
+
+Front Screen Replacement £99.00Back Glass Replacement £45.00Battery Replacement £50.00Charging Dock Repair £50.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy Note 10 Plus
+
+Front Screen Replacement £249.00Back Glass Replacement £65.00Battery Replacement £69.00Charging Dock Repair £65.00Ear or Loud Speaker Replacement £222.00Front Camera Repair £96.00Dead Condition Repair £170.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy Note 20
+
+Front Screen Replacement £180.00Back Glass Replacement £75.00Battery Replacement £69.00Charging Dock Repair £65.00Dead Condition Repair £170.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy Note 8
+
+Front Screen Replacement £179.00Back Glass Replacement £65.00Battery Replacement £78.00Charging Dock Repair £65.00Dead Condition Repair £150.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy Note 9
+
+Front Screen Replacement £219.00Back Glass Replacement £75.00Battery Replacement £69.00Charging Dock Repair £65.00Dead Condition Repair £150.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy S10
+
+Front Screen Replacement £169.00Back Glass Replacement £69.00Battery Replacement £69.00Charging Dock Repair £60.00Front Camera Repair £75.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy S10 5G
+
+Front Screen Replacement £209.00Back Glass Replacement £55.00Battery Replacement £69.00Charging Dock Repair £60.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy S10 Lite
+
+Front Screen Replacement £149.00Back Glass Replacement £75.00Battery Replacement £69.00Charging Dock Repair £60.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy S10 Plus
+
+Front Screen Replacement £195.00Back Glass Replacement £75.00Battery Replacement £69.00Charging Dock Repair £60.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy S20
+
+Front Screen Replacement £189.00Back Glass Replacement £89.00Battery Replacement £69.00Charging Dock Repair £70.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy S20 5G
+
+Front Screen Replacement £199.00Back Glass Replacement £60.00Battery Replacement £69.00Charging Dock Repair £70.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy S20 FE lite
+
+Front Screen Replacement £139.00Back Glass Replacement £99.00Battery Replacement £69.00Charging Dock Repair £70.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy S20 Plus
+
+Front Screen Replacement £195.00Back Glass Replacement £99.00Battery Replacement £79.00Charging Dock Repair £70.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy S20 Ultra
+
+Front Screen Replacement £219.00Back Glass Replacement £109.00Battery Replacement £79.00Charging Dock Repair £70.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy S21
+
+Front Screen Replacement £145.00Back Glass Replacement £99.00Battery Replacement £69.00Charging Dock Repair £70.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy S21 FE
+
+Front Screen Replacement £179.00Back Glass Replacement £104.00Battery Replacement £69.00Charging Dock Repair £79.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy S21 Plus 5G
+
+Front Screen Replacement £145.00Back Glass Replacement £99.00Battery Replacement £69.00Charging Dock Repair £70.00Front Camera Repair £74.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy S21 Ultra
+
+Front Screen Replacement £239.00Back Glass Replacement £109.00Battery Replacement £69.00Charging Dock Repair £70.00Ear or Loud Speaker Replacement £119.00Front Camera Repair £84.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy S22
+
+Front Screen Replacement £189.00Back Glass Replacement £99.00Battery Replacement £75.00Charging Dock Repair £75.00Ear or Loud Speaker Replacement £99.00Front Camera Repair £79.00Other Fault Diagnostics £40.00
+
+Samsung Galaxy S22 Plus
+
+Front Screen Replacement £189.00Back Glass Replacement £99.00Battery Replacement £75.00Charging Dock Repair £75.00Ear or Loud Speaker Replacement £99.00Front Camera Repair £89.00Other Fault Diagnostics £40.00
 
 Samsung Galaxy S22 Ultra
 
-Screen Repair (LCD & Glass) £209.99Battery Replacement £49.99Full Diagnostic Service £24.99Power Button Repair £49.99Rear Housing replacement £39.99Earpiece Repair £49.99Microphone Repair £49.99Loudspeaker Repair £49.99HeadPhone Jack Repair £49.99Front Camera Repair £49.99Rear Camera Repair £49.99Software Fix £39.99Vibration Repair £49.99
+Front Screen Replacement £245.00Back Glass Replacement £99.00Battery Replacement £75.00Charging Dock Repair £80.00Ear or Loud Speaker Replacement £99.00Front Camera Repair £94.00Other Fault Diagnostics £40.00
 
-Galaxy Note Edge
+Samsung Galaxy S23
 
-Screen Repair (LCD & Glass) £209.99Battery Replacement £49.99Full Diagnostic Service £24.99Power Button Repair £49.99Rear Housing replacement £39.99Earpiece Repair £49.99Microphone Repair £49.99Loudspeaker Repair £49.99HeadPhone Jack Repair £49.99Front Camera Repair £49.99Rear Camera Repair £49.99Software Fix £39.99Vibration Repair £49.99
+Front Screen Replacement £179.00Back Glass Replacement £95.00Battery Replacement £75.00Charging Dock Repair £79.00Dead Condition Repair £230.00Other Fault Diagnostics £40.00
 
-Galaxy Note
+Samsung Galaxy S23 FE
 
-Screen Repair (LCD & Glass) £109.99Back Battery Cover only replacement £84.99 Battery Replacement £89.99Full Diagnostic Service £24.99Power Button Repair £49.99Rear Housing replacement £39.99Earpiece Repair £49.99Microphone Repair £49.99Loudspeaker Repair £49.99HeadPhone Jack Repair £49.99Front Camera Repair £49.99Rear Camera Repair £49.99Software Fix £39.99Vibration Repair £49.99
+Front Screen Replacement £149.00Back Glass Replacement £99.00Battery Replacement £75.00Charging Dock Repair £79.00Dead Condition Repair £230.00Other Fault Diagnostics £40.00
 
-Galaxy Note 2
+Samsung Galaxy S23 Plus
 
-Screen Repair (LCD & Glass) £119.99Back Battery Cover only replacement £84.99 Battery Replacement £89.99Full Diagnostic Service £24.99Power Button Repair £49.99Rear Housing replacement £39.99Earpiece Repair £49.99Microphone Repair £49.99Loudspeaker Repair £49.99Headphone Jack Repair £49.99Front Camera Repair £49.99Rear Camera Repair £49.99Vibration Repair £49.99Liquid Diagnostics £20.00Charging Dock Repair £59.00Software Fix £39.99
+Front Screen Replacement £179.00Back Glass Replacement £99.00Battery Replacement £75.00Charging Dock Repair £79.00Dead Condition Repair £230.00Other Fault Diagnostics £40.00
 
-Galaxy Note 3
+Samsung Galaxy S23 Ultra
 
-Screen (Glass & LCD) Replacement Original / OEM £119.99 Back Battery Cover only replacement Original / OEM £94.99 Battery replacement OEM £94.99Power Button Repair £49.99Microphone Repair £49.99Loudspeaker Repair £49.99Front Camera Repair £49.99Rear Camera Repair £49.99Vibration Repair £49.99Liquid Diagnostics £20.00Charging Dock Repair £59.00Signal Issue Repair £59.00
+Front Screen Replacement £249.00Back Glass Replacement £104.00Battery Replacement £75.00Charging Dock Repair £85.00Dead Condition Repair £230.00Other Fault Diagnostics £40.00
 
-Galaxy Note 4
+Samsung Galaxy S24
 
-Screen (Glass & LCD) Replacement Original / OEM £149.99 Back Battery Cover only replacement Original / OEM £109.99 Battery replacement OEM £94.99Power Button Repair £49.99Microphone Repair £49.99Loudspeaker Repair £49.99Front Camera Repair £49.99Rear Camera Repair £49.99Vibration Repair £49.99Liquid Diagnostics £20.00Charging Dock Repair £59.00Signal Issue Repair £59.00
+Front Screen Replacement £179.00Back Glass Replacement £104.00Battery Replacement £79.00Charging Dock Repair £79.00Rear Camera Repair £114.00Dead Condition Repair £250.00Other Fault Diagnostics £40.00
 
-Galaxy Note 5
+Samsung Galaxy S24 FE
 
-Screen (Glass & LCD) Replacement Original / OEM £209.99 Back Battery Cover only replacement Original / OEM £109.99 Battery replacement OEM £94.99Power Button Repair £49.99Microphone Repair £49.99Loudspeaker Repair £49.99Front Camera Repair £49.99Rear Camera Repair £49.99Vibration Repair £49.99Liquid Diagnostics £20.00Charging Dock Repair £59.00Signal Issue Repair £59.00
+Front Screen Replacement £149.00Back Glass Replacement £119.00Battery Replacement £79.00Charging Dock Repair £79.00Dead Condition Repair £250.00Other Fault Diagnostics £40.00
 
-Galaxy Note 8
+Samsung Galaxy S24 Plus
 
-Screen Repair (LCD & Glass) £194.99Rear Glass repairs £79.99Battery replacement OEM £45.00Liquid Diagnostics £40.00Front Camera Repair £45.00Rear Camera Repair £45.00Charging Dock Repair £45.00Audio Issue Repair £80.00
+Front Screen Replacement £189.00Back Glass Replacement £104.00Battery Replacement £79.00Charging Dock Repair £69.00Rear Camera Repair £114.00Dead Condition Repair £250.00Other Fault Diagnostics £40.00
 
-Galaxy S5
+Samsung Galaxy S24 Ultra
 
-Screen Repair (LCD & Glass) £89.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Battery replacement OEM £39.00Microphone Repair £49.99
+Front Screen Replacement £259.00Back Glass Replacement £109.00Battery Replacement £79.00Charging Dock Repair £79.00Rear Camera Repair £159.00Dead Condition Repair £250.00Other Fault Diagnostics £40.00
 
-Galaxy S5 Mini
+Samsung Galaxy S25
 
-Screen Repair (LCD & Glass) £89.99Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Microphone Repair £49.99Loudspeaker Repair £49.99
+Front Screen Replacement £229.00Back Glass Replacement £104.00Charging Dock Repair £89.00Dead Condition Repair £250.00
 
-Galaxy S6
+Samsung Galaxy S25 FE
 
-Screen Repair (LCD & Glass) £134.99Battery Replacement £64.99Power Button Repair £59.99Rear Glass repairs £64.99Earpiece Repair £59.99Liquid Diagnostics £20.00Front Camera Repair £59.99Rear Camera Repair £79.99Charging port Repair £79.99Signal Issue Repair £59.00Microphone Repair £49.99Loudspeaker Repair £59.99Vibration Repair £49.99
+Back Glass Replacement £119.00
 
-Galaxy S6 Edge
+Samsung Galaxy S25 Plus
 
-Screen Repair (LCD & Glass) £129.99Battery Replacement £64.99Liquid Diagnostics £19.99Front Camera Repair £59.99Rear Camera Repair £79.99Charging port Repair £79.99Audio Issue Repair £80.00Power Button Repair £59.99Rear Glass repairs £64.99Earpiece Repair £59.99Vibration Repair £69.99
+Front Screen Replacement £239.00Back Glass Replacement £119.00Charging Dock Repair £89.00Dead Condition Repair £250.00
 
-Galaxy S6 Edge +
+Samsung Galaxy S25 Ultra
 
-Screen Repair (LCD & Glass) £139.99Battery Replacement £64.99Liquid Diagnostics £20.00Front Camera Repair £59.99Rear Camera Repair £79.99Charging Dock Repair £59.00Microphone Repair £49.99Loudspeaker Repair £69.99Power Button Repair £59.99Rear Glass repairs £64.99Earpiece Repair £59.99Vibration Repair £69.99
+Front Screen Replacement £259.00Back Glass Replacement £119.00Battery Replacement £99.00Charging Dock Repair £89.00Dead Condition Repair £250.00Other Fault Diagnostics £50.00
 
-Galaxy S7
+Samsung Galaxy S26
 
-Screen Repair (LCD & Glass) £129.99Battery Replacement £64.99Liquid Diagnostics £19.99Front Camera Repair £59.99Rear Camera Repair £79.99Charging Dock Repair £49.99Microphone Repair £49.99Loudspeaker Repair £59.99Vibration Repair £49.99Rear Glass repairs £64.99Earpiece Repair £59.99Power Button Repair £59.99
+Front Screen Replacement £179.00
 
-Galaxy S7 Edge
+Samsung Galaxy S26 Plus
 
-Screen Repair (LCD & Glass) £159.99Rear Glass repairs £64.99Battery Replacement £64.99Liquid Diagnostics £19.99Loudspeaker Repair £59.99Charging port Repair £79.99Front Camera Repair £59.99Rear Camera Repair £79.99Signal Issue Repair £79.00Microphone Repair £79.99Power Button Repair £59.99Earpiece Repair £59.99
+Front Screen Replacement £249.00
 
-Galaxy S8
+Samsung Galaxy S26 Ultra
 
-Screen Repair (LCD & Glass) £149.99Rear Glass repairs £64.99Battery Replacement £64.99Liquid Diagnostics £20.00Front Camera Repair £59.99Rear Camera Repair £79.99Charging port Repair £79.99Signal Issue Repair £80.00Audio Issue Repair £80.00Power Button Repair £59.99Earpiece Repair £59.99Loudspeaker Repair £59.99Vibration Repair £49.99
+Front Screen Replacement £279.00
 
-Galaxy S8 Plus
+Samsung Galaxy S8
 
-Screen Repair (LCD & Glass) £194.99Rear Glass repairs £64.99Battery Replacement £54.55Liquid Diagnostics £19.99Front Camera Repair £59.99Rear Camera Repair £79.99Charging port Repair £79.99Signal Issue Repair £59.00Microphone Repair £60.00 Loudspeaker Repair £59.99Power Button Repair £59.99Earpiece Repair £59.99Vibration Repair £49.99
+Front Screen Replacement £139.00Back Glass Replacement £69.00Battery Replacement £69.00Charging Dock Repair £60.00Other Fault Diagnostics £40.00
 
-Galaxy S3 i9300
+Samsung Galaxy S8 Plus
 
-Screen Repair (LCD & Glass) £95.00Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
+Front Screen Replacement £139.00Back Glass Replacement £69.00Battery Replacement £69.00Charging Dock Repair £60.00Other Fault Diagnostics £40.00
 
-Galaxy S4
+Samsung Galaxy S9
 
-Screen Repair (LCD & Glass) £79.00Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
+Front Screen Replacement £139.00Back Glass Replacement £55.00Battery Replacement £69.00Charging Dock Repair £60.00Other Fault Diagnostics £40.00
 
-Galaxy S4 Mini
+Samsung Galaxy S9 Plus
 
-Screen Repair (LCD & Glass) £79.00Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
+Front Screen Replacement £139.00Back Glass Replacement £69.00Battery Replacement £69.00Charging Dock Repair £60.00Ear or Loud Speaker Replacement £69.00Other Fault Diagnostics £40.00
 
-Galaxy S5 Neo
+Samsung Galaxy Z Flip
 
-Screen Repair (LCD & Glass) £115.00Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
+Inner Screen Replacement £279.00Back Glass Replacement £65.00Battery Replacement £90.00Charging Dock Repair £95.00Rear Camera Repair £69.00Dead Condition Repair £180.00Other Fault Diagnostics £40.00
 
-Galaxy S9
+Samsung Galaxy Z Flip 5G
 
-Screen Repair (LCD & Glass) £169.00Battery replacement OEM £45.00Liquid Diagnostics £69.99Front Camera Repair £49.99Rear Camera Repair £69.99Charging Dock Repair £49.99Signal Issue Repair £80.00Audio Issue Repair £80.00
+Inner Screen Replacement £310.00Outer Screen Replacement £119.00Back Glass Replacement £65.00Battery Replacement £90.00Charging Dock Repair £95.00Rear Camera Repair £69.00Dead Condition Repair £190.00Other Fault Diagnostics £40.00
 
-Galaxy S9 Plus
+Samsung Galaxy Z Flip 8
 
-Screen Repair (LCD & Glass) £189.99Battery replacement OEM £45.00Liquid Diagnostics £19.99Front Camera Repair £49.99Rear Camera Repair £89.99Charging Dock Repair £60.00Signal Issue Repair £80.00Audio Issue Repair £80.00
+Other Fault Diagnostics £40.00
 
-Galaxy S10
+Samsung Galaxy Z Flip3 5G
 
-Screen Repair (LCD & Glass) £234.99Rear Glass Broken £80.00Battery replacement OEM £50.00Liquid Diagnostics £20.00Front Camera Repair £100.00Rear Camera Repair £150.00Charging Dock Repair £50.00Audio Issue Repair £80.00
+Inner Screen Replacement £320.00Outer Screen Replacement £119.00Back Glass Replacement £65.00Battery Replacement £90.00Charging Dock Repair £95.00Rear Camera Repair £69.00Dead Condition Repair £190.00Other Fault Diagnostics £40.00
 
-Galaxy S10 Plus
+Samsung Galaxy Z Flip4
 
-Screen Repair (LCD & Glass) £239.00Battery replacement OEM £50.00Liquid Diagnostics £20.00Front Camera Repair £100.00Rear Camera Repair £100.00Charging Dock Repair £50.00Audio Issue Repair £80.00
+Inner Screen Replacement £309.00Outer Screen Replacement £119.00Back Glass Replacement £65.00Battery Replacement £95.00Charging Dock Repair £95.00Rear Camera Repair £69.00Dead Condition Repair £200.00Other Fault Diagnostics £40.00
 
-Galaxy J7 Prime
+Samsung Galaxy Z Flip5
 
-Screen Repair (LCD & Glass) £79.99Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
+Inner Screen Replacement £319.00Outer Screen Replacement £119.00Back Glass Replacement £65.00Battery Replacement £95.00Charging Dock Repair £95.00Rear Camera Repair £69.00Dead Condition Repair £250.00Other Fault Diagnostics £40.00
 
-Galaxy J7
+Samsung Galaxy Z Flip6
 
-Screen Repair (LCD & Glass) £109.00Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
+Inner Screen Replacement £319.00Outer Screen Replacement £129.00Charging Dock Repair £99.00Rear Camera Repair £69.00Dead Condition Repair £260.00
 
-Galaxy J5 Prime
+Samsung Galaxy Z Fold 2-5g
 
-Screen Repair (LCD & Glass) £94.99Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £80.00Audio Issue Repair £80.00
+Inner Screen Replacement £310.00Outer Screen Replacement £195.00Back Glass Replacement £75.00Battery Replacement £75.00Charging Dock Repair £80.00Rear Camera Repair £60.00Dead Condition Repair £140.00Other Fault Diagnostics £40.00
 
-Galaxy J5 (2017)
+Samsung Galaxy Z Fold 3-5g
 
-Screen Repair (LCD & Glass) £119.99Battery replacement OEM £50.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £50.00Signal Issue Repair £80.00Audio Issue Repair £80.00
+Inner Screen Replacement £399.00Outer Screen Replacement £195.00Back Glass Replacement £75.00Battery Replacement £75.00Charging Dock Repair £80.00Rear Camera Repair £60.00Dead Condition Repair £140.00Other Fault Diagnostics £40.00
 
-Galaxy J530
+Samsung Galaxy Z Fold 4
 
-Screen Repair (LCD & Glass) £N/ABattery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
+Inner Screen Replacement £429.00Outer Screen Replacement £130.00Back Glass Replacement £75.00Battery Replacement £75.00Charging Dock Repair £80.00Rear Camera Repair £60.00Dead Condition Repair £180.00Other Fault Diagnostics £40.00
 
-Galaxy J5 (2016)
+Samsung Galaxy Z Fold 5
 
-Screen Repair (LCD & Glass) £109.00Battery replacement OEM £50.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £50.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
+Inner Screen Replacement £470.00Outer Screen Replacement £129.00Back Glass Replacement £75.00Battery Replacement £95.00Charging Dock Repair £90.00Rear Camera Repair £60.00Dead Condition Repair £200.00Other Fault Diagnostics £40.00
 
-Galaxy J3 (2017)
+Samsung Galaxy Z Fold 6
 
-Screen Repair (LCD & Glass) £89.99Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
+Inner Screen Replacement £555.00Outer Screen Replacement £229.00Back Glass Replacement £75.00Battery Replacement £95.00Charging Dock Repair £90.00Rear Camera Repair £60.00Dead Condition Repair £200.00Other Fault Diagnostics £40.00
 
-Galaxy J5 (SMJ500F)
+Samsung Galaxy Z Fold 7
 
-Screen Repair (LCD & Glass) £115.00Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
+Inner Screen Replacement £649.00Outer Screen Replacement £229.00Battery Replacement £100.00Charging Dock Repair £90.00Rear Camera Repair £60.00Dead Condition Repair £270.00Other Fault Diagnostics £40.00
 
-Galaxy J3 (2016)
+Samsung Galaxy Z Fold 8
 
-Screen Repair (Broken Screen) £109.00Battery replacement OEM £15.00Liquid Diagnostics £45.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
+Other Fault Diagnostics £40.00
 
-Galaxy J2 Prime
+Samsung Galaxy Z Fold 8 Ultra
 
-Screen Repair (LCD & Glass) £N/ABattery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Galaxy J7 Pro
-
-Screen Repair (LCD & Glass) £144.00Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Galaxy J6
-
-Screen Repair (LCD & Glass) £129.00Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung Tab 4 10.1
-
-Screen Repair (LCD & Glass) £125.00Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Galaxy S3 (2016) SM A310F
-
-Screen Repair (LCD & Glass) £105.00Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Galaxy A3 (2017)
-
-Screen (Glass & LCD) Replacement Original / OEM £139.99Back Battery Cover only replacemeOriginal / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £45.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Galaxy A3 SM-A300FU
-
-Screen Repair (LCD & Glass) £129.00Battery replacement OEM £40.00Liquid Diagnostics £20.00Front Camera Repair £100.00Rear Camera Repair £150.00Charging Dock Repair £45.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Galaxy A5
-
-Screen Repair (LCD & Glass) £135.00Rear Glass Broken £35Battery replacement OEM £40.00Liquid Diagnostics £20.00Front Camera Repair £100.00Rear Camera Repair £150.00Charging Dock Repair £45.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Galaxy A5 (2017)
-
-Screen Repair (LCD & Glass) £135.00Rear Glass Broken £35Battery replacement OEM £40.00Liquid Diagnostics £20.00Front Camera Repair £90.00Rear Camera Repair £135.00Charging Dock Repair £45.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Galaxy A7
-
-Screen Repair (LCD & Glass) £99.00Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Galaxy A70
-
-Screen Repair (LCD & Glass) £149.00Battery replacement OEM £40.00Liquid Diagnostics £20.00Front Camera Repair £50.00Rear Camera Repair £50.00Charging Dock Repair £40.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Galaxy A80
-
-Samsung S21 Ultra / G998 Broken Screen £129.00Battery replacement OEM £40.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £40.00Signal Issue Repair £59.00Audio Issue Repair £40.00Data Recovery Diagnostics £20.00
-
-template of all the services
-
-Screen (Glass & LCD) Replacement Original / OEM £359.99 Back Battery Cover only replacement Original / OEM £139.99 Battery replacement OEM £39.00Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung S21 Ultra / G998
-
-Screen (Glass & LCD) Replacement Original / OEM £289.99 Screen (Glass & LCD) Replacement Original / OEM £289.99 Battery replacement OEM £124.99Liquid Diagnostics £20.00Front Camera Repair £100.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung S21 Plus / G996
-
-Screen (Glass & LCD) Replacement Original / OEM £249.99 Back Battery Cover only replacement Original / OEM £139.99 Battery replacement OEM £109.99Liquid Diagnostics £20.00Front Camera Repair £110.00Rear Camera Repair £165.00Charging Port repair OEM £124.99Signal Issue Repair £80.00Audio Issue Repair £80.00Back Cover replacement OEM £89.99
-
-Samsung S21 5G / G991
-
-Screen (Glass & LCD) Replacement Original / OEM £239.99 Back Battery Cover only replacement Original / OEM £139.99 Battery replacement OEM £124.99Liquid Diagnostics £30.00Front Camera Repair £100.00Rear Camera Repair £150.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung S21 G990
-
-Screen (Glass & LCD) Replacement Original / OEM £249.99 Battery replacement OEM £124.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung S20 Ultra / G988
-
-Screen (Glass & LCD) Replacement Original / OEM £279.99 Back Battery Cover only replacement Original / OEM £119.99 Battery replacement OEM £124.99Liquid Diagnostics £20.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung S20 FE / G780
-
-Screen (Glass & LCD) Replacement Original / OEM £169.99 Back Battery Cover only replacement Original / OEM £119.99 Battery replacement OEM £124.99Liquid Diagnostics £30.00Front Camera Repair £79.00Rear Camera Repair £79.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung S20+ / G985
-
-Screen (Glass & LCD) Replacement Original / OEM £269.99 Back Battery Cover only replacement Original / OEM £119.99 Battery replacement OEM £124.99Liquid Diagnostics £20.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung S20 / G980
-
-Screen (Glass & LCD) Replacement Original / OEM £249.99 Back Battery Cover only replacement Original / OEM £139.99Battery replacement OEM £124.99Liquid Diagnostics £30.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung S10 Lite / G770
-
-Screen (Glass & LCD) Replacement Original / OEM £179.99 Back Battery Cover only replacement Original / OEM £124.99 Battery replacement OEM £109.99Liquid Diagnostics £30.00Front Camera Repair £100.00Rear Camera Repair £150.00Charging Dock Repair £59.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung S10 + / G975
-
-Screen (Glass & LCD) Replacement Original / OEM £269.99 Back Battery Cover only replacement Original / OEM £119.99Battery replacement OEM £124.99Liquid Diagnostics £30.00Front Camera Repair £100.00Rear Camera Repair £150.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung S10 E / G970
-
-Screen (Glass & LCD) Replacement Original / OEM £269.99 Back Battery Cover only replacement Original / OEM £119.99 Battery replacement OEM £124.99Liquid Diagnostics £20.00Front Camera Repair £100.00Rear Camera Repair £100.00Charging Dock Repair £59.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung S10 5G / G977
-
-Screen (Glass & LCD) Replacement Original / OEM £234.99 Back Battery Cover only replacement Original / OEM £124.99 Battery replacement OEM £109.99Liquid Diagnostics £40.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £69.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung S10 / G973
-
-Screen (Glass & LCD) Replacement Original / OEM £239.99 Back Battery Cover only replacement Original / OEM £139.99 Battery replacement OEM £124.99Liquid Diagnostics £20.00Front Camera Repair £100.00Rear Camera Repair £150.00Charging Dock Repair £69.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung S9 + / G965
-
-Screen (Glass & LCD) Replacement Original / OEM £189.99 Back Battery Cover only replacement Original / OEM £139.99 Battery replacement OEM £124.99Liquid Diagnostics £20.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £60.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung S9 / G960
-
-Screen (Glass & LCD) Replacement Original / OEM £169.99Back Battery Cover only replacement Original / OEM £139.99 Battery replacement OEM £124.99Liquid Diagnostics £20.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £59.00Audio Issue Repair £59.00
-
-Samsung S8 + / G955
-
-Screen (Glass & LCD) Replacement Original / OEM £174.99 Back Battery Cover only replacement Original / OEM £124.99 Battery replacement OEM £109.99Liquid Diagnostics £20.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £69.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung S8 / G950
-
-Screen (Glass & LCD) Replacement Original / OEM ££164.99 Back Battery Cover only replacement Original / OEM £114.99 Battery replacement OEM £109.99Liquid Diagnostics £20.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £59.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung S7 Edge / G935
-
-Screen (Glass & LCD) Replacement Original / OEM £159.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £94.99Liquid Diagnostics £20.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £59.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung S7 / G930
-
-Screen (Glass & LCD) Replacement Original / OEM £149.99 Back Battery Cover only replacement Original / OEM £94.99 Battery replacement OEM £94.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung S6 Edge + / G928
-
-Screen (Glass & LCD) Replacement Original / OEM £129.99 Back Battery Cover only replacement Original / OEM £94.99 Battery replacement OEM £94.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung S6 Edge / G925
-
-Screen (Glass & LCD) Replacement Original / OEM £119.99 Back Battery Cover only replacement Original / OEM £94.99 Battery replacement OEM £94.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung S6 / G920
-
-Screen (Glass & LCD) Replacement Original / OEM £119.99 Back Battery Cover only replacement Original / OEM £94.99 Battery replacement OEM £94.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung Note 20 Ultra / N985
-
-Screen (Glass & LCD) Replacement Original / OEM £309.99 Back Battery Cover only replacement Original / OEM £94.99 Battery replacement OEM £94.99Liquid Diagnostics £20.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung Note 20 / N980
-
-Screen (Glass & LCD) Replacement Original / OEM £254.99 Back Battery Cover only replacement Original / OEM £124.99 Battery replacement OEM £109.99Liquid Diagnostics £20.00Front Camera Repair £800.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung Note 10 Lite / N770
-
-Screen (Glass & LCD) Replacement Original / OEM £174.99 Back Battery Cover only replacement Original / OEM £124.99 Battery replacement OEM £109.99Liquid Diagnostics £20.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung Note 10 + 5G / N976
-
-Screen (Glass & LCD) Replacement Original / OEM £240.99 Back Battery Cover only replacement Original / OEM £124.99 Battery replacement OEM £109.99Liquid Diagnostics £40.00Front Camera Repair £80.00Rear Camera Repair £220.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung Note 10 + / N975
-
-Screen (Glass & LCD) Replacement Original / OEM £240 Back Battery Cover only replacement Original / OEM £124.99 Battery replacement OEM £109.99Liquid Diagnostics £40.00Front Camera Repair £80.00Rear Camera Repair £220.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung Note 10 / N970
-
-Screen (Glass & LCD) Replacement Original / OEM £199Back Battery Cover only replacement Original / OEM £124.99 Battery replacement OEM £109.99Liquid Diagnostics £40.00Front Camera Repair £80.00Rear Camera Repair £220.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung Note 9 / N960
-
-Screen (Glass & LCD) Replacement Original / OEM £189.99 Back Battery Cover only replacement Original / OEM £124.99 Battery replacement OEM £109.99Liquid Diagnostics £20.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung Note 8 / N950
-
-Screen (Glass & LCD) Replacement Original / OEM £189.99 Back Battery Cover only replacement Original / OEM £124.99 Battery replacement OEM £109.99Liquid Diagnostics £40.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung Note 5 / N920
-
-Screen (Glass & LCD) Replacement Original / OEM £169.99 Back Battery Cover only replacement Original / OEM £124.99 Battery replacement OEM £109.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A90 5G / A908
-
-Screen (Glass & LCD) Replacement Original / OEM £169.99 Back Battery Cover only replacement Original / OEM £124.99 Battery replacement OEM £109.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A90 / A9050 (2019)
-
-Screen (Glass & LCD) Replacement Original / OEM £149.99 Back Battery Cover only replacement Original / OEM £124.99 Battery replacement OEM £109.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A80 / A805
-
-Screen (Glass & LCD) Replacement Original / OEM £129.99Back Battery Cover only replacement Original / OEM £114.99 Battery replacement OEM £109.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A72 / A725
-
-Screen (Glass & LCD) Replacement Original / OEM £129.99 Back Battery Cover only replacement Original / OEM £124.99 Battery replacement OEM £109.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A71 5G / A7160
-
-Screen (Glass & LCD) Replacement Original / OEM £129.99 Back Battery Cover only replacement Original / OEM £114.99 Battery replacement OEM £109.99Liquid Diagnostics £40.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung A71 / A715
-
-Screen (Glass & LCD) Replacement Original / OEM £129.99 Back Battery Cover only replacement Original / OEM £114.99 Battery replacement OEM £109.99Liquid Diagnostics £40.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung A70s / A707
-
-Screen (Glass & LCD) Replacement Original / OEM £139.99 Back Battery Cover only replacement Original / OEM £114.99 Battery replacement OEM £109.99Liquid Diagnostics £40.00Front Camera Repair £40.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung A70 / A705
-
-Screen (Glass & LCD) Replacement Original / OEM £139.99 Back Battery Cover only replacement Original / OEM £114.99 Battery replacement OEM £109.99Liquid Diagnostics £20.00Front Camera Repair £40.00Rear Camera Repair £34.00Charging Dock Repair £79.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A52 / A525
-
-Screen (Glass & LCD) Replacement Original / OEM £149.99 Back Battery Cover only replacement Original / OEM £114.99 Battery replacement OEM £109.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A51 5G / A516
-
-Screen (Glass & LCD) Replacement Original / OEM £139.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £40.00Front Camera Repair £59.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung A51 / A515
-
-Screen (Glass & LCD) Replacement Original / OEM £139.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung A50 / A505
-
-Screen (Glass & LCD) Replacement Original / OEM £129.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A42 5G / A426
-
-Screen (Glass & LCD) Replacement Original / OEM £129.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £40.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung A41 / A415
-
-Screen (Glass & LCD) Replacement Original / OEM £129.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £40.00Front Camera Repair £40.00Rear Camera Repair £40.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung A40S / A3040 (2019)
-
-Screen (Glass & LCD) Replacement Original / OEM £129.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A40 / A405
-
-Screen (Glass & LCD) Replacement Original / OEM £129.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A32 / A325
-
-Screen (Glass & LCD) Replacement Original / OEM £119.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A31 / A315
-
-Screen (Glass & LCD) Replacement Original / OEM £119.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A30S / A307
-
-Screen (Glass & LCD) Replacement Original / OEM £119.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A30 / A305
-
-Screen (Glass & LCD) Replacement Original / OEM £119.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A21s / A217
-
-Screen (Glass & LCD) Replacement Original / OEM £119.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £40.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung A21 / A215
-
-Screen (Glass & LCD) Replacement Original / OEM £119.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £40.00Front Camera Repair £80.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung A20 S/ A207
-
-Screen (Glass & LCD) Replacement Original / OEM £109.99 Back Battery Cover only replacement Original / OEM £94.99 Battery replacement OEM £94.99Liquid Diagnostics £20.00Front Camera Repair £50.00Rear Camera Repair £50.00Charging Dock Repair £79.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A20e / A202
-
-Screen (Glass & LCD) Replacement Original / OEM £109.99 Back Battery Cover only replacement Original / OEM £94.99 Battery replacement OEM £94.99Liquid Diagnostics £40.00Front Camera Repair £50.00Rear Camera Repair £100.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung A20 / A205
-
-Screen (Glass & LCD) Replacement Original / OEM £109.99 Back Battery Cover only replacement Original / OEM £94.99 Battery replacement OEM £94.99Liquid Diagnostics £40.00Front Camera Repair £50.00Rear Camera Repair £50.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung A12 / A125
-
-Screen (Glass & LCD) Replacement Original / OEM £100.99 Back Battery Cover only replacement Original / OEM £94.99 Battery replacement OEM £94.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A11 / A115
-
-Screen (Glass & LCD) Replacement Original / OEM £100.99 Back Battery Cover only replacement Original / OEM £94.99 Battery replacement OEM £94.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A10s / A107
-
-Screen (Glass & LCD) Replacement Original / OEM £99 Back Battery Cover only replacement Original / OEM £94.99 Battery replacement OEM £94.99Liquid Diagnostics £40.00Front Camera Repair £50.00Rear Camera Repair £50.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung A10 / A105
-
-Screen (Glass & LCD) Replacement Original / OEM £99 Back Battery Cover only replacement Original / OEM £94.99 Battery replacement OEM £94.99Liquid Diagnostics £40.00Front Camera Repair £50.00Rear Camera Repair £50.00Charging Dock Repair £79.00Signal Issue Repair £80.00Audio Issue Repair £80.00
-
-Samsung A9 2018 / A920
-
-Screen (Glass & LCD) Replacement Original / OEM £119.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A8 + 2018 / A730
-
-Screen (Glass & LCD) Replacement Original / OEM £129.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A8 2018 / A530
-
-Screen (Glass & LCD) Replacement Original / OEM £129.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A7 2018 / A750
-
-Screen (Glass & LCD) Replacement Original / OEM £129.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A7 2016 / A710
-
-Screen (Glass & LCD) Replacement Original / OEM £129.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A6 Plus / A605
-
-Screen (Glass & LCD) Replacement Original / OEM £119.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A6 / A600
-
-Screen (Glass & LCD) Replacement Original / OEM £174.99 Battery replacement OEM £109.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A5 2017 / A520
-
-Screen (Glass & LCD) Replacement Original / OEM £119.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99
-
-Samsung A5 2016 / A510
-
-Screen (Glass & LCD) Replacement Original / OEM £174.99 Battery replacement OEM £109.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A5 / A500
-
-Screen (Glass & LCD) Replacement Original / OEM £109.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung A3 2016 / A310
-
-Screen (Glass & LCD) Replacement Original / OEM £109.99 Back Battery Cover only replacement Original / OEM £104.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Samsung S8 / G950
-
-Screen (Glass & LCD) Replacement Original / OEM £164.99 Back Battery Cover only replacement Original / OEM £114.99 Battery replacement OEM £104.99Liquid Diagnostics £20.00Front Camera Repair £59.00Rear Camera Repair £34.00Charging Dock Repair £59.00Signal Issue Repair £59.00Audio Issue Repair £59.00Data Recovery Diagnostics £20.00
-
-Advantages
-
-* Super fast same day repair service
-* Free true tone installation ( certain phone models only)
-* Free water seal installation ( certain phone models only)
-* original / OEM parts only
-* 12 month warranty
-* Multiple payments methods
-* Experienced Technicians
-
-#### Please choose your repair service\*
-
-Call-out Sameday Services,Repairs at your home/office/nearest coffee shop (same day-service with in London and greater London )Collect & Deliver.UK Nationwide(2-3 days.)
-
-# Step 3
-
-### Please fill the quick form:
-
-Nameyour full name
-
-Phoneyour full name
-
-Emaila valid email
-
-Street AddressStreet Address
-
-Postcodeyour full name
-
-“Please let us know what happened with your device (optional -notes)”more details
-
-0 / 
-
-Have a Coupon Code?
-
-Book Your Repair Now
-
-Previous
-
-Next
-
-## Our Work Speaks For Itself
-
-##### Few most recent repaired devices before & after images
-
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-
-0
-
-###### Repaired Glasses
-
-0
-
-###### Water Damage Repair
-
-0
-
-###### Other Issues
-
-0
-
-###### Happy Customers
-
- 
-
-iRepairMan Provides reliable iPhone or Phone Repairs in London, Book an iPhone Repair or replacement Services, fix & repair Services for broken screen damages phone, Battery and Charging Port, and all types of repair Services in London and Surrounding areas.
-
-QUICK LINKS
-
-OTHER LINKS
-
-GET SOCIAL
-
- Facebook Instagram Whatsapp tiktok Linkedin Youtube 
-
- REQUEST CALL BACK 
-
-Copyright © 2026 iRepairMan. All Rights Reserved
-
-WhatsApp us
-
-Call Now (07506011774) 
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "I Repair Man",
-  "image": "https://irepairman.co.uk/wp-content/uploads/2024/06/cropped-Logo-150x150.jpeg",
-  "@id": "https://irepairman.co.uk/wp-content/uploads/2023/03/WhatsApp-Image-2023-03-28-at-3.35.33-PM.jpeg",
-  "url": "https://irepairman.co.uk/",
-  "telephone": "07506 011774",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Kemp House, 128 City Road",
-    "addressLocality": "Old Street, London",
-    "postalCode": "EC1V 2NX",
-    "addressCountry": "GB"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 51.5266107,
-    "longitude": -0.08843039999999999
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
-    ],
-    "opens": "00:00",
-    "closes": "23:59"
-  },
-  "sameAs": [
-    "https://www.facebook.com/iRepairManLondon/",
-    "https://twitter.com/i_Repair_Man",
-    "https://www.instagram.com/irepairmanlondon/",
-    "https://www.youtube.com/channel/UCd9MHg4ceWm00OP6rXJTOtg",
-    "https://www.linkedin.com/company/irepairman/"
-  ] 
-}
-```
+Other Fault Diagnostics £40.00
