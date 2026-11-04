@@ -138,12 +138,12 @@ export function fallbackChat(messages: ChatTurn[]): ChatResponse {
   }
 
   if (estimate) {
-    const bookPath = estimate.bookingPath || ROUTES.bookRepair
+    const offer = /book|repair|fix|cracked|broken|sell|trade/i.test(full)
     return {
-      reply: `${estimate.summary} You can book that repair online, or I can pass your details to our team.`,
+      reply: `${estimate.summary}${offer ? " Want me to pass your details to our team, or you can book online?" : ''}`,
       actions: [
-        { label: 'Book this repair', route: bookPath },
         { label: 'Send my details', route: 'chat:collect' },
+        { label: 'Book online', route: ROUTES.bookRepair },
       ],
       mode: 'local',
     }

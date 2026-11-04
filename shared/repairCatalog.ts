@@ -1,6 +1,6 @@
-import { searchRepairs, type RepairSearchHit } from '../src/lib/repairSearch.ts'
 import { deviceCategories } from '../src/data/booking.ts'
-import { listedDevices } from '../src/data/priceLists.ts'
+import { listedDevices, type ListedRepair } from '../src/data/priceLists.ts'
+import { listedRepairs } from '../src/data/listedPrices.ts'
 import { issuesByCategory, type RepairIssue } from '../src/data/repairIssues.ts'
 
 const CATEGORY_HINTS: { id: string; patterns: RegExp[] }[] = [
@@ -21,15 +21,9 @@ const ISSUE_HINTS: { pattern: RegExp; matchers: string[] }[] = [
   { pattern: /water|liquid/i, matchers: ['liquid', 'water'] },
 ]
 
-const listedBrandKeys = new Set(listedDevices.map((device) => `${device.categoryId}/${device.brandId}`))
+const UNLISTED_BRAND = /xiaomi|redmi|\bpoco\b|xperia|\bsony\b|\bnokia\b|motorola|\bmoto\b|\boppo\b|garmin|fitbit|galaxy watch|surface|fire hd|lenovo|dell|\bxps\b|\bhp\b|thinkpad|asus|acer|\bmsi\b/i
 
-export type RepairEstimate = {
-  category: string
-  summary: string
-  /** Deep-link into booking / repair page when we found a match */
-  bookingPath?: string
-  hits?: RepairSearchHit[]
-}
+const listedBrandKeys = new Set(listedDevices.map((device) => `${device.categoryId}/${device.brandId}`))
 
 function formatPrice(price: number | null): string {
   return price !== null ? `£${price.toFixed(2)}` : 'quote required'
@@ -40,12 +34,6 @@ function shownPrice(repair: { price: number | null; priceText?: string }): strin
   return repair.price !== null ? `from £${repair.price.toFixed(2)}` : 'quote required'
 }
 
-function parseMoney(text?: string): number | null {
-  if (!text) return null
-  const match = text.replace(/,/g, '').match(/£\s*(\d+(?:\.\d+)?)/)
-  return match ? Number(match[1]) : null
-}
-
 export function detectDeviceCategory(text: string) {
   for (const hint of CATEGORY_HINTS) {
     if (hint.patterns.some((p) => p.test(text))) {
@@ -54,6 +42,29 @@ export function detectDeviceCategory(text: string) {
     }
   }
   return null
+}
+
+function modelAliases(name: string): string[] {
+  const full = name.toLowerCase()
+  const stripped = full.replace(/^(samsung|google|apple|huawei|oneplus)\s+/, '')
+  return stripped === full ? [full] : [full, stripped]
+}
+
+function findListedModel(text: string) {
+  const haystack = text.toLowerCase()
+  let best: { categoryId: string; brandId: string; name: string; score: number } | null = null
+  for (const device of listedDevices) {
+    for (const model of device.models) {
+      const score = modelAliases(model.name)
+        .filter((alias) => alias.length > 3 && haystack.includes(alias))
+        .reduce((longest, alias) => Math.max(longest, alias.length), 0)
+      if (!score) continue
+      if (!best || score > best.score) {
+        best = { categoryId: device.categoryId, brandId: device.brandId, name: model.name, score }
+      }
+    }
+  }
+  return best
 }
 
 function matchLabels<T extends { label: string }>(items: T[], text: string): T[] {
@@ -81,121 +92,39 @@ export function findIssues(text: string, categoryId?: string): RepairIssue[] {
   )
 }
 
-function isAddonHit(hit: RepairSearchHit) {
-  return /tempered glass screen protection/i.test(hit.title) || /add-on/i.test(hit.title)
+function perModelReply(name: string) {
+  return `${name} prices are listed per model. Tell me the exact model and the fault, and I can quote the workshop price.`
 }
 
-function formatHitLine(hit: RepairSearchHit) {
-  const price = hit.priceText ? ` — ${hit.priceText}` : ''
-  return `${hit.title}${price}`
-}
-
-function normalizeLoose(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
-}
-
-function queryNamesModel(query: string, model: string) {
-  const q = normalizeLoose(query)
-  const aliases = [
-    normalizeLoose(model),
-    normalizeLoose(model.replace(/^(samsung|google|apple|huawei|oneplus)\s+/i, '')),
-  ]
-  return aliases.some((alias) => alias.length >= 4 && q.includes(alias))
-}
-
-function summariseBookingHits(query: string, hits: RepairSearchHit[]): RepairEstimate | null {
-  const repairs = hits.filter((hit) => hit.kind === 'repair' && !isAddonHit(hit))
-  const models = hits.filter((hit) => hit.kind === 'model')
-  const usable = repairs.length ? repairs : models
-  if (!usable.length) return null
-
-  const top = usable[0]
-  const near = /closest listed model/i.test(top.subtitle)
-  const namedTop = top.kind === 'repair' && queryNamesModel(query, top.model)
-  const focusedRepairs =
-    repairs.length && (namedTop || near)
-      ? repairs.filter((hit) => hit.model === top.model)
-      : repairs
-
-  const quoteRepairs = focusedRepairs.length ? focusedRepairs : repairs
-  const uniqueModels = [...new Set(quoteRepairs.map((hit) => hit.model))]
-  const sameModel = uniqueModels.length === 1
-
-  // Brand-level: one example per model, preferring a spread of generations.
-  const showcase = sameModel
-    ? quoteRepairs.slice(0, 3)
-    : (() => {
-        const picked: RepairSearchHit[] = []
-        const seenGens = new Set<number>()
-        for (const hit of quoteRepairs) {
-          if (picked.some((item) => item.model === hit.model)) continue
-          const genMatch = hit.model.match(/\b(\d{1,2})\b/)
-          const gen = genMatch ? Number(genMatch[1]) : -1
-          if (gen >= 0 && seenGens.has(gen)) continue
-          if (gen >= 0) seenGens.add(gen)
-          picked.push(hit)
-          if (picked.length >= 4) break
-        }
-        return picked
-      })()
-
-  const prices = showcase
-    .map((hit) => parseMoney(hit.priceText))
-    .filter((n): n is number => n != null)
-    .sort((a, b) => a - b)
-
-  const lines = showcase.map(formatHitLine)
-
-  let summary: string
-  if (sameModel && quoteRepairs.length) {
-    summary = near
-      ? `I couldn't find that exact model in booking, so here's the closest listed match — ${lines.join('; ')}.`
-      : `From our booking price list: ${lines.join('; ')}.`
-  } else if (prices.length) {
-    const from = `£${prices[0].toFixed(2)}`
-    summary = `From our booking list, prices start from ${from}. Examples: ${lines.join('; ')}. Tell me your exact model for the precise workshop price.`
-  } else if (models.length) {
-    summary = `I found ${models[0].title} in booking — open it to see repair prices for that model.`
-  } else {
-    summary = `I found matching repairs in booking: ${lines.join('; ')}.`
-  }
-
-  let bookingPath =
-    top.path.includes('book-repair') || top.path.includes('#book') ? top.path : `${top.path}#book`
-
-  // Brand-level answers should land on the booking chooser for that brand, not one old model.
-  if (!sameModel && top.kind === 'repair') {
-    bookingPath = `/book-repair?category=${encodeURIComponent(top.categoryId)}&brand=${encodeURIComponent(top.brandId)}`
-  }
-
-  return {
-    category: sameModel ? top.model : detectDeviceCategory(query)?.label ?? 'Repair',
-    summary,
-    bookingPath,
-    hits: (quoteRepairs.length ? quoteRepairs : usable).slice(0, 6),
-  }
-}
-
-/**
- * Search the same booking catalogue the website uses, then fall back to category
- * starting prices when nothing matches.
- */
-export function lookupRepairEstimate(text: string, context = ''): RepairEstimate | null {
+export function lookupRepairEstimate(text: string, context = '') {
   const combined = `${context} ${text}`.trim()
-  if (combined.length < 2) return null
-
-  const hits = searchRepairs(text, 10)
-  const fromBooking = summariseBookingHits(text, hits)
-  if (fromBooking) return fromBooking
-
-  // Broader pass using full conversation context (e.g. model said earlier).
-  if (context.trim() && context.trim() !== text.trim()) {
-    const contextual = searchRepairs(combined, 10)
-    const fromContext = summariseBookingHits(combined, contextual)
-    if (fromContext) return fromContext
+  const listed = findListedModel(combined)
+  if (listed) {
+    const repairs = listedRepairs(listed.categoryId, listed.brandId, listed.name) ?? []
+    const matched = matchLabels(repairs, combined)
+    const picks: ListedRepair[] = matched.length
+      ? matched
+      : repairs.filter((repair) => /screen/i.test(repair.label)).slice(0, 1)
+    if (!picks.length) return null
+    const lines = picks.map((repair) => `${repair.label}: ${repair.priceText}`)
+    return {
+      category: listed.name,
+      summary: matched.length
+        ? `${listed.name}: ${lines.join('; ')}.`
+        : `${listed.name} prices are listed per repair. ${lines[0]}.`,
+    }
   }
 
   const category = detectDeviceCategory(combined)
+  const namedUnlisted = UNLISTED_BRAND.test(combined)
+  if (
+    !namedUnlisted &&
+    category &&
+    (category.id === 'smartphone' || /iphone|ipad|samsung|galaxy s|macbook|oneplus|one plus|huawei|pixel|apple watch/i.test(combined))
+  ) {
+    return { category: category.label, summary: perModelReply(category.label) }
+  }
+
   const issues = findIssues(combined, category?.id)
   if (!issues.length || !category) return null
 
@@ -206,7 +135,6 @@ export function lookupRepairEstimate(text: string, context = ''): RepairEstimate
       issues.length === 1
         ? `For ${category.label}, ${issues[0].label} is ${shownPrice(issues[0])} and usually takes ${issues[0].time}.`
         : `For ${category.label}: ${lines.join('; ')}.`,
-    bookingPath: `/book-repair?category=${encodeURIComponent(category.id)}`,
   }
 }
 
@@ -215,7 +143,7 @@ export function buildRepairPricingReference(): string {
     .map((device) => {
       const category = deviceCategories.find((item) => item.id === device.categoryId)
       const brand = category?.brands.find((item) => item.id === device.brandId)
-      return `${brand?.label ?? device.id}: prices are per model in booking. Use LIVE LOOKUP / booking search results — never invent prices.`
+      return `${brand?.label ?? device.id}: each model has its own price. Quote a price only after the customer names the model.`
     })
     .join('\n')
 
