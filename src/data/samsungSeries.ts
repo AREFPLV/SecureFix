@@ -134,9 +134,16 @@ function samsungModelSortKey(name: string): [number, number, number, string] {
       generation = Number(s[1])
     } else if (a) {
       family = 300
-      generation = Number(a[1])
-      // A15–A59 are newer than legacy A70/A80/A90 — boost the modern band.
-      if (generation >= 10 && generation <= 59) generation += 100
+      const raw = Number(a[1])
+      // Modern A1x–A5x: ones digit tracks the year class (A55 > A35 > A54 > A52).
+      // Legacy A70/A80/A90 stay on the raw number so they sort below.
+      if (raw >= 10 && raw <= 59) {
+        const tens = Math.floor(raw / 10)
+        const ones = raw % 10
+        generation = ones * 100 + tens
+      } else {
+        generation = raw
+      }
     } else if (j) {
       family = 200
       generation = Number(j[1])
