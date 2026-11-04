@@ -284,20 +284,29 @@ export function localBusinessJsonLd() {
       'City of London',
     ],
     legalName: 'SECUREFIX LTD',
-    openingHours: 'Monday to Saturday 09:00-19:00. Closed Sunday.',
+    openingHours: [
+      'Monday-Friday 09:00-20:00',
+      'Saturday 10:00-20:00',
+      'Sunday 10:00-19:00',
+    ],
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
         opens: '09:00',
-        closes: '19:00',
+        closes: '20:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Saturday',
+        opens: '10:00',
+        closes: '20:00',
       },
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: 'Sunday',
-        opens: '00:00',
-        closes: '00:00',
-        description: 'Closed',
+        opens: '10:00',
+        closes: '19:00',
       },
     ],
     knowsAbout: [
