@@ -13,6 +13,7 @@ import {
   SHOP_ADDRESS,
 } from '@/data/issueCatalog'
 import type { SeoPageEntry } from '@/data/seoCatalog'
+import { PhoneServiceGrid } from '@/components/booking/PhoneServiceGrid'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { localBusinessJsonLd } from '@/data/seo'
 import './ServiceLanding.css'
@@ -32,6 +33,7 @@ export default function ModelHubPage({ page, categoryId, brandId, model, brandLa
   const brandPath = `/repair/${categoryId}/${brandId}`
   const catPath = categoryHubPath(categoryId)
   const categoryLabel = deviceCategories.find((item) => item.id === categoryId)?.label ?? 'Repair'
+  const isPhone = categoryId === 'smartphone'
 
   usePageSeo({
     title: page.title,
@@ -67,22 +69,36 @@ export default function ModelHubPage({ page, categoryId, brandId, model, brandLa
           </nav>
           <h1>{model} Repair</h1>
           {issuable ? (
-            <>
-              <p className="service-landing-lead">
-                {model} repairs at {SHOP_ADDRESS}. Choose a priced fault below.
-              </p>
-              <ul className="issue-offer-list">
-                {issues.map((issue) => (
-                  <li key={issue.label}>
-                    <Link to={`${modelPath}/${issueSlug(issue.label)}`}>
-                      <span>{displayIssueLabel(issue.label)}</span>
-                      <span>{issuePriceShown(issue)}</span>
-                      <span>{issue.time}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </>
+            isPhone ? (
+              <>
+                <p className="service-landing-lead">
+                  {model} repairs at {SHOP_ADDRESS}. Pick a service below to book with the listed
+                  price.
+                </p>
+                <PhoneServiceGrid
+                  modelName={model}
+                  issues={issues}
+                  bookHref={(issue) => `${modelPath}/${issueSlug(issue.label)}`}
+                />
+              </>
+            ) : (
+              <>
+                <p className="service-landing-lead">
+                  {model} repairs at {SHOP_ADDRESS}. Choose a priced fault below.
+                </p>
+                <ul className="issue-offer-list">
+                  {issues.map((issue) => (
+                    <li key={issue.label}>
+                      <Link to={`${modelPath}/${issueSlug(issue.label)}`}>
+                        <span>{displayIssueLabel(issue.label)}</span>
+                        <span>{issuePriceShown(issue)}</span>
+                        <span>{issue.time}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )
           ) : (
             <p className="service-landing-lead">
               Parts for the {model} are not priced yet, so fault pages are not published for this

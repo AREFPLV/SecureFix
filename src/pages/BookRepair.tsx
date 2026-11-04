@@ -16,6 +16,7 @@ import { usePageSeo } from '@/hooks/usePageSeo'
 import { bookRepairSeo } from '@/data/seo'
 import RepairBookingForm from '@/components/RepairBookingForm'
 import BookingRepairSearch from '@/components/BookingRepairSearch'
+import { PhoneServiceGrid } from '@/components/booking/PhoneServiceGrid'
 import './BookRepair.css'
 
 type Step = 'device' | 'brand' | 'model' | 'issue' | 'book'
@@ -285,8 +286,22 @@ export default function BookRepair() {
           {step === 'model' && selectedBrand && (
             <section className="book-step">
               <h2>
-                Select the <span className="accent">{selectedBrand.label}</span> model
+                {selectedCategory?.id === 'smartphone' ? (
+                  <>
+                    Select your <span className="accent">device model</span>
+                  </>
+                ) : (
+                  <>
+                    Select the <span className="accent">{selectedBrand.label}</span> model
+                  </>
+                )}
               </h2>
+              {selectedCategory?.id === 'smartphone' ? (
+                <p className="book-price-note">
+                  Choose your exact {selectedBrand.label} model to see the services we provide and
+                  prices.
+                </p>
+              ) : null}
               <div className="book-grid book-grid-models">
                 {selectedBrand.models.map((model) => (
                   <button
@@ -304,50 +319,73 @@ export default function BookRepair() {
 
           {step === 'issue' && (
             <section className="book-step">
-              <h2>
-                Select the <span className="accent">issue</span> to fix
-              </h2>
-              {selectedModel && (
-                <div className="book-summary-bar">
-                  <span className="chip">{selectedBrand?.label}</span>
-                  <span className="chip chip-accent">{selectedModel}</span>
-                </div>
-              )}
-              {issues.length === 0 ? (
-                <p className="collection-note book-price-note">
-                  Call the shop on <a href={site.phoneHref}>{site.phone}</a> and we will confirm the
-                  price before booking the {selectedModel}.
-                </p>
+              {selectedCategory?.id === 'smartphone' && selectedModel ? (
+                <>
+                  <div className="book-summary-bar">
+                    <span className="chip">{selectedBrand?.label}</span>
+                    <span className="chip chip-accent">{selectedModel}</span>
+                  </div>
+                  {issues.length === 0 ? (
+                    <p className="collection-note book-price-note">
+                      Call the shop on <a href={site.phoneHref}>{site.phone}</a> and we will confirm
+                      the price before booking the {selectedModel}.
+                    </p>
+                  ) : (
+                    <PhoneServiceGrid
+                      modelName={selectedModel}
+                      issues={issues}
+                      onSelectIssue={handleIssueSelect}
+                    />
+                  )}
+                </>
               ) : (
                 <>
-                  <p className="book-price-note">
-                    Prices are the workshop list for this model. Each repair includes a 1-year
-                    warranty. Liquid damage is excluded.
-                    {genericBooking
-                      ? ' Choosing a repair opens the booking form on this page.'
-                      : " Choosing a repair opens that repair's booking page."}
-                  </p>
-                  <div className="book-issue-grid">
-                    {issues.map((issue) => {
-                      const selected = selectedIssue?.label === issue.label
-                      return (
-                        <button
-                          key={issue.label}
-                          type="button"
-                          className={`book-card book-issue-card${selected ? ' is-selected' : ''}`}
-                          aria-pressed={selected}
-                          onClick={() => handleIssueSelect(issue)}
-                        >
-                          <span className="book-card-icon" aria-hidden="true">
-                            🔧
-                          </span>
-                          <h3>{displayIssueLabel(issue.label)}</h3>
-                          <p className="issue-time">Workshop time {issue.time}</p>
-                          <p className="issue-price">{issuePriceShown(issue)}</p>
-                        </button>
-                      )
-                    })}
-                  </div>
+                  <h2>
+                    Select the <span className="accent">issue</span> to fix
+                  </h2>
+                  {selectedModel && (
+                    <div className="book-summary-bar">
+                      <span className="chip">{selectedBrand?.label}</span>
+                      <span className="chip chip-accent">{selectedModel}</span>
+                    </div>
+                  )}
+                  {issues.length === 0 ? (
+                    <p className="collection-note book-price-note">
+                      Call the shop on <a href={site.phoneHref}>{site.phone}</a> and we will confirm
+                      the price before booking the {selectedModel}.
+                    </p>
+                  ) : (
+                    <>
+                      <p className="book-price-note">
+                        Prices are the workshop list for this model. Each repair includes a 1-year
+                        warranty. Liquid damage is excluded.
+                        {genericBooking
+                          ? ' Choosing a repair opens the booking form on this page.'
+                          : " Choosing a repair opens that repair's booking page."}
+                      </p>
+                      <div className="book-issue-grid">
+                        {issues.map((issue) => {
+                          const selected = selectedIssue?.label === issue.label
+                          return (
+                            <button
+                              key={issue.label}
+                              type="button"
+                              className={`book-card book-issue-card${selected ? ' is-selected' : ''}`}
+                              aria-pressed={selected}
+                              onClick={() => handleIssueSelect(issue)}
+                            >
+                              <span className="book-card-icon" aria-hidden="true">
+                                🔧
+                              </span>
+                              <h3>{displayIssueLabel(issue.label)}</h3>
+                              <p className="issue-time">Workshop time {issue.time}</p>
+                              <p className="issue-price">{issuePriceShown(issue)}</p>
+                            </button>
+                          )
+                        })}
+                      </div>
+                    </>
+                  )}
                 </>
               )}
             </section>
