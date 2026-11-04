@@ -38,10 +38,6 @@ export default function About() {
             </div>
             <div className="hero-stats">
               <div className="hero-stat">
-                <strong>2 Year</strong>
-                <span>Warranty</span>
-              </div>
-              <div className="hero-stat">
                 <strong>Same Day</strong>
                 <span>Service</span>
               </div>
@@ -63,10 +59,6 @@ export default function About() {
               </p>
             ))}
             <div className="about-stats-row">
-              <div className="about-stat">
-                <strong>2 Year</strong>
-                <span>Warranty</span>
-              </div>
               <div className="about-stat">
                 <strong>Same Day</strong>
                 <span>Service</span>
