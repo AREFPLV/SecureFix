@@ -1,19 +1,17 @@
 SecureFix Hostinger upload package
 =================================
 
-Download these part files from this folder, then join them on your computer:
+Download the full zip (recommended):
 
-  securefix_public_html_20261104_host.zip.00.part
-  securefix_public_html_20261104_host.zip.01.part
+  https://github.com/AREFPLV/SecureFix/raw/cursor/samsung-irepairzone-prices-e418/host-download/securefix_public_html_20261104_host.zip
 
-Join (Mac / Linux):
+Or download the two parts if the full file fails:
+
+  https://github.com/AREFPLV/SecureFix/raw/cursor/samsung-irepairzone-prices-e418/host-download/securefix_public_html_20261104_host.zip.00.part
+  https://github.com/AREFPLV/SecureFix/raw/cursor/samsung-irepairzone-prices-e418/host-download/securefix_public_html_20261104_host.zip.01.part
+
+Join parts (Mac / Linux):
   cat securefix_public_html_20261104_host.zip.*.part > securefix_public_html_20261104_host.zip
-
-Join (Windows PowerShell):
-  Get-Content securefix_public_html_20261104_host.zip.*.part -Enc Byte -Read 0 | Set-Content securefix_public_html_20261104_host.zip -Enc Byte
-
-Or download the full zip from the agent artifacts if available:
-  securefix_public_html_20261104_host.zip
 
 Upload to Hostinger
 -------------------
@@ -23,5 +21,6 @@ Upload to Hostinger
 4. Keep .htaccess (do not delete it)
 5. Delete the zip from the server after extract
 
-Includes: iPhone fault tiles, Samsung series picker, +£30 mobile screens, homepage fix.
+Includes: Samsung prices matched to iRepairZone (screens same, other faults +£20),
+iPhone fault tiles, Samsung series picker, homepage .htaccess fix.
 Built: 2026-11-04
