@@ -106,13 +106,6 @@ export default function Footer() {
             <a href={`mailto:${site.email}`}>{site.email}</a>
           </p>
           <p>{site.location}</p>
-          <p>
-            Monday–Friday: 09:00–20:00
-            <br />
-            Saturday: 10:00–20:00
-            <br />
-            Sunday: 10:00–19:00
-          </p>
         </div>
 
         <div className="footer-social">
