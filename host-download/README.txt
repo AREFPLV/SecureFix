@@ -10,9 +10,9 @@ Join (Mac / Linux):
   cat securefix_public_html_20261104_host.zip.*.part > securefix_public_html_20261104_host.zip
 
 Join (Windows PowerShell):
-  Get-Content securefix_public_html_20261104_host.zip.*.part -Enc Byte -Read 0 | Set-Content securefix_public_html_20261104_host.zip -Enc Byte
+  cmd /c copy /b securefix_public_html_20261104_host.zip.00.part+securefix_public_html_20261104_host.zip.01.part securefix_public_html_20261104_host.zip
 
-Or download the full zip from the agent artifacts if available:
+Or download the full zip from agent artifacts if available:
   securefix_public_html_20261104_host.zip
 
 Upload to Hostinger
@@ -23,5 +23,6 @@ Upload to Hostinger
 4. Keep .htaccess (do not delete it)
 5. Delete the zip from the server after extract
 
-Includes: iPhone fault tiles, Samsung series picker, +£30 mobile screens, homepage fix.
+Includes: Samsung prices matched to iRepairZone (screens same, other faults +£20),
+iPhone fault tiles, Samsung series picker, homepage .htaccess fix.
 Built: 2026-11-04
