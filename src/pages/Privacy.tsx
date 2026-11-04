@@ -45,9 +45,10 @@ export default function Privacy() {
           <section className="about-section">
             <h2>How the form is sent</h2>
             <p className="about-text">
-              Repair booking, call-out, trade-in, recycling, business IT quote and Protect
-              consultation forms are sent through FormSubmit to {site.bookingEmail}. FormSubmit
-              receives the fields you submit so the message can be delivered to SecureFix.
+              Repair booking, call-out, trade-in, recycling, business IT quote, Protect
+              consultation and Alex chat lead forms are sent through FormSubmit to{' '}
+              {site.bookingEmail}. FormSubmit receives the fields you submit so the message can be
+              delivered to SecureFix.
             </p>
           </section>
           <section className="about-section">

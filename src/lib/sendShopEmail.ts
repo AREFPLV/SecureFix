@@ -1,7 +1,14 @@
 import { site } from '@/data/content'
 
-/** Inbox for repair bookings, call-outs and other shop request forms. */
-export const REPAIR_INBOX = site.bookingEmail
+/** All website bookings and shop request forms go here. */
+export const REPAIR_INBOX = 'repair@securefix.uk' as const
+
+// Keep the public site config aligned with the FormSubmit destination.
+if (site.bookingEmail !== REPAIR_INBOX) {
+  console.warn(
+    `[SecureFix] site.bookingEmail is "${site.bookingEmail}" but forms send to ${REPAIR_INBOX}`,
+  )
+}
 
 const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${REPAIR_INBOX}`
 
@@ -9,7 +16,7 @@ export type ShopEmailPayload = Record<string, string | undefined>
 
 /**
  * Sends a booking-style message to the repair inbox.
- * Uses FormSubmit so the destination is always repair@securefix.uk.
+ * Destination is always repair@securefix.uk via FormSubmit.
  */
 export async function sendShopEmail(
   payload: ShopEmailPayload,

@@ -2,26 +2,20 @@ import './loadEnv.ts'
 import { generateInquiryReference, type CustomerLead } from '../shared/customerLead.ts'
 import type { ChatTurn } from '../shared/fallbackChat.ts'
 
-const ENDPOINT = 'https://api.web3forms.com/submit'
-
-function web3Key() {
-  return process.env.WEB3FORMS_ACCESS_KEY ?? process.env.VITE_WEB3FORMS_ACCESS_KEY
-}
+/** Chat booking / callback leads use the same repair inbox as website bookings. */
+const REPAIR_INBOX = 'repair@securefix.uk'
+const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${REPAIR_INBOX}`
 
 export async function sendLeadEmail(lead: CustomerLead, transcript: ChatTurn[]) {
   const reference = generateInquiryReference()
-  const key = web3Key()
-
-  if (!key) {
-    return { ok: false as const, reference, error: 'Email not configured' }
-  }
 
   const transcriptText = transcript
     .map((m) => `${m.role === 'user' ? 'Customer' : 'Alex'}: ${m.content}`)
     .join('\n')
 
-  const body = [
+  const message = [
     'New chat enquiry from SecureFix website',
+    `Sent to:     ${REPAIR_INBOX}`,
     '',
     `Reference: ${reference}`,
     `Name: ${lead.name}`,
@@ -38,21 +32,46 @@ export async function sendLeadEmail(lead: CustomerLead, transcript: ChatTurn[]) 
     transcriptText,
   ].join('\n')
 
-  const res = await fetch(ENDPOINT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({
-      access_key: key,
-      subject: `Chat Enquiry ${reference} — ${lead.name}`,
-      from_name: 'SecureFix Chat',
-      replyto: lead.email,
-      message: body,
-    }),
-  })
+  try {
+    const res = await fetch(FORMSUBMIT_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        _captcha: 'false',
+        _subject: `Chat Enquiry ${reference} — ${lead.name}`,
+        booking_reference: reference,
+        customer_name: lead.name,
+        customer_email: lead.email,
+        customer_phone: lead.phone,
+        device: lead.device,
+        issue: lead.issue,
+        intent: lead.intent,
+        message,
+        _replyto: lead.email,
+      }),
+    })
 
-  const data = (await res.json()) as { success?: boolean; message?: string }
-  if (!res.ok || !data.success) {
-    return { ok: false as const, reference, error: data.message ?? 'Send failed' }
+    const data = (await res.json().catch(() => ({}))) as {
+      success?: boolean | string
+      message?: string
+    }
+    const accepted = res.ok && String(data.success) === 'true'
+    if (!accepted) {
+      return {
+        ok: false as const,
+        reference,
+        error: data.message ?? 'Send failed',
+      }
+    }
+    return { ok: true as const, reference }
+  } catch (err) {
+    return {
+      ok: false as const,
+      reference,
+      error: err instanceof Error ? err.message : 'Network error',
+    }
   }
-  return { ok: true as const, reference }
 }
