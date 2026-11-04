@@ -137,8 +137,6 @@ export default function Footer() {
             <Link to={PRIVACY_ROUTE}>Privacy policy</Link>
             {' · '}
             <Link to={TERMS_ROUTE}>Terms &amp; Conditions</Link>
-            {' · '}
-            <Link to="/sitemap">Sitemap</Link>
           </p>
         </div>
       </div>
