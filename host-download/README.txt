@@ -1,19 +1,17 @@
 SecureFix Hostinger upload package
 =================================
 
-Download these part files from this folder, then join them on your computer:
+Download the full zip (recommended):
 
-  securefix_public_html_20261104_host.zip.00.part
-  securefix_public_html_20261104_host.zip.01.part
+  https://github.com/AREFPLV/SecureFix/raw/cursor/samsung-irepairzone-prices-e418/host-download/securefix_public_html_20261104_host.zip
 
-Join (Mac / Linux):
+Or download the two parts if the full file fails:
+
+  https://github.com/AREFPLV/SecureFix/raw/cursor/samsung-irepairzone-prices-e418/host-download/securefix_public_html_20261104_host.zip.00.part
+  https://github.com/AREFPLV/SecureFix/raw/cursor/samsung-irepairzone-prices-e418/host-download/securefix_public_html_20261104_host.zip.01.part
+
+Join parts (Mac / Linux):
   cat securefix_public_html_20261104_host.zip.*.part > securefix_public_html_20261104_host.zip
-
-Join (Windows PowerShell):
-  cmd /c copy /b securefix_public_html_20261104_host.zip.00.part+securefix_public_html_20261104_host.zip.01.part securefix_public_html_20261104_host.zip
-
-Or download the full zip from agent artifacts if available:
-  securefix_public_html_20261104_host.zip
 
 Upload to Hostinger
 -------------------
