@@ -197,8 +197,15 @@ def format_price_text(price: float, original: str) -> str:
 
 
 def apply_smartphone_screen_bump(devices: list[dict]) -> None:
+    """Add walk-in uplift to smartphone screens.
+
+    Apple iPhone sources are already matched to iRepairZone with the screen
+    uplift baked in — skip those. Other phone brands still get +£30 here.
+    """
     for device in devices:
         if device.get("categoryId") != "smartphone":
+            continue
+        if device.get("brandId") == "apple-phone":
             continue
         for model in device["models"]:
             for repair in model["repairs"]:

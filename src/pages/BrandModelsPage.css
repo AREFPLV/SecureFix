@@ -1,0 +1,68 @@
+.phone-brand-hub-lead {
+  margin: 0.35rem 0 0;
+  max-width: 42rem;
+  color: var(--color-text-muted);
+}
+
+.phone-services-eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.phone-services-intro {
+  margin: 1.25rem 0 1rem;
+}
+
+.phone-services-intro h2 {
+  margin: 0;
+  font-family: Montserrat, Inter, system-ui, sans-serif;
+  font-size: clamp(1.45rem, 2.5vw, 1.9rem);
+  font-weight: 800;
+  font-style: italic;
+  color: var(--color-text);
+}
+
+.phone-services-lead {
+  margin: 0.55rem 0 0;
+  max-width: 40rem;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.phone-model-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 0.85rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.phone-model-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 88px;
+  padding: 0.9rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-align: center;
+  text-decoration: none;
+  font-family: Montserrat, Inter, system-ui, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.25;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.phone-model-card:hover,
+.phone-model-card:focus-visible {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-accent);
+  transform: translateY(-2px);
+  outline: none;
+}

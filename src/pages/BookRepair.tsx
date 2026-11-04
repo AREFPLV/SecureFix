@@ -4,22 +4,40 @@ import { site } from '@/data/content'
 import { deviceCategories, type DeviceCategory, type Brand } from '@/data/booking'
 import { type RepairIssue } from '@/data/repairIssues'
 import {
+  appleScreenGradeBase,
   bookingIssues,
   bookingSelectionFromQuery,
   displayIssueLabel,
   isIssuableModel,
+  isQuoteDiagnosticIssue,
+  issueBlurb,
   issuePriceShown,
   issueSlug,
+  smartphonePickerIssues,
 } from '@/data/issueCatalog'
+import {
+  getPremiumScreenOption,
+  getScreenGradeOptions,
+  isFrontScreenIssue,
+  type ScreenGrade,
+} from '@/data/screenGrades'
+import {
+  getBatteryGradeOptions,
+  getPremiumBatteryOption,
+  isBatteryReplacementIssue,
+  type BatteryGrade,
+} from '@/data/batteryGrades'
 import { slugify } from '@/lib/slugify'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { bookRepairSeo } from '@/data/seo'
 import RepairBookingForm from '@/components/RepairBookingForm'
 import BookingRepairSearch from '@/components/BookingRepairSearch'
-import { PhoneServiceGrid } from '@/components/booking/PhoneServiceGrid'
+import { repairIssueIcon } from '@/components/RepairIssueIcons'
 import './BookRepair.css'
 
 type Step = 'device' | 'brand' | 'model' | 'issue' | 'book'
+type SelectableIssue = RepairIssue & { cardTitle?: string }
+type PartGrade = ScreenGrade | BatteryGrade
 
 const FLOW: { key: Step; num: number; label: string }[] = [
   { key: 'model', num: 1, label: 'Model' },
@@ -38,6 +56,17 @@ function usesInlineBooking(categoryId: string | null | undefined, model: string 
   return !isIssuableModel(model)
 }
 
+function isPartGradeLabel(label: string) {
+  const lower = label.toLowerCase()
+  return (
+    lower.includes('incell') ||
+    lower.includes('genuine apple screen') ||
+    lower.includes('genuine apple battery') ||
+    lower === 'premium battery replacement' ||
+    (lower.includes('premium screen replacement') && lower.includes('oled'))
+  )
+}
+
 export default function BookRepair() {
   usePageSeo(bookRepairSeo)
   const [searchParams, setSearchParams] = useSearchParams()
@@ -49,7 +78,8 @@ export default function BookRepair() {
   const [selectedCategory, setSelectedCategory] = useState<DeviceCategory | null>(seed.category)
   const [selectedBrand, setSelectedBrand] = useState<Brand | null>(seed.brand)
   const [selectedModel, setSelectedModel] = useState<string | null>(seed.model)
-  const [selectedIssue, setSelectedIssue] = useState<RepairIssue | null>(seed.issue)
+  const [selectedIssue, setSelectedIssue] = useState<SelectableIssue | null>(seed.issue)
+  const [selectedPartGrade, setSelectedPartGrade] = useState<PartGrade | null>(null)
 
   useEffect(() => {
     const next = bookingSelectionFromQuery(searchParams)
@@ -59,7 +89,8 @@ export default function BookRepair() {
       next.brand &&
       next.model &&
       next.issue &&
-      !usesInlineBooking(next.category.id, next.model)
+      !usesInlineBooking(next.category.id, next.model) &&
+      !isPartGradeLabel(next.issue.label)
     ) {
       navigate(
         repairBookPath(next.category.id, next.brand.id, next.model, next.issue.label),
@@ -71,6 +102,7 @@ export default function BookRepair() {
     setSelectedBrand(next.brand)
     setSelectedModel(next.model)
     setSelectedIssue(next.issue)
+    setSelectedPartGrade(null)
     setStep(next.step)
   }, [searchParams, navigate])
 
@@ -132,23 +164,51 @@ export default function BookRepair() {
     )
   }
 
-  function handleIssueSelect(issue: RepairIssue) {
+  function handleIssueSelect(issue: SelectableIssue) {
+    // First click selects the card and reveals the description panel below.
+    setSelectedIssue(issue)
+    setSelectedPartGrade(null)
+    requestAnimationFrame(() => {
+      document.getElementById('issue-detail')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+    })
+  }
+
+  function handlePartGradeSelect(grade: PartGrade) {
+    setSelectedPartGrade(grade)
+  }
+
+  function handleIssueContinue() {
+    if (!selectedIssue) return
     const catId = categoryId()
     const brandId = selectedBrand?.id ?? searchParams.get('brand')
     if (!catId || !brandId || !selectedModel) return
+
+    const needsGrade = showPartGrades && !selectedPartGrade
+    if (needsGrade) return
+
+    const bookingIssue = selectedPartGrade
+      ? {
+          label: selectedPartGrade.label,
+          price: selectedPartGrade.price,
+          priceText: selectedPartGrade.priceText,
+          time: selectedIssue.time,
+          cardTitle: selectedIssue.cardTitle,
+        }
+      : selectedIssue
+
+    // Dedicated SEO fault pages for each repair (including screen/battery grades).
     if (usesInlineBooking(catId, selectedModel)) {
       setSearchParams(
         withEntry({
           category: catId,
           brand: brandId,
           model: slugify(selectedModel),
-          issue: issueSlug(issue.label),
+          issue: issueSlug(bookingIssue.label),
         }),
       )
       return
     }
-    setSelectedIssue(issue)
-    navigate(repairBookPath(catId, brandId, selectedModel, issue.label))
+    navigate(repairBookPath(catId, brandId, selectedModel, bookingIssue.label))
   }
 
   function handleBack() {
@@ -190,14 +250,87 @@ export default function BookRepair() {
     }
   }
 
-  const issues =
+  const issues: SelectableIssue[] =
     selectedCategory && selectedModel
-      ? bookingIssues(selectedCategory.id, selectedBrand?.id, selectedModel)
+      ? selectedCategory.id === 'smartphone'
+        ? smartphonePickerIssues(selectedBrand?.id, selectedModel)
+        : bookingIssues(selectedCategory.id, selectedBrand?.id, selectedModel)
       : []
+
+  const isApplePhone = selectedBrand?.id === 'apple-phone'
+  const showIphoneScreenGrades = Boolean(
+    selectedCategory?.id === 'smartphone' &&
+      isApplePhone &&
+      selectedIssue &&
+      isFrontScreenIssue(selectedIssue),
+  )
+  const showOtherScreenPremium = Boolean(
+    selectedCategory?.id === 'smartphone' &&
+      !isApplePhone &&
+      selectedIssue &&
+      isFrontScreenIssue(selectedIssue),
+  )
+  const showIphoneBatteryGrades = Boolean(
+    selectedCategory?.id === 'smartphone' &&
+      isApplePhone &&
+      selectedIssue &&
+      isBatteryReplacementIssue(selectedIssue),
+  )
+  const showOtherBatteryPremium = Boolean(
+    selectedCategory?.id === 'smartphone' &&
+      !isApplePhone &&
+      selectedIssue &&
+      isBatteryReplacementIssue(selectedIssue),
+  )
+  const showScreenGrades = showIphoneScreenGrades || showOtherScreenPremium
+  const showBatteryGrades = showIphoneBatteryGrades || showOtherBatteryPremium
+  const showPartGrades = showScreenGrades || showBatteryGrades
+  const partGrades: PartGrade[] = selectedIssue
+    ? showIphoneScreenGrades && selectedModel
+      ? getScreenGradeOptions(appleScreenGradeBase(selectedIssue, selectedModel))
+      : showOtherScreenPremium
+        ? getPremiumScreenOption(selectedIssue)
+        : showIphoneBatteryGrades
+          ? getBatteryGradeOptions(selectedIssue)
+          : showOtherBatteryPremium
+            ? getPremiumBatteryOption(selectedIssue)
+            : []
+    : []
+  const detailIssue = selectedPartGrade
+    ? {
+        label: selectedPartGrade.label,
+        price: selectedPartGrade.price,
+        priceText: selectedPartGrade.priceText,
+        time: selectedIssue?.time ?? '30m',
+      }
+    : selectedIssue
+  const partGradePrompt = showBatteryGrades
+    ? showIphoneBatteryGrades
+      ? 'Choose a battery below'
+      : 'Confirm Premium battery'
+    : showScreenGrades
+      ? showIphoneScreenGrades
+        ? 'Choose a screen below'
+        : 'Confirm Premium screen'
+      : null
+  const partGradeBlurb = selectedModel
+    ? showIphoneBatteryGrades
+      ? `Choose the ${selectedModel} battery quality that suits you. All options include fitting and a 1-year warranty (liquid damage excluded).`
+      : showOtherBatteryPremium
+        ? `Premium battery replacement for the ${selectedModel}. Includes fitting and a 1-year warranty (liquid damage excluded).`
+        : showIphoneScreenGrades
+          ? `Choose the ${selectedModel} screen quality that suits you. All options include fitting and a 1-year warranty (liquid damage excluded).`
+          : showOtherScreenPremium
+            ? `Premium screen replacement for the ${selectedModel}. Includes fitting and a 1-year warranty (liquid damage excluded).`
+            : null
+    : null
 
   const flowIndex = FLOW.findIndex((item) => item.key === step)
   const showFlow = flowIndex >= 0
-  const genericBooking = usesInlineBooking(selectedCategory?.id ?? categoryId(), selectedModel)
+  const genericBooking =
+    usesInlineBooking(selectedCategory?.id ?? categoryId(), selectedModel) ||
+    Boolean(selectedPartGrade) ||
+    (step === 'book' && selectedIssue != null && isPartGradeLabel(selectedIssue.label))
 
   return (
     <div className="book-page site-page">
@@ -286,22 +419,8 @@ export default function BookRepair() {
           {step === 'model' && selectedBrand && (
             <section className="book-step">
               <h2>
-                {selectedCategory?.id === 'smartphone' ? (
-                  <>
-                    Select your <span className="accent">device model</span>
-                  </>
-                ) : (
-                  <>
-                    Select the <span className="accent">{selectedBrand.label}</span> model
-                  </>
-                )}
+                Select the <span className="accent">{selectedBrand.label}</span> model
               </h2>
-              {selectedCategory?.id === 'smartphone' ? (
-                <p className="book-price-note">
-                  Choose your exact {selectedBrand.label} model to see the services we provide and
-                  prices.
-                </p>
-              ) : null}
               <div className="book-grid book-grid-models">
                 {selectedBrand.models.map((model) => (
                   <button
@@ -319,73 +438,116 @@ export default function BookRepair() {
 
           {step === 'issue' && (
             <section className="book-step">
-              {selectedCategory?.id === 'smartphone' && selectedModel ? (
-                <>
-                  <div className="book-summary-bar">
-                    <span className="chip">{selectedBrand?.label}</span>
-                    <span className="chip chip-accent">{selectedModel}</span>
-                  </div>
-                  {issues.length === 0 ? (
-                    <p className="collection-note book-price-note">
-                      Call the shop on <a href={site.phoneHref}>{site.phone}</a> and we will confirm
-                      the price before booking the {selectedModel}.
-                    </p>
-                  ) : (
-                    <PhoneServiceGrid
-                      modelName={selectedModel}
-                      issues={issues}
-                      onSelectIssue={handleIssueSelect}
-                    />
-                  )}
-                </>
+              <h2>
+                Select the <span className="accent">issue</span> to fix
+              </h2>
+              {selectedModel && (
+                <div className="book-summary-bar">
+                  <span className="chip">{selectedBrand?.label}</span>
+                  <span className="chip chip-accent">{selectedModel}</span>
+                </div>
+              )}
+              {issues.length === 0 ? (
+                <p className="collection-note book-price-note">
+                  Call the shop on <a href={site.phoneHref}>{site.phone}</a> and we will confirm the
+                  price before booking the {selectedModel}.
+                </p>
               ) : (
                 <>
-                  <h2>
-                    Select the <span className="accent">issue</span> to fix
-                  </h2>
-                  {selectedModel && (
-                    <div className="book-summary-bar">
-                      <span className="chip">{selectedBrand?.label}</span>
-                      <span className="chip chip-accent">{selectedModel}</span>
-                    </div>
-                  )}
-                  {issues.length === 0 ? (
-                    <p className="collection-note book-price-note">
-                      Call the shop on <a href={site.phoneHref}>{site.phone}</a> and we will confirm
-                      the price before booking the {selectedModel}.
-                    </p>
-                  ) : (
-                    <>
-                      <p className="book-price-note">
-                        Prices are the workshop list for this model. Each repair includes a 1-year
-                        warranty. Liquid damage is excluded.
-                        {genericBooking
-                          ? ' Choosing a repair opens the booking form on this page.'
-                          : " Choosing a repair opens that repair's booking page."}
-                      </p>
-                      <div className="book-issue-grid">
-                        {issues.map((issue) => {
-                          const selected = selectedIssue?.label === issue.label
-                          return (
-                            <button
-                              key={issue.label}
-                              type="button"
-                              className={`book-card book-issue-card${selected ? ' is-selected' : ''}`}
-                              aria-pressed={selected}
-                              onClick={() => handleIssueSelect(issue)}
-                            >
-                              <span className="book-card-icon" aria-hidden="true">
-                                🔧
-                              </span>
-                              <h3>{displayIssueLabel(issue.label)}</h3>
-                              <p className="issue-time">Workshop time {issue.time}</p>
-                              <p className="issue-price">{issuePriceShown(issue)}</p>
-                            </button>
-                          )
-                        })}
+                  <p className="book-price-note">
+                    Choose a repair to see what is included. Each repair includes a 1-year warranty.
+                    Liquid damage is excluded.
+                  </p>
+                  <div className="book-issue-grid">
+                    {issues.map((issue) => {
+                      const selected = selectedIssue?.label === issue.label
+                      return (
+                        <button
+                          key={issue.label}
+                          type="button"
+                          className={`book-card book-issue-card${selected ? ' is-selected' : ''}`}
+                          aria-pressed={selected}
+                          onClick={() => handleIssueSelect(issue)}
+                        >
+                          <span className="book-card-icon" aria-hidden="true">
+                            {repairIssueIcon(issue.cardTitle ?? issue.label)}
+                          </span>
+                          <h3>{issue.cardTitle ?? displayIssueLabel(issue.label)}</h3>
+                        </button>
+                      )
+                    })}
+                  </div>
+
+                  {selectedIssue && selectedModel && detailIssue ? (
+                    <div className="book-issue-detail" id="issue-detail">
+                      <div className="book-issue-detail-head">
+                        <h3>{selectedIssue.cardTitle ?? displayIssueLabel(selectedIssue.label)}</h3>
+                        <p className="book-issue-detail-meta">
+                          <span>
+                            {showPartGrades && !selectedPartGrade
+                              ? partGradePrompt
+                              : isQuoteDiagnosticIssue(selectedIssue)
+                                ? 'Quote after diagnostics'
+                                : issuePriceShown(detailIssue)}
+                          </span>
+                          <span>
+                            {isQuoteDiagnosticIssue(selectedIssue)
+                              ? 'Full diagnostic first'
+                              : `Workshop time ${detailIssue.time}`}
+                          </span>
+                        </p>
                       </div>
-                    </>
-                  )}
+                      <p className="book-issue-detail-copy">
+                        {isQuoteDiagnosticIssue(selectedIssue)
+                          ? `Describe the ${selectedModel} issue in as much detail as you can on the next step. After a full diagnostic, a technician will call you back with the findings and a repair quote.`
+                          : (partGradeBlurb ?? issueBlurb(selectedIssue.label, selectedModel))}
+                      </p>
+
+                      {showPartGrades ? (
+                        <div
+                          className={`book-screen-grades${partGrades.length === 2 ? ' book-screen-grades-two' : ''}`}
+                          role="radiogroup"
+                          aria-label={
+                            showBatteryGrades ? 'Battery quality options' : 'Screen quality options'
+                          }
+                        >
+                          {partGrades.map((grade) => {
+                            const selected = selectedPartGrade?.id === grade.id
+                            return (
+                              <button
+                                key={grade.id}
+                                type="button"
+                                role="radio"
+                                aria-checked={selected}
+                                className={`book-screen-grade${selected ? ' is-selected' : ''}`}
+                                onClick={() => handlePartGradeSelect(grade)}
+                              >
+                                {grade.tag ? (
+                                  <span className="book-screen-grade-tag">{grade.tag}</span>
+                                ) : null}
+                                <span className="book-screen-grade-title">{grade.title}</span>
+                                <span className="book-screen-grade-price">
+                                  {issuePriceShown(grade)}
+                                </span>
+                                <span className="book-screen-grade-copy">{grade.description}</span>
+                              </button>
+                            )
+                          })}
+                        </div>
+                      ) : null}
+
+                      <div className="book-issue-detail-actions">
+                        <button
+                          type="button"
+                          className="btn btn-primary btn-shiny"
+                          onClick={handleIssueContinue}
+                          disabled={showPartGrades && !selectedPartGrade}
+                        >
+                          Continue to book
+                        </button>
+                      </div>
+                    </div>
+                  ) : null}
                 </>
               )}
             </section>
@@ -415,6 +577,7 @@ export default function BookRepair() {
                     selectedIssue.priceText ??
                     (selectedIssue.price == null ? 'Quote on inspection' : undefined)
                   }
+                  quoteOnly={isQuoteDiagnosticIssue(selectedIssue)}
                 />
               </section>
             )}

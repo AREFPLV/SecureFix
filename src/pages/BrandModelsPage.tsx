@@ -11,8 +11,8 @@ import type { SeoPageEntry } from '@/data/seoCatalog'
 import { isGenericModel, slugify } from '@/lib/slugify'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { localBusinessJsonLd } from '@/data/seo'
-import '@/components/booking/PhoneServiceGrid.css'
 import './ServiceLanding.css'
+import './BrandModelsPage.css'
 
 type Props = {
   page: SeoPageEntry

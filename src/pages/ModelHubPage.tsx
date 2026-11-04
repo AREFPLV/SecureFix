@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { deviceCategories } from '@/data/booking'
 import { site } from '@/data/content'
 import {
+  appleScreenGradeBase,
   CANONICAL_ORIGIN,
   categoryHubLabel,
   categoryHubPath,
@@ -11,9 +12,11 @@ import {
   issuePriceShown,
   issueSlug,
   SHOP_ADDRESS,
+  smartphonePickerIssues,
 } from '@/data/issueCatalog'
+import { getBatteryGradeOptions, getPremiumBatteryOption } from '@/data/batteryGrades'
+import { getPremiumScreenOption, getScreenGradeOptions } from '@/data/screenGrades'
 import type { SeoPageEntry } from '@/data/seoCatalog'
-import { PhoneServiceGrid } from '@/components/booking/PhoneServiceGrid'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { localBusinessJsonLd } from '@/data/seo'
 import './ServiceLanding.css'
@@ -26,14 +29,81 @@ type Props = {
   brandLabel: string
 }
 
+type HubOffer = {
+  key: string
+  label: string
+  path: string
+  priceText: string
+  time: string
+}
+
+function smartphoneHubOffers(
+  brandId: string,
+  model: string,
+  modelPath: string,
+): HubOffer[] {
+  const picker = smartphonePickerIssues(brandId, model)
+  const isApple = brandId === 'apple-phone'
+  const offers: HubOffer[] = []
+
+  for (const item of picker) {
+    if (item.cardTitle === 'Front Screen' && typeof item.price === 'number') {
+      const grades = isApple
+        ? getScreenGradeOptions(appleScreenGradeBase(item, model))
+        : getPremiumScreenOption(item)
+      for (const grade of grades) {
+        offers.push({
+          key: grade.label,
+          label: `${item.cardTitle} · ${grade.title}`,
+          path: `${modelPath}/${issueSlug(grade.label)}`,
+          priceText: issuePriceShown(grade),
+          time: item.time,
+        })
+      }
+      continue
+    }
+    if (item.cardTitle === 'Battery Replacement' && typeof item.price === 'number') {
+      const grades = isApple ? getBatteryGradeOptions(item) : getPremiumBatteryOption(item)
+      for (const grade of grades) {
+        offers.push({
+          key: grade.label,
+          label: `${item.cardTitle} · ${grade.title}`,
+          path: `${modelPath}/${issueSlug(grade.label)}`,
+          priceText: issuePriceShown(grade),
+          time: item.time,
+        })
+      }
+      continue
+    }
+    offers.push({
+      key: item.label,
+      label: item.cardTitle,
+      path: `${modelPath}/${issueSlug(item.label)}`,
+      priceText: issuePriceShown(item),
+      time: item.time,
+    })
+  }
+
+  return offers
+}
+
 export default function ModelHubPage({ page, categoryId, brandId, model, brandLabel }: Props) {
   const issuable = isIssuableModel(model)
-  const issues = issuable ? bookingIssues(categoryId, brandId, model) : []
   const modelPath = page.path
   const brandPath = `/repair/${categoryId}/${brandId}`
   const catPath = categoryHubPath(categoryId)
   const categoryLabel = deviceCategories.find((item) => item.id === categoryId)?.label ?? 'Repair'
-  const isPhone = categoryId === 'smartphone'
+  const offers: HubOffer[] = !issuable
+    ? []
+    : categoryId === 'smartphone'
+      ? smartphoneHubOffers(brandId, model, modelPath)
+      : bookingIssues(categoryId, brandId, model).map((issue) => ({
+          key: issue.label,
+          label: displayIssueLabel(issue.label),
+          path: `${modelPath}/${issueSlug(issue.label)}`,
+          priceText: issuePriceShown(issue),
+          time: issue.time,
+        }))
 
   usePageSeo({
     title: page.title,
@@ -69,36 +139,22 @@ export default function ModelHubPage({ page, categoryId, brandId, model, brandLa
           </nav>
           <h1>{model} Repair</h1>
           {issuable ? (
-            isPhone ? (
-              <>
-                <p className="service-landing-lead">
-                  {model} repairs at {SHOP_ADDRESS}. Pick a service below to book with the listed
-                  price.
-                </p>
-                <PhoneServiceGrid
-                  modelName={model}
-                  issues={issues}
-                  bookHref={(issue) => `${modelPath}/${issueSlug(issue.label)}`}
-                />
-              </>
-            ) : (
-              <>
-                <p className="service-landing-lead">
-                  {model} repairs at {SHOP_ADDRESS}. Choose a priced fault below.
-                </p>
-                <ul className="issue-offer-list">
-                  {issues.map((issue) => (
-                    <li key={issue.label}>
-                      <Link to={`${modelPath}/${issueSlug(issue.label)}`}>
-                        <span>{displayIssueLabel(issue.label)}</span>
-                        <span>{issuePriceShown(issue)}</span>
-                        <span>{issue.time}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )
+            <>
+              <p className="service-landing-lead">
+                {model} repairs at {SHOP_ADDRESS}. Choose a fault below.
+              </p>
+              <ul className="issue-offer-list">
+                {offers.map((offer) => (
+                  <li key={offer.key}>
+                    <Link to={offer.path}>
+                      <span>{offer.label}</span>
+                      <span>{offer.priceText}</span>
+                      <span>{offer.time}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </>
           ) : (
             <p className="service-landing-lead">
               Parts for the {model} are not priced yet, so fault pages are not published for this
