@@ -1,4 +1,5 @@
 import { listedModelNames } from '@/data/listedPrices'
+import { sortSamsungModels } from '@/data/samsungSeries'
 import { sortIphoneModels } from '@/lib/sortIphoneModels'
 import { isGenericModel } from '@/lib/slugify'
 
@@ -186,6 +187,9 @@ for (const category of deviceCategories) {
     }
     if (brand.id === 'apple-phone') {
       brand.models = sortIphoneModels(brand.models)
+    }
+    if (brand.id === 'samsung-phone') {
+      brand.models = sortSamsungModels(brand.models)
     }
   }
 }
