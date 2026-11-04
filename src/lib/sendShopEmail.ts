@@ -3,7 +3,6 @@ import { site } from '@/data/content'
 /** All website bookings and shop request forms go here. */
 export const REPAIR_INBOX = 'repair@securefix.uk' as const
 
-// Keep the public site config aligned with the FormSubmit destination.
 if (site.bookingEmail !== REPAIR_INBOX) {
   console.warn(
     `[SecureFix] site.bookingEmail is "${site.bookingEmail}" but forms send to ${REPAIR_INBOX}`,
@@ -17,7 +16,7 @@ const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | unde
 
 export type ShopEmailPayload = Record<string, string | undefined>
 
-type SendResult = { ok: boolean; error?: string }
+type SendResult = { ok: boolean; error?: string; channel?: string }
 
 function cleanPayload(payload: ShopEmailPayload): Record<string, string> {
   const body: Record<string, string> = {}
@@ -44,7 +43,7 @@ async function readJson(res: Response): Promise<Record<string, unknown>> {
   }
 }
 
-/** Preferred on Hostinger: same-origin PHP mailer (avoids FormSubmit Cloudflare blocks). */
+/** Hostinger PHP: saves a booking copy + attempts mail() to repair@. */
 async function sendViaHostPhp(payload: Record<string, string>): Promise<SendResult | null> {
   try {
     const res = await fetch(HOST_BOOKING_ENDPOINT, {
@@ -60,17 +59,18 @@ async function sendViaHostPhp(payload: Record<string, string>): Promise<SendResu
       }),
     })
 
-    // Missing PHP route (local Vite / misconfigured host) → try next provider.
     if (res.status === 404 || res.status === 405) return null
 
     const data = await readJson(res)
-    if (res.ok && isJsonSuccess(data)) return { ok: true }
+    if (res.ok && isJsonSuccess(data)) {
+      return { ok: true, channel: 'host-php' }
+    }
 
-    // Non-JSON HTML 404/index fallback
     if (!Object.keys(data).length && !res.ok) return null
 
     return {
       ok: false,
+      channel: 'host-php',
       error:
         typeof data.message === 'string'
           ? data.message
@@ -81,6 +81,7 @@ async function sendViaHostPhp(payload: Record<string, string>): Promise<SendResu
   }
 }
 
+/** Reliable browser delivery (Web3Forms accepts the live securefix.uk origin). */
 async function sendViaWeb3Forms(payload: Record<string, string>): Promise<SendResult | null> {
   if (!WEB3FORMS_KEY) return null
   try {
@@ -94,15 +95,18 @@ async function sendViaWeb3Forms(payload: Record<string, string>): Promise<SendRe
         access_key: WEB3FORMS_KEY,
         subject: payload._subject ?? `SecureFix booking — ${payload.customer_name ?? 'customer'}`,
         from_name: 'SecureFix Bookings',
+        name: payload.customer_name ?? payload.name ?? 'SecureFix customer',
+        email: payload.customer_email ?? payload.email ?? site.email,
+        message: payload.message ?? JSON.stringify(payload),
         ...payload,
-        // Keep reply-to for the shop inbox linked to this access key.
         replyto: payload._replyto ?? payload.customer_email ?? payload.email,
       }),
     })
     const data = await readJson(res)
-    if (res.ok && isJsonSuccess(data)) return { ok: true }
+    if (res.ok && isJsonSuccess(data)) return { ok: true, channel: 'web3forms' }
     return {
       ok: false,
+      channel: 'web3forms',
       error:
         typeof data.message === 'string'
           ? data.message
@@ -111,6 +115,7 @@ async function sendViaWeb3Forms(payload: Record<string, string>): Promise<SendRe
   } catch (err) {
     return {
       ok: false,
+      channel: 'web3forms',
       error: err instanceof Error ? err.message : 'Network error while sending via Web3Forms.',
     }
   }
@@ -130,16 +135,17 @@ async function sendViaFormSubmit(payload: Record<string, string>): Promise<SendR
       }),
     })
     const data = await readJson(res)
-    if (res.ok && isJsonSuccess(data)) return { ok: true }
-    // Cloudflare challenge HTML comes back as empty JSON parse
+    if (res.ok && isJsonSuccess(data)) return { ok: true, channel: 'formsubmit' }
     if (!Object.keys(data).length) {
       return {
         ok: false,
+        channel: 'formsubmit',
         error: 'Booking email provider blocked the request. Please call the shop to confirm.',
       }
     }
     return {
       ok: false,
+      channel: 'formsubmit',
       error:
         typeof data.message === 'string'
           ? data.message
@@ -148,23 +154,36 @@ async function sendViaFormSubmit(payload: Record<string, string>): Promise<SendR
   } catch (err) {
     return {
       ok: false,
+      channel: 'formsubmit',
       error: err instanceof Error ? err.message : 'Network error while sending the booking.',
     }
   }
 }
 
 /**
- * Sends a booking-style message to the repair inbox.
- * Prefer Hostinger PHP (/api/booking), then Web3Forms, then FormSubmit.
+ * Sends a booking-style message to the shop inbox.
+ * Fires Web3Forms + Hostinger PHP together so a false PHP mail() success
+ * cannot hide a real delivery failure.
  */
 export async function sendShopEmail(payload: ShopEmailPayload): Promise<SendResult> {
   const body = cleanPayload(payload)
 
-  const host = await sendViaHostPhp(body)
-  if (host) return host
+  const [web3, host] = await Promise.all([sendViaWeb3Forms(body), sendViaHostPhp(body)])
 
-  const web3 = await sendViaWeb3Forms(body)
-  if (web3) return web3
+  if (web3?.ok || host?.ok) {
+    return { ok: true, channel: web3?.ok ? web3.channel : host?.channel }
+  }
 
-  return sendViaFormSubmit(body)
+  // If PHP route is missing (local Vite), try FormSubmit last.
+  if (!host) {
+    return sendViaFormSubmit(body)
+  }
+
+  return {
+    ok: false,
+    error:
+      web3?.error ||
+      host.error ||
+      'We could not send your booking. Call the shop to confirm.',
+  }
 }

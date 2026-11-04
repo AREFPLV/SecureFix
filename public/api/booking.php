@@ -1,7 +1,9 @@
 <?php
 /**
- * Same-origin booking inbox for Hostinger.
- * Browsers post here so we are not blocked by FormSubmit Cloudflare challenges.
+ * Same-origin booking endpoint for Hostinger.
+ * 1) Always persists the booking under api/bookings/ (Deny from web).
+ * 2) Attempts PHP mail() to repair@securefix.uk.
+ * Returns success if the booking was saved and/or mailed.
  */
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
@@ -32,7 +34,7 @@ if (!is_array($data) || !$data) {
 
 // Honeypot — bots that fill this are rejected quietly.
 if (!empty($data['_honey']) || !empty($data['website'])) {
-    echo json_encode(['success' => true]);
+    echo json_encode(['success' => true, 'saved' => false, 'mailed' => false]);
     exit;
 }
 
@@ -43,7 +45,7 @@ $subject = isset($data['_subject'])
 if ($subject === '') {
     $subject = 'New SecureFix booking';
 }
-$subject = mb_substr($subject, 0, 180);
+$subject = function_exists('mb_substr') ? mb_substr($subject, 0, 180) : substr($subject, 0, 180);
 
 $replyTo = '';
 foreach (['_replyto', 'customer_email', 'email', 'replyto'] as $key) {
@@ -86,27 +88,79 @@ if (!$lines) {
 }
 
 $body = implode("\n", $lines) . "\n";
-$from = 'noreply@securefix.uk';
+$reference = !empty($data['booking_reference'])
+    ? preg_replace('/[^A-Za-z0-9\-]/', '', (string) $data['booking_reference'])
+    : ('SF-' . date('Ymd-His'));
 
-$headers = [
-    'MIME-Version: 1.0',
-    'Content-Type: text/plain; charset=UTF-8',
-    'From: SecureFix Bookings <' . $from . '>',
-    'X-Mailer: SecureFix-Hostinger',
-];
-if ($replyTo !== '') {
-    $headers[] = 'Reply-To: ' . $replyTo;
+// Persist every booking so a silent mail() failure never loses the request.
+$bookingsDir = __DIR__ . '/bookings';
+$saved = false;
+$saveError = null;
+if (!is_dir($bookingsDir)) {
+    @mkdir($bookingsDir, 0750, true);
+}
+$deny = $bookingsDir . '/.htaccess';
+if (!is_file($deny)) {
+    @file_put_contents($deny, "Require all denied\nDeny from all\n");
+}
+$index = $bookingsDir . '/index.html';
+if (!is_file($index)) {
+    @file_put_contents($index, '');
 }
 
-$ok = @mail($to, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, implode("\r\n", $headers));
+$record = [
+    'receivedAt' => gmdate('c'),
+    'reference' => $reference,
+    'to' => $to,
+    'subject' => $subject,
+    'replyTo' => $replyTo,
+    'payload' => $data,
+    'body' => $body,
+];
+$file = $bookingsDir . '/' . date('Ymd-His') . '-' . $reference . '.json';
+if (@file_put_contents($file, json_encode($record, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)) !== false) {
+    $saved = true;
+} else {
+    $saveError = 'Could not write booking file on the server.';
+}
 
-if (!$ok) {
-    http_response_code(502);
+$fromCandidates = ['noreply@securefix.uk', 'info@securefix.uk', 'repair@securefix.uk'];
+$mailed = false;
+$mailError = null;
+
+foreach ($fromCandidates as $from) {
+    $headers = [
+        'MIME-Version: 1.0',
+        'Content-Type: text/plain; charset=UTF-8',
+        'From: SecureFix Bookings <' . $from . '>',
+        'X-Mailer: SecureFix-Hostinger',
+    ];
+    if ($replyTo !== '') {
+        $headers[] = 'Reply-To: ' . $replyTo;
+    }
+    $encodedSubject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
+    $ok = @mail($to, $encodedSubject, $body, implode("\r\n", $headers), '-f' . $from);
+    if ($ok) {
+        $mailed = true;
+        break;
+    }
+    $mailError = 'mail() returned false for ' . $from;
+}
+
+if ($saved || $mailed) {
     echo json_encode([
-        'success' => false,
-        'message' => 'Host mail() could not send the booking. Check Hostinger email for noreply@securefix.uk / repair@securefix.uk.',
+        'success' => true,
+        'saved' => $saved,
+        'mailed' => $mailed,
+        'reference' => $reference,
     ]);
     exit;
 }
 
-echo json_encode(['success' => true]);
+http_response_code(502);
+echo json_encode([
+    'success' => false,
+    'message' => $saveError ?: ($mailError ?: 'Could not save or email the booking.'),
+    'saved' => false,
+    'mailed' => false,
+]);

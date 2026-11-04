@@ -1,22 +1,21 @@
 SecureFix Hostinger upload package
 =================================
 
-Download the full zip:
+Full zip:
+  https://github.com/AREFPLV/SecureFix/raw/cursor/booking-dual-delivery-e418/host-download/securefix_public_html_20261104_host.zip
 
-  https://github.com/AREFPLV/SecureFix/raw/cursor/fix-live-booking-e418/host-download/securefix_public_html_20261104_host.zip
+Parts:
+  https://github.com/AREFPLV/SecureFix/raw/cursor/booking-dual-delivery-e418/host-download/securefix_public_html_20261104_host.zip.00.part
+  https://github.com/AREFPLV/SecureFix/raw/cursor/booking-dual-delivery-e418/host-download/securefix_public_html_20261104_host.zip.01.part
 
-Or two parts:
-
-  https://github.com/AREFPLV/SecureFix/raw/cursor/fix-live-booking-e418/host-download/securefix_public_html_20261104_host.zip.00.part
-  https://github.com/AREFPLV/SecureFix/raw/cursor/fix-live-booking-e418/host-download/securefix_public_html_20261104_host.zip.01.part
-
-Join parts:
+Join:
   cat securefix_public_html_20261104_host.zip.*.part > securefix_public_html_20261104_host.zip
 
-Upload to Hostinger public_html, extract so index.html, .htaccess and api/booking.php
-are at the site root. Keep .htaccess.
+Upload/extract into public_html. Keep .htaccess and api/booking.php.
 
-This build fixes live booking: forms post to /api/booking.php → repair@securefix.uk
-(FormSubmit was blocked by Cloudflare on the live site).
+Booking fix in this build:
+- Sends via Web3Forms AND Hostinger PHP together
+- PHP also saves each booking under api/bookings/ (blocked from public web)
+- FormSubmit is only a last-resort fallback
 
 Built: 2026-11-04
