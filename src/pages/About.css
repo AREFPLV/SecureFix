@@ -1,5 +1,35 @@
 /* Shared page styles live in src/index.css; local extras for About-style pages */
 
+/*
+ * After dropping the second warranty stat, a 100vh hero left a large empty
+ * band under “Same Day”. Size the About hero to its content instead.
+ */
+.about-page .hero.page-hero {
+  min-height: 0;
+}
+
+.about-page .hero.page-hero .hero-layout {
+  padding-bottom: 2.5rem;
+}
+
+.about-page .hero-stats {
+  grid-template-columns: max-content;
+  gap: 0;
+  width: fit-content;
+}
+
+.about-page .about-stats-row {
+  grid-template-columns: max-content;
+  width: fit-content;
+  max-width: none;
+}
+
+@media (width >= 640px) {
+  .about-page .about-stats-row {
+    grid-template-columns: max-content;
+  }
+}
+
 .about-service-card-link {
   display: block;
   text-decoration: none;
