@@ -26,6 +26,9 @@ RewriteRule ^api/reviews/?$ /api/reviews.php [L]
 RewriteCond %{REQUEST_URI} ^/(.+)/$
 RewriteRule ^ https://securefix.uk/%1 [R=301,L,QSA]
 
+# Homepage (/) must serve index.html before the catch-all 404.
+RewriteRule ^$ index.html [L]
+
 # Prerendered routes are directories with index.html. Serve that file.
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_FILENAME}/index.html -f
