@@ -27,6 +27,17 @@ export const site = {
   whatsappPhone: '07438 083630',
 }
 
+/** Shop opening hours shown in the footer (one day per line). */
+export const openingHours = [
+  { day: 'Monday', hours: '09:00–20:00' },
+  { day: 'Tuesday', hours: '09:00–20:00' },
+  { day: 'Wednesday', hours: '09:00–20:00' },
+  { day: 'Thursday', hours: '09:00–20:00' },
+  { day: 'Friday', hours: '09:00–20:00' },
+  { day: 'Saturday', hours: '10:00–20:00' },
+  { day: 'Sunday', hours: '10:00–19:00' },
+] as const
+
 export const socialLinks = [
   {
     id: 'facebook',

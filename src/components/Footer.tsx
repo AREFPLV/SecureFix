@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import {
   navLinks,
+  openingHours,
   site,
   socialLinks,
   TERMS_ROUTE,
@@ -106,7 +107,14 @@ export default function Footer() {
             <a href={`mailto:${site.email}`}>{site.email}</a>
           </p>
           <p>{site.location}</p>
-          <p>Monday to Saturday, 09:00–19:00. Closed Sunday.</p>
+          <ul className="footer-hours" aria-label="Opening hours">
+            {openingHours.map((item) => (
+              <li key={item.day}>
+                <span>{item.day}</span>
+                <span>{item.hours}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="footer-social">
