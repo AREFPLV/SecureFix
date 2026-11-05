@@ -559,6 +559,10 @@ export default function BookRepair() {
                   <div className="book-issue-grid">
                     {issues.map((issue) => {
                       const selected = selectedIssue?.label === issue.label
+                      const quoteDiagnostic = isQuoteDiagnosticIssue(issue)
+                      const priceLabel = quoteDiagnostic
+                        ? 'Quote after diagnostics'
+                        : issuePriceShown(issue)
                       return (
                         <button
                           key={issue.label}
@@ -571,6 +575,12 @@ export default function BookRepair() {
                             {repairIssueIcon(issue.cardTitle ?? issue.label)}
                           </span>
                           <h3>{issue.cardTitle ?? displayIssueLabel(issue.label)}</h3>
+                          <p className="issue-time">
+                            {quoteDiagnostic
+                              ? 'Full diagnostic first'
+                              : `Workshop time ${issue.time}`}
+                          </p>
+                          <p className="issue-price">{priceLabel}</p>
                         </button>
                       )
                     })}
