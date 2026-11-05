@@ -2,7 +2,12 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { site } from '@/data/content'
 import { isLondonPostcode } from '@/data/repairIssues'
-import { displayIssueLabel, isQuoteDiagnosticIssue, issuePriceShown } from '@/data/issueCatalog'
+import {
+  displayIssueLabel,
+  isQuoteDiagnosticIssue,
+  issuePriceShown,
+  TECHNICIAN_CONTACT_PRICE_TEXT,
+} from '@/data/issueCatalog'
 import { createBooking, type BookingServiceType } from '@/actions/createBooking'
 import FormPrivacyNote from '@/components/FormPrivacyNote'
 import '@/pages/BookRepair.css'
@@ -66,7 +71,11 @@ export default function RepairBookingForm({
   const needsDiagnostic = quoteOnly || isQuoteDiagnosticIssue({ label: issueLabel })
   const shown = needsDiagnostic
     ? 'Quote after diagnostics'
-    : issuePriceShown({ price, priceText })
+    : issuePriceShown({
+        price,
+        priceText:
+          priceText ?? (price == null ? TECHNICIAN_CONTACT_PRICE_TEXT : undefined),
+      })
 
   async function submitBooking(resolvedService: BookingServiceType) {
     if (submitting) return

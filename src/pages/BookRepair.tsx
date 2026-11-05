@@ -13,6 +13,7 @@ import {
   issueBlurb,
   issuePriceShown,
   issueSlug,
+  showsListedPrices,
   smartphonePickerIssues,
 } from '@/data/issueCatalog'
 import {
@@ -300,28 +301,35 @@ export default function BookRepair() {
       : []
 
   const isApplePhone = selectedBrand?.id === 'apple-phone'
+  const phoneShowsPrices = showsListedPrices(selectedCategory?.id, selectedBrand?.id)
   const showIphoneScreenGrades = Boolean(
     selectedCategory?.id === 'smartphone' &&
       isApplePhone &&
       selectedIssue &&
+      typeof selectedIssue.price === 'number' &&
       isFrontScreenIssue(selectedIssue),
   )
   const showOtherScreenPremium = Boolean(
     selectedCategory?.id === 'smartphone' &&
       !isApplePhone &&
+      phoneShowsPrices &&
       selectedIssue &&
+      typeof selectedIssue.price === 'number' &&
       isFrontScreenIssue(selectedIssue),
   )
   const showIphoneBatteryGrades = Boolean(
     selectedCategory?.id === 'smartphone' &&
       isApplePhone &&
       selectedIssue &&
+      typeof selectedIssue.price === 'number' &&
       isBatteryReplacementIssue(selectedIssue),
   )
   const showOtherBatteryPremium = Boolean(
     selectedCategory?.id === 'smartphone' &&
       !isApplePhone &&
+      phoneShowsPrices &&
       selectedIssue &&
+      typeof selectedIssue.price === 'number' &&
       isBatteryReplacementIssue(selectedIssue),
   )
   const showScreenGrades = showIphoneScreenGrades || showOtherScreenPremium
@@ -663,10 +671,7 @@ export default function BookRepair() {
                   model={selectedModel}
                   issueLabel={selectedIssue.label}
                   price={selectedIssue.price}
-                  priceText={
-                    selectedIssue.priceText ??
-                    (selectedIssue.price == null ? 'Quote on inspection' : undefined)
-                  }
+                  priceText={selectedIssue.priceText}
                   quoteOnly={isQuoteDiagnosticIssue(selectedIssue)}
                 />
               </section>
