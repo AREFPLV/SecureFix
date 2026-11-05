@@ -357,11 +357,7 @@ export default function RepairBookingForm({
           ) : null}
           {diagnosticError ? <div className="postcode-error">{diagnosticError}</div> : null}
           <button type="submit" className="btn btn-primary book-submit" disabled={submitting}>
-            {submitting
-              ? 'Submitting…'
-              : needsDiagnostic
-                ? 'Book diagnostics — technician will call you back'
-                : `Book for ${shown} — confirm drop-off, collection, or mail-in`}
+            {submitting ? 'Confirming…' : 'Confirm booking'}
           </button>
           <FormPrivacyNote />
         </div>
