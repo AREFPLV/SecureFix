@@ -284,6 +284,41 @@ function repairTime(categoryId: string, label: string): string {
   return '1h'
 }
 
+/** Brands/categories that still show fixed workshop prices publicly. */
+export function showsListedPrices(
+  categoryId?: string | null,
+  brandId?: string | null,
+): boolean {
+  if (categoryId === 'gaming-console') return true
+  if (categoryId === 'smartphone') {
+    return brandId === 'apple-phone' || brandId === 'samsung-phone'
+  }
+  return false
+}
+
+/** Public copy when a fixed price is not shown. */
+export const TECHNICIAN_CONTACT_PRICE_TEXT = 'Our technicians will get in touch with you'
+
+/**
+ * Keep numeric prices only for Apple/Samsung phones and gaming consoles.
+ * Everything else becomes a technician callback message.
+ */
+export function withPublicPricing<T extends { price: number | null; priceText?: string }>(
+  issue: T,
+  categoryId?: string | null,
+  brandId?: string | null,
+): T {
+  if (showsListedPrices(categoryId, brandId)) return issue
+  if (issue.priceText === 'Quote after diagnostics') {
+    return { ...issue, price: null }
+  }
+  return {
+    ...issue,
+    price: null,
+    priceText: TECHNICIAN_CONTACT_PRICE_TEXT,
+  }
+}
+
 export function issuePriceShown(issue: { price: number | null; priceText?: string }): string {
   if (issue.priceText) return issue.priceText
   if (issue.price == null) return 'Quote on inspection'
@@ -499,11 +534,20 @@ function buildOne(
   issue: RepairIssue & { price: number | null },
   siblings: IssueLink[],
 ): IssuePage {
+  const publicIssue = withPublicPricing(issue, category.id, brand.id)
   const modelSlug = slugify(model)
-  const slug = issueSlug(issue.label)
-  const display = displayIssueLabel(issue.label)
-  const quoteOnly = issue.price == null || isQuoteDiagnosticIssue(issue)
-  const shown = quoteOnly ? 'Quote after diagnostics' : issuePriceShown(issue)
+  const slug = issueSlug(publicIssue.label)
+  const display = displayIssueLabel(publicIssue.label)
+  const quoteOnly =
+    isQuoteDiagnosticIssue(publicIssue) || publicIssue.priceText === 'Quote after diagnostics'
+  const contactOnly =
+    !quoteOnly &&
+    (publicIssue.price == null || publicIssue.priceText === TECHNICIAN_CONTACT_PRICE_TEXT)
+  const shown = quoteOnly
+    ? 'Quote after diagnostics'
+    : contactOnly
+      ? TECHNICIAN_CONTACT_PRICE_TEXT
+      : issuePriceShown(publicIssue)
   const path = `/repair/${category.id}/${brand.id}/${modelSlug}/${slug}`
   const canonical = `${CANONICAL_ORIGIN}${path}`
   const h1 = `${model} ${display}`
@@ -513,7 +557,9 @@ function buildOne(
   const fault = display.toLowerCase()
   const lead = quoteOnly
     ? `Describe the ${model} ${fault} in as much detail as you can. After a full diagnostic, a SecureFix technician will call you back with the findings and a repair quote.`
-    : `${display} for the ${model} is carried out at ${SHOP_ADDRESS}, priced at ${shown}, with a workshop time of ${issue.time}, and a 1-year warranty.`
+    : contactOnly
+      ? `${display} for the ${model} is carried out at ${SHOP_ADDRESS}. Book below and our technicians will get in touch with you with pricing and next steps.`
+      : `${display} for the ${model} is carried out at ${SHOP_ADDRESS}, priced at ${shown}, with a workshop time of ${publicIssue.time}, and a 1-year warranty.`
   const faqs: IssueFaq[] = quoteOnly
     ? [
         {
@@ -530,27 +576,46 @@ function buildOne(
         },
         {
           question: `Can SecureFix investigate ${model} ${fault}?`,
-          answer: outlookFor(issue.label, model, display),
+          answer: outlookFor(publicIssue.label, model, display),
         },
       ]
-    : [
-        {
-          question: `How much does ${model} ${fault} cost?`,
-          answer: `${model} ${fault} is ${shown} at ${SHOP_ADDRESS}.`,
-        },
-        {
-          question: `How long does ${model} ${fault} take?`,
-          answer: `${model} ${fault} is listed at ${issue.time} on the SecureFix price list.`,
-        },
-        {
-          question: `Is there a warranty on ${model} ${fault}?`,
-          answer: `Yes. ${model} ${fault} includes a 1-year warranty. Liquid damage is excluded.`,
-        },
-        {
-          question: `Can SecureFix fix ${model} ${fault}?`,
-          answer: outlookFor(issue.label, model, display),
-        },
-      ]
+    : contactOnly
+      ? [
+          {
+            question: `How much does ${model} ${fault} cost?`,
+            answer: `Our technicians will get in touch with you after you book to confirm pricing for ${model} ${fault}.`,
+          },
+          {
+            question: `How long does ${model} ${fault} take?`,
+            answer: `Typical workshop time for ${model} ${fault} is around ${publicIssue.time}. Exact timing is confirmed when a technician contacts you.`,
+          },
+          {
+            question: `Is there a warranty on ${model} ${fault}?`,
+            answer: `Yes. ${model} ${fault} includes a 1-year warranty. Liquid damage is excluded.`,
+          },
+          {
+            question: `Can SecureFix fix ${model} ${fault}?`,
+            answer: outlookFor(publicIssue.label, model, display),
+          },
+        ]
+      : [
+          {
+            question: `How much does ${model} ${fault} cost?`,
+            answer: `${model} ${fault} is ${shown} at ${SHOP_ADDRESS}.`,
+          },
+          {
+            question: `How long does ${model} ${fault} take?`,
+            answer: `${model} ${fault} is listed at ${publicIssue.time} on the SecureFix price list.`,
+          },
+          {
+            question: `Is there a warranty on ${model} ${fault}?`,
+            answer: `Yes. ${model} ${fault} includes a 1-year warranty. Liquid damage is excluded.`,
+          },
+          {
+            question: `Can SecureFix fix ${model} ${fault}?`,
+            answer: outlookFor(publicIssue.label, model, display),
+          },
+        ]
   const breadcrumbs: Crumb[] = [
     { name: 'Home', path: '/' },
     { name: category.label, path: catPath },
@@ -570,13 +635,24 @@ function buildOne(
         'A SecureFix technician completes the diagnostic and identifies the fault.',
         'The technician calls you back with the findings and a repair quote before any parts work starts.',
       ]
-    : processStepsFor(issue.label, model)
+    : contactOnly
+      ? [
+          `Book the ${model} ${fault} online or call the shop.`,
+          'Bring or send the device to the workshop.',
+          'Our technicians will get in touch with you with pricing and next steps.',
+          'Repair starts once you approve the quote.',
+        ]
+      : processStepsFor(publicIssue.label, model)
   const blurb = quoteOnly
     ? `Please describe the ${model} ${fault} in detail. After a full diagnostic, a technician will call you back to explain what was found and the repair cost.`
-    : blurbFor(issue.label, model)
+    : contactOnly
+      ? `Book the ${model} ${fault} and our technicians will get in touch with you to confirm the price and repair plan.`
+      : blurbFor(publicIssue.label, model)
   const description = quoteOnly
     ? `${model} ${fault} diagnostics at SecureFix, 218 City Road, London EC1V. Describe the issue, then a technician calls you back after a full diagnostic with a repair quote.`
-    : metaDescription(model, display, shown, issue.time)
+    : contactOnly
+      ? `${model} ${fault} at SecureFix, 218 City Road, London EC1V. Book online and our technicians will get in touch with you with pricing.`
+      : metaDescription(model, display, shown, publicIssue.time)
   return {
     categoryId: category.id,
     categoryLabel: category.label,
@@ -584,22 +660,24 @@ function buildOne(
     brandLabel: brand.label,
     model,
     modelSlug,
-    issueLabel: issue.label,
+    issueLabel: publicIssue.label,
     displayLabel: display,
     issueSlug: slug,
-    price: quoteOnly ? null : issue.price,
+    price: quoteOnly || contactOnly ? null : publicIssue.price,
     priceText: shown,
-    time: quoteOnly ? 'Diagnostic' : issue.time,
+    time: quoteOnly ? 'Diagnostic' : publicIssue.time,
     quoteOnly,
     path,
     title: quoteOnly
       ? `${h1} in London | Quote after diagnostics | SecureFix EC1V`
-      : `${h1} in London | ${shown} | SecureFix EC1V`,
+      : contactOnly
+        ? `${h1} in London | SecureFix EC1V`
+        : `${h1} in London | ${shown} | SecureFix EC1V`,
     description,
     h1,
     lead,
     blurb,
-    outlook: outlookFor(issue.label, model, display),
+    outlook: outlookFor(publicIssue.label, model, display),
     process,
     included: quoteOnly
       ? [
@@ -608,12 +686,19 @@ function buildOne(
           'No parts work until you approve the quote',
           'Drop-off, London collection, or mail-in',
         ]
-      : [
-          `${display} for the ${model}`,
-          'A test before handover',
-          '1-year warranty (liquid damage is excluded)',
-          'Drop-off, London collection, or mail-in',
-        ],
+      : contactOnly
+        ? [
+            `${display} for the ${model}`,
+            'Our technicians will get in touch with you',
+            '1-year warranty (liquid damage is excluded)',
+            'Drop-off, London collection, or mail-in',
+          ]
+        : [
+            `${display} for the ${model}`,
+            'A test before handover',
+            '1-year warranty (liquid damage is excluded)',
+            'Drop-off, London collection, or mail-in',
+          ],
     faqs,
     breadcrumbs,
     related,
@@ -668,12 +753,12 @@ function buildOne(
               addressCountry: 'GB',
             },
           },
-          ...(quoteOnly
+          ...(quoteOnly || contactOnly || publicIssue.price == null
             ? {}
             : {
                 offers: {
                   '@type': 'Offer',
-                  price: Number(issue.price).toFixed(2),
+                  price: Number(publicIssue.price).toFixed(2),
                   priceCurrency: 'GBP',
                   url: canonical,
                   availability: 'https://schema.org/InStock',
@@ -829,9 +914,14 @@ function buildIssuePages(): IssuePage[] {
           continue
         }
 
-        const issues = bookingIssues(category.id, brand.id, model).filter(
-          (issue): issue is RepairIssue & { price: number } => typeof issue.price === 'number',
-        )
+        const issues = bookingIssues(category.id, brand.id, model).filter((issue) => {
+          if (!showsListedPrices(category.id, brand.id)) return true
+          return (
+            typeof issue.price === 'number' ||
+            isQuoteDiagnosticIssue(issue) ||
+            issue.priceText === 'Quote after diagnostics'
+          )
+        })
         const siblings = issues.map((issue) => ({
           label: displayIssueLabel(issue.label),
           path: `/repair/${category.id}/${brand.id}/${modelSlug}/${issueSlug(issue.label)}`,
@@ -1154,29 +1244,37 @@ export function smartphonePickerIssues(
   return SMARTPHONE_PICKER_SLOTS.map((slot) => {
     // Other Fault and Dead Condition are quote-only — customer describes the issue, then a technician calls back.
     if (slot === 'Other Fault' || slot === 'Dead Condition') {
-      return {
-        label: slot === 'Other Fault' ? OTHER_FAULT_LABEL : DEAD_CONDITION_LABEL,
-        price: null,
-        priceText: 'Quote after diagnostics',
-        time: 'Diagnostic',
-        cardTitle: slot,
-      }
+      return withPublicPricing(
+        {
+          label: slot === 'Other Fault' ? OTHER_FAULT_LABEL : DEAD_CONDITION_LABEL,
+          price: null,
+          priceText: 'Quote after diagnostics',
+          time: 'Diagnostic',
+          cardTitle: slot,
+        },
+        'smartphone',
+        brandId,
+      )
     }
 
     const matched = pickBestMatch(pool, slot)
     if (matched) {
-      return { ...matched, cardTitle: slot }
+      return withPublicPricing({ ...matched, cardTitle: slot }, 'smartphone', brandId)
     }
 
     const fallbackLabel = SLOT_FALLBACKS[slot]
     const catalog = (issuesByCategory.smartphone ?? []).find((issue) => issue.label === fallbackLabel)
-    return {
-      label: catalog?.label ?? fallbackLabel,
-      price: catalog?.price ?? null,
-      priceText: catalog?.priceText ?? (catalog?.price == null ? 'Quote on inspection' : undefined),
-      time: catalog?.time ?? repairTime('smartphone', fallbackLabel),
-      cardTitle: slot,
-    }
+    return withPublicPricing(
+      {
+        label: catalog?.label ?? fallbackLabel,
+        price: catalog?.price ?? null,
+        priceText: catalog?.priceText ?? (catalog?.price == null ? 'Quote on inspection' : undefined),
+        time: catalog?.time ?? repairTime('smartphone', fallbackLabel),
+        cardTitle: slot,
+      },
+      'smartphone',
+      brandId,
+    )
   })
 }
 
@@ -1185,12 +1283,18 @@ export function bookingIssues(categoryId: string, brandId?: string | null, model
   if (brandId && model && !isGenericModel(model)) {
     const listed = listedRepairs(categoryId, brandId, model)
     if (listed?.length) {
-      return listed.map((repair) => ({
-        label: repair.label,
-        price: repair.price,
-        priceText: repair.priceText,
-        time: repairTime(categoryId, repair.label),
-      }))
+      return listed.map((repair) =>
+        withPublicPricing(
+          {
+            label: repair.label,
+            price: repair.price,
+            priceText: repair.priceText,
+            time: repairTime(categoryId, repair.label),
+          },
+          categoryId,
+          brandId,
+        ),
+      )
     }
   }
 
@@ -1211,6 +1315,7 @@ export function bookingIssues(categoryId: string, brandId?: string | null, model
       return true
     })
     .sort((a, b) => issueRank(a.label) - issueRank(b.label) || a.label.localeCompare(b.label))
+    .map((issue) => withPublicPricing(issue, categoryId, brandId))
 }
 
 export function jobLabelsFor(categoryId: string, brandId?: string, model?: string): string[] {
@@ -1291,12 +1396,16 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
         : []
       const screenGrade = screenOptions.find((item) => issueSlug(item.label) === issueParam)
       if (screenGrade) {
-        issue = {
-          label: screenGrade.label,
-          price: screenGrade.price,
-          priceText: screenGrade.priceText,
-          time: screenBase?.time ?? '30m',
-        }
+        issue = withPublicPricing(
+          {
+            label: screenGrade.label,
+            price: screenGrade.price,
+            priceText: screenGrade.priceText,
+            time: screenBase?.time ?? '30m',
+          },
+          category.id,
+          brand?.id,
+        )
       } else {
         const batteryBase =
           picker.find((item) => item.cardTitle === 'Battery Replacement') ??
@@ -1311,12 +1420,16 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
           : []
         const batteryGrade = batteryOptions.find((item) => issueSlug(item.label) === issueParam)
         if (batteryGrade) {
-          issue = {
-            label: batteryGrade.label,
-            price: batteryGrade.price,
-            priceText: batteryGrade.priceText,
-            time: batteryBase?.time ?? '30m',
-          }
+          issue = withPublicPricing(
+            {
+              label: batteryGrade.label,
+              price: batteryGrade.price,
+              priceText: batteryGrade.priceText,
+              time: batteryBase?.time ?? '30m',
+            },
+            category.id,
+            brand?.id,
+          )
         }
       }
     }

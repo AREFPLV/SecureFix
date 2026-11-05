@@ -13,6 +13,7 @@ import {
   issueBlurb,
   issuePriceShown,
   issueSlug,
+  showsListedPrices,
   smartphonePickerIssues,
 } from '@/data/issueCatalog'
 import {
@@ -300,28 +301,35 @@ export default function BookRepair() {
       : []
 
   const isApplePhone = selectedBrand?.id === 'apple-phone'
+  const phoneShowsPrices = showsListedPrices(selectedCategory?.id, selectedBrand?.id)
   const showIphoneScreenGrades = Boolean(
     selectedCategory?.id === 'smartphone' &&
       isApplePhone &&
       selectedIssue &&
+      typeof selectedIssue.price === 'number' &&
       isFrontScreenIssue(selectedIssue),
   )
   const showOtherScreenPremium = Boolean(
     selectedCategory?.id === 'smartphone' &&
       !isApplePhone &&
+      phoneShowsPrices &&
       selectedIssue &&
+      typeof selectedIssue.price === 'number' &&
       isFrontScreenIssue(selectedIssue),
   )
   const showIphoneBatteryGrades = Boolean(
     selectedCategory?.id === 'smartphone' &&
       isApplePhone &&
       selectedIssue &&
+      typeof selectedIssue.price === 'number' &&
       isBatteryReplacementIssue(selectedIssue),
   )
   const showOtherBatteryPremium = Boolean(
     selectedCategory?.id === 'smartphone' &&
       !isApplePhone &&
+      phoneShowsPrices &&
       selectedIssue &&
+      typeof selectedIssue.price === 'number' &&
       isBatteryReplacementIssue(selectedIssue),
   )
   const showScreenGrades = showIphoneScreenGrades || showOtherScreenPremium
@@ -551,6 +559,10 @@ export default function BookRepair() {
                   <div className="book-issue-grid">
                     {issues.map((issue) => {
                       const selected = selectedIssue?.label === issue.label
+                      const quoteDiagnostic = isQuoteDiagnosticIssue(issue)
+                      const priceLabel = quoteDiagnostic
+                        ? 'Quote after diagnostics'
+                        : issuePriceShown(issue)
                       return (
                         <button
                           key={issue.label}
@@ -563,6 +575,12 @@ export default function BookRepair() {
                             {repairIssueIcon(issue.cardTitle ?? issue.label)}
                           </span>
                           <h3>{issue.cardTitle ?? displayIssueLabel(issue.label)}</h3>
+                          <p className="issue-time">
+                            {quoteDiagnostic
+                              ? 'Full diagnostic first'
+                              : `Workshop time ${issue.time}`}
+                          </p>
+                          <p className="issue-price">{priceLabel}</p>
                         </button>
                       )
                     })}
@@ -663,10 +681,7 @@ export default function BookRepair() {
                   model={selectedModel}
                   issueLabel={selectedIssue.label}
                   price={selectedIssue.price}
-                  priceText={
-                    selectedIssue.priceText ??
-                    (selectedIssue.price == null ? 'Quote on inspection' : undefined)
-                  }
+                  priceText={selectedIssue.priceText}
                   quoteOnly={isQuoteDiagnosticIssue(selectedIssue)}
                 />
               </section>

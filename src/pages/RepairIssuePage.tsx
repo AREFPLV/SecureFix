@@ -76,6 +76,7 @@ export default function RepairIssuePage({ page }: { page: IssuePage }) {
             issueLabel={page.issueLabel}
             price={page.price}
             priceText={page.priceText}
+            quoteOnly={page.quoteOnly}
           />
 
           <section className="service-landing-section">
