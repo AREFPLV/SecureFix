@@ -4,7 +4,6 @@ import type { ChatTurn } from '../shared/fallbackChat.ts'
 
 /** Chat booking / callback leads use the same repair inbox as website bookings. */
 const REPAIR_INBOX = 'repair@securefix.uk'
-const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${REPAIR_INBOX}`
 const HOST_BOOKING_ENDPOINT =
   process.env.SECUREFIX_BOOKING_URL?.trim() || 'https://securefix.uk/api/booking.php'
 
@@ -12,19 +11,6 @@ function isJsonSuccess(data: unknown): boolean {
   if (!data || typeof data !== 'object') return false
   const success = (data as { success?: boolean | string }).success
   return success === true || String(success) === 'true'
-}
-
-async function postJson(url: string, body: Record<string, string>) {
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    body: JSON.stringify(body),
-  })
-  const data = (await res.json().catch(() => ({}))) as Record<string, unknown>
-  return { res, data, ok: res.ok && isJsonSuccess(data) }
 }
 
 export async function sendLeadEmail(lead: CustomerLead, transcript: ChatTurn[]) {
@@ -55,6 +41,7 @@ export async function sendLeadEmail(lead: CustomerLead, transcript: ChatTurn[]) 
 
   const payload: Record<string, string> = {
     _captcha: 'false',
+    _honey: '',
     _subject: `Chat Enquiry ${reference} — ${lead.name}`,
     booking_reference: reference,
     customer_name: lead.name,
@@ -69,24 +56,24 @@ export async function sendLeadEmail(lead: CustomerLead, transcript: ChatTurn[]) 
   }
 
   try {
-    const [formSubmit, host] = await Promise.all([
-      postJson(FORMSUBMIT_ENDPOINT, payload),
-      postJson(HOST_BOOKING_ENDPOINT, { ...payload, _honey: '' }),
-    ])
-
-    if (formSubmit.ok || host.ok) {
+    const res = await fetch(HOST_BOOKING_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+    const data = (await res.json().catch(() => ({}))) as Record<string, unknown>
+    if (res.ok && isJsonSuccess(data)) {
       return { ok: true as const, reference }
     }
-
-    const error =
-      (typeof formSubmit.data.message === 'string' && formSubmit.data.message) ||
-      (typeof host.data.message === 'string' && host.data.message) ||
-      'Send failed'
-
     return {
       ok: false as const,
       reference,
-      error,
+      error:
+        (typeof data.message === 'string' && data.message) ||
+        'Send failed',
     }
   } catch (err) {
     return {

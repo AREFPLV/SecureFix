@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { site } from '@/data/content'
 import { isLondonPostcode } from '@/data/repairIssues'
@@ -67,6 +67,7 @@ export default function RepairBookingForm({
   const [submitting, setSubmitting] = useState(false)
   const [reference, setReference] = useState('')
   const [submitError, setSubmitError] = useState('')
+  const submitLock = useRef(false)
 
   const needsDiagnostic = quoteOnly || isQuoteDiagnosticIssue({ label: issueLabel })
   const shown = needsDiagnostic
@@ -78,7 +79,8 @@ export default function RepairBookingForm({
       })
 
   async function submitBooking(resolvedService: BookingServiceType) {
-    if (submitting) return
+    if (submitting || submitLock.current) return
+    submitLock.current = true
     setSubmitting(true)
     setSubmitError('')
 
@@ -103,6 +105,7 @@ export default function RepairBookingForm({
     if (!result.ok) {
       setSubmitError(result.error ?? 'We could not send your booking. Call the shop to confirm.')
       setSubmitting(false)
+      submitLock.current = false
       // Keep the form visible with a clear failure — do not show a false "submitted" screen.
       return
     }
