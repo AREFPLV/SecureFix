@@ -22,6 +22,9 @@ RewriteRule ^repair/tablet-ipad/apple-ipad/ipad-10th(/.*)?$ https://securefix.uk
 # Live Google reviews. PHP on Hostinger; the local Python server handles this path itself.
 RewriteRule ^api/reviews/?$ /api/reviews.php [L]
 
+# Booking / quote forms — same-origin PHP mailer (FormSubmit is Cloudflare-blocked).
+RewriteRule ^api/booking/?$ /api/booking.php [L]
+
 # Drop a trailing slash so the canonical path is the one without it.
 RewriteCond %{REQUEST_URI} ^/(.+)/$
 RewriteRule ^ https://securefix.uk/%1 [R=301,L,QSA]
