@@ -1,4 +1,4 @@
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import { site, LIFECYCLE_ROUTE } from '@/data/content'
 import { getBusinessService, businessServiceRoute } from '@/data/businessServices'
 import { getBusinessServiceSeo } from '@/data/businessSeoExtras'
@@ -6,10 +6,19 @@ import { getSeoPageByPath } from '@/data/seoCatalog'
 import { localBusinessJsonLd } from '@/data/seo'
 import { businessHeroVariantFromSlug } from '@/components/BusinessHeroArt'
 import BusinessHeroPromo from '@/components/BusinessHeroPromo'
+import LifecycleQuoteForm from '@/components/LifecycleQuoteForm'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import './Procurement.css'
 import './BusinessItHero.css'
 import '@/components/Hero.css'
+
+function quoteServiceForSlug(slug: string): string {
+  if (slug === 'procurement') return 'Laptop sourcing'
+  if (slug === 'deployment') return 'Device deployment'
+  if (slug === 'os-setup') return 'Configuration & imaging'
+  if (slug === 'lifecycle-management') return 'Full lifecycle management'
+  return 'Mixed / other'
+}
 
 const lifecycleApproach = [
   {
@@ -162,9 +171,9 @@ export default function BusinessService() {
               <a href={`${site.phoneHref}`} className="btn btn-primary btn-shiny">
                 Talk to an IT Specialist
               </a>
-              <Link to={`${LIFECYCLE_ROUTE}#quote`} className="btn btn-secondary btn-shiny">
+              <a href="#quote" className="btn btn-secondary btn-shiny">
                 Request a Quote
-              </Link>
+              </a>
             </div>
             <div className="hero-stats">
               {lifecycleApproach.slice(0, 2).map((step) => (
@@ -298,19 +307,20 @@ export default function BusinessService() {
             </section>
           ) : null}
 
-          <section className="procurement-cta">
+          <section className="procurement-section procurement-split">
             <div>
-              <span className="procurement-cta-icon">{service.icon}</span>
               <h2>{service.ctaTitle}</h2>
-              <p>{service.ctaText}</p>
+              <p className="procurement-lead">{service.ctaText}</p>
+              <p>
+                Prefer to talk it through? Call{' '}
+                <a href={site.phoneHref}>{site.phone}</a>.
+              </p>
             </div>
-            <div className="procurement-cta-actions">
-              <Link to={`${LIFECYCLE_ROUTE}#quote`} className="btn btn-primary btn-shiny">
-                Request a Quote
-              </Link>
-              <a href={`${site.phoneHref}`} className="btn btn-secondary">
-                Call {site.phone}
-              </a>
+            <div id="quote" className="lifecycle-quote">
+              <h2>
+                Request a <span className="accent">Quote</span>
+              </h2>
+              <LifecycleQuoteForm defaultService={quoteServiceForSlug(service.slug)} />
             </div>
           </section>
         </div>
