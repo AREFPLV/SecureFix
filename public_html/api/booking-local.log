@@ -1,2 +1,0 @@
-{"_subject": "Local test", "booking_reference": "SF-LOCAL-1", "customer_name": "Local", "customer_email": "local@example.com", "message": "local booking test", "_honey": ""}
-{"_subject": "Browser booking test", "booking_reference": "SF-BROWSER-2", "customer_name": "Browser Test", "customer_email": "browser@example.com", "customer_phone": "07000000000", "device": "Smartphone · OnePlus · OnePlus 7", "issue": "Screen repair ( LCD & Glass) replacement", "message": "browser test booking to repair@", "shop_inbox": "repair@securefix.uk", "_honey": ""}

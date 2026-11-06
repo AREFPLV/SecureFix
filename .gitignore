@@ -5,3 +5,5 @@ __pycache__/
 node_modules
 dist
 dist-ssr
+public_html/api/booking-local.log
+api/booking-local.log
