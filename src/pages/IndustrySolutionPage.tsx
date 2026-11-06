@@ -7,6 +7,7 @@ import {
 } from '@/data/industrySolutions'
 import { getIndustrySolutionSeo } from '@/data/businessSeoExtras'
 import BusinessHeroPromo from '@/components/BusinessHeroPromo'
+import LifecycleQuoteForm from '@/components/LifecycleQuoteForm'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { localBusinessJsonLd } from '@/data/seo'
 import './Procurement.css'
@@ -109,9 +110,9 @@ export default function IndustrySolutionPage() {
             </h1>
             <p className="hero-subtitle">{industry.intro}</p>
             <div className="hero-actions">
-              <Link to={`${LIFECYCLE_ROUTE}#quote`} className="btn btn-primary btn-shiny">
+              <a href="#quote" className="btn btn-primary btn-shiny">
                 Request a Quote
-              </Link>
+              </a>
               <a href={`${site.phoneHref}`} className="btn btn-secondary btn-shiny">
                 Call {site.phone}
               </a>
@@ -257,21 +258,23 @@ export default function IndustrySolutionPage() {
             </div>
           </section>
 
-          <section className="procurement-cta">
+          <section className="procurement-section procurement-split">
             <div>
               <h2>Need IT support for {industry.shortLabel.toLowerCase()}?</h2>
-              <p>
+              <p className="procurement-lead">
                 Tell us about your sites, team size and devices. SecureFix will recommend a practical
                 support plan for London.
               </p>
+              <p>
+                Prefer to talk it through? Call{' '}
+                <a href={site.phoneHref}>{site.phone}</a>.
+              </p>
             </div>
-            <div className="procurement-cta-actions">
-              <Link to={`${LIFECYCLE_ROUTE}#quote`} className="btn btn-primary btn-shiny">
-                Request a Quote
-              </Link>
-              <a href={`${site.phoneHref}`} className="btn btn-secondary">
-                Call {site.phone}
-              </a>
+            <div id="quote" className="lifecycle-quote">
+              <h2>
+                Request a <span className="accent">Quote</span>
+              </h2>
+              <LifecycleQuoteForm defaultService="Mixed / other" />
             </div>
           </section>
         </div>

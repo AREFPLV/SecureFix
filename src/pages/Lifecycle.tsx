@@ -1,29 +1,16 @@
-import { useState } from 'react'
-import type { FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { site, RECYCLING_ROUTE } from '@/data/content'
 import { lifecycleContent } from '@/data/lifecycle'
 import { industrySolutions, industrySolutionRoute } from '@/data/industrySolutions'
 import { businessHubSeo } from '@/data/businessSeoExtras'
-import { createLifecycleQuote } from '@/actions/createLifecycleQuote'
-import FormPrivacyNote from '@/components/FormPrivacyNote'
 import BusinessHeroPromo from '@/components/BusinessHeroPromo'
+import LifecycleQuoteForm from '@/components/LifecycleQuoteForm'
 import { usePageSeo } from '@/hooks/usePageSeo'
 import { lifecycleSeo, localBusinessJsonLd } from '@/data/seo'
 import './Lifecycle.css'
 import './IndustrySolution.css'
 import './BusinessItHero.css'
 import '@/components/Hero.css'
-
-const emptyForm = {
-  name: '',
-  company: '',
-  email: '',
-  phone: '',
-  service: 'Laptop sourcing',
-  quantity: '',
-  notes: '',
-}
 
 export default function Lifecycle() {
   usePageSeo({
@@ -56,24 +43,6 @@ export default function Lifecycle() {
       },
     ],
   })
-  const [form, setForm] = useState(emptyForm)
-  const [submitting, setSubmitting] = useState(false)
-  const [error, setError] = useState('')
-  const [reference, setReference] = useState('')
-
-  async function handleSubmit(e: FormEvent) {
-    e.preventDefault()
-    setError('')
-    setSubmitting(true)
-    const result = await createLifecycleQuote(form)
-    setSubmitting(false)
-    if (!result.ok) {
-      setError(result.error || 'Something went wrong.')
-      return
-    }
-    setReference(result.reference)
-    setForm(emptyForm)
-  }
 
   return (
     <div className="lifecycle-page site-page">
@@ -249,91 +218,7 @@ export default function Lifecycle() {
               <h2>
                 Request a <span className="accent">Quote</span>
               </h2>
-              {reference ? (
-                <div className="lifecycle-quote-success">
-                  <strong>Quote request sent</strong>
-                  <p>
-                    Thanks. Your reference is <span>{reference}</span>. We will contact you shortly.
-                  </p>
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={() => setReference('')}
-                  >
-                    Send Another Request
-                  </button>
-                </div>
-              ) : (
-                <form className="lifecycle-quote-form" onSubmit={handleSubmit}>
-                  <label>
-                    Full Name
-                    <input
-                      required
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    />
-                  </label>
-                  <label>
-                    Company Name
-                    <input
-                      value={form.company}
-                      onChange={(e) => setForm({ ...form, company: e.target.value })}
-                    />
-                  </label>
-                  <label>
-                    Email
-                    <input
-                      required
-                      type="email"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    />
-                  </label>
-                  <label>
-                    Telephone
-                    <input
-                      required
-                      type="tel"
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    />
-                  </label>
-                  <label>
-                    Service Needed
-                    <select
-                      value={form.service}
-                      onChange={(e) => setForm({ ...form, service: e.target.value })}
-                    >
-                      <option>Laptop sourcing</option>
-                      <option>Device deployment</option>
-                      <option>Configuration &amp; imaging</option>
-                      <option>Full lifecycle management</option>
-                      <option>Mixed / other</option>
-                    </select>
-                  </label>
-                  <label>
-                    Approximate Quantity
-                    <input
-                      placeholder="e.g. 25 laptops"
-                      value={form.quantity}
-                      onChange={(e) => setForm({ ...form, quantity: e.target.value })}
-                    />
-                  </label>
-                  <label className="lifecycle-quote-full">
-                    Additional Information
-                    <textarea
-                      rows={4}
-                      value={form.notes}
-                      onChange={(e) => setForm({ ...form, notes: e.target.value })}
-                    />
-                  </label>
-                  {error && <p className="lifecycle-quote-error">{error}</p>}
-                  <button type="submit" className="btn btn-primary btn-shiny" disabled={submitting}>
-                    {submitting ? 'Sending…' : 'Request a Quote'}
-                  </button>
-                  <FormPrivacyNote />
-                </form>
-              )}
+              <LifecycleQuoteForm />
             </div>
           </section>
 
