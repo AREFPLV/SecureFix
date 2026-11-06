@@ -1,8 +1,39 @@
 /* Shared Business IT page helpers (home hero colours come from Hero.css / index.css). */
 
+/*
+ * Page heroes inherit min-height: 100vh from .hero, which left a large empty
+ * band above Executive summary / service content. Size the hero to its content.
+ */
+.lifecycle-page .hero.page-hero,
+.procurement-page .hero.page-hero {
+  min-height: 0;
+  align-items: flex-start;
+}
+
+.lifecycle-page .hero.page-hero .hero-layout,
+.procurement-page .hero.page-hero .hero-layout {
+  align-items: start;
+  padding-top: 2.5rem;
+  padding-bottom: 1.75rem;
+  gap: 1.75rem;
+}
+
+.lifecycle-page .hero-content,
+.lifecycle-page .hero-visual,
+.procurement-page .hero-content,
+.procurement-page .hero-visual {
+  align-self: start;
+  min-height: 0;
+}
+
 .lifecycle-page .page-hero .hero-subtitle,
 .procurement-page .page-hero .hero-subtitle {
   max-width: 36rem;
+}
+
+.lifecycle-page .lifecycle-main,
+.procurement-page .procurement-main {
+  padding-top: 1.25rem;
 }
 
 .business-it-hero-partners {
