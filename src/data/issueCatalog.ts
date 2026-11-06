@@ -288,7 +288,12 @@ function repairTime(categoryId: string, label: string): string {
 export function showsListedPrices(
   categoryId?: string | null,
   brandId?: string | null,
+  model?: string | null,
 ): boolean {
+  // Other brands and Other / Not Listed models never show fixed £ prices.
+  if (brandId && (brandId.startsWith('other') || /\bother\b/i.test(brandId))) return false
+  if (model && isGenericModel(model)) return false
+
   if (categoryId === 'gaming-console') return true
   if (categoryId === 'smartphone') {
     return brandId === 'apple-phone' || brandId === 'samsung-phone'
@@ -300,15 +305,16 @@ export function showsListedPrices(
 export const TECHNICIAN_CONTACT_PRICE_TEXT = 'Our technicians will get in touch with you'
 
 /**
- * Keep numeric prices only for Apple/Samsung phones and gaming consoles.
- * Everything else becomes a technician callback message.
+ * Keep numeric prices only for named Apple/Samsung phones and gaming consoles.
+ * Other brands/models become a technician callback message.
  */
 export function withPublicPricing<T extends { price: number | null; priceText?: string }>(
   issue: T,
   categoryId?: string | null,
   brandId?: string | null,
+  model?: string | null,
 ): T {
-  if (showsListedPrices(categoryId, brandId)) return issue
+  if (showsListedPrices(categoryId, brandId, model)) return issue
   if (issue.priceText === 'Quote after diagnostics') {
     return { ...issue, price: null }
   }
@@ -534,7 +540,7 @@ function buildOne(
   issue: RepairIssue & { price: number | null },
   siblings: IssueLink[],
 ): IssuePage {
-  const publicIssue = withPublicPricing(issue, category.id, brand.id)
+  const publicIssue = withPublicPricing(issue, category.id, brand.id, model)
   const modelSlug = slugify(model)
   const slug = issueSlug(publicIssue.label)
   const display = displayIssueLabel(publicIssue.label)
@@ -915,7 +921,7 @@ function buildIssuePages(): IssuePage[] {
         }
 
         const issues = bookingIssues(category.id, brand.id, model).filter((issue) => {
-          if (!showsListedPrices(category.id, brand.id)) return true
+          if (!showsListedPrices(category.id, brand.id, model)) return true
           return (
             typeof issue.price === 'number' ||
             isQuoteDiagnosticIssue(issue) ||
@@ -1254,12 +1260,13 @@ export function smartphonePickerIssues(
         },
         'smartphone',
         brandId,
+        model,
       )
     }
 
     const matched = pickBestMatch(pool, slot)
     if (matched) {
-      return withPublicPricing({ ...matched, cardTitle: slot }, 'smartphone', brandId)
+      return withPublicPricing({ ...matched, cardTitle: slot }, 'smartphone', brandId, model)
     }
 
     const fallbackLabel = SLOT_FALLBACKS[slot]
@@ -1274,6 +1281,7 @@ export function smartphonePickerIssues(
       },
       'smartphone',
       brandId,
+      model,
     )
   })
 }
@@ -1293,6 +1301,7 @@ export function bookingIssues(categoryId: string, brandId?: string | null, model
           },
           categoryId,
           brandId,
+          model,
         ),
       )
     }
@@ -1315,7 +1324,7 @@ export function bookingIssues(categoryId: string, brandId?: string | null, model
       return true
     })
     .sort((a, b) => issueRank(a.label) - issueRank(b.label) || a.label.localeCompare(b.label))
-    .map((issue) => withPublicPricing(issue, categoryId, brandId))
+    .map((issue) => withPublicPricing(issue, categoryId, brandId, model))
 }
 
 export function jobLabelsFor(categoryId: string, brandId?: string, model?: string): string[] {
@@ -1405,6 +1414,7 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
           },
           category.id,
           brand?.id,
+          model,
         )
       } else {
         const batteryBase =
@@ -1429,6 +1439,7 @@ export function bookingSelectionFromQuery(params: URLSearchParams): BookingSeed 
             },
             category.id,
             brand?.id,
+            model,
           )
         }
       }

@@ -311,7 +311,11 @@ export default function BookRepair() {
       : []
 
   const isApplePhone = selectedBrand?.id === 'apple-phone'
-  const phoneShowsPrices = showsListedPrices(selectedCategory?.id, selectedBrand?.id)
+  const phoneShowsPrices = showsListedPrices(
+    selectedCategory?.id,
+    selectedBrand?.id,
+    selectedModel,
+  )
   const showIphoneScreenGrades = Boolean(
     selectedCategory?.id === 'smartphone' &&
       isApplePhone &&
