@@ -23,6 +23,8 @@ function cleanPayload(payload: ShopEmailPayload): Record<string, string> {
   for (const [key, value] of Object.entries(payload)) {
     if (value != null && value !== '') body[key] = value
   }
+  // Always stamp the shop destination so every channel / saved copy is explicit.
+  body.shop_inbox = REPAIR_INBOX
   return body
 }
 
@@ -54,6 +56,7 @@ async function sendViaHostPhp(payload: Record<string, string>): Promise<SendResu
       },
       body: JSON.stringify({
         ...payload,
+        shop_inbox: REPAIR_INBOX,
         _captcha: 'false',
         _honey: '',
       }),
@@ -81,7 +84,11 @@ async function sendViaHostPhp(payload: Record<string, string>): Promise<SendResu
   }
 }
 
-/** Reliable browser delivery (Web3Forms accepts the live securefix.uk origin). */
+/**
+ * Web3Forms delivers to the email tied to the access key.
+ * Also CC repair@ so bookings still reach the shop inbox if the key
+ * was registered under a different SecureFix address.
+ */
 async function sendViaWeb3Forms(payload: Record<string, string>): Promise<SendResult | null> {
   if (!WEB3FORMS_KEY) return null
   try {
@@ -99,6 +106,9 @@ async function sendViaWeb3Forms(payload: Record<string, string>): Promise<SendRe
         email: payload.customer_email ?? payload.email ?? site.email,
         message: payload.message ?? JSON.stringify(payload),
         ...payload,
+        shop_inbox: REPAIR_INBOX,
+        // PRO plans honour ccemail; free plans ignore it safely.
+        ccemail: REPAIR_INBOX,
         replyto: payload._replyto ?? payload.customer_email ?? payload.email,
       }),
     })
@@ -121,6 +131,7 @@ async function sendViaWeb3Forms(payload: Record<string, string>): Promise<SendRe
   }
 }
 
+/** FormSubmit endpoint path IS repair@securefix.uk — guaranteed destination. */
 async function sendViaFormSubmit(payload: Record<string, string>): Promise<SendResult> {
   try {
     const res = await fetch(FORMSUBMIT_ENDPOINT, {
@@ -132,6 +143,7 @@ async function sendViaFormSubmit(payload: Record<string, string>): Promise<SendR
       body: JSON.stringify({
         _captcha: 'false',
         ...payload,
+        shop_inbox: REPAIR_INBOX,
       }),
     })
     const data = await readJson(res)
@@ -161,29 +173,36 @@ async function sendViaFormSubmit(payload: Record<string, string>): Promise<SendR
 }
 
 /**
- * Sends a booking-style message to the shop inbox.
- * Fires Web3Forms + Hostinger PHP together so a false PHP mail() success
- * cannot hide a real delivery failure.
+ * Sends a booking-style message to repair@securefix.uk.
+ * Fires Hostinger PHP (hardcoded repair@) + FormSubmit (URL = repair@) +
+ * Web3Forms together so a single channel failure cannot drop the request.
  */
 export async function sendShopEmail(payload: ShopEmailPayload): Promise<SendResult> {
   const body = cleanPayload(payload)
 
-  const [web3, host] = await Promise.all([sendViaWeb3Forms(body), sendViaHostPhp(body)])
+  const [web3, host, formSubmit] = await Promise.all([
+    sendViaWeb3Forms(body),
+    sendViaHostPhp(body),
+    sendViaFormSubmit(body),
+  ])
 
-  if (web3?.ok || host?.ok) {
-    return { ok: true, channel: web3?.ok ? web3.channel : host?.channel }
-  }
-
-  // If PHP route is missing (local Vite), try FormSubmit last.
-  if (!host) {
-    return sendViaFormSubmit(body)
+  if (host?.ok || formSubmit.ok || web3?.ok) {
+    return {
+      ok: true,
+      channel: host?.ok
+        ? host.channel
+        : formSubmit.ok
+          ? formSubmit.channel
+          : web3?.channel,
+    }
   }
 
   return {
     ok: false,
     error:
+      host?.error ||
+      formSubmit.error ||
       web3?.error ||
-      host.error ||
       'We could not send your booking. Call the shop to confirm.',
   }
 }

@@ -38,6 +38,7 @@ if (!empty($data['_honey']) || !empty($data['website'])) {
     exit;
 }
 
+// All website forms (repair booking, recycling, Business IT, call-out, trade-in, Protect, chat) land here.
 $to = 'repair@securefix.uk';
 $subject = isset($data['_subject'])
     ? trim(preg_replace('/[\r\n]+/', ' ', (string) $data['_subject']))

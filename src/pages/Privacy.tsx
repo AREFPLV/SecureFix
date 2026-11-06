@@ -46,9 +46,9 @@ export default function Privacy() {
             <h2>How the form is sent</h2>
             <p className="about-text">
               Repair booking, call-out, trade-in, recycling, business IT quote, Protect
-              consultation and Alex chat lead forms are sent through FormSubmit to{' '}
-              {site.bookingEmail}. FormSubmit receives the fields you submit so the message can be
-              delivered to SecureFix.
+              consultation and Alex chat lead forms are delivered to {site.bookingEmail}. Messages
+              are sent through the SecureFix booking endpoint on this site, with FormSubmit and
+              Web3Forms used as backup delivery channels to the same inbox.
             </p>
           </section>
           <section className="about-section">
