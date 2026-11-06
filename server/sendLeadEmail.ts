@@ -4,7 +4,14 @@ import type { ChatTurn } from '../shared/fallbackChat.ts'
 
 /** Chat booking / callback leads use the same repair inbox as website bookings. */
 const REPAIR_INBOX = 'repair@securefix.uk'
-const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${REPAIR_INBOX}`
+const HOST_BOOKING_ENDPOINT =
+  process.env.SECUREFIX_BOOKING_URL?.trim() || 'https://securefix.uk/api/booking.php'
+
+function isJsonSuccess(data: unknown): boolean {
+  if (!data || typeof data !== 'object') return false
+  const success = (data as { success?: boolean | string }).success
+  return success === true || String(success) === 'true'
+}
 
 export async function sendLeadEmail(lead: CustomerLead, transcript: ChatTurn[]) {
   const reference = generateInquiryReference()
@@ -32,41 +39,42 @@ export async function sendLeadEmail(lead: CustomerLead, transcript: ChatTurn[]) 
     transcriptText,
   ].join('\n')
 
+  const payload: Record<string, string> = {
+    _captcha: 'false',
+    _honey: '',
+    _subject: `Chat Enquiry ${reference} — ${lead.name}`,
+    booking_reference: reference,
+    customer_name: lead.name,
+    customer_email: lead.email,
+    customer_phone: lead.phone,
+    device: lead.device ?? '',
+    issue: lead.issue ?? '',
+    intent: lead.intent ?? '',
+    message,
+    shop_inbox: REPAIR_INBOX,
+    _replyto: lead.email,
+  }
+
   try {
-    const res = await fetch(FORMSUBMIT_ENDPOINT, {
+    const res = await fetch(HOST_BOOKING_ENDPOINT, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
-      body: JSON.stringify({
-        _captcha: 'false',
-        _subject: `Chat Enquiry ${reference} — ${lead.name}`,
-        booking_reference: reference,
-        customer_name: lead.name,
-        customer_email: lead.email,
-        customer_phone: lead.phone,
-        device: lead.device,
-        issue: lead.issue,
-        intent: lead.intent,
-        message,
-        _replyto: lead.email,
-      }),
+      body: JSON.stringify(payload),
     })
-
-    const data = (await res.json().catch(() => ({}))) as {
-      success?: boolean | string
-      message?: string
+    const data = (await res.json().catch(() => ({}))) as Record<string, unknown>
+    if (res.ok && isJsonSuccess(data)) {
+      return { ok: true as const, reference }
     }
-    const accepted = res.ok && String(data.success) === 'true'
-    if (!accepted) {
-      return {
-        ok: false as const,
-        reference,
-        error: data.message ?? 'Send failed',
-      }
+    return {
+      ok: false as const,
+      reference,
+      error:
+        (typeof data.message === 'string' && data.message) ||
+        'Send failed',
     }
-    return { ok: true as const, reference }
   } catch (err) {
     return {
       ok: false as const,

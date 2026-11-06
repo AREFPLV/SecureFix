@@ -5,3 +5,10 @@ __pycache__/
 node_modules
 dist
 dist-ssr
+public_html/api/booking-local.log
+api/booking-local.log
+
+# Hostinger SMTP secrets — never commit
+public/api/mail-config.php
+public_html/api/mail-config.php
+api/mail-config.php

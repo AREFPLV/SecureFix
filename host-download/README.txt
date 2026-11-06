@@ -1,24 +1,23 @@
 SecureFix Hostinger upload package
 =================================
 
-Built: 2026-11-06 (Europe/London)
+Built: 2026-11-06 — booking email delivery fix
 
-Full zip (single download):
-  https://github.com/AREFPLV/SecureFix/raw/cursor/host-upload-20261106-e418/host-download/securefix_public_html_20261106_host.zip
+Full zip:
+  https://github.com/AREFPLV/SecureFix/raw/cursor/forms-repair-inbox-e418/host-download/securefix_public_html_20261106_host.zip
 
-Parts (if GitHub blocks the large file):
-  https://github.com/AREFPLV/SecureFix/raw/cursor/host-upload-20261106-e418/host-download/securefix_public_html_20261106_host.zip.00.part
-  https://github.com/AREFPLV/SecureFix/raw/cursor/host-upload-20261106-e418/host-download/securefix_public_html_20261106_host.zip.01.part
-
-Join parts:
+Parts:
+  …zip.00.part and …zip.01.part in this folder
   cat securefix_public_html_20261106_host.zip.*.part > securefix_public_html_20261106_host.zip
 
-Upload / extract into Hostinger public_html.
-Keep .htaccess and api/booking.php from this package.
+Upload / extract into Hostinger public_html (keep .htaccess + api/).
 
-This build includes:
-- Selective prices (Apple/Samsung phones + consoles only; Other = technician contact)
-- Samsung series titles-only + Other on every series + Back button fix
-- Business IT quote form on service pages + hero gap fixes
-- Recycling / booking spacing fixes
-- Dual-send booking (Web3Forms + Hostinger PHP)
+IMPORTANT — emails to repair@securefix.uk
+-----------------------------------------
+1. In hPanel → Emails, create mailbox repair@securefix.uk (if missing).
+2. On the server, copy:
+     api/mail-config.example.php  →  api/mail-config.php
+3. Edit api/mail-config.php and set password to the mailbox password.
+4. Bookings then send via Hostinger SMTP (smtp.hostinger.com) to repair@.
+
+Bookings are also saved under api/bookings/ even if mail is delayed.
