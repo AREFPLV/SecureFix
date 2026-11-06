@@ -1,3 +1,66 @@
+/*
+ * Page heroes inherit min-height: 100vh from .hero, which left a large empty
+ * band above the first content section. Size the hero to its content.
+ */
+.recycle-page .hero.page-hero {
+  min-height: 0;
+  align-items: flex-start;
+}
+
+.recycle-page .hero.page-hero .hero-layout {
+  align-items: start;
+  padding-top: 2.5rem;
+  padding-bottom: 1.5rem;
+  gap: 1.75rem;
+}
+
+.recycle-page .hero-content,
+.recycle-page .hero-visual {
+  align-self: start;
+  min-height: 0;
+}
+
+.recycle-page .hero-content h1 {
+  font-size: clamp(2.1rem, 4.2vw, 3.25rem);
+  line-height: 1.08;
+  margin-bottom: 0.85rem;
+}
+
+.recycle-page .hero-subtitle {
+  margin-bottom: 1.25rem;
+  max-width: 36rem;
+}
+
+.recycle-page .hero-actions {
+  margin-bottom: 1.25rem;
+}
+
+.recycle-page .hero-promo.recycling-hero-promo {
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  max-height: min(20rem, 48vh);
+}
+
+.recycle-page .hero-stats {
+  width: fit-content;
+  max-width: 100%;
+  grid-template-columns: repeat(2, max-content);
+  gap: 0.85rem 1.5rem;
+  padding-top: 1.15rem;
+}
+
+.recycle-page .recycle-main {
+  padding-top: 1.25rem;
+}
+
+.recycle-page .recycle-main > .container > .recycle-section:first-child {
+  margin-top: 0;
+}
+
+.recycle-page .recycle-main > .container > .recycle-section:first-child h2 {
+  margin-top: 0;
+}
+
 /* Hero layout: copy left, animated recycle widget right (LCR-style). */
 .recycle-page .recycle-hero-inner-photo {
   display: grid !important;
