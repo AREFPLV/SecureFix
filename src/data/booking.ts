@@ -135,6 +135,7 @@ export const deviceCategories: DeviceCategory[] = [
     description: 'iPod Touch, Classic, Nano and Shuffle repairs',
     brands: [
       { id: 'ipod-all', label: 'Apple iPod', models: ['iPod Touch (7th Gen)', 'iPod Touch (6th Gen)', 'iPod Touch (5th Gen)', 'iPod Classic', 'iPod Nano (7th Gen)', 'iPod Nano (6th Gen)', 'iPod Nano (5th Gen)', 'iPod Shuffle', 'Other iPod'] },
+      { id: 'other-ipod', label: 'Other Brand', models: ['Other / Not Listed'] },
     ],
   },
   {

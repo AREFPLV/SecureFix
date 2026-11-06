@@ -180,11 +180,29 @@ export function sortSamsungModels(models: string[]): string[] {
 }
 
 export function modelsInSamsungSeries(models: string[], seriesId: SamsungSeriesId): string[] {
-  return sortSamsungModels(
+  const inSeries = sortSamsungModels(
     models.filter(
-      (model) => isBookableSamsungModel(model) && samsungSeriesIdForModel(model) === seriesId,
+      (model) =>
+        isBookableSamsungModel(model) &&
+        !isGenericModel(model) &&
+        samsungSeriesIdForModel(model) === seriesId,
     ),
   )
+  // Every series category also offers an Other option for unlisted models.
+  const otherOptions = models.filter(
+    (model) => isBookableSamsungModel(model) && isGenericModel(model),
+  )
+  const seen = new Set(inSeries.map((model) => model.toLowerCase()))
+  for (const other of otherOptions) {
+    if (!seen.has(other.toLowerCase())) {
+      inSeries.push(other)
+      seen.add(other.toLowerCase())
+    }
+  }
+  if (seriesId !== 'other' && !otherOptions.length) {
+    inSeries.push('Other Samsung')
+  }
+  return inSeries
 }
 
 /** Series that actually have models in the current Samsung list, in display order. */
