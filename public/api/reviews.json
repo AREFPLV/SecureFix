@@ -2,7 +2,7 @@
   "ok": true,
   "source": "google",
   "rating": 5,
-  "totalReviews": 51,
+  "totalReviews": 55,
   "googleUrl": "https://search.google.com/local/reviews?placeid=ChIJSVMnvdMddkgRfZBMxr6FMyU",
   "reviews": [
     {
@@ -56,5 +56,5 @@
       "photoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjVf9tO8cB22pFJrjj8AbTZg3X4OguvZYXoQJDPcylPQNebxhlZO9A=s120-c-rp-mo-ba12-br100"
     }
   ],
-  "fetchedAt": "2026-11-03T22:19:15Z"
+  "fetchedAt": "2026-11-06T10:52:07Z"
 }
