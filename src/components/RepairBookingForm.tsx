@@ -102,7 +102,11 @@ export default function RepairBookingForm({
     setReference(result.reference)
     if (!result.ok) {
       setSubmitError(result.error ?? 'We could not send your booking. Call the shop to confirm.')
+      setSubmitting(false)
+      // Keep the form visible with a clear failure — do not show a false "submitted" screen.
+      return
     }
+    setSubmitError('')
     setSubmitting(false)
     setSubmitted(true)
   }
@@ -365,6 +369,17 @@ export default function RepairBookingForm({
             </p>
           ) : null}
           {diagnosticError ? <div className="postcode-error">{diagnosticError}</div> : null}
+          {submitError ? (
+            <div className="postcode-error" role="alert">
+              {submitError}
+              {reference ? (
+                <>
+                  {' '}
+                  Your reference is <strong>{reference}</strong> — quote it if you call us.
+                </>
+              ) : null}
+            </div>
+          ) : null}
           <button type="submit" className="btn btn-primary book-submit" disabled={submitting}>
             {submitting ? 'Confirming…' : 'Confirm booking'}
           </button>

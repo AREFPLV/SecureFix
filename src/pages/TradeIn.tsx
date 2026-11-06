@@ -134,10 +134,12 @@ export default function TradeIn() {
     })
 
     setReference(result.reference)
+    setSubmitting(false)
     if (!result.ok) {
       setSubmitError(result.error ?? 'We could not send your request. Please call us to confirm.')
+      return
     }
-    setSubmitting(false)
+    setSubmitError('')
     setStep('done')
   }
 
