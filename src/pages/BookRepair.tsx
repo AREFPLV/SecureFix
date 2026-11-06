@@ -488,7 +488,7 @@ export default function BookRepair() {
                 Choose Galaxy S, Z foldable, A-series, and more — then pick your exact model.
               </p>
               <div className="book-grid book-grid-brands">
-                {samsungSeriesOptions.map(({ series, models }) => (
+                {samsungSeriesOptions.map(({ series }) => (
                   <button
                     key={series.id}
                     className="book-card book-card-brand"
@@ -496,8 +496,6 @@ export default function BookRepair() {
                     type="button"
                   >
                     <h3>{series.label}</h3>
-                    <p>{series.description}</p>
-                    <span className="book-card-count">{models.length} models</span>
                   </button>
                 ))}
               </div>
