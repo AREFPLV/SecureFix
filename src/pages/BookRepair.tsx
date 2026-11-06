@@ -236,20 +236,24 @@ export default function BookRepair() {
 
   function handleBack() {
     const next = new URLSearchParams(searchParams)
+    const brandId = next.get('brand')
+    const cat = deviceCategories.find((item) => item.id === next.get('category'))
+    const brand = cat?.brands.find((item) => item.id === brandId)
+    const fromBrandList = next.get('entry') === 'list'
+
     if (step === 'book') {
+      // Book form → issue picker for the same model.
       next.delete('issue')
+      next.delete('view')
       setSearchParams(next, { replace: true })
       return
     }
+
     if (step === 'issue') {
-      const brandId = next.get('brand')
-      const cat = deviceCategories.find((item) => item.id === next.get('category'))
-      const brand = cat?.brands.find((item) => item.id === brandId)
+      // Issue picker → model list (or brand list when the brand has only one model).
       next.delete('model')
       next.delete('issue')
       next.delete('view')
-      // Single-model brands (e.g. Other Brand) skip the model step on the way forward,
-      // so back from issues should return to the brand list.
       if (brand && brand.models.length === 1) {
         next.delete('brand')
         next.delete('series')
@@ -257,16 +261,18 @@ export default function BookRepair() {
       setSearchParams(next, { replace: true })
       return
     }
+
     if (step === 'model') {
+      // Model list → Samsung series picker, or brand list for other brands.
       next.delete('model')
       next.delete('issue')
       next.delete('view')
-      // Samsung returns to series categories; other brands leave the brand picker.
-      if (usesSamsungSeriesPicker(next.get('brand')) && next.get('series')) {
+      if (usesSamsungSeriesPicker(brandId) && next.get('series')) {
+        next.delete('series')
         setSearchParams(next, { replace: true })
         return
       }
-      if (next.get('entry') === 'list') {
+      if (fromBrandList) {
         next.delete('brand')
         next.delete('series')
         setSearchParams(next, { replace: true })
@@ -275,12 +281,14 @@ export default function BookRepair() {
       setSearchParams(new URLSearchParams(), { replace: true })
       return
     }
+
     if (step === 'series') {
+      // Series picker → brand list.
       next.delete('series')
       next.delete('model')
       next.delete('issue')
       next.delete('view')
-      if (next.get('entry') === 'list') {
+      if (fromBrandList) {
         next.delete('brand')
         setSearchParams(next, { replace: true })
         return
@@ -288,7 +296,9 @@ export default function BookRepair() {
       setSearchParams(new URLSearchParams(), { replace: true })
       return
     }
+
     if (step === 'brand') {
+      // Brand list → device type list.
       setSearchParams(new URLSearchParams(), { replace: true })
     }
   }
