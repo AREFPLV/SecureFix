@@ -40,6 +40,15 @@
   font-size: clamp(1.8rem, 4vw, 2.6rem);
 }
 
+/* Space between Confirm booking and What’s included on repair fault pages. */
+.issue-page #book {
+  margin-bottom: 3rem;
+}
+
+.issue-page #book + .service-landing-section {
+  margin-top: 1.5rem;
+}
+
 .issue-selected-label {
   margin: 0 0 0.35rem;
   font-family: Montserrat, sans-serif;
